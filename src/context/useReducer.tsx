@@ -22,7 +22,7 @@ export const Context = createContext(initial_state);
 export const ReducerContext = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initial_state);
 
-  const context = () => [state, dispatch];
-
-  return <Context.Provider value={context}>{children}</Context.Provider>;
+  return (
+    <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
+  );
 };

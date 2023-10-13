@@ -1,7 +1,10 @@
-// import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../../context/useReducer';
 
 const Home = () => {
-  return <div>Home</div>;
+  const [state, dispatch] = useContext(Context);
+
+  return <div>{state?.hola}</div>;
 };
 
 export { Home };
