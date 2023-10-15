@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div>
       <h1>Home</h1>
-      <p>Counter: {state?.counter}</p>
+      <p>Counter: {state.counter}</p>
       <button onClick={increment}>Increment</button>
       <button onClick={reset}>Reset</button>
     </div>
