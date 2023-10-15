@@ -1,4 +1,5 @@
 import { Request, Services } from '..';
+import { FilterParams } from '../../context/states/initial_state';
 
 import type {
   createAnuncioParams,
@@ -6,7 +7,8 @@ import type {
   getAnuncioRes,
   Main_Anuncios,
 } from './Ads.type';
-import type { FilterParams } from '../../context';
+
+import { GetAllFieldsResponse, GetAllFieldsResponseSchema } from './Ads.type';
 
 export class AdsServices {
   static #request = Request(Services.ADS);
@@ -87,5 +89,13 @@ export class AdsServices {
       params
     );
     return data;
+  }
+
+  static async getAllFields(): Promise<GetAllFieldsResponse> {
+    const { data } = await this.#request.get('/fields');
+    const dataValidated = GetAllFieldsResponseSchema.safeParse(data);
+    if (!dataValidated.success) throw new Error(dataValidated.error.message);
+
+    return dataValidated.data;
   }
 }
