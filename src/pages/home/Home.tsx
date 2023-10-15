@@ -1,10 +1,24 @@
-import { useContext } from 'react';
-import { Context } from '../../context/useReducer';
+import { useReducerContext } from '../../context/useReducer';
 
 const Home = () => {
-  const { state, dispatch } = useContext(Context);
+  const { state, dispatch } = useReducerContext();
 
-  return <div>{state?.hola}</div>;
+  const increment = () => {
+    dispatch({ type: 'SET_COUNTER', payload: state?.counter + 1 });
+  };
+
+  const reset = () => {
+    dispatch({ type: 'SET_COUNTER', payload: 0 });
+  };
+
+  return (
+    <div>
+      <h1>Home</h1>
+      <p>Counter: {state?.counter}</p>
+      <button onClick={increment}>Increment</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
 };
 
 export { Home };
