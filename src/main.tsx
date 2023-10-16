@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './styles/css/index.css';
 import './styles/scss/index.scss';
 import { AppRouter } from './router/AppRouter';
-import { ReducerContext } from './context/useReducer';
+import { AppProvider } from './context';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ReducerContext>
+    <AppProvider>
       <AppRouter />
-    </ReducerContext>
+    </AppProvider>
   </React.StrictMode>
 );

@@ -11,7 +11,7 @@ export const config = {
   },
   NODE_ENV: import.meta.env.VITE_NODE_ENV,
   get IS_DEV() {
-    return this.NODE_ENV === 'development';
+    return this.NODE_ENV === 'dev';
   },
   get BASE_URL() {
     return this.IS_DEV ? this.URL.DEV : this.URL.PROD;

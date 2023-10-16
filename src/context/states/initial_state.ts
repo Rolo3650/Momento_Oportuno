@@ -1,31 +1,8 @@
-export interface InitialState {
-  hola: string;
-  counter: number;
-  filter: FilterState;
+import type { AppState } from '../context.type';
 
-  [Symbol.iterator]: () => {
-    next: () => {
-      value?: string;
-      done: boolean;
-    };
-  };
-}
-
-export type FilterParams = {
-  state: number;
-  query: string;
-  category: number;
-  subCategory?: number;
-  priceMin?: number;
-  priceMax?: number;
-};
-
-export type FilterState = Partial<FilterParams>;
-
-const initial_state: InitialState = {
-  hola: 'hola',
+const app_state: AppState = {
   counter: 0,
-  filter: {
+  filterState: {
     state: 1,
     query: '',
     category: 0,
@@ -33,6 +10,7 @@ const initial_state: InitialState = {
     priceMin: 0,
     priceMax: 0,
   },
+  userState: null,
 
   [Symbol.iterator]: function () {
     let index = 0;
@@ -50,4 +28,4 @@ const initial_state: InitialState = {
   },
 };
 
-export { initial_state };
+export { app_state };
