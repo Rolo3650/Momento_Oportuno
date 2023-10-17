@@ -6,7 +6,7 @@ import {
   type logInParams,
   type logInRes,
   registerParams,
-} from '../../../api/Users';
+} from '../../../api';
 import { ZodError } from 'zod';
 import { AxiosError, isAxiosError } from 'axios';
 import { AppTypes, useAppContext } from '../../../context';

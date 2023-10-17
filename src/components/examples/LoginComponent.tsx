@@ -39,7 +39,6 @@ export const LoginComponent = () => {
         margin: '10px',
       }}
     >
-      {/**FIXME: DELETE THIS */}
       {state.userState ? (
         <div>
           <h2>{state.userState.user.name}</h2>

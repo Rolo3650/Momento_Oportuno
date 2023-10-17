@@ -9,6 +9,8 @@ export type FilterState = {
   priceMax?: number;
 };
 
+export type FilterParams = Partial<FilterState>;
+
 export type FilterPayload = {
   [AppTypes.SetFilter]: Partial<FilterState>;
 };
