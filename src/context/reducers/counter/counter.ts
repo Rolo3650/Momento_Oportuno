@@ -5,7 +5,6 @@ export const counterReducer = (
   state: CounterState,
   action: AppActions
 ): CounterState => {
-  console.log('action.type', action.type);
   switch (action.type) {
     case AppTypes.Increment:
       return state + 1;

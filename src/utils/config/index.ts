@@ -1,12 +1,13 @@
 export const config = {
   URL: {
-    DEV: 'http://localhost:3000',
-    PROD: 'https://clicdelsureste.empresarialti.com',
+    DEV: 'http://159.203.113.48',
+    // TODO: Change to production url
+    PROD: 'http://159.203.113.48',
   },
   API_PREFIX: {
-    BASE: '/wp-json',
+    BASE: '/api',
     get FULL() {
-      return `${this.BASE}/wp/v2` as const;
+      return `${this.BASE}` as const;
     },
   },
   NODE_ENV: import.meta.env.VITE_NODE_ENV,

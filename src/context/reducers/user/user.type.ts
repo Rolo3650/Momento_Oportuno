@@ -1,9 +1,5 @@
 import type { ActionMap, AppTypes } from '..';
-
-export type User = {
-  id: number;
-  name: string;
-};
+import { User } from '../../../api/Users';
 
 export type UserState = {
   token: string;

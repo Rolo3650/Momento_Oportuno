@@ -1,76 +1,75 @@
-import { AxiosError } from 'axios';
 import { Request } from '../';
 import type {
-  GetFavoritesResponse,
   logInParams,
   registerParams,
   logInRes,
   registerRes,
-  GetUserByIdResponse,
 } from './Users.type';
-import { CustomServices, Services } from '..';
+import { GeneralLogInSchema } from './Users.type';
+import { Services } from '..';
+
+const req = Request(Services.INDEX);
 
 export class UsersServices {
-  static #request = Request(Services.INDEX);
-  static #apiCustom = Request(CustomServices.logIn, true);
-
   /**
-   * @throws {AxiosError}
+   * @throws {AxiosError,ZodError}
    */
   static async logIn(params: logInParams): Promise<logInRes> {
-    const { data } = await this.#apiCustom.post('/', params);
+    const { data } = await req.post('/login', params);
+    const parsed = GeneralLogInSchema.parse(data);
 
-    return data;
+    return parsed;
   }
 
   /**
-   * @throws {AxiosError}
+   * @throws {AxiosError,ZodError}
    */
   static async register(params: registerParams): Promise<registerRes> {
-    const { data } = await this.#request.post('/register', params, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    });
-    return data;
+    const { data } = await req.post('/register', params);
+    const parsed = GeneralLogInSchema.parse(data);
+    return parsed;
   }
 
-  /**
-   * @throws {AxiosError}
-   */
-  static async getUserById(id: string | number): Promise<GetUserByIdResponse> {
-    const { data } = await this.#request.get(`/${id}`);
-    return data;
+  static async logOut() {
+    // await req.post('/logout');
   }
 
-  /**
-   * @throws {AxiosError}
-   */
-  static async getFavorites(): Promise<GetFavoritesResponse> {
-    const { data } = await this.#request.get('/favorites/get');
-    return data;
-  }
+  // /**
+  //  * @throws {AxiosError}
+  //  */
+  // static async getUserById(id: string | number): Promise<GetUserByIdResponse> {
+  //   const { data } = await req.get(`/${id}`);
+  //   return data;
+  // }
 
-  /**
-   * @throws {AxiosError}
-   */
-  static async toggleFavorite(id: number): Promise<GetFavoritesResponse> {
-    try {
-      const { data } = await this.#request.post(`/favorites/add/${id}`);
-      return data;
-    } catch (error) {
-      if (!(error instanceof AxiosError)) throw error;
-      const { data } = await this.#request.post(`/favorites/delete/${id}`);
-      return data;
-    }
-  }
+  // /**
+  //  * @throws {AxiosError}
+  //  */
+  // static async getFavorites(): Promise<GetFavoritesResponse> {
+  //   const { data } = await req.get('/favorites/get');
+  //   return data;
+  // }
 
-  /**
-   * @throws {AxiosError}
-   */
-  static async me() {
-    const { data } = await this.#request.get('users/me');
+  // /**
+  //  * @throws {AxiosError}
+  //  */
+  // static async toggleFavorite(id: number): Promise<GetFavoritesResponse> {
+  //   try {
+  //     const { data } = await req.post(`/favorites/add/${id}`);
+  //     return data;
+  //   } catch (error) {
+  //     if (!(error instanceof AxiosError)) throw error;
+  //     const { data } = await req.post(`/favorites/delete/${id}`);
+  //     return data;
+  //   }
+  // }
 
-    return data;
-  }
+  // /**
+  //  * @throws {AxiosError}
+  //  */
+  // static async me() {
+  //   const { data } = await req.get('users/me');
+
+  //   return data;
+  // }
 }

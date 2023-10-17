@@ -1,12 +1,16 @@
-import axios, { type AxiosInstance } from 'axios';
-import { config } from '../utils';
-import type { CUSTOM_SERVICES, SERVICES } from './request.type';
+import axios from 'axios';
+import { config, getLocalValue } from '../utils';
+import type {
+  CUSTOM_SERVICES,
+  MyAxiosInstance,
+  SERVICES,
+} from './request.type';
 
 export default function Request(
   // eslint-disable-next-line @typescript-eslint/ban-types
   service: SERVICES | CUSTOM_SERVICES | (string & {}),
   customApi = false
-): AxiosInstance {
+): MyAxiosInstance {
   const url = !customApi ? config.API_URL : config.API_CUSTOM;
 
   const req = axios.create({
@@ -21,9 +25,14 @@ export default function Request(
   req.interceptors.request.use(
     (config) => {
       // TODO: Add token to request
-      // example:
-      // let token = localStorage.getItem('token');
-      // if (token) config.headers.Authorization = `Bearer ${token}`;
+      //FIXME: SHOULD DELETE THIS
+      const token = getLocalValue('token');
+      console.log({
+        token,
+      });
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
       return config;
     },
     (err) => {

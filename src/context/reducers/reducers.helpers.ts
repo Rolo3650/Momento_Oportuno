@@ -1,3 +1,4 @@
+import { AppState } from '..';
 import type { FilterActions, UserActions } from './';
 import { CounterActions } from './counter/counter.type';
 
@@ -12,8 +13,11 @@ export type ActionMap<M extends { [index: string]: unknown }> = {
       };
 };
 
-// POJO
 export const AppTypes = {
+  //global state
+  SetGlobalState: 'SET_GLOBAL_STATE',
+  ResetGlobalState: 'RESET_GLOBAL_STATE',
+
   // userTypes
   Login: 'LOGIN',
   Logout: 'LOGOUT',
@@ -27,6 +31,17 @@ export const AppTypes = {
   Reset: 'RESET',
 } as const;
 
+type GlobalPayload = {
+  [AppTypes.SetGlobalState]: { state: AppState };
+  [AppTypes.ResetGlobalState]: undefined;
+};
+
+type GlobalActions = ActionMap<GlobalPayload>[keyof ActionMap<GlobalPayload>];
+
 export type AppTypes = (typeof AppTypes)[keyof typeof AppTypes];
 
-export type AppActions = FilterActions | UserActions | CounterActions;
+export type AppActions =
+  | FilterActions
+  | UserActions
+  | CounterActions
+  | GlobalActions;
