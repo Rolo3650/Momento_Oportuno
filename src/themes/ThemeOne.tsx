@@ -6,6 +6,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#E4032E',
+      contrastText: '#fff',
     },
     secondary: {
       main: '#FD542A',
@@ -14,7 +15,7 @@ const theme = createTheme({
   components: {
     MuiLink: {
       styleOverrides: {
-        root: { fontFamily: 'Helvetica, Arial, sans-serif' },
+        root: { fontFamily: 'Helvetica, sans-serif' },
       },
     },
   },

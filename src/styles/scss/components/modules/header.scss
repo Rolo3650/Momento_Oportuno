@@ -3,7 +3,7 @@
     height: 90px;
 
     &.light {
-        background: #E4032E;
+        background: $color_primary;
     }
 
     & .header-body {
@@ -12,8 +12,18 @@
         margin-right: auto;
         max-width: 1200px;
 
+        @media screen and (min-width: 1200px) {
+            padding: 22px;
+        }
+
         & .logo {
             height: 65px;
+        }
+
+        & .separator {
+            width: 2px;
+            height: 40px;
+            background-color: $color_secondary;
         }
     }
 

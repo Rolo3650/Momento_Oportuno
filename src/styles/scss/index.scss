@@ -4,8 +4,27 @@ body {
     padding: 0;
 }
 
+// Variables
+
+// - Colors:
+
+$color_primary: #E4032E;
+$color_secondary: #FD542A;
+$color_terciary: #533745;
+
 // Components
 
 // - Modules:
 
- /* Header */ @import url('components/modules/header.scss');
+/* Header */
+@import 'components/modules/header.scss';
+/* Footer */
+@import 'components/modules/footer.scss';
+
+// - Inputs:
+
+/* Button */
+@import 'components/inputs/button.scss';
+
+// Screen Sizes 
+@import 'screen/sizes.scss';

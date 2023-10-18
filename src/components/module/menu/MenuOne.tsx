@@ -14,7 +14,7 @@ interface Props {
     vertical: 'center' | 'bottom' | 'top' | number;
     horizontal: 'center' | 'right' | 'left' | number;
   };
-  icon: {
+  icon?: {
     link: string | undefined;
     color: string | undefined;
     size: string | undefined;
@@ -47,8 +47,8 @@ const MenuOne: React.FC<Props> = ({
         aria-controls={open ? 'demo-positioned-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        // onClick={handleClick}
-        onMouseOver={handleClick}
+        onClick={handleClick}
+        // onMouseOver={handleClick}
       >
         {title}
         &nbsp;

@@ -1,7 +1,8 @@
 import { useTheme } from '@mui/material/styles';
-import { Link } from '@mui/material';
-import { MenuOne } from '../menu/MenuOne';
-import MenuItem from '@mui/material/MenuItem';
+import { NavBarDesktopOne } from '../navbar/desktop/NavBarDesktopOne';
+import { IconButton, Link } from '@mui/material';
+import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
+import { AddAddButtonOne } from '../../inputs/buttons/AddAddButtonOne';
 // import React from 'react';
 
 const HeaderOne = () => {
@@ -15,42 +16,44 @@ const HeaderOne = () => {
           alt="white-logo"
           className="logo"
         />
+        <NavBarDesktopOne />
+        <div className="">
+          <IconButton
+            sx={{
+              border: `2px solid ${theme.palette.secondary.main}`,
+            }}
+          >
+            <PermIdentityOutlinedIcon
+              sx={{
+                fontSize: '30px',
+                color: theme.palette.primary.contrastText,
+              }}
+            />
+          </IconButton>
+        </div>
         <div className="desktop">
-          <Link href="/" color={'#fff'} underline="none">
-            Inicio
+          <Link
+            href="/"
+            color={theme.palette.primary.contrastText}
+            underline="none"
+          >
+            Iniciar Sesión
           </Link>
         </div>
         <div className="desktop">
-          <MenuOne
-            title="Anuncios"
-            color="#fff"
-            position={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            anchor={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            // icon={''}
+          <div className="separator"></div>
+        </div>
+        <div className="desktop">
+          <Link
+            href="/"
+            color={theme.palette.primary.contrastText}
+            underline="none"
           >
-            <MenuItem>
-              <MenuOne
-                title="Anuncios"
-                color="#000"
-                position={{
-                  vertical: 15,
-                  horizontal: 'center',
-                }}
-                anchor={{
-                  vertical: 'top',
-                  horizontal: 120,
-                }}
-              >
-                <MenuItem>Hola</MenuItem>
-              </MenuOne>
-            </MenuItem>
-          </MenuOne>
+            Regístrate
+          </Link>
+        </div>
+        <div className="desktop">
+          <AddAddButtonOne />
         </div>
       </div>
     </div>
