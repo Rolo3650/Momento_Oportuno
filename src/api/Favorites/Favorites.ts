@@ -35,7 +35,7 @@ export class FavoritesServices {
    * @throws {AxiosError,ZodError}
    */
   static async removeFavorite(addId: number): Promise<RemoveFavoriteResponse> {
-    const { data } = await req.delete(`/remove/${addId}`);
+    const { data } = await req.post(`/delete/${addId}`);
     const parsed = RemoveFavoriteResponseSchema.parse(data);
     return parsed;
   }

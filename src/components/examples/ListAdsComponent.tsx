@@ -1,5 +1,10 @@
 import { useCallback, useMemo } from 'react';
-import { useInfiniteAds } from '../../hooks';
+import {
+  useAddFavorite,
+  useInfiniteAds,
+  useMyFavorites,
+  useRemoveFavorite,
+} from '../../hooks';
 
 export const ListAdsComponent = () => {
   const {
@@ -13,6 +18,22 @@ export const ListAdsComponent = () => {
   const flattenData = useMemo(
     () => ads?.pages.flatMap((page) => page.data),
     [ads]
+  );
+
+  const { data: favorites } = useMyFavorites();
+
+  const { mutate: add } = useAddFavorite();
+  const { mutate: remove } = useRemoveFavorite();
+
+  const toggle = useCallback(
+    (id: number) => {
+      if (favorites?.data.some((fav) => fav.id === id)) {
+        remove(id);
+      } else {
+        add(id);
+      }
+    },
+    [favorites, flattenData]
   );
 
   const fetchMore = useCallback(() => {
@@ -31,6 +52,11 @@ export const ListAdsComponent = () => {
           <li key={ad.id}>
             <h3>{ad.title}</h3>
             <p>{ad.description}</p>
+            <button onClick={() => toggle(ad.id)}>
+              {favorites?.data.some((fav) => fav.id === ad.id)
+                ? 'Remove Favorite'
+                : 'Add Favorite'}
+            </button>
           </li>
         ))}
 

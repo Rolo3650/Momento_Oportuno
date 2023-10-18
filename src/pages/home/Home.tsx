@@ -3,6 +3,7 @@ import {
   RegisterComponent,
   ListAdsComponent,
   ListCategoriesComponent,
+  FavoritesComponent,
 } from '../../components';
 import { useAppContext } from '../../context';
 
@@ -41,6 +42,7 @@ const Home = () => {
         <RegisterComponent />
         <ListAdsComponent />
         <ListCategoriesComponent />
+        <FavoritesComponent />
       </div>
     </div>
   );
