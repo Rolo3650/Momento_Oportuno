@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { config, getLocalValue } from '../utils';
+import { config, getToken } from '../utils';
 import type { MyAxiosInstance, SERVICES } from './request.type';
 
 export default function Request(
@@ -22,9 +22,9 @@ export default function Request(
     (config) => {
       // TODO: Add token to request
       //FIXME: SHOULD DELETE THIS
-      const token = getLocalValue('token');
+      const token = getToken();
       if (token) {
-        config.headers['Authorization'] = `Bearer ${token}`;
+        config.headers['Authorization'] = `Bearer ${token.token}`;
       }
       return config;
     },
