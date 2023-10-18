@@ -11,6 +11,13 @@ const theme = createTheme({
       main: '#FD542A',
     },
   },
+  components: {
+    MuiLink: {
+      styleOverrides: {
+        root: { fontFamily: 'Helvetica, Arial, sans-serif' },
+      },
+    },
+  },
 });
 
 interface Props {
