@@ -1,36 +1,41 @@
-import { Services } from '..';
-import Request from '../request';
-import { PackagesError } from './Packages.errors';
+import { Services, Request } from '..';
 
+import type {
+  GetPackagesResponse,
+  GetUserPackages,
+  TypePackage,
+} from './Packages.type';
 import {
-  type GetALlPaquetesRes,
-  type GetUserPaquetes,
-  GetUserPaquetesSchema,
+  GetPackagesResponseSchema,
+  GetUserPackagesSchema,
 } from './Packages.type';
 
+const req = Request(Services.PACKAGES);
 export class PackagesServices {
-  static #request = Request(Services.PACKAGES);
-
   /**
-   * @throws {AxiosError}
+   * @throws {AxiosError,ZodError}
    */
-  static async getAllPaquetes(): Promise<GetALlPaquetesRes> {
-    const { data } = await this.#request.get('get');
+  static async getAllPaquetes(
+    type?: TypePackage
+  ): Promise<GetPackagesResponse> {
+    let q = '';
+    if (type) {
+      q = `?type=${type}`;
+    }
+    const { data } = await req.get('/' + q);
+    const parsed = GetPackagesResponseSchema.parse(data);
 
-    return data;
+    return parsed;
   }
 
   /**
-   * @throws {PackagesError,AxiosError}
+   * @throws {AxiosError,ZodError}
    */
-  static async getUserPaquetes(): Promise<GetUserPaquetes> {
-    const { data } = await this.#request.get('mine');
+  static async getUserPaquetes(): Promise<GetUserPackages> {
+    const { data } = await req.get('mine');
 
-    const datavalidated = GetUserPaquetesSchema.safeParse(data);
-    if (!datavalidated.success) {
-      throw new PackagesError(datavalidated.error.message);
-    }
+    const datavalidated = GetUserPackagesSchema.parse(data);
 
-    return datavalidated.data;
+    return datavalidated;
   }
 }

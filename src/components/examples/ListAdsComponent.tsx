@@ -22,8 +22,10 @@ export const ListAdsComponent = () => {
 
   const { data: favorites } = useMyFavorites();
 
-  const { mutate: add } = useAddFavorite();
-  const { mutate: remove } = useRemoveFavorite();
+  const { mutate: add, isLoading: load1 } = useAddFavorite();
+  const { mutate: remove, isLoading: load2 } = useRemoveFavorite();
+
+  const toggleLoad = load1 || load2;
 
   const toggle = useCallback(
     (id: number) => {
@@ -52,7 +54,7 @@ export const ListAdsComponent = () => {
           <li key={ad.id}>
             <h3>{ad.title}</h3>
             <p>{ad.description}</p>
-            <button onClick={() => toggle(ad.id)}>
+            <button onClick={() => toggle(ad.id)} disabled={toggleLoad}>
               {favorites?.data.some((fav) => fav.id === ad.id)
                 ? 'Remove Favorite'
                 : 'Add Favorite'}

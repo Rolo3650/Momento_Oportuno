@@ -5,6 +5,7 @@ import {
   AttributeValueSchema,
   CategorieSchema,
 } from '../listivos';
+import { UserPackageSchema } from '../Packages';
 
 const LinkSchema = z.object({
   url: z.union([z.null(), z.string()]),
@@ -30,28 +31,6 @@ const LinksSchema = z.object({
   last: nulishString,
   prev: nulishString,
   next: nulishString,
-});
-
-const UserPackageSchema = z.object({
-  id: z.number(),
-  user_id: z.number(),
-  package_id: z.number(),
-  name: z.string(),
-  label: z.string().nullable(),
-  type: z.string(),
-  description: z.null(),
-  expire: z.number(),
-  price: z.number(),
-  display_price: z.string(),
-  is_featured: z.number(),
-  is_active: z.number(),
-  is_multistate: z.number(),
-  includes_video: z.number(),
-  number_of_images: z.number(),
-  includes_printing: z.number(),
-  max_number_of_characters: z.number(),
-  created_at: z.coerce.date(),
-  updated_at: z.coerce.date(),
 });
 
 const UserAdSchema = UserSchema.omit({
