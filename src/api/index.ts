@@ -8,3 +8,4 @@ export * from './Microsites';
 export * from './Packages';
 export * from './Users';
 export * from './listivos';
+export * from './Favorites';

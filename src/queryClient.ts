@@ -14,6 +14,13 @@ export const queryClient = new QueryClient({
           console.error(e.issues);
         }
       },
+      retry(failureCount, error) {
+        if (error instanceof AxiosError) {
+          if (error.response?.status === 404 || error.response?.status === 401)
+            return false;
+        }
+        return failureCount < 3;
+      },
     },
     mutations: {
       onError(e) {

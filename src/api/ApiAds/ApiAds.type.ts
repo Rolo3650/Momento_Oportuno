@@ -76,7 +76,7 @@ const AttributeAdSchema = AttributeSchema.omit({
   })
 );
 
-const AdSchema = z.object({
+export const AdSchema = z.object({
   id: z.number(),
   title: z.string(),
   slug: z.string(),

@@ -39,8 +39,8 @@ const Home = () => {
       >
         <LoginComponent />
         <RegisterComponent />
-        {/* <ListAdsComponent />
-        <ListCategoriesComponent /> */}
+        <ListAdsComponent />
+        <ListCategoriesComponent />
       </div>
     </div>
   );

@@ -24,11 +24,6 @@ export const GetCategoriesResponseSchema = z.object({
 });
 export type GetCategoriesResponse = z.infer<typeof GetCategoriesResponseSchema>;
 
-//
-//
-//
-//
-
 export const AttributeValueSchema = z.object({
   id: z.number(),
   attribute_id: z.number(),
