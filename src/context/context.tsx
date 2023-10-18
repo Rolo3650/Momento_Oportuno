@@ -44,12 +44,16 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
   // TODO: CHANGE THIS TO redux-persist OR SOMETHING LIKE THAT
   // load and set state from local storage
   useEffect(() => {
+    // console.log('loading state from local storage');
     const localState = localStorage.getItem(KEY_FOR_APP_STATE);
     const parsedState: AppState | null = localState
       ? JSON.parse(localState)
       : null;
-    console.log('parsedState', parsedState);
     if (parsedState) {
+      // console.log({
+      //   parsedState,
+      // });
+      // console.log('dispatching state from local storage');
       dispatch({
         type: AppTypes.SetGlobalState,
         payload: { state: parsedState },
@@ -59,6 +63,11 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   // save state to local storage
   useEffect(() => {
+    // console.log('saving state to local storage');
+    console.log({
+      local: JSON.parse(localStorage.getItem(KEY_FOR_APP_STATE) ?? '{}'),
+      // state,
+    });
     localStorage.setItem(KEY_FOR_APP_STATE, JSON.stringify(state));
   }, [state]);
 

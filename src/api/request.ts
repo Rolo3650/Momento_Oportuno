@@ -1,14 +1,10 @@
 import axios from 'axios';
 import { config, getLocalValue } from '../utils';
-import type {
-  CUSTOM_SERVICES,
-  MyAxiosInstance,
-  SERVICES,
-} from './request.type';
+import type { MyAxiosInstance, SERVICES } from './request.type';
 
 export default function Request(
   // eslint-disable-next-line @typescript-eslint/ban-types
-  service: SERVICES | CUSTOM_SERVICES | (string & {}),
+  service: SERVICES | (string & {}),
   customApi = false
 ): MyAxiosInstance {
   const url = !customApi ? config.API_URL : config.API_CUSTOM;
@@ -27,9 +23,6 @@ export default function Request(
       // TODO: Add token to request
       //FIXME: SHOULD DELETE THIS
       const token = getLocalValue('token');
-      console.log({
-        token,
-      });
       if (token) {
         config.headers['Authorization'] = `Bearer ${token}`;
       }

@@ -1,4 +1,9 @@
-import { LoginComponent, RegisterComponent } from '../../components';
+import {
+  LoginComponent,
+  RegisterComponent,
+  ListAdsComponent,
+  ListCategoriesComponent,
+} from '../../components';
 import { useAppContext } from '../../context';
 
 const Home = () => {
@@ -28,10 +33,14 @@ const Home = () => {
           border: '1px solid black',
           display: 'flex',
           justifyContent: 'space-around',
+          padding: '1rem',
+          flexDirection: 'column',
         }}
       >
         <LoginComponent />
         <RegisterComponent />
+        <ListAdsComponent />
+        <ListCategoriesComponent />
       </div>
     </div>
   );

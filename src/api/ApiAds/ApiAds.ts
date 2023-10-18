@@ -1,11 +1,16 @@
 import { Request, Services } from '..';
 import { FilterParams } from '../../context';
 
-import type { GetAdByIdResponse, GetAllAdsResponse } from './ApiAds.type';
+import type {
+  GetAdByIdResponse,
+  GetAllAdsResponse,
+  GetMyAdsResponse,
+} from './ApiAds.type';
 
 import {
   GetAdByIdResponseSchema,
   GetAllAdsResponseSchema,
+  GetMyAdsResponseSchema,
 } from './ApiAds.type';
 
 const req = Request(Services.ADS);
@@ -47,6 +52,17 @@ export class AdsServices {
     const { data } = await req.get(`/${id}`);
 
     const dataValidated = GetAdByIdResponseSchema.parse(data);
+
+    return dataValidated;
+  }
+
+  /**
+   * @throws {AxiosError}
+   */
+  static async getMyAds(): Promise<GetMyAdsResponse> {
+    const { data } = await req.get('/mine');
+
+    const dataValidated = GetMyAdsResponseSchema.parse(data);
 
     return dataValidated;
   }

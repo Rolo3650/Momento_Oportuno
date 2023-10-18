@@ -1,4 +1,10 @@
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+} from 'axios';
+import { ZodError } from 'zod';
 
 export const Services = {
   INDEX: '/',
@@ -7,20 +13,15 @@ export const Services = {
   REGISTER: '/register',
   PRODUCT: '/product',
   PACKAGES: '/packages',
-  Listivos_CATEGORIAS: '/listivo_14',
-  Listivos_ESTADOS: '/listivo_10934',
+  CATEGORIES: '/categories',
+  FAVORITES: '/favorites',
+  STATES: '/listivo_10934',
   DIRECTORY: '/directories',
   MICROSITIOS: '/microsites',
   UPLOAD_IMAGE: '/media',
 } as const;
-export const CustomServices = {
-  logIn: '/jwt-auth/v1/token',
-  wc: '/wc/v3',
-} as const;
 
 export type SERVICES = (typeof Services)[keyof typeof Services];
-export type CUSTOM_SERVICES =
-  (typeof CustomServices)[keyof typeof CustomServices];
 
 export type MyAxiosInstance = Omit<
   AxiosInstance,
@@ -46,3 +47,5 @@ export type MyAxiosInstance = Omit<
     config?: AxiosRequestConfig<D>
   ): Promise<R>;
 };
+
+export type RequestErrors = AxiosError | ZodError;

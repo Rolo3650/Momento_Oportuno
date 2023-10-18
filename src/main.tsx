@@ -9,12 +9,12 @@ import './styles/css/index.css';
 import './styles/scss/index.scss';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AppProvider>
-        <AppRouter />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </AppProvider>
-    </QueryClientProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <AppProvider>
+      <AppRouter />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </AppProvider>
+  </QueryClientProvider>
+  // </React.StrictMode>
 );
