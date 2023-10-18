@@ -1,4 +1,5 @@
 import { LoginComponent, RegisterComponent } from '../../components';
+import { HeaderOne } from '../../components/module/header/HeaderOne';
 import { useAppContext } from '../../context';
 
 const Home = () => {
@@ -16,7 +17,8 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <>
+      {/* <div>
       <h1>Home</h1>
 
       <p>Counter: {state.counter}</p>
@@ -33,7 +35,9 @@ const Home = () => {
         <LoginComponent />
         <RegisterComponent />
       </div>
-    </div>
+    </div> */}
+      <HeaderOne />
+    </>
   );
 };
 

@@ -1,0 +1,13 @@
+.header-one {
+    position: relative;
+    height: 90px;
+
+    &.light {
+        background: #E4032E;
+    }
+
+    & .logo {
+        height: 65px;
+    }
+
+}

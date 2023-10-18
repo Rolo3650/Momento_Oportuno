@@ -5,14 +5,18 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { AppProvider } from './context';
 import { queryClient } from './queryClient';
 import { AppRouter } from './router/AppRouter';
+import 'bootstrap/scss/bootstrap.scss';
 import './styles/css/index.css';
 import './styles/scss/index.scss';
+import { ThemeOne } from './themes/ThemeOne';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AppProvider>
-        <AppRouter />
+        <ThemeOne>
+          <AppRouter />
+        </ThemeOne>
         <ReactQueryDevtools initialIsOpen={false} />
       </AppProvider>
     </QueryClientProvider>
