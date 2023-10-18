@@ -15,7 +15,6 @@ export class CategoriesServices {
    * @throws {AxiosError,ZodError}
    */
   static async getAllCategorias(): Promise<GetCategoriesResponse> {
-    console.log('getAllCategorias');
     const { data } = await req.get('/');
     const parsed = GetCategoriesResponseSchema.parse(data);
     return parsed;

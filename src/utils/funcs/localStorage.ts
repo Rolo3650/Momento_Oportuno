@@ -18,7 +18,6 @@ export function setToken(value: string): boolean {
     const tokenized = TokenSchema.parse({ token: value });
     const encoded = sign(tokenized, config.JWT_SECRET);
     const stringified = JSON.stringify(encoded);
-    console.log('setToken', stringified);
     localStorage.setItem(TOKEN_KEY, stringified);
   } catch (e) {
     return false;
@@ -28,7 +27,6 @@ export function setToken(value: string): boolean {
 
 export function getToken(): Token | null {
   const token = localStorage.getItem(TOKEN_KEY);
-  console.log('getToken', token);
   if (!token) return null;
   try {
     const decoded = decode(token, config.JWT_SECRET);

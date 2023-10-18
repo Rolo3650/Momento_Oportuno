@@ -10,6 +10,7 @@ import { app_state } from './states/initial_state';
 import { AppState } from './context.type';
 import { filterReducer } from './reducers/filter/filter';
 import { counterReducer } from './reducers/counter';
+import Cookies from 'universal-cookie';
 
 const KEY_FOR_APP_STATE = 'state_x_key_for_app' as const;
 
@@ -42,33 +43,25 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [state, dispatch] = useReducer(mainReducer, app_state);
 
   // TODO: CHANGE THIS TO redux-persist OR SOMETHING LIKE THAT
-  // load and set state from local storage
+  // load and set state from cookies
   useEffect(() => {
-    // console.log('loading state from local storage');
-    const localState = localStorage.getItem(KEY_FOR_APP_STATE);
-    const parsedState: AppState | null = localState
-      ? JSON.parse(localState)
-      : null;
-    if (parsedState) {
-      // console.log({
-      //   parsedState,
-      // });
-      // console.log('dispatching state from local storage');
-      dispatch({
-        type: AppTypes.SetGlobalState,
-        payload: { state: parsedState },
-      });
+    try {
+      const localState = new Cookies().get(KEY_FOR_APP_STATE);
+      const parsedState: AppState | null = localState ? localState : null;
+      if (parsedState) {
+        dispatch({
+          type: AppTypes.SetGlobalState,
+          payload: { state: parsedState },
+        });
+      }
+    } catch (error) {
+      console.error(error);
     }
   }, []);
 
-  // save state to local storage
+  // save state to cookies
   useEffect(() => {
-    // console.log('saving state to local storage');
-    console.log({
-      local: JSON.parse(localStorage.getItem(KEY_FOR_APP_STATE) ?? '{}'),
-      // state,
-    });
-    localStorage.setItem(KEY_FOR_APP_STATE, JSON.stringify(state));
+    new Cookies().set(KEY_FOR_APP_STATE, state);
   }, [state]);
 
   return (
