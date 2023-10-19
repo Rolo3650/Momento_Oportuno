@@ -5,9 +5,13 @@ interface Props {
   children: ReactNode;
   text: string;
   overrideClass?: string;
+  icon?: {
+    link: string | undefined;
+    name: string | undefined;
+  };
 }
 
-const MenuTwo: React.FC<Props> = ({ children, text, overrideClass }) => {
+const MenuTwo: React.FC<Props> = ({ children, text, overrideClass, icon }) => {
   const [togle, setTogle] = useState<boolean>(false);
 
   const onTogle = () => {
@@ -25,6 +29,10 @@ const MenuTwo: React.FC<Props> = ({ children, text, overrideClass }) => {
         onClick={onTogle}
       >
         {text}
+        &nbsp;
+        <span className="ms-2">
+          <img src={icon?.link} alt={icon?.name} />
+        </span>
       </Button>
       <hr className="m-0" />
       {togle && children}

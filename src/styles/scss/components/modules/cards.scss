@@ -1,0 +1,16 @@
+.card-custom {
+
+    &.card-custom-one {
+
+        max-width: 500px;
+
+        & .card-custom-heading {
+            font-size: 68px;
+            font-family: $font_3;
+            letter-spacing: -2px;
+            line-height: 68px;
+        }
+
+    }
+
+}

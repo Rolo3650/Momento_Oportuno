@@ -44,4 +44,30 @@
 
     }
 
+    &.btn-popular-category {
+
+        img {
+            height: 45px;
+            transition: .3s ease-in-out;
+        }
+
+        p {
+            margin-top: 5px;
+            margin-bottom: 0;
+            // transition: .3s ease-in-out;
+        }
+
+
+        &:hover {
+            img {
+                filter: contrast(300%) invert(100%);
+            }
+
+            // p {
+            //     color: $color_7;
+            // }
+        }
+
+    }
+
 }

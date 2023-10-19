@@ -2,6 +2,7 @@
 // import { useAppContext } from '../../context';
 import { WellcomeOne } from '../../containers/modules/wellcome/WellcomeOne';
 import { LayoutOne } from '../../containers/layout/LayoutOne';
+import { CardOne } from '../../components/module/cards/CardOne';
 
 const Home = () => {
   // const { state, dispatch } = useAppContext();
@@ -39,7 +40,7 @@ const Home = () => {
     </div> */}
       <LayoutOne>
         <WellcomeOne>
-          <h1 className="text-center w-100">Hola</h1>
+          <CardOne />
         </WellcomeOne>
       </LayoutOne>
     </>

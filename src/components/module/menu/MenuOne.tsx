@@ -16,8 +16,7 @@ interface Props {
   };
   icon?: {
     link: string | undefined;
-    color: string | undefined;
-    size: string | undefined;
+    name: string | undefined;
   };
 }
 
@@ -52,8 +51,8 @@ const MenuOne: React.FC<Props> = ({
       >
         {title}
         &nbsp;
-        <span style={{ color: icon?.color, fontSize: icon?.size }}>
-          <img src={icon?.link} alt={icon?.link} />
+        <span className='ms-2'>
+          <img src={icon?.link} alt={icon?.name} />
         </span>
       </Link>
       <Menu

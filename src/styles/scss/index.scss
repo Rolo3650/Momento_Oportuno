@@ -7,6 +7,7 @@ body {
 // - Google Fonts:
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+// @import url("https://fonts.cdnfonts.com/css/georgia");
 
 // Variables
 
@@ -16,13 +17,15 @@ $color_primary: #E4032E;
 $color_secondary: #FD542A;
 $color_terciary: #533745;
 $color_4: #FD8A2A;
-$color_5: #444;
+$color_5: #464748;
 $color_6: #F8FAFD;
+$color_7: #FFFFFF;
 
 // - Fonts:
 
 $font_1: Helvetica, sans-serif;
 $font_2: "Lexend Deca", sans-serif;
+$font_3: "Georgia";
 
 // Components
 
@@ -34,6 +37,8 @@ $font_2: "Lexend Deca", sans-serif;
 @import 'components/modules/footer.scss';
 /* Sidebar */
 @import 'components/modules/sidebar.scss';
+/* Cards */
+@import 'components/modules/cards.scss';
 
 // Containers
 

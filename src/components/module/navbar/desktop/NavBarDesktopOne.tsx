@@ -23,7 +23,10 @@ const NavBarDesktopOne = () => {
             vertical: 'bottom',
             horizontal: 'left',
           }}
-          // icon={''}
+          icon={{
+            link: '../../../../../svg/icons/menu_row_down.svg',
+            name: 'menu-row-down',
+          }}
         >
           <MenuItem>Todos los anuncios</MenuItem>
           <MenuItem>
@@ -37,6 +40,10 @@ const NavBarDesktopOne = () => {
               anchor={{
                 vertical: 'top',
                 horizontal: 225,
+              }}
+              icon={{
+                link: '../../../../../svg/icons/menu_row_right.svg',
+                name: 'menu-row-right',
               }}
             >
               <MenuItem>Campeche</MenuItem>
@@ -59,7 +66,10 @@ const NavBarDesktopOne = () => {
             vertical: 'bottom',
             horizontal: 'left',
           }}
-          // icon={''}
+          icon={{
+            link: '../../../../../svg/icons/menu_row_down.svg',
+            name: 'menu-row-down',
+          }}
         >
           <MenuItem>¿Quienes somos?</MenuItem>
           <MenuItem>Contactanos</MenuItem>
