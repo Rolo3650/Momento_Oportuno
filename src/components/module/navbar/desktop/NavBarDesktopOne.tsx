@@ -49,7 +49,7 @@ const NavBarDesktopOne = () => {
       </div>
       <div className="desktop">
         <MenuOne
-          title="Acerca de"
+          title="Acerca"
           color="#fff"
           position={{
             vertical: 'top',
@@ -61,22 +61,8 @@ const NavBarDesktopOne = () => {
           }}
           // icon={''}
         >
-          <MenuItem>
-            <MenuOne
-              title="Anuncios"
-              color="#000"
-              position={{
-                vertical: 15,
-                horizontal: 'center',
-              }}
-              anchor={{
-                vertical: 'top',
-                horizontal: 120,
-              }}
-            >
-              <MenuItem>Hola</MenuItem>
-            </MenuOne>
-          </MenuItem>
+          <MenuItem>¿Quienes somos?</MenuItem>
+          <MenuItem>Contactanos</MenuItem>
         </MenuOne>
       </div>
     </>
