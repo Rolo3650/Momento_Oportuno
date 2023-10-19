@@ -1,0 +1,31 @@
+.wellcome {
+
+    &.wellcome-one {
+
+        min-height: 100vh;
+        background-image: url("../../../../../public/svg/backgrounds/background_1.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: $color_6;
+
+        @media screen and (min-width: 1200px) {
+            padding-top: 120px;
+        }
+
+        @media screen and (max-width: 1200px) and (min-width: 768px) {
+            padding-top: 100px;
+        }
+
+        @media screen and (max-width: 768px) {
+            padding-top: 60px;
+        }
+
+        & .wellcome-body {
+
+            max-width: 1200px;
+
+        }
+
+    }
+
+}
