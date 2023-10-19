@@ -14,6 +14,8 @@ type Token = z.infer<typeof TokenSchema>;
 
 //FIXME: SHOULD DELETE THIS
 export function setToken(value: string): boolean {
+  if (!config.JWT_SECRET)
+    throw new Error('JWT_SECRET is not defined. See .env.example');
   try {
     const tokenized = TokenSchema.parse({ token: value });
     const encoded = sign(tokenized, config.JWT_SECRET);
@@ -26,6 +28,8 @@ export function setToken(value: string): boolean {
 }
 
 export function getToken(): Token | null {
+  if (!config.JWT_SECRET)
+    throw new Error('JWT_SECRET is not defined. See .env.example');
   const token = localStorage.getItem(TOKEN_KEY);
   if (!token) return null;
   try {
