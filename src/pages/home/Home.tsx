@@ -1,6 +1,8 @@
 import { LoginComponent, RegisterComponent } from '../../components';
 import { HeaderOne } from '../../components/module/header/HeaderOne';
+import { FooterOne } from '../../components/module/footer/FooterOne';
 import { useAppContext } from '../../context';
+import { SideBarOne } from '../../components/module/sidebar/SideBarOne';
 
 const Home = () => {
   const { state, dispatch } = useAppContext();
@@ -37,6 +39,8 @@ const Home = () => {
       </div>
     </div> */}
       <HeaderOne />
+      <SideBarOne />
+      <FooterOne />
     </>
   );
 };
