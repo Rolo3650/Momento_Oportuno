@@ -15,7 +15,7 @@ export const Services = {
   PACKAGES: '/packages',
   CATEGORIES: '/categories',
   FAVORITES: '/favorites',
-  STATES: '/listivo_10934',
+  STATES: '/states',
   DIRECTORY: '/directories',
   MICROSITIOS: '/microsites',
   UPLOAD_IMAGE: '/media',

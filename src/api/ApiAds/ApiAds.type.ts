@@ -4,6 +4,7 @@ import {
   AttributeSchema,
   AttributeValueSchema,
   CategorieSchema,
+  StateSchema,
 } from '../listivos';
 import { UserPackageSchema } from '../Packages';
 
@@ -37,13 +38,6 @@ const UserAdSchema = UserSchema.omit({
   email_verified_at: true,
   created_at: true,
   updated_at: true,
-});
-
-const StateSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  created_at: z.coerce.date(),
-  updated_at: z.coerce.date(),
 });
 
 const AttributeAdSchema = AttributeSchema.omit({

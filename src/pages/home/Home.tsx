@@ -5,6 +5,7 @@ import {
   ListCategoriesComponent,
   FavoritesComponent,
   ListPackagesComponent,
+  ListStatesComponent,
 } from '../../components';
 import { useAppContext } from '../../context';
 
@@ -45,6 +46,7 @@ const Home = () => {
         <ListCategoriesComponent />
         <FavoritesComponent />
         <ListPackagesComponent />
+        <ListStatesComponent />
       </div>
     </div>
   );
