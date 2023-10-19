@@ -1,5 +1,8 @@
 //import { useTheme } from '@mui/material/styles';
 import { IconButton } from '@mui/material';
+import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import InstagramIcon from '@mui/icons-material/Instagram';
 // import React from 'react';
 
 const FooterOne = () => {
@@ -14,18 +17,38 @@ const FooterOne = () => {
           <div className="text-row text">ayuda@clicdelsureste.com</div>
         </div>
         <div className="socialmedia">
-          <div className="socialmedia-text">Siguenos en nuestras redes</div>
+          <div className="socialmedia-text text">Siguenos en nuestras redes</div>
           <div className="socialmedia-buttons">
             <IconButton
               sx={{
-                border: `2px solid #291b22`,
+                border: `4px solid #291b22`,
                 margin: '4px',
+                width: 40,
+                height: 40,
               }}
-            ></IconButton>
+            ><FacebookOutlinedIcon /></IconButton>
             <IconButton
               sx={{
-                border: `2px solid #291b22`,
+                border: `4px solid #291b22`,
                 margin: '4px',
+                width: 40,
+                height: 40,
+              }}  
+            ><WhatsAppIcon /></IconButton>
+            <IconButton
+              sx={{
+                border: `4px solid #291b22`,
+                margin: '4px',
+                width: 40,
+                height: 40,
+              }}
+            ><InstagramIcon /></IconButton>
+            <IconButton
+              sx={{
+                border: `4px solid #291b22`,
+                margin: '4px',
+                width: 40,
+                height: 40,
               }}
             ></IconButton>
           </div>
