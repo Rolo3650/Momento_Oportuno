@@ -3,3 +3,9 @@
         display: none;
     }
 }
+
+.phone {
+    @media screen and (min-width: 1200px) {
+        display: none;
+    }
+}

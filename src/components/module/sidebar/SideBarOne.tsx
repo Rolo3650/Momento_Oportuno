@@ -1,8 +1,11 @@
-import { Button, IconButton } from '@mui/material';
+import { Button, IconButton, Link } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { AddAddButtonOne } from '../../inputs/buttons/AddAddButtonOne';
 import CloseIcon from '@mui/icons-material/Close';
 import { NavBarPhoneOne } from '../navbar/phone/NavBarPhoneOne';
+import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 // import React from 'react';
 const SideBarOne = () => {
@@ -46,6 +49,63 @@ const SideBarOne = () => {
           </Button>
           <hr className="m-0" />
           <NavBarPhoneOne />
+          <div className="mt-5">
+            <div className="p-3 text text-color-secondary text-font-helvetica">
+              Llamar a Soporte
+              <br />
+              <Link
+                underline="none"
+                className="fw-bold text text-color-5 text-font-l-d"
+              >
+                55 5588 5588
+              </Link>
+            </div>
+            <div className="px-3 text text-color-secondary text-font-helvetica">
+              Dirección de correo electrónico
+              <br />
+              <Link
+                underline="none"
+                className="fw-bold text text-color-5 text-font-l-d"
+              >
+                ayuda@clientesdelsureste.com
+              </Link>
+            </div>
+            <div className="mt-3 p-3 d-flex justify-content-center align-items-center">
+              <IconButton
+                sx={{
+                  border: `1px solid ${theme.palette.secondary.main}`,
+                  '&:focus': {
+                    color: theme.palette.secondary.main,
+                  },
+                }}
+                className="mx-2"
+              >
+                <FacebookOutlinedIcon />
+              </IconButton>
+              <IconButton
+                sx={{
+                  border: `1px solid ${theme.palette.secondary.main}`,
+                  '&:focus': {
+                    color: theme.palette.secondary.main,
+                  },
+                }}
+                className="mx-2"
+              >
+                <WhatsAppIcon />
+              </IconButton>
+              <IconButton
+                sx={{
+                  border: `1px solid ${theme.palette.secondary.main}`,
+                  '&:focus': {
+                    color: theme.palette.secondary.main,
+                  },
+                }}
+                className="mx-2"
+              >
+                <InstagramIcon />
+              </IconButton>
+            </div>
+          </div>
         </div>
       </div>
     </div>
