@@ -1,22 +1,21 @@
-import { LoginComponent, RegisterComponent } from '../../components';
-import { HeaderOne } from '../../components/module/header/HeaderOne';
-import { FooterOne } from '../../components/module/footer/FooterOne';
-import { useAppContext } from '../../context';
-import { SideBarOne } from '../../components/module/sidebar/SideBarOne';
+// import { LoginComponent, RegisterComponent } from '../../components';
+// import { useAppContext } from '../../context';
+import { WellcomeOne } from '../../containers/modules/wellcome/WellcomeOne';
+import { LayoutOne } from '../../containers/layout/LayoutOne';
 
 const Home = () => {
-  const { state, dispatch } = useAppContext();
+  // const { state, dispatch } = useAppContext();
 
-  const increment = () => {
-    dispatch({ type: 'INCREMENT' });
-  };
-  const decrement = () => {
-    dispatch({ type: 'DECREMENT' });
-  };
+  // const increment = () => {
+  //   dispatch({ type: 'INCREMENT' });
+  // };
+  // const decrement = () => {
+  //   dispatch({ type: 'DECREMENT' });
+  // };
 
-  const reset = () => {
-    dispatch({ type: 'RESET' });
-  };
+  // const reset = () => {
+  //   dispatch({ type: 'RESET' });
+  // };
 
   return (
     <>
@@ -38,9 +37,11 @@ const Home = () => {
         <RegisterComponent />
       </div>
     </div> */}
-      <HeaderOne />
-      <SideBarOne />
-      <FooterOne />
+      <LayoutOne>
+        <WellcomeOne>
+          <h1 className="text-center w-100">Hola</h1>
+        </WellcomeOne>
+      </LayoutOne>
     </>
   );
 };
