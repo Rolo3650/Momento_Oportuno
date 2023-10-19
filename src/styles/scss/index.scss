@@ -11,6 +11,7 @@ body {
 $color_primary: #E4032E;
 $color_secondary: #FD542A;
 $color_terciary: #533745;
+$color_4: #FD8A2A;
 
 // Components
 
@@ -20,6 +21,8 @@ $color_terciary: #533745;
 @import 'components/modules/header.scss';
 /* Footer */
 @import 'components/modules/footer.scss';
+/* Sidebar */
+@import 'components/modules/sidebar.scss';
 
 // - Inputs:
 

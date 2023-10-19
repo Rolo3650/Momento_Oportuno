@@ -3,6 +3,7 @@ import { NavBarDesktopOne } from '../navbar/desktop/NavBarDesktopOne';
 import { IconButton, Link } from '@mui/material';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import { AddAddButtonOne } from '../../inputs/buttons/AddAddButtonOne';
+import { MenuButton } from '../../inputs/iconbuttons/MenuButton';
 // import React from 'react';
 
 const HeaderOne = () => {
@@ -11,6 +12,9 @@ const HeaderOne = () => {
   return (
     <div className={`header-one ${theme.palette.mode}`}>
       <div className="header-body d-flex align-items-center h-100">
+        <div className="phone">
+          <MenuButton />
+        </div>
         <img
           src="../../../img/logos/elmomentoportunoblanco.png"
           alt="white-logo"
