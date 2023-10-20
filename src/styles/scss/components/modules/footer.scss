@@ -1,6 +1,6 @@
 .footer-one {
   position: relative;
-  background-color: #533745;
+  background-color: $color_terciary;
 
   .footer-body {
     .grid {
@@ -44,7 +44,7 @@
       }
       .sect {
         margin-inline: 3rem;
-        
+
         .list-element {
           align-self: left;
           display: flex;
@@ -52,31 +52,88 @@
           margin-top: 20px;
         }
         .subtitle {
-          color: #ffff;
+          color: $color_7;
           font-family: $font_4;
           font-size: 16px;
           font-weight: bold;
         }
         .text {
           font-size: 16px;
-          color: #ffff;
+          color: $color_7;
           font-family: $font_1;
         }
         .text2 {
           font-size: 14px;
-          color: #ffff;
+          color: $color_7;
           font-family: $font_3;
           font-weight: 500;
         }
+
+         .animated {
+          position: relative;
+          animation-duration: 2s;
+          animation-fill-mode: forwards;
+         }
+
+         .animated::before {
+          content: "•";
+          position: absolute;
+          left: -15px;
+          opacity: 0;
+          color: $color_primary;
+          transition: opacity 1s ease-in-out;
+        }
+        
+        .animated:hover::before {
+          opacity: 1;
+        }
+
+
+         .animated:not(:hover) {
+          animation-name: slideout;
+         }
+
+        .animated:hover {
+          content: "";
+          
+          animation-name: slidein;
+        }
+
+        @keyframes slidein {
+          from {
+            margin-left: 0%;
+            width: 100%;
+          }
+
+          to { 
+            margin-left: 15%;
+            width: 120%;
+          }
+        }
+
+        @keyframes slideout {
+          from {
+            margin-left: 15%;
+            width: 120%;
+          }
+          to {
+            margin-left: 0%;
+            width: 100%;
+          }
+        }
+
+        
       }
     }
+
     .rights_reserved {
       text-align: center;
       height: 60px;
       width: auto;
-      background-color: #3f3f40;
-      .rights_reserved-text {padding-top: 20px;
-        color: #FD8a2a;
+      background-color: $color_5;
+      .rights_reserved-text {
+        padding-top: 20px;
+        color: $color_4;
         font-family: $font_2;
         font-size: 14px;
         font-weight: 500;

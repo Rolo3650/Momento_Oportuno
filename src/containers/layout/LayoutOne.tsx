@@ -13,7 +13,7 @@ const LayoutOne: React.FC<Props> = ({ children }) => {
       <HeaderOne />
       <SideBarOne />
       {children}
-      {/* <FooterOne /> */}
+      <FooterOne />
     </>
   );
 };

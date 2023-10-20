@@ -15,7 +15,7 @@ const FooterOne = () => {
           <div className="contact-info sect">
             <div className="contact-text">
               <div className="text-row text">
-                <a className="listivo-phone-v3" href="tel:5555885588">
+                <a className="listivo-phone-v3 text" href="tel:5555885588">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     style={{ margin: 5 }}
@@ -53,7 +53,7 @@ const FooterOne = () => {
               <div className="text-row text">
                 <a
                   href="mailto:ayuda@clicdelsureste.com"
-                  className="listivo-email"
+                  className="listivo-email text"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -142,18 +142,18 @@ const FooterOne = () => {
           </div>
           <div className="info sect">
             <h3 className="subtitle">Te puede ser útil</h3>
-            <div className="list-element text">Nosotros</div>
-            <div className="list-element text ">Contáctanos</div>
-            <div className="list-element text">Regístrate</div>
+            <div className="list-element text animated">Nosotros</div>
+            <div className="list-element text animated">Contáctanos</div>
+            <div className="list-element text animated">Regístrate</div>
           </div>
           <div className="categories sect">
             <h3 className="subtitle">Categorías</h3>
 
-            <div className="list-element text">Comunidad</div>
-            <div className="list-element text">Empleos</div>
-            <div className="list-element text">Vehículos</div>
-            <div className="list-element text">Servicios</div>
-            <div className="list-element text">Inmuebles</div>
+            <div className="list-element text animated">Comunidad</div>
+            <div className="list-element text animated">Empleos</div>
+            <div className="list-element text animated">Vehículos</div>
+            <div className="list-element text animated">Servicios</div>
+            <div className="list-element text animated">Inmuebles</div>
           </div>
           <div className="recent sect">
             <h3 className="subtitle">Recientemente Publicado</h3>
