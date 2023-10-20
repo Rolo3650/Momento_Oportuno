@@ -70,6 +70,7 @@
         }
 
          .animated {
+          padding: 5px;
           position: relative;
           animation-duration: 2s;
           animation-fill-mode: forwards;
@@ -78,7 +79,7 @@
          .animated::before {
           content: "•";
           position: absolute;
-          left: -15px;
+          left: -10px;
           opacity: 0;
           color: $color_primary;
           transition: opacity 1s ease-in-out;
