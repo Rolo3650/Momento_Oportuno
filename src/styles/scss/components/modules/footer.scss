@@ -5,15 +5,18 @@
   .footer-body {
     .grid {
       display: flex;
-      margin-top: 2rem;
-      .contact-info { 
-        margin-top: 1rem;   
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      .contact-info {
+        text-align: start;
+        margin-top: 1rem;
         .contact-text {
           margin-bottom: 30px;
           .text-row {
           }
         }
         .socialmedia {
+          text-align: center;
           .socialmedia-text {
             margin-bottom: 10px;
           }
@@ -30,45 +33,53 @@
           width: 50;
           margin-right: 10px;
         }
-        .recent-price {
-          color: #ffc695;
+        .recent-content {
+          text-align: start;
+          .recent-price {
+            font-size: 14px;
+            font-family: $font_2;
+            color: #ffc695;
+          }
+        }
+      }
+      .sect {
+        margin-inline: 3rem;
+        
+        .list-element {
+          align-self: left;
+          display: flex;
+
+          margin-top: 20px;
+        }
+        .subtitle {
+          color: #ffff;
+          font-family: $font_4;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        .text {
+          font-size: 16px;
+          color: #ffff;
+          font-family: $font_1;
+        }
+        .text2 {
+          font-size: 14px;
+          color: #ffff;
+          font-family: $font_3;
+          font-weight: 500;
         }
       }
     }
-    .sect {
-      margin-inline: 3rem;
+    .rights_reserved {
       text-align: center;
-    }
-  
-    
-
-    .subtitle {
-      color: #ffff;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .list-element {
-      display: flex;
-      margin-top: 20px;
-    }
-
-    .text {
-      color: #ffff;
-    }
-
-    &.light {
-      background: $color_terciary;
-    }
-
-    & .header-body {
-      justify-content: space-between;
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 1200px;
-
-      & .logo {
-        height: 65px;
+      height: 60px;
+      width: auto;
+      background-color: #3f3f40;
+      .rights_reserved-text {padding-top: 20px;
+        color: #FD8a2a;
+        font-family: $font_2;
+        font-size: 14px;
+        font-weight: 500;
       }
     }
   }
