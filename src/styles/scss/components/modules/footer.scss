@@ -69,34 +69,31 @@
           font-weight: 500;
         }
 
-         .animated {
+        .animated {
           padding: 5px;
           position: relative;
           animation-duration: 2s;
           animation-fill-mode: forwards;
-         }
+        }
 
-         .animated::before {
-          content: "•";
+        .animated::before {
+          content: '•';
           position: absolute;
           left: -10px;
           opacity: 0;
           color: $color_primary;
           transition: opacity 1s ease-in-out;
         }
-        
+
         .animated:hover::before {
           opacity: 1;
         }
 
-
-         .animated:not(:hover) {
+        .animated:not(:hover) {
           animation-name: slideout;
-         }
+        }
 
         .animated:hover {
-          content: "";
-          
           animation-name: slidein;
         }
 
@@ -106,7 +103,7 @@
             width: 100%;
           }
 
-          to { 
+          to {
             margin-left: 15%;
             width: 120%;
           }
@@ -122,8 +119,21 @@
             width: 100%;
           }
         }
+      }
+    }
 
-        
+    @media (max-width: 1200px) {
+      .grid {
+        display: block;
+        text-align: center;
+        .sect {
+          margin-top: 2rem;
+          justify-content: center;
+          text-align: center;
+          .animated {
+            animation-duration: 4s;
+          }
+        }
       }
     }
 
