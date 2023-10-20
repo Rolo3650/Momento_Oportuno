@@ -1,9 +1,20 @@
-import React from 'react';
-import { Button, FormControl, TextField } from '@mui/material';
+import React, { ChangeEvent, useState } from 'react';
+import { Button, FormControl, IconButton, TextField } from '@mui/material';
+import { useValidate } from '../../../hooks/validate/useValidate';
+import ClearIcon from '@mui/icons-material/Clear';
+
+interface Option {
+  label: string;
+  value: string;
+  quantity?: number;
+}
 
 interface Props {
   icon?: {
-    url: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    muiIcon?: any;
+    url?: string;
+    endurl?: string;
   };
   color: {
     variant:
@@ -19,14 +30,35 @@ interface Props {
     backgroundColor: string;
   };
   text: string;
-  options?: {
-    label: string;
-    value: string;
-    quantity: number;
-  }[];
+  options: Option[];
+  onChange: (option: Option) => void;
 }
 
-const DropdownOne: React.FC<Props> = ({ icon, color, text, options }) => {
+const DropdownOne: React.FC<Props> = ({
+  icon,
+  color,
+  text,
+  options,
+  onChange,
+}) => {
+  const [filter, setFilter] = useState('');
+  const [select, setSelect] = useState<Option>({ label: text, value: '' });
+  const { includesText } = useValidate();
+
+  const onChangeFilter = (e: ChangeEvent<HTMLInputElement>) => {
+    setFilter(e.target.value);
+  };
+
+  const onClick = (option: Option) => {
+    setSelect(option);
+    onChange(option);
+  };
+
+  const onClear = () => {
+    setSelect({ label: text, value: '' });
+    onChange({ label: text, value: '' });
+  };
+
   return (
     <>
       <Button
@@ -43,7 +75,7 @@ const DropdownOne: React.FC<Props> = ({ icon, color, text, options }) => {
             color: color?.text,
             opacity: 1,
           },
-          '& img': {
+          '& .start-image': {
             height: '30px',
             padding: '7px',
             borderRadius: '5px',
@@ -53,20 +85,36 @@ const DropdownOne: React.FC<Props> = ({ icon, color, text, options }) => {
         }}
         data-bs-toggle="dropdown"
         aria-expanded="false"
-        //   startIcon={}
       >
         <div className="d-flex w-100 justify-content-start">
-          <img src={icon?.url} alt="" />
-          <p className="ms-2 m-0 fs-6">{text}</p>
+          {icon?.url && <img className="start-image" src={icon?.url} alt="" />}
+          {icon?.muiIcon}
+          <p className="ms-2 m-0 fs-6">{select?.label}</p>
         </div>
+        {select.label != text && (
+          <div>
+            <IconButton className="p-0" onClick={onClear}>
+              <ClearIcon
+                sx={{
+                  color: color?.field,
+                }}
+              />
+            </IconButton>
+          </div>
+        )}
+        {select.label == text && (
+          <div>
+            <img className="mx-2" src={icon?.endurl} alt="icon-image" />
+          </div>
+        )}
       </Button>
       <div className="dropdown-menu px-3 dropdown-custom dropdown-custom-one">
         <FormControl fullWidth>
           <TextField
             color="secondary"
             variant="outlined"
-            // value={lookingFor}
-            // onChange={onChangeLookingFor}
+            value={filter}
+            onChange={onChangeFilter}
             sx={{
               '& .MuiOutlinedInput-notchedOutline': {
                 borderColor: color?.field,
@@ -87,19 +135,28 @@ const DropdownOne: React.FC<Props> = ({ icon, color, text, options }) => {
             className="mb-1"
           />
         </FormControl>
-        {options?.map((option) => (
-          <li>
-            <Button
-              className="w-100 justify-content-between dropdown-btn align-items-center"
-              sx={{ textTransform: 'none', color: color?.text }}
-            >
-              {option?.label}
-              <span className="field d-flex align-items-center justify-content-center">
-                {option.quantity}
-              </span>
-            </Button>
-          </li>
-        ))}
+        {options
+          ?.filter((option) => {
+            if (filter != '') {
+              if (includesText(option?.label, filter)) {
+                return true;
+              } else return false;
+            } else return true;
+          })
+          ?.map((option) => (
+            <li key={option.value}>
+              <Button
+                className="w-100 justify-content-between dropdown-btn align-items-center"
+                sx={{ textTransform: 'none', color: color?.text }}
+                onClick={() => onClick(option)}
+              >
+                {option?.label}
+                <span className="field d-flex align-items-center justify-content-center">
+                  {option.quantity}
+                </span>
+              </Button>
+            </li>
+          ))}
       </div>
     </>
   );

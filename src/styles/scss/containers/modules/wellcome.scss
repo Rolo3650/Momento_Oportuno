@@ -2,7 +2,6 @@
 
     &.wellcome-one {
 
-        min-height: 100vh;
         background-image: url("../../../../../public/svg/backgrounds/background_1.svg");
         background-repeat: no-repeat;
         background-size: cover;
@@ -10,19 +9,42 @@
 
         @media screen and (min-width: 1200px) {
             padding-top: 120px;
+            min-height: 714px;
         }
 
         @media screen and (max-width: 1200px) and (min-width: 768px) {
-            padding-top: 100px;
+            padding-top: 70px;
+            min-height: 714px;
         }
 
         @media screen and (max-width: 768px) {
-            padding-top: 60px;
+            padding-top: 35px;
         }
 
         & .wellcome-body {
 
-            max-width: 1200px;
+            flex-wrap: wrap;
+
+            @media screen and (min-width: 1200px) {
+                justify-content: space-between;
+                max-width: 1200px;
+            }
+
+            @media screen and (max-width: 1200px) and (min-width: 1024px) {
+                justify-content: center;
+                max-width: 730px;
+            }
+
+            
+            @media screen and (max-width: 1024px) and (min-width: 768px) {
+                justify-content: center;
+                max-width: 730px;
+            }
+
+            @media screen and (max-width: 768px) {
+                justify-content: center;
+                max-width: 390px;
+            }
 
         }
 
