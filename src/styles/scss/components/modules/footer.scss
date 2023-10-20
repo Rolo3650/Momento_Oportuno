@@ -3,15 +3,58 @@
   background-color: #533745;
 
   .footer-body {
-    text-align: center;  
-    .text {
-      color: #FFFF; 
-    }
-    .contact-text {
-      margin-top: 100px;
-      margin-bottom: 30px;
-      .text-row {
+    .grid {
+      display: flex;
+      margin-top: 2rem;
+      .contact-info { 
+        margin-top: 1rem;   
+        .contact-text {
+          margin-bottom: 30px;
+          .text-row {
+          }
+        }
+        .socialmedia {
+          .socialmedia-text {
+            margin-bottom: 10px;
+          }
+          .socialmedia-buttons {
+          }
+        }
       }
+      .info {
+      }
+      .recent {
+        .recent-img {
+          border-radius: 5px;
+          height: 50px;
+          width: 50;
+          margin-right: 10px;
+        }
+        .recent-price {
+          color: #ffc695;
+        }
+      }
+    }
+    .sect {
+      margin-inline: 3rem;
+      text-align: center;
+    }
+  
+    
+
+    .subtitle {
+      color: #ffff;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .list-element {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .text {
+      color: #ffff;
     }
 
     &.light {
