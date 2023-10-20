@@ -1,0 +1,28 @@
+.dropdown-custom {
+
+    &.dropdown-custom-one {
+
+        max-height: 200px;
+        overflow-y: scroll;
+
+        & .dropdown-btn {
+
+            span {
+
+                &.field {
+
+                    width: 30px;
+                    height: 30px;
+                    color: $color_7;
+                    border-radius: 100%;
+                    background-color: $color_secondary;
+
+                }
+                
+            }
+
+        }
+
+    }
+
+}

@@ -14,3 +14,23 @@
     }
 
 }
+
+.card-custom {
+
+    &.card-custom-two {
+
+        max-width: 500px;
+        width: 100%;
+        background-color: rgba($color: $color_7, $alpha: .95);
+        border-radius: 10px;
+
+        & .card-custom-heading {
+
+            font-weight: 600;
+            color: $color_5;
+
+        }
+
+    }
+
+}
