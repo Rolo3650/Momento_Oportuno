@@ -1,23 +1,17 @@
 import React from 'react';
 import { CarouselOne } from '../carousel/CarouselOne';
 import { ActionsOne } from '../actions/ActionsOne';
+import { Ad } from '../../api';
 
 interface Props {
-  product: {
-    id: string;
-    imgs: string[];
-    name: string;
-    price: number;
-    views: number;
-    feauture?: boolean;
-  };
+  product: Ad;
 }
 
 const ProductOne: React.FC<Props> = ({ product }) => {
   return (
     <div
       className={`w-100 product product-one ${
-        product?.feauture ? 'feauture' : ''
+        product?.is_featured ? 'feauture' : ''
       }`}
       onClick={() => {
         window.location.assign('/');
@@ -25,7 +19,7 @@ const ProductOne: React.FC<Props> = ({ product }) => {
     >
       <CarouselOne product={product} />
       <div className="info fs-5 fw-bold text text-color-5 text-font-rubik">
-        <div className="name">{product.name}</div>
+        <div className="name">{product.title}</div>
         <div className="mt-3">
           $
           {product.price?.toLocaleString('es-MX', {

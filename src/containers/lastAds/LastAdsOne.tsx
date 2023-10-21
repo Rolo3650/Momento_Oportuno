@@ -2,21 +2,16 @@ import React from 'react';
 import { ProductOne } from '../../components/product/ProductOne';
 import FinesseButton from '../../components/inputs/buttons/FinesseButton';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
+import { Ad } from '../../api';
 
 interface Props {
-  products: {
-    id: string;
-    imgs: string[];
-    name: string;
-    price: number;
-    views: number;
-    feauture?: boolean;
-  }[];
+  products: Ad[];
   title: string;
   span: string;
 }
 
 const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
+
   return (
     <div className="last-ads last-ads-one mx-auto">
       <span className="badge bg-secondary text text-font-l-d fw-normal fs-6 py-2 mx-auto background background-color-15 px-3">

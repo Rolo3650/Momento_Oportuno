@@ -68,6 +68,9 @@ export const AdSchema = z.object({
   attributes: z.array(AttributeAdSchema),
   create_at: z.coerce.date(),
   updated_at: z.coerce.date(),
+  imgs: z.array(z.string()).optional(),
+  price: z.number().optional(),
+  views: z.number().optional(),
 });
 export type Ad = z.infer<typeof AdSchema>;
 

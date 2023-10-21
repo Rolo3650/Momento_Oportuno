@@ -1,10 +1,8 @@
 import React from 'react';
+import { Ad } from '../../api';
 
 interface Props {
-  product: {
-    id: string;
-    imgs: string[];
-  };
+  product: Ad
 }
 
 const CarouselOne: React.FC<Props> = ({ product }) => {
