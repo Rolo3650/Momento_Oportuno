@@ -6,6 +6,6 @@ export class EstadosServices {
   static async getAllEstados(): Promise<GetAllEstadosResponse> {
     const { data } = await this.#api.get('/');
 
-    return data;
+    return data as GetAllEstadosResponse;
   }
 }

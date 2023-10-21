@@ -17,7 +17,7 @@ export class PackagesServices {
   static async getAllPaquetes(): Promise<GetALlPaquetesRes> {
     const { data } = await this.#request.get('get');
 
-    return data;
+    return data as GetALlPaquetesRes;
   }
 
   /**

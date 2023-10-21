@@ -11,7 +11,7 @@ export class CategorysServices {
   static async getAllCategorias(): Promise<GetALlCategoriasRes> {
     const { data } = await this.#request.get('/');
 
-    return data;
+    return data as GetALlCategoriasRes;
   }
 
   /**
