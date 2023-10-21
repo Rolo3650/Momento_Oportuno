@@ -36,8 +36,8 @@ const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
         </div>
       </div>
       <div className="products">
-        {products?.map((product) => (
-          <ProductOne product={product} />
+        {products?.map((product, index) => (
+          <ProductOne key={`${product?.id}-${index}`} product={product} />
         ))}
       </div>
     </div>

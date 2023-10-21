@@ -143,7 +143,7 @@ const DropdownOne: React.FC<Props> = ({
               } else return false;
             } else return true;
           })
-          ?.map((option) => (
+          ?.map((option: Option) => (
             <li key={option.value}>
               <Button
                 className="w-100 justify-content-between dropdown-btn align-items-center"

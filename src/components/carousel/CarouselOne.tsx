@@ -24,7 +24,7 @@ const CarouselOne: React.FC<Props> = ({ product }) => {
     >
       <div className="carousel-inner w-100">
         {product?.imgs?.map((img, index) => (
-          <div className={`carousel-item w-100 ${index == 0 ? 'active' : ''}`}>
+          <div key={img} className={`carousel-item w-100 ${index == 0 ? 'active' : ''}`}>
             <img src={img} className="d-block w-100" loading="lazy" />
           </div>
         ))}
