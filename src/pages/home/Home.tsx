@@ -5,6 +5,7 @@ import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { CardOne } from '../../components/module/cards/CardOne';
 import { CardTwo } from '../../components/module/cards/CardTwo';
 import { HowItWorksOne } from '../../containers/modules/howItWorks/HowItWorksOne';
+import { LastAddsOne } from '../../containers/lastAdds/LastAddsOne';
 
 const Home = () => {
   // const { state, dispatch } = useAppContext();
@@ -46,6 +47,120 @@ const Home = () => {
           <CardTwo />
         </WellcomeOne>
         <HowItWorksOne />
+        <LastAddsOne
+          title="Anuncios en"
+          span="Yucatán"
+          products={[
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: false,
+            },
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: false,
+            },
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: true,
+            },
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: false,
+            },
+          ]}
+        />
+        <LastAddsOne
+          title="Anuncios en"
+          span="Quintana Roo"
+          products={[
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: false,
+            },
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: false,
+            },
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: true,
+            },
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: false,
+            },
+          ]}
+        />
+        <LastAddsOne
+          title="Anuncios en"
+          span="Campeche"
+          products={[
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: false,
+            },
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: false,
+            },
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: true,
+            },
+            {
+              id: 'coche',
+              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              name: 'Porsche Cayman 2.7 Coupe Pdk At',
+              price: 375000,
+              views: 10,
+              feauture: false,
+            },
+          ]}
+        />
       </LayoutOne>
     </>
   );

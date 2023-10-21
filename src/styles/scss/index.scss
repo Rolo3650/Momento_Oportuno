@@ -27,6 +27,7 @@ $color_11: #F73F41;
 $color_12: #FFC89B;
 $color_13: #FFF1EA;
 $color_14: #F1D9CC;
+$color_15: #F9A03F;
 // - Fonts:
 
 $font_1: Helvetica, sans-serif;
@@ -73,6 +74,11 @@ $font_5: 'Red Hat Display', sans-serif;
 
 /* Sizes */
 @import 'screen/sizes.scss';
+
+// Last Adds
+
+/* Last Adds */
+@import 'containers/lastAdds.scss';
 
 // Texts
 
