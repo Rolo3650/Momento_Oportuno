@@ -31,3 +31,19 @@ export type registerParams = {
   password: string;
   password_confirmation: string;
 };
+
+// export const DataSchema = z.object({
+//   id: z.number(),
+//   name: z.string(),
+//   email: z.string(),
+// });
+// export type Data = z.infer<typeof DataSchema>;
+
+export const GetMeResponseSchema = z.object({
+  data: UserSchema.omit({
+    email_verified_at: true,
+    created_at: true,
+    updated_at: true,
+  }),
+});
+export type GetMeResponse = z.infer<typeof GetMeResponseSchema>;

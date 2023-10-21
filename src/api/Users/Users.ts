@@ -1,9 +1,10 @@
-import { Request } from '../';
+import { GetMeResponseSchema, Request } from '../';
 import type {
   logInParams,
   registerParams,
   logInRes,
   registerRes,
+  GetMeResponse,
 } from './Users.type';
 import { GeneralLogInSchema } from './Users.type';
 import { Services } from '..';
@@ -34,42 +35,14 @@ export class UsersServices {
     // await req.post('/logout');
   }
 
-  // /**
-  //  * @throws {AxiosError}
-  //  */
-  // static async getUserById(id: string | number): Promise<GetUserByIdResponse> {
-  //   const { data } = await req.get(`/${id}`);
-  //   return data;
-  // }
+  /**
+   * @throws {AxiosError,ZodError}
+   */
+  static async me(): Promise<GetMeResponse> {
+    const { data } = await req.get(Services.USERS + '/me');
 
-  // /**
-  //  * @throws {AxiosError}
-  //  */
-  // static async getFavorites(): Promise<GetFavoritesResponse> {
-  //   const { data } = await req.get('/favorites/get');
-  //   return data;
-  // }
+    const parsed = GetMeResponseSchema.parse(data);
 
-  // /**
-  //  * @throws {AxiosError}
-  //  */
-  // static async toggleFavorite(id: number): Promise<GetFavoritesResponse> {
-  //   try {
-  //     const { data } = await req.post(`/favorites/add/${id}`);
-  //     return data;
-  //   } catch (error) {
-  //     if (!(error instanceof AxiosError)) throw error;
-  //     const { data } = await req.post(`/favorites/delete/${id}`);
-  //     return data;
-  //   }
-  // }
-
-  // /**
-  //  * @throws {AxiosError}
-  //  */
-  // static async me() {
-  //   const { data } = await req.get('users/me');
-
-  //   return data;
-  // }
+    return parsed;
+  }
 }
