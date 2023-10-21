@@ -1,0 +1,146 @@
+.product {
+    &.product-one {
+
+        overflow: hidden;
+
+        &.feauture {
+            border: 2px solid $color_secondary;
+
+            & .info {
+
+                background-color: $color_13;
+                border-top: 1px solid $color_14;
+
+                & .MuiButtonBase-root {
+                    border-color: $color_14 ;
+                }
+
+            }
+        }
+
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+
+            border: none;
+            box-shadow: 0px 6px 20px 0px rgba(41.99999999999999, 56.99999999999999, 70, 0.08);
+
+            & .carousel {
+
+
+                & .carousel-control-next {
+
+                    opacity: 1;
+                    transform: translateX(0);
+
+                }
+
+                & .carousel-control-prev {
+
+                    opacity: 1;
+                    transform: translateX(0);
+
+                }
+
+
+            }
+
+            & .info {
+                border: 1px solid white;
+            }
+
+            & .actions {
+                border: 1px solid white;
+                border-top: none;
+            }
+
+        }
+
+        & .carousel {
+            position: relative;
+
+            & .carousel-inner {
+
+                & .carousel-item {
+
+                    overflow: hidden;
+                }
+
+            }
+
+            & .carousel-control {
+                position: absolute;
+                width: 45px;
+                height: 45px;
+                background: $color_7;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: 50%;
+                margin-top: -22.5px;
+                z-index: 20;
+                transition: .3s ease-in-out;
+                opacity: 0;
+                cursor: pointer;
+
+                & span {
+                    filter: contrast(50%) invert(50%);
+                }
+            }
+
+            & .carousel-control-next {
+
+                right: 0;
+                border-top-left-radius: 30px;
+                border-bottom-left-radius: 30px;
+                transform: translateX(45px);
+
+            }
+
+            & .carousel-control-prev {
+
+                right: 0;
+                border-top-right-radius: 30px;
+                border-bottom-right-radius: 30px;
+                transform: translateX(-45px);
+
+            }
+        }
+
+        & .info {
+
+            line-height: 20px;
+            padding: 20px;
+            border: 1px solid $color_12;
+            transition: .3s ease-in-out;
+
+            & .name {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+        }
+
+        & .actions {
+
+            line-height: 20px;
+            padding: 20px;
+            border: 1px solid $color_12;
+            border-top: none;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            transition: .3s ease-in-out;
+
+            & .views {
+
+                font-size: 12px;
+
+            }
+
+        }
+
+    }
+}

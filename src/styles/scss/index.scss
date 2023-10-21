@@ -25,7 +25,8 @@ $color_9: #FF5B52;
 $color_10: #73718C;
 $color_11: #F73F41;
 $color_12: #FFC89B;
-
+$color_13: #FFF1EA;
+$color_14: #F1D9CC;
 // - Fonts:
 
 $font_1: Helvetica, sans-serif;
@@ -62,6 +63,11 @@ $font_5: 'Red Hat Display', sans-serif;
 @import 'components/inputs/button.scss';
 /* Dropdown */
 @import 'components/inputs/dropdown.scss';
+
+// - Products:
+
+/* Products */
+@import 'components/products/products.scss';
 
 // Screen 
 
