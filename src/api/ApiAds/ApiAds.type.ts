@@ -1,4 +1,12 @@
 import * as z from 'zod';
+import { UserSchema } from '../Users';
+import {
+  AttributeSchema,
+  AttributeValueSchema,
+  CategorieSchema,
+  StateSchema,
+} from '../listivos';
+import { UserPackageSchema } from '../Packages';
 
 const LinkSchema = z.object({
   url: z.union([z.null(), z.string()]),
@@ -8,104 +16,56 @@ const LinkSchema = z.object({
 
 const MetaSchema = z.object({
   current_page: z.number(),
-  from: z.number(),
+  from: z.number().nullable().optional(),
   last_page: z.number(),
   links: z.array(LinkSchema),
   path: z.string(),
   per_page: z.number(),
-  to: z.number(),
+  to: z.number().nullable().optional(),
   total: z.number(),
 });
 
+const nulishString = z.string().nullable().optional();
+
 const LinksSchema = z.object({
-  first: z.string(),
-  last: z.string(),
-  prev: z.null(),
-  next: z.null(),
+  first: nulishString,
+  last: nulishString,
+  prev: nulishString,
+  next: nulishString,
 });
 
-const UserPackageSchema = z.object({
-  id: z.number(),
-  user_id: z.number(),
-  package_id: z.number(),
-  name: z.string(),
-  label: z.null(),
-  type: z.string(),
-  description: z.null(),
-  expire: z.number(),
-  price: z.number(),
-  display_price: z.string(),
-  is_featured: z.number(),
-  is_active: z.number(),
-  is_multistate: z.number(),
-  includes_video: z.number(),
-  number_of_images: z.number(),
-  includes_printing: z.number(),
-  max_number_of_characters: z.number(),
-  created_at: z.coerce.date(),
-  updated_at: z.coerce.date(),
+const UserAdSchema = UserSchema.omit({
+  email_verified_at: true,
+  created_at: true,
+  updated_at: true,
 });
 
-const UserSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  email: z.string(),
-});
+const AttributeAdSchema = AttributeSchema.omit({
+  attributeValues: true,
+  value: true,
+}).merge(
+  z.object({
+    value: z.union([z.array(AttributeValueSchema), z.string()]),
+  })
+);
 
-const StateSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  created_at: z.coerce.date(),
-  updated_at: z.coerce.date(),
-});
-
-const CategorySchema = z.object({
-  id: z.number(),
-  slug: z.string(),
-  name: z.string(),
-  description: z.null(),
-  children: z.array(z.any()),
-});
-
-const ValueElementSchema = z.object({
-  id: z.number(),
-  attribute_id: z.number(),
-  name: z.string(),
-  key: z.string(),
-  created_at: z.coerce.date(),
-  updated_at: z.coerce.date(),
-});
-
-const AttributeSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  key: z.string(),
-  placeholder: z.union([z.null(), z.string()]),
-  description: z.null(),
-  type: z.string(),
-  is_required: z.boolean(),
-  is_multiple: z.boolean(),
-  category_id: z.number(),
-  value: z.union([z.array(ValueElementSchema), z.string()]),
-});
-
-const AdSchema = z.object({
+export const AdSchema = z.object({
   id: z.number(),
   title: z.string(),
   slug: z.string(),
   url: z.string(),
   status: z.string(),
-  image: z.string(),
+  image: z.union([z.null(), z.string()]),
   description: z.string(),
   is_featured: z.boolean(),
   is_multistate: z.boolean(),
   is_active: z.boolean(),
   auto_renew: z.boolean(),
-  user: UserSchema,
+  user: UserAdSchema,
   user_package: UserPackageSchema,
   state: StateSchema,
-  category: CategorySchema,
-  attributes: z.array(AttributeSchema),
+  category: CategorieSchema,
+  attributes: z.array(AttributeAdSchema),
   create_at: z.coerce.date(),
   updated_at: z.coerce.date(),
 });
@@ -122,3 +82,7 @@ export const GetAdByIdResponseSchema = z.object({
   data: AdSchema,
 });
 export type GetAdByIdResponse = z.infer<typeof GetAdByIdResponseSchema>;
+
+export const GetMyAdsResponseSchema = GetAllAdsResponseSchema;
+
+export type GetMyAdsResponse = z.infer<typeof GetMyAdsResponseSchema>;

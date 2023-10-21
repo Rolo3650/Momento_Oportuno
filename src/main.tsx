@@ -11,9 +11,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/css/index.css';
 import './styles/scss/index.scss';
 import { ThemeOne } from './themes/ThemeOne';
+import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <CookiesProvider>
     <QueryClientProvider client={queryClient}>
       <AppProvider>
         <ThemeOne>
@@ -22,5 +24,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <ReactQueryDevtools initialIsOpen={false} />
       </AppProvider>
     </QueryClientProvider>
-  </React.StrictMode>
+  </CookiesProvider>
+  // </React.StrictMode>
 );

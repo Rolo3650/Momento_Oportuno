@@ -2,7 +2,7 @@ export const AdsQuerysKeys = {
   getInfiniteAds: 'getInfiniteAds',
   getAds: 'getAds',
   getAd: 'getAd',
-  getAdsByUser: 'getAdsByUser',
+  getMyAds: 'getMyAds',
   getAdsByCategory: 'getAdsByCategory',
   getAdsByState: 'getAdsByState',
   getAdsByQuery: 'getAdsByQuery',

@@ -10,7 +10,7 @@ import {
 import { ZodError } from 'zod';
 import { AxiosError, isAxiosError } from 'axios';
 import { AppTypes, useAppContext } from '../../../context';
-import { setLocalValue } from '../../../utils';
+import { setToken } from '../../../utils';
 
 export function useLogin(cbOnSuccess?: (data: logInRes) => void) {
   const { dispatch } = useAppContext();
@@ -30,7 +30,7 @@ export function useLogin(cbOnSuccess?: (data: logInRes) => void) {
         payload: data,
       });
       //FIXME: SHOULD DELETE THIS
-      setLocalValue('token', data.token);
+      setToken(data.token);
     },
     onError: (err) => {
       if (isAxiosError(err)) {

@@ -6,6 +6,16 @@ import { CardOne } from '../../components/module/cards/CardOne';
 import { CardTwo } from '../../components/module/cards/CardTwo';
 import { HowItWorksOne } from '../../containers/modules/howItWorks/HowItWorksOne';
 import { LastAddsOne } from '../../containers/lastAdds/LastAddsOne';
+// import {
+//   LoginComponent,
+//   RegisterComponent,
+//   ListAdsComponent,
+//   ListCategoriesComponent,
+//   FavoritesComponent,
+//   ListPackagesComponent,
+//   ListStatesComponent,
+// } from '../../components';
+// import { useAppContext } from '../../context';
 
 const Home = () => {
   // const { state, dispatch } = useAppContext();
@@ -35,10 +45,17 @@ const Home = () => {
           border: '1px solid black',
           display: 'flex',
           justifyContent: 'space-around',
+          padding: '1rem',
+          flexDirection: 'column',
         }}
       >
         <LoginComponent />
         <RegisterComponent />
+        <ListAdsComponent />
+        <ListCategoriesComponent />
+        <FavoritesComponent />
+        <ListPackagesComponent />
+        <ListStatesComponent />
       </div>
     </div> */}
       <LayoutOne>
