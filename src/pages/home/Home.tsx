@@ -5,7 +5,7 @@ import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { CardOne } from '../../components/module/cards/CardOne';
 import { CardTwo } from '../../components/module/cards/CardTwo';
 import { HowItWorksOne } from '../../containers/modules/howItWorks/HowItWorksOne';
-import { LastAddsOne } from '../../containers/lastAdds/LastAddsOne';
+import { LastAdsOne } from '../../containers/lastAds/LastAdsOne';
 // import {
 //   LoginComponent,
 //   RegisterComponent,
@@ -64,7 +64,7 @@ const Home = () => {
           <CardTwo />
         </WellcomeOne>
         <HowItWorksOne />
-        <LastAddsOne
+        <LastAdsOne
           title="Anuncios en"
           span="Yucatán"
           products={[
@@ -102,7 +102,7 @@ const Home = () => {
             },
           ]}
         />
-        <LastAddsOne
+        <LastAdsOne
           title="Anuncios en"
           span="Quintana Roo"
           products={[
@@ -140,7 +140,7 @@ const Home = () => {
             },
           ]}
         />
-        <LastAddsOne
+        <LastAdsOne
           title="Anuncios en"
           span="Campeche"
           products={[

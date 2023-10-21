@@ -16,9 +16,9 @@ interface Props {
   span: string;
 }
 
-const LastAddsOne: React.FC<Props> = ({ products, title, span }) => {
+const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
   return (
-    <div className="last-adds last-adds-one mx-auto">
+    <div className="last-ads last-ads-one mx-auto">
       <span className="badge bg-secondary text text-font-l-d fw-normal fs-6 py-2 mx-auto background background-color-15 px-3">
         Últimos anuncios
       </span>
@@ -44,4 +44,4 @@ const LastAddsOne: React.FC<Props> = ({ products, title, span }) => {
   );
 };
 
-export { LastAddsOne };
+export { LastAdsOne };

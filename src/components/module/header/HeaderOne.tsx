@@ -2,7 +2,7 @@ import { useTheme } from '@mui/material/styles';
 import { NavBarDesktopOne } from '../navbar/desktop/NavBarDesktopOne';
 import { IconButton, Link } from '@mui/material';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
-import { AddAddButtonOne } from '../../inputs/buttons/AddAddButtonOne';
+import { AdAddButtonOne } from '../../inputs/buttons/AdAddButtonOne';
 import { MenuButton } from '../../inputs/iconbuttons/MenuButton';
 // import React from 'react';
 
@@ -57,7 +57,7 @@ const HeaderOne = () => {
           </Link>
         </div>
         <div className="desktop">
-          <AddAddButtonOne />
+          <AdAddButtonOne />
         </div>
       </div>
     </div>
