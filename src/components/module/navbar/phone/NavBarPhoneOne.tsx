@@ -8,7 +8,7 @@ const NavBarPhoneOne = () => {
       <MenuTwo
         text="Anuncios"
         icon={{
-          link: '../../../../../svg/icons/menu_row_right.svg',
+          link: '/svg/icons/menu_row_right.svg',
           name: 'menu-row-right',
         }}
       >
@@ -26,7 +26,7 @@ const NavBarPhoneOne = () => {
           text="Micrositios"
           overrideClass="ms-3"
           icon={{
-            link: '../../../../../svg/icons/menu_row_right.svg',
+            link: '/svg/icons/menu_row_right.svg',
             name: 'menu-row-right',
           }}
         >
@@ -75,7 +75,7 @@ const NavBarPhoneOne = () => {
       <MenuTwo
         text="Acerca"
         icon={{
-          link: '../../../../../svg/icons/menu_row_right.svg',
+          link: '/svg/icons/menu_row_right.svg',
           name: 'menu-row-right',
         }}
       >

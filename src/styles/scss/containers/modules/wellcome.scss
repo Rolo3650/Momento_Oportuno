@@ -9,8 +9,8 @@
             padding-top: 120px;
             min-height: 714px;
             background-image:
-                url("../../../../../svg/backgrounds/background_1.svg"),
-                url("../../../../../svg/backgrounds/background_2.svg");
+                url("/svg/backgrounds/background_1.svg"),
+                url("/svg/backgrounds/background_2.svg");
             background-position:
                 center top,
                 left bottom;
@@ -21,8 +21,8 @@
             padding-top: 70px;
             min-height: 714px;
             background-image:
-                url("../../../../../svg/backgrounds/background_1.svg"),
-                url("../../../../../svg/backgrounds/background_2.svg");
+                url("/svg/backgrounds/background_1.svg"),
+                url("/svg/backgrounds/background_2.svg");
             background-position:
                 center top,
                 center bottom;
@@ -32,7 +32,7 @@
         @media screen and (max-width: 768px) {
             padding-top: 35px;
             background-image:
-                url("../../../../../svg/backgrounds/background_3.svg");
+                url("/svg/backgrounds/background_3.svg");
             background-size: cover;
         }
 

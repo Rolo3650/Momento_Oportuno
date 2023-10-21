@@ -24,7 +24,7 @@ const NavBarDesktopOne = () => {
             horizontal: 'left',
           }}
           icon={{
-            link: '../../../../../svg/icons/menu_row_down.svg',
+            link: '/svg/icons/menu_row_down.svg',
             name: 'menu-row-down',
           }}
         >
@@ -42,7 +42,7 @@ const NavBarDesktopOne = () => {
                 horizontal: 225,
               }}
               icon={{
-                link: '../../../../../svg/icons/menu_row_right.svg',
+                link: '/svg/icons/menu_row_right.svg',
                 name: 'menu-row-right',
               }}
             >
@@ -67,7 +67,7 @@ const NavBarDesktopOne = () => {
             horizontal: 'left',
           }}
           icon={{
-            link: '../../../../../svg/icons/menu_row_down.svg',
+            link: '/svg/icons/menu_row_down.svg',
             name: 'menu-row-down',
           }}
         >

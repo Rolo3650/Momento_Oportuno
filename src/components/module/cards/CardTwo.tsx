@@ -51,7 +51,7 @@ const CardTwo: React.FC<Props> = () => {
             backgroundColor: '#fff',
           }}
           text="Estoy Buscando..."
-          icon={{ url: '../../../../../svg/icons/idea_one.svg' }}
+          icon={{ url: '/svg/icons/idea_one.svg' }}
           value={lookingFor}
           onChange={onChangeLookingFor}
         />
@@ -65,8 +65,8 @@ const CardTwo: React.FC<Props> = () => {
             }}
             text="Categoría"
             icon={{
-              url: '../../../../../svg/icons/ticket_one.svg',
-              endurl: '../../../../../svg/icons/menu_row_down.svg',
+              url: '/svg/icons/ticket_one.svg',
+              endurl: '/svg/icons/menu_row_down.svg',
             }}
             options={[
               { label: 'Pesca', value: 'Pesca', quantity: 1 },
@@ -97,7 +97,7 @@ const CardTwo: React.FC<Props> = () => {
                   }}
                 />
               ),
-              endurl: '../../../../../svg/icons/menu_row_down.svg',
+              endurl: '/svg/icons/menu_row_down.svg',
             }}
             options={[
               { label: 'CDMX', value: 'CDMX', quantity: 1 },
