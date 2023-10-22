@@ -1,0 +1,18 @@
+.looking-for {
+
+    &.looking-for-one {
+
+        display: grid;
+
+        @media screen and (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        padding: 15px 30px;
+        max-width: 1200px;
+
+        grid-gap: 15px;
+
+    }
+
+}

@@ -39,8 +39,13 @@ const TextFieldOne: React.FC<Props> = ({
         value={value}
         onChange={onChange}
         sx={{
+          height: '64px',
+          borderRadius: '5px',
           '& .MuiOutlinedInput-notchedOutline': {
             borderColor: color.field,
+          },
+          '& .MuiInputBase-root': {
+            height: '64px',
           },
           '& input::placeholder': {
             color: color.text,

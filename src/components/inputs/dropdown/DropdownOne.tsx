@@ -5,7 +5,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 interface Option {
   label: string;
-  value: string;
+  value: number;
   quantity?: number;
 }
 
@@ -30,7 +30,7 @@ interface Props {
     backgroundColor: string;
   };
   text: string;
-  options: Option[];
+  options?: Option[];
   onChange: (option: Option) => void;
 }
 
@@ -42,7 +42,7 @@ const DropdownOne: React.FC<Props> = ({
   onChange,
 }) => {
   const [filter, setFilter] = useState('');
-  const [select, setSelect] = useState<Option>({ label: text, value: '' });
+  const [select, setSelect] = useState<Option>({ label: text, value: 0 });
   const { includesText } = useValidate();
 
   const onChangeFilter = (e: ChangeEvent<HTMLInputElement>) => {
@@ -55,8 +55,8 @@ const DropdownOne: React.FC<Props> = ({
   };
 
   const onClear = () => {
-    setSelect({ label: text, value: '' });
-    onChange({ label: text, value: '' });
+    setSelect({ label: text, value: 0 });
+    onChange({ label: text, value: 0 });
   };
 
   return (
@@ -82,6 +82,9 @@ const DropdownOne: React.FC<Props> = ({
             backgroundColor: color?.field,
           },
           backgroundColor: color?.backgroundColor,
+          '&:hover': {
+            backgroundColor: color?.backgroundColor,
+          },
         }}
         data-bs-toggle="dropdown"
         aria-expanded="false"

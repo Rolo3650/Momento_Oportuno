@@ -11,6 +11,7 @@ const AppRouter = () => {
 
         {/* Ads */}
         <Route path="/ads" element={<AdsSearch />} />
+        <Route path="/ads/:param_category" element={<AdsSearch />} />
 
         <Route path="/*" element={<Home />} />
       </Routes>

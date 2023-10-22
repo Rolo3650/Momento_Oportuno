@@ -28,6 +28,7 @@ $color_12: #FFC89B;
 $color_13: #FFF1EA;
 $color_14: #F1D9CC;
 $color_15: #F9A03F;
+$color_16: #374B5C;
 // - Fonts:
 
 $font_1: Helvetica, sans-serif;
@@ -70,6 +71,21 @@ $font_5: 'Red Hat Display', sans-serif;
 /* Products */
 @import 'components/products/products.scss';
 
+// - Breadcrumbs:
+
+/* Breadcrumbs */
+@import 'components/breadcrumbs.scss';
+
+// - Looking For:
+
+/* Looking For */
+@import 'components/lookingFor.scss';
+
+// - Categories:
+
+/* Categories */
+@import 'components/categories.scss';
+
 // Screen 
 
 /* Sizes */
@@ -90,3 +106,8 @@ $font_5: 'Red Hat Display', sans-serif;
 // Backgrounds
 
 @import 'backgrounds/colors.scss';
+
+// Pages
+
+/* Ads Search */
+@import 'pages/addSearch.scss';
