@@ -7,7 +7,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 
 interface Option {
   label: string;
-  value: string;
+  value: string | number;
   quantity?: number;
 }
 

@@ -10,7 +10,7 @@ import { useParams } from 'react-router';
 
 interface Option {
   label: string;
-  value: number;
+  value: number | string;
   quantity?: number;
 }
 

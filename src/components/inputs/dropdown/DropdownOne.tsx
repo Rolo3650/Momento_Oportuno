@@ -5,7 +5,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 interface Option {
   label: string;
-  value: number;
+  value: string | number;
   quantity?: number;
 }
 
