@@ -3,6 +3,7 @@ import { ProductOne } from '../../components/product/ProductOne';
 import FinesseButton from '../../components/inputs/buttons/FinesseButton';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { Ad } from '../../api';
+import { useNavigate } from 'react-router';
 
 interface Props {
   products: Ad[];
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
+  const navigateTo = useNavigate();
 
   return (
     <div className="last-ads last-ads-one mx-auto">
@@ -26,7 +28,9 @@ const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
             color={{ text: 'white', background: '#FF5B52' }}
             icon={{ muiIcon: <ArrowForwardIosOutlinedIcon /> }}
             text="Ver más"
-            onClick={() => {}}
+            onClick={() => {
+              navigateTo('/ads');
+            }}
           />
         </div>
       </div>
