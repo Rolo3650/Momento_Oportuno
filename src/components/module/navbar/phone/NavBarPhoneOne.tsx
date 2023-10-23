@@ -1,8 +1,11 @@
 // import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MenuTwo } from '../../menu/MenuTwo';
 import { Button } from '@mui/material';
 
 const NavBarPhoneOne = () => {
+  const navigateTo = useNavigate();
+
   return (
     <>
       <MenuTwo
@@ -18,6 +21,9 @@ const NavBarPhoneOne = () => {
           sx={{
             color: '#333',
           }}
+          onClick={() => navigateTo('/ads')}
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
         >
           Todos los anuncios
         </Button>

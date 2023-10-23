@@ -4,10 +4,12 @@ import { IconButton, Link } from '@mui/material';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import { AdAddButtonOne } from '../../inputs/buttons/AdAddButtonOne';
 import { MenuButton } from '../../inputs/iconbuttons/MenuButton';
+import { useNavigate } from 'react-router-dom';
 // import React from 'react';
 
 const HeaderOne = () => {
   const theme = useTheme();
+  const navigateTo = useNavigate();
 
   return (
     <div className={`header-one ${theme.palette.mode}`}>
@@ -15,11 +17,13 @@ const HeaderOne = () => {
         <div className="phone">
           <MenuButton />
         </div>
-        <img
-          src="../../../img/logos/elmomentoportunoblanco.png"
-          alt="white-logo"
-          className="logo"
-        />
+        <a type="button" onClick={() => navigateTo('/')}>
+          <img
+            src="../../../img/logos/elmomentoportunoblanco.png"
+            alt="white-logo"
+            className="logo"
+          />
+        </a>
         <NavBarDesktopOne />
         <div className="">
           <IconButton
@@ -37,7 +41,8 @@ const HeaderOne = () => {
         </div>
         <div className="desktop">
           <Link
-            href="/"
+            component="button"
+            onClick={() => navigateTo('/')}
             color={theme.palette.primary.contrastText}
             underline="none"
           >
@@ -49,7 +54,8 @@ const HeaderOne = () => {
         </div>
         <div className="desktop">
           <Link
-            href="/"
+            component="button"
+            onClick={() => navigateTo('/')}
             color={theme.palette.primary.contrastText}
             underline="none"
           >

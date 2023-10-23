@@ -2,12 +2,20 @@
 import { Link } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import { MenuOne } from '../../menu/MenuOne';
+import { useNavigate } from 'react-router-dom';
 
 const NavBarDesktopOne = () => {
+  const navigateTo = useNavigate();
+
   return (
     <>
       <div className="desktop">
-        <Link href="/" color={'#fff'} underline="none">
+        <Link
+          onClick={() => navigateTo('/')}
+          component="button"
+          color={'#fff'}
+          underline="none"
+        >
           Inicio
         </Link>
       </div>
@@ -28,7 +36,7 @@ const NavBarDesktopOne = () => {
             name: 'menu-row-down',
           }}
         >
-          <MenuItem>Todos los anuncios</MenuItem>
+          <MenuItem onClick={() => navigateTo('/ads')}>Todos los anuncios</MenuItem>
           <MenuItem>
             <MenuOne
               title="Micrositios"

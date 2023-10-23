@@ -6,10 +6,12 @@ import { NavBarPhoneOne } from '../navbar/phone/NavBarPhoneOne';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import { useNavigate } from 'react-router-dom';
 
 // import React from 'react';
 const SideBarOne = () => {
   const theme = useTheme();
+  const navigateTo = useNavigate();
 
   return (
     <div
@@ -44,6 +46,9 @@ const SideBarOne = () => {
             sx={{
               color: '#333',
             }}
+            onClick={() => navigateTo('/')}
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
           >
             Inicio
           </Button>
