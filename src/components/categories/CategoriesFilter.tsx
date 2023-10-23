@@ -1,6 +1,6 @@
 // import React from 'react';
 import CircleIcon from '@mui/icons-material/Circle';
-import { SelectOne } from '../inputs/selecet/SelectOne';
+import { SelectOne } from '../inputs/select/SelectOne';
 import { useAllCategories, useNavigateCustom, useSearch } from '../../hooks';
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';

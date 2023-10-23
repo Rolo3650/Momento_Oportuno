@@ -7,6 +7,7 @@ import LookingFor from '../../components/lookingFor/LookingForOne';
 import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { useSearch } from '../../hooks';
 import { useEffect, useState } from 'react';
+import { OrderByOne } from '../../components/orderBy/OrderByOne';
 
 const AdsSearch = () => {
   const { searchCategory, searchCategoryChildren } = useSearch();
@@ -55,6 +56,9 @@ const AdsSearch = () => {
         <LookingFor />
         <div className="body mx-auto">
           <CategoriesFilter />
+          <div>
+            <OrderByOne />
+          </div>
         </div>
       </div>
     </LayoutOne>
