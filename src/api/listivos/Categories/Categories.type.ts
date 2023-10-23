@@ -50,7 +50,7 @@ export const AttributeSchema = z.object({
   type: AttributeType,
   is_required: z.boolean(),
   is_multiple: z.boolean(),
-  category_id: z.number(),
+  category_id: z.number()?.nullable(),
   value: z.null().optional(),
   attributeValues: z.array(AttributeValueSchema),
 });
