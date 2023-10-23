@@ -69,7 +69,7 @@ const OrderByOne: React.FC<Props> = () => {
           onChange={onChangeOne}
         />
         <IconButton
-          className="ms-2"
+          className="ms-2 icon-btn"
           sx={{
             border: '1px solid #FD8A24',
             width: '56px',
@@ -89,7 +89,7 @@ const OrderByOne: React.FC<Props> = () => {
           <GridViewRoundedIcon />
         </IconButton>
         <IconButton
-          className="ms-2"
+          className="ms-2 icon-btn"
           sx={{
             border: '1px solid #FD8A24',
             width: '56px',

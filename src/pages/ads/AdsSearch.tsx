@@ -8,6 +8,7 @@ import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { useSearch } from '../../hooks';
 import { useEffect, useState } from 'react';
 import { OrderByOne } from '../../components/orderBy/OrderByOne';
+import { CatalogueOne } from '../../containers/catalogue/CatalogueOne';
 
 const AdsSearch = () => {
   const { searchCategory, searchCategoryChildren } = useSearch();
@@ -55,9 +56,12 @@ const AdsSearch = () => {
         <BreadcrumbOne breadcrumbs={breadcrumb} />
         <LookingFor />
         <div className="body mx-auto">
-          <CategoriesFilter />
+          <div>
+            <CategoriesFilter />
+          </div>
           <div>
             <OrderByOne />
+            <CatalogueOne />
           </div>
         </div>
       </div>

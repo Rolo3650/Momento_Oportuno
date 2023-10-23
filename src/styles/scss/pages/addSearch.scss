@@ -8,6 +8,88 @@
         grid-template-columns: 273px auto;
         grid-gap: 20px;
 
+        @media screen and (max-width: 768px) {
+            padding: 30px 0px;
+            width: 390px;
+
+            & .categories {
+                display: none !important;
+            }
+
+            grid-template-columns: auto;
+        }
+
+        @media screen and (max-width: 1024px) {
+            & .icon-btn {
+                display: none !important;
+            }
+        }
+
+        & .contain-card {
+
+            & .view-card {
+
+                display: grid;
+
+                @media screen and (min-width: 1024px) {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+
+                @media screen and (max-width: 1024px) and (min-width: 882px) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                @media screen and (max-width: 768px) {
+                    grid-template-columns: repeat(1, 1fr);
+                }
+
+                grid-gap: 15px;
+
+            }
+
+            & .view-row {
+
+                display: none;
+
+            }
+
+        }
+
+        & .contain-row {
+
+            & .view-card {
+
+                display: none;
+
+                @media screen and (max-width: 1024px) {
+                    display: grid;
+
+                    @media screen and (max-width: 1024px) and (min-width: 882px) {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+
+                    @media screen and (max-width: 768px) {
+                        grid-template-columns: repeat(1, 1fr);
+                    }
+
+                    grid-gap: 15px;
+                }
+
+            }
+
+            & .view-row {
+
+                display: grid;
+                grid-gap: 15px;
+
+                @media screen and (max-width: 1024px) {
+                    display: none;
+                }
+
+            }
+
+        }
+
     }
 
 }

@@ -17,7 +17,7 @@ const CarouselOne: React.FC<Props> = ({ product }) => {
   return (
     <div
       id={`carouserl-${product?.id}`}
-      className="carousel slide w-100"
+      className="carousel slide"
       data-bs-ride="carousel"
     >
       <div className="carousel-inner w-100">
