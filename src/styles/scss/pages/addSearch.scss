@@ -19,6 +19,12 @@
             grid-template-columns: auto;
         }
 
+        @media screen and (min-width: 768px) {
+            & .btn-off-canva-filter {
+                display: none !important;
+            }
+        }
+
         @media screen and (max-width: 1024px) {
             & .icon-btn {
                 display: none !important;

@@ -9,6 +9,9 @@ import { useSearch } from '../../hooks';
 import { useEffect, useState } from 'react';
 import { OrderByOne } from '../../components/orderBy/OrderByOne';
 import { CatalogueOne } from '../../containers/catalogue/CatalogueOne';
+import { Button, FormControl } from '@mui/material';
+import FilterAltRoundedIcon from '@mui/icons-material/FilterAltRounded';
+import { SideBarTwo } from '../../components/module/sidebar/SideBarTwo';
 
 const AdsSearch = () => {
   const { searchCategory, searchCategoryChildren } = useSearch();
@@ -60,11 +63,29 @@ const AdsSearch = () => {
             <CategoriesFilter />
           </div>
           <div>
+            <div className="btn-off-canva-filter mb-5">
+              <FormControl fullWidth>
+                <Button
+                  startIcon={<FilterAltRoundedIcon />}
+                  variant="contained"
+                  className="p-2 fs-6 text text-font-l-d"
+                  sx={{
+                    textTransform: 'none',
+                  }}
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offCanvasCategoryFilter"
+                  aria-controls="offCanvasCategoryFilter"
+                >
+                  Más filtros
+                </Button>
+              </FormControl>
+            </div>
             <OrderByOne />
             <CatalogueOne />
           </div>
         </div>
       </div>
+      <SideBarTwo />
     </LayoutOne>
   );
 };
