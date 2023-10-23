@@ -30,6 +30,7 @@ interface Props {
     backgroundColor: string;
   };
   text: string;
+  option?: Option;
   options?: Option[];
   onChange: (option: Option) => void;
 }
@@ -39,6 +40,7 @@ const DropdownOne: React.FC<Props> = ({
   color,
   text,
   options,
+  option,
   onChange,
 }) => {
   const [filter, setFilter] = useState('');
@@ -92,9 +94,9 @@ const DropdownOne: React.FC<Props> = ({
         <div className="d-flex w-100 justify-content-start">
           {icon?.url && <img className="start-image" src={icon?.url} alt="" />}
           {icon?.muiIcon}
-          <p className="ms-2 m-0 fs-6">{select?.label}</p>
+          <p className="ms-2 m-0 fs-6">{option?.label ?? select?.label}</p>
         </div>
-        {select.label != text && (
+        {option?.label != text && select.label != text && (
           <div>
             <IconButton className="p-0" onClick={onClear}>
               <ClearIcon
@@ -105,7 +107,12 @@ const DropdownOne: React.FC<Props> = ({
             </IconButton>
           </div>
         )}
-        {select.label == text && (
+        {!option && select.label == text && (
+          <div>
+            <img className="mx-2" src={icon?.endurl} alt="icon-image" />
+          </div>
+        )}
+        {option && option?.label == text && (
           <div>
             <img className="mx-2" src={icon?.endurl} alt="icon-image" />
           </div>

@@ -1,6 +1,6 @@
 import { Breadcrumbs, Link, Stack, Typography, useTheme } from '@mui/material';
 import React from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigateCustom } from '../../hooks';
 
 interface breadcrumb {
   label?: string;
@@ -13,10 +13,10 @@ interface Props {
 
 const BreadcrumbOne: React.FC<Props> = ({ breadcrumbs }) => {
   const theme = useTheme();
-  const navigateTo = useNavigate();
+  const { navigatePersistParams } = useNavigateCustom();
 
   const onClick = (breadcrumb: breadcrumb) => {
-    navigateTo(breadcrumb.url);
+    navigatePersistParams(breadcrumb.url);
   };
 
   return (

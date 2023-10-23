@@ -1,6 +1,6 @@
 // import React from 'react';
 
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 // import { Categorie } from '../../api';
 import { useAllCategories } from '..';
 
@@ -13,6 +13,7 @@ import { useAllCategories } from '..';
 const useSearch = () => {
   const params = useParams();
   const allCategories = useAllCategories();
+  const location = useLocation();
 
   const searchCategory = () => {
     const param = params.param_category?.split(',');
@@ -34,7 +35,12 @@ const useSearch = () => {
     } else return undefined;
   };
 
-  return { searchCategory, searchCategoryChildren };
+  const searchParam = (query: string) => {
+    const searchParams = new URLSearchParams(location.search);
+    return searchParams.get(query);
+  };
+
+  return { searchCategory, searchCategoryChildren, searchParam };
 };
 
 export { useSearch };

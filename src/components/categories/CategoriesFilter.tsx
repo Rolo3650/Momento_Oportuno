@@ -1,8 +1,8 @@
 // import React from 'react';
 import CircleIcon from '@mui/icons-material/Circle';
 import { SelectOne } from '../inputs/selecet/SelectOne';
-import { useAllCategories, useSearch } from '../../hooks';
-import { useNavigate, useParams } from 'react-router';
+import { useAllCategories, useNavigateCustom, useSearch } from '../../hooks';
+import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 
 interface Option {
@@ -13,18 +13,18 @@ interface Option {
 
 const CategoriesFilter = () => {
   const allCategories = useAllCategories();
-  const [categorySelected, setCategorySelected] = useState<Option>({
+  const initialState = {
     label: 'Cualquier',
     value: 0,
     quantity: 30,
-  });
-  const [categoryChildSelected, setCategoryChildSelected] = useState<Option>({
-    label: 'Cualquier',
-    value: 0,
-    quantity: 30,
-  });
+  };
+
+  const [categorySelected, setCategorySelected] =
+    useState<Option>(initialState);
+  const [categoryChildSelected, setCategoryChildSelected] =
+    useState<Option>(initialState);
   const { searchCategory, searchCategoryChildren } = useSearch();
-  const navigateTo = useNavigate();
+  const { navigatePersistParams } = useNavigateCustom();
   const params = useParams();
 
   const [categoryChildren, setCategoryChildren] = useState<Option[]>([]);
@@ -32,28 +32,20 @@ const CategoriesFilter = () => {
   const navigateCategory = (option: Option) => {
     if (option.value != 0) {
       setCategorySelected(option);
-      navigateTo(`/ads/${option.value}`);
+      navigatePersistParams(`/ads/${option.value}`);
     } else {
-      setCategorySelected({
-        label: 'Cualquier',
-        value: 0,
-        quantity: 30,
-      });
-      navigateTo('/ads/');
+      setCategorySelected(initialState);
+      navigatePersistParams('/ads/');
     }
   };
 
   const navigateCategoryChildren = (option: Option) => {
     if (option.value != 0) {
       setCategoryChildSelected(option);
-      navigateTo(`/ads/${searchCategory()?.slug},${option.value}`);
+      navigatePersistParams(`/ads/${searchCategory()?.slug},${option.value}`);
     } else {
-      setCategoryChildSelected({
-        label: 'Cualquier',
-        value: 0,
-        quantity: 30,
-      });
-      navigateTo(`/ads/${searchCategory()?.slug}`);
+      setCategoryChildSelected(initialState);
+      navigatePersistParams(`/ads/${searchCategory()?.slug}`);
     }
   };
 
@@ -65,21 +57,25 @@ const CategoriesFilter = () => {
     }));
     setCategoryChildren(optionsChildren ?? []);
     if (!searchCategoryChildren()) {
+      setCategoryChildSelected(initialState);
+    } else {
       setCategoryChildSelected({
-        label: 'Cualquier',
-        value: 0,
-        quantity: 30,
+        label: `${searchCategoryChildren()?.name}`,
+        value: `${searchCategoryChildren()?.slug}`,
+        quantity: 0,
       });
     }
     if (!searchCategory()) {
+      setCategorySelected(initialState);
+    } else {
       setCategorySelected({
-        label: 'Cualquier',
-        value: 0,
-        quantity: 30,
+        label: `${searchCategory()?.name}`,
+        value: `${searchCategory()?.slug}`,
+        quantity: 0,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params]);
+  }, [params, allCategories.data?.data]);
 
   return (
     <div className="categories categories-filter fw-bold text text-font-rubik">
