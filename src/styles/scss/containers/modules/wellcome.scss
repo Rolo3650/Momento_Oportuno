@@ -71,7 +71,7 @@
 
 
         @media screen and (min-width: 1200px) {
-            padding-top: 120px;
+            padding-top: 60px;
             min-height: 545px;
             background-image:
                 url("/svg/backgrounds/usrback_1.svg");
@@ -94,32 +94,29 @@
             padding-top: 35px;
             background-image:
                 url("/svg/backgrounds/usrback_1.svg");
-            background-size: cover;
+            background-size: auto;
         }
 
         & .wellcome-body {
 
             flex-wrap: wrap;
+            width: 100%;
 
             @media screen and (min-width: 1200px) {
-                justify-content: space-between;
-                max-width: 1200px;
+                justify-content: center;
             }
 
             @media screen and (max-width: 1200px) and (min-width: 1024px) {
                 justify-content: center;
-                max-width: 730px;
             }
 
 
             @media screen and (max-width: 1024px) and (min-width: 768px) {
                 justify-content: center;
-                max-width: 730px;
             }
 
             @media screen and (max-width: 768px) {
                 justify-content: center;
-                max-width: 390px;
             }
 
         }

@@ -7,7 +7,7 @@ interface Props {
 const WellcomeTwo: React.FC<Props> = ({ children }) => {
   return (
     <div className="wellcome wellcome-two">
-      <div className="d-flex wellcome-body mx-auto px-4">
+      <div className="d-flex wellcome-body">
         {children}
       </div>
     </div>
