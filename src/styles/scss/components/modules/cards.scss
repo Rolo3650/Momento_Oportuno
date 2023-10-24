@@ -81,6 +81,29 @@
         }
     }
 
+    &.card-login-tabs {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        position: relative;
+        overflow: hidden;
+    }
+
+    &.card-login-btns {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #464748;
+        cursor: pointer;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        width: calc(50% - 3px);
+        background: #ffffff;
+        box-shadow: 0px 6px 20px 0px rgba(41.99999999999999, 56.99999999999999, 70, 0.08);
+        position: relative;
+    }
+
     &.card-login-cont {
         background-color: #ffffff;
         border: 1px solid #ffffff;
