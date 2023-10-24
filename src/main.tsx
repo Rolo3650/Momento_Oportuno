@@ -6,6 +6,7 @@ import { AppProvider } from './context';
 import { queryClient } from './queryClient';
 import { AppRouter } from './router/AppRouter';
 import 'jquery';
+import './utils/css/cars-slider.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/css/index.css';

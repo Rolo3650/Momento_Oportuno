@@ -2,6 +2,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Home } from '../pages/home/Home';
 import { AdsSearch } from '../pages/ads/AdsSearch';
+import { AdSingle } from '../pages/ads/AdSingle';
 
 const AppRouter = () => {
   return (
@@ -12,6 +13,8 @@ const AppRouter = () => {
         {/* Ads */}
         <Route path="/ads" element={<AdsSearch />} />
         <Route path="/ads/:param_category" element={<AdsSearch />} />
+        <Route path="/ad" element={<AdSingle />} />
+        <Route path="/ad/:param_ad" element={<AdSingle />} />
 
         <Route path="/*" element={<Home />} />
       </Routes>
