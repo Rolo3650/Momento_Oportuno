@@ -4,6 +4,9 @@ import { DropdownOne } from '../../inputs/dropdown/DropdownOne';
 import { TextFieldOne } from '../../inputs/text/TextFieldOne';
 import { Button, CircularProgress, FormControl } from '@mui/material';
 import PlaceIcon from '@mui/icons-material/Place';
+import { useGetStates } from '../../../hooks/querys/useStates';
+import { useAllCategories } from '../../../hooks';
+import { useNavigate } from 'react-router-dom';
 
 interface Option {
   label: string;
@@ -15,28 +18,45 @@ interface Props {}
 
 const CardTwo: React.FC<Props> = () => {
   const theme = useTheme();
+  const navigateTo = useNavigate();
   const [lookingFor, setLookingFor] = useState('');
   const [loading, setLoading] = useState<boolean>(false);
+  const { data } = useGetStates();
+  const allCategories = useAllCategories();
+  const [city, setCity] = useState<Option>({ label: 'Ciudad', value: 0 });
+  const [category, setCategory] = useState<Option>({
+    label: 'Categoría',
+    value: 0,
+  });
 
   const onChangeLookingFor = (e: ChangeEvent<HTMLInputElement>) => {
     setLookingFor(e.target.value);
   };
 
   const onChangeCategory = (option: Option) => {
-    console.log(option);
+    setCategory(option);
   };
 
   const onChangeCity = (option: Option) => {
-    console.log(option);
+    setCity(option);
   };
 
   const onClickSearch = () => {
     setLoading(true);
     setTimeout(() => {
-      setLoading(false);
+      let route = '/ads?';
+      if (category.value != 0) {
+        route = `/ads/${category.value}?`;
+      }
+      if (city.value != 0) {
+        route = `${route}city=${city.value}&`;
+      }
+      if (lookingFor != '') {
+        route = `${route}keyword=${lookingFor}`;
+      }
+      navigateTo(route);
     }, 1000);
   };
-
   return (
     <div className="card-custom card-custom-two px-4 py-5">
       <div className="card-custom-heading text text-font-rubik fs-4 text-center">
@@ -68,10 +88,11 @@ const CardTwo: React.FC<Props> = () => {
               url: '/svg/icons/ticket_one.svg',
               endurl: '/svg/icons/menu_row_down.svg',
             }}
-            options={[
-              { label: 'Pesca', value: 'Pesca', quantity: 1 },
-              { label: 'Deportes', value: 'Deportes', quantity: 2 },
-            ]}
+            options={allCategories.data?.data.map((category) => ({
+              label: category.name,
+              value: category.slug,
+              quantity: 0,
+            }))}
             onChange={onChangeCategory}
           />
         </div>
@@ -99,10 +120,11 @@ const CardTwo: React.FC<Props> = () => {
               ),
               endurl: '/svg/icons/menu_row_down.svg',
             }}
-            options={[
-              { label: 'CDMX', value: 'CDMX', quantity: 1 },
-              { label: 'Quintana Roo', value: 'Quintana Roo', quantity: 2 },
-            ]}
+            options={data?.data?.map((city) => ({
+              label: city?.name,
+              value: city?.id,
+              quantity: 1,
+            }))}
             onChange={onChangeCity}
           />
         </div>
