@@ -4,9 +4,11 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 // import '/utils/js/card-slider.js';
 
-interface Props {}
+interface Props {
+  imgs: string[];
+}
 
-const CarouselTwo: React.FC<Props> = () => {
+const CarouselTwo: React.FC<Props> = ({ imgs }) => {
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     import('../../utils/js/card-slider.js' as any);
@@ -25,12 +27,11 @@ const CarouselTwo: React.FC<Props> = () => {
             </IconButton>
           </i>
           <ul className="carousel">
-            <li className="card-slider">
-              <img src="https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_826753-MLM69886534058_062023-O-1.webp" />
-            </li>
-            <li className="card-slider">
-              <img src="https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_754622-MLM69886534052_062023-O-1.webp" />
-            </li>
+            {imgs?.map((img) => (
+              <li className="card-slider">
+                <img src={img} />
+              </li>
+            ))}
           </ul>
           <i
             id="right"

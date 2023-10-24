@@ -4,6 +4,7 @@ import { Home } from '../pages/home/Home';
 import { AdsSearch } from '../pages/ads/AdsSearch';
 import { AdSingle } from '../pages/ads/AdSingle';
 import { LogRes } from "../pages/user/LogRes";
+import { ProfilePage } from '../pages/user/ProfilePage';
 
 const AppRouter = () => {
   return (
@@ -18,6 +19,7 @@ const AppRouter = () => {
         <Route path="/ad/:param_ad" element={<AdSingle />} />
 
         <Route path="/login-register" element={<LogRes />} />
+        <Route path="/user" element={<ProfilePage />} />
 
         <Route path="/*" element={<Home />} />
       </Routes>

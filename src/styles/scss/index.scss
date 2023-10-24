@@ -67,6 +67,11 @@ $font_6: 'Monoton', sans-serif;
 /* Carousel */
 @import 'containers/carousel.scss';
 
+// - Body:
+
+/* Body */
+@import 'containers/body.scss';
+
 // - Inputs:
 
 /* Button */
@@ -78,6 +83,8 @@ $font_6: 'Monoton', sans-serif;
 
 /* Products */
 @import 'components/products/products.scss';
+/* Product Description */
+@import 'components/products/productDescription.scss';
 
 // - Breadcrumbs:
 
@@ -119,3 +126,7 @@ $font_6: 'Monoton', sans-serif;
 
 /* Ads Search */
 @import 'pages/addSearch.scss';
+/* Ads Single */
+@import 'pages/adSingle.scss';
+/* Profile Page */
+@import 'pages/profilePage.scss';

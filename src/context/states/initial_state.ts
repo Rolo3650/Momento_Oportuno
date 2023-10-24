@@ -11,6 +11,7 @@ const app_state: AppState = {
     priceMax: 0,
   },
   userState: null,
+  adSingleState: { ad: null, loading: false },
 
   [Symbol.iterator]: function () {
     let index = 0;

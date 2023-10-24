@@ -11,6 +11,7 @@ import { AppState } from './context.type';
 import { filterReducer } from './reducers/filter/filter';
 import { counterReducer } from './reducers/counter';
 import Cookies from 'universal-cookie';
+import { adSingleReducer } from './reducers/adSingle';
 
 const KEY_FOR_APP_STATE = 'state_x_key_for_app' as const;
 
@@ -23,7 +24,7 @@ const AppContext = createContext<{
 });
 
 const mainReducer = (
-  { counter, filterState, userState, ..._ }: AppState,
+  { counter, filterState, userState, adSingleState, ..._ }: AppState,
   action: AppActions
 ): AppState => {
   if (action.type === AppTypes.SetGlobalState) {
@@ -34,6 +35,7 @@ const mainReducer = (
     userState: userReducer(userState, action),
     counter: counterReducer(counter, action),
     filterState: filterReducer(filterState, action),
+    adSingleState: adSingleReducer(adSingleState, action),
 
     ..._,
   };

@@ -1,0 +1,18 @@
+.profile-toppart {
+    .profile-background {
+        justify-content: center;
+        width: 100%;
+        height: 200px;
+        background-image: url("/svg/backgrounds/usrback_1.svg");
+        background-position: center top;
+        background-size: cover;
+        .profile-picture {
+            align-self: center;
+            background-color: $color_12;
+            height: 220px;
+            width: 220px;
+            border-radius: 50%;
+        }
+    }
+    
+}

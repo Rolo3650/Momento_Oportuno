@@ -1,5 +1,6 @@
 import { AppState } from '..';
 import type { FilterActions, UserActions } from './';
+import { AdSingleActions } from './adSingle';
 import { CounterActions } from './counter/counter.type';
 
 export type ActionMap<M extends { [index: string]: unknown }> = {
@@ -25,6 +26,9 @@ export const AppTypes = {
   // filterTypes
   SetFilter: 'SET_FILTER',
 
+  // adSingleTypes
+  SetAdSingle: 'SET_AD_SINGLE',
+
   // counterTypes
   Increment: 'INCREMENT',
   Decrement: 'DECREMENT',
@@ -44,4 +48,5 @@ export type AppActions =
   | FilterActions
   | UserActions
   | CounterActions
+  | AdSingleActions
   | GlobalActions;
