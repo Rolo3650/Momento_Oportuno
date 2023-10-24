@@ -6,6 +6,7 @@ import { CardOne } from '../../components/module/cards/CardOne';
 import { CardTwo } from '../../components/module/cards/CardTwo';
 import { HowItWorksOne } from '../../containers/modules/howItWorks/HowItWorksOne';
 import { LastAdsOne } from '../../containers/lastAds/LastAdsOne';
+import { AboutUsOne } from '../../containers/modules/aboutUs/AboutUsOne';
 // import { useInfiniteAds } from '../../hooks';
 // import { useGetStates } from '../../hooks/querys/useStates';
 // import // LoginComponent,
@@ -185,6 +186,7 @@ const Home = () => {
             },
           ]}
         />
+        <AboutUsOne/>
       </LayoutOne>
     </>
   );

@@ -29,8 +29,8 @@
     "react-router-dom": "^6.16.0",
     "sass": "^1.69.3",
     "sweetalert2": "^11.6.13",
-    "yarn.lock": "^0.0.1-security",
     "universal-cookie": "^6.1.1",
+    "yarn.lock": "^0.0.1-security",
     "zod": "^3.22.4"
   },
   "devDependencies": {

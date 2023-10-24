@@ -37,7 +37,7 @@ const HowItWorksOne = () => {
             constrast: '12',
           }}
           icon={{ url: './img/icons/win_one.png' }}
-          step="Encuentra lo que necesitas"
+          step="Encuentra lo que necesites"
         />
         <StepaOne
           color={{
