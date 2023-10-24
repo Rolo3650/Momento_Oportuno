@@ -42,7 +42,7 @@ const HeaderOne = () => {
         <div className="desktop">
           <Link
             component="button"
-            onClick={() => navigateTo('/')}
+            onClick={() => navigateTo('/login-register')}
             color={theme.palette.primary.contrastText}
             underline="none"
           >
