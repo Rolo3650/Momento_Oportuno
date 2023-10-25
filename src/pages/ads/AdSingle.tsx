@@ -6,6 +6,9 @@ import { useParams } from 'react-router-dom';
 import { Ad } from '../../api';
 import { BodyOne } from '../../containers/modules/body/BodyOne';
 import { ProductDescriptionOne } from '../../components/product/ProductDescriptionOne';
+import { UserMinOne } from '../../components/user/UserMinOne';
+import { ActionsTwo } from '../../components/actions/ActionsTwo';
+import { ProductOne } from '../../components/product/ProductOne';
 
 const AdSingle = () => {
   const { param_ad } = useParams();
@@ -33,6 +36,25 @@ const AdSingle = () => {
         </div>
         <BodyOne>
           <ProductDescriptionOne />
+          <div>
+            <UserMinOne />
+            <div className="my-4 d-flex justify-content-center product-decription product-decription-one card-custom p-3">
+              <ActionsTwo />
+            </div>
+            <ProductOne
+              product={{
+                id: 1,
+                imgs: [
+                  'https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_826753-MLM69886534058_062023-O-1.webp',
+                  'https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_754622-MLM69886534052_062023-O-1.webp',
+                ],
+                title: 'Porsche Cayman 2.7 Coupe Pdk At',
+                price: 375000,
+                views: 10,
+                is_featured: false,
+              }}
+            />
+          </div>
         </BodyOne>
       </div>
     </LayoutOne>

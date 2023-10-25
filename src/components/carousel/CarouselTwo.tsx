@@ -2,6 +2,7 @@ import { IconButton } from '@mui/material';
 import React, { useEffect } from 'react';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { slider } from '../../utils/js/card-slider';
 // import '/utils/js/card-slider.js';
 
 interface Props {
@@ -10,9 +11,9 @@ interface Props {
 
 const CarouselTwo: React.FC<Props> = ({ imgs }) => {
   useEffect(() => {
+    slider();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    import('../../utils/js/card-slider.js' as any);
-  });
+  }, []);
 
   return (
     <div className="body-card-container my-4">

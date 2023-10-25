@@ -2,19 +2,23 @@ import React from 'react';
 import { CarouselOne } from '../carousel/CarouselOne';
 import { ActionsOne } from '../actions/ActionsOne';
 import { Ad } from '../../api';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   product: Ad;
 }
 
 const ProductOne: React.FC<Props> = ({ product }) => {
+  const navigateTo = useNavigate();
+
   return (
     <div
       className={`w-100 product product-one ${
         product?.is_featured ? 'feauture' : ''
       }`}
       onClick={() => {
-        window.location.assign('/');
+        window.scrollTo(0, 0);
+        navigateTo('/ad/13');
       }}
     >
       <CarouselOne product={product} />
