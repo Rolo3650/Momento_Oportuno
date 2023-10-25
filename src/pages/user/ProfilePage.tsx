@@ -16,14 +16,17 @@ const ProfilePage = () => {
           </div>
           <div className="profile-time">
             <div className="profile-time_user-img">
-              <img className="profile-time_user-imguser" src="/svg/icons/usr_frm.svg" />
+              <img
+                className="profile-time_user-imguser"
+                src="/svg/icons/usr_frm.svg"
+              />
             </div>
             Miembro desde hace 3 semanas
           </div>
         </div>
       </div>
       <div className="phoneNumber-sec">
-        <PhoneNumberOne/>
+        <PhoneNumberOne phoneNumber="+52 55 5555 5555" />
       </div>
     </LayoutOne>
   );

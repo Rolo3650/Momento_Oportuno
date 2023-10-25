@@ -1,34 +1,59 @@
 .container-phoneNumber {
+  display: flex;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  padding-inline: 10px;
+  padding-right: 50px;
+  padding-block: 15px;
+  align-items: center;
+  justify-content: start;
+  border: solid 1px orange;
+  border-radius: 10px;
+  transition: box-shadow 0.5s ease-in-out;
+
+  .container-phoneIcon {
     display: flex;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-    padding-inline: 20px;
-    padding-right: 100px;
-    padding-block: 15px;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
     border: solid 1px orange;
-    border-radius: 10px;
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+
+  .phoneNumber {
+    width: 145px;
+    font-size: 16px;
+    font-family: $font_4;
+    color: $color_5;
+    font-weight: bold;
+  }
+
+  .phoneNumber-visible {
+    display: flex;
+    margin-left: 60px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: orange;
     transition: box-shadow 0.3s ease-in-out;
-
-    
-    .container-phoneIcon {
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-        border: solid 1px orange;
-        margin-right: 20px;
-    }
-
-    .phoneNumber {
-        font-size: 16px;
-        font-family: $font_4;
-        color: $color_5;
-        font-weight: bold;
-    }
+    // transition: background-color .3s ease-in-out;
+  }
 }
 
 .container-phoneNumber:hover {
-    border: solid 1px white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: solid 1px white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.phoneNumber-visible:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: rgb(255, 153, 0);
+}
+
+.phoneNumber-visible:active {
 }
