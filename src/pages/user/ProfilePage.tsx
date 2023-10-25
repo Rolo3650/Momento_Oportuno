@@ -1,4 +1,5 @@
 import { LayoutOne } from '../../containers/layout/LayoutOne';
+import { PhoneNumberOne } from '../../components/phoneNumber/PhoneNumberOne';
 
 const ProfilePage = () => {
   return (
@@ -20,6 +21,9 @@ const ProfilePage = () => {
             Miembro desde hace 3 semanas
           </div>
         </div>
+      </div>
+      <div className="phoneNumber-sec">
+        <PhoneNumberOne/>
       </div>
     </LayoutOne>
   );
