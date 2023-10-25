@@ -26,12 +26,8 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <div className="phoneNumber-sec">
-        <PhoneNumberOne phoneNumber="+52 55 5555 5555" />
-      </div>
-      <div>
-        <SendMessageOne/>
-      </div>
+      <PhoneNumberOne phoneNumber={"+52 55 5555 5555"} />
+      <SendMessageOne />
     </LayoutOne>
   );
 };
