@@ -7,6 +7,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Swal from 'sweetalert2';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -59,7 +63,7 @@ const CardLogRes = () => {
     const [RGpsw, setRGpsw] = useState('');
     const [RGnmc, setRGnmc] = useState('');
     const [RGape, setRGape] = useState('');
-    const onChangeInput = (input:string, value:string) => {
+    const onChangeInput = (input: string, value: string) => {
         switch (input) {
             case "rgusername":
                 setRGusr(value);
@@ -95,15 +99,33 @@ const CardLogRes = () => {
         console.log(ISusr + "-" + ISpsw);
         setTimeout(() => {
             setLoadingIS(false);
-        },1000);
+        }, 1000);
     }
     const onClickShowRG = () => {
         setLoadingRG(true);
         console.log(RGusr + "-" + RGeml + "-" + RGtel + "-" + RGpsw + "-" + RGnmc + "-" + RGape);
         setTimeout(() => {
             setLoadingRG(false);
-        },1000);
+        }, 1000);
     }
+
+    const onClickLostPSW = () => {
+        Swal.fire({
+            title: "Restaurar Contraseña",
+            text: "Introduzca la dirección de correo electrónico asociada a la cuenta.",
+            icon: "question",
+            input: "text",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            cancelButtonColor: "#FD8A2A",
+            confirmButtonColor: "#E4032E",
+            confirmButtonText: "Enviar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire("Enviar", "", "info");
+            }
+        });
+    };
     return (
         <><div className='card-login card-login-logres'>
             <Box sx={{ width: '100%' }}>
@@ -144,7 +166,17 @@ const CardLogRes = () => {
                                     onChange={onChangeISpsw}
                                 ></PswFieldOne>
                             </div>
-                            <div className="mt-5">
+                            <div className='mt-2 chkbox chkbox-main'>
+                                <div className='chkbox chkbox-remember'>
+                                    <FormGroup>
+                                        <FormControlLabel control={<Checkbox/>} label="Recuérdame" />
+                                    </FormGroup>
+                                </div>
+                                <div className='chkbox chkbox-lostpsw' onClick={onClickLostPSW}>
+                                    ¿Olvidaste tu contraseña?
+                                </div>
+                            </div>
+                            <div className="mt-2">
                                 <FormControl fullWidth>
                                     <Button
                                         className="p-2"
