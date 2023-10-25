@@ -1,5 +1,6 @@
 import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { PhoneNumberOne } from '../../components/phoneNumber/PhoneNumberOne';
+import { SendMessageOne } from '../../components/inputs/sendMessage/SendMessageOne';
 
 const ProfilePage = () => {
   return (
@@ -27,6 +28,9 @@ const ProfilePage = () => {
       </div>
       <div className="phoneNumber-sec">
         <PhoneNumberOne phoneNumber="+52 55 5555 5555" />
+      </div>
+      <div>
+        <SendMessageOne/>
       </div>
     </LayoutOne>
   );
