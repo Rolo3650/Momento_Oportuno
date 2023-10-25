@@ -60,7 +60,7 @@ const ProductDescriptionOne: React.FC<Props> = () => {
             fontSize: '16px',
             borderColor: '#F9A03F',
           }}
-          label={adSingleState?.ad?.category.name}
+          label={adSingleState?.ad?.category?.name}
           variant="outlined"
           className="text text-font-helvetica"
         />
