@@ -1,0 +1,35 @@
+.container-sendMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $color_12;
+  width: 1150px;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  .container-sendMessage-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: $font_4;
+    color: $color_5;
+    font-weight: 650;
+  }
+
+  .container-sendMessage-input {
+    margin-bottom: 30px;
+    .input-message {
+      width: 1022px;
+      height: 180px;
+      border: transparent;
+      padding: 15px;
+      border-radius: 6px;
+      outline: none;
+      color: black;
+      resize: vertical;
+    }
+  }
+
+  .container-send-message-button {
+    margin-bottom: 30px;
+  }
+}

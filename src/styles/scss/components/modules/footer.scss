@@ -1,154 +1,159 @@
-.footer-one {
-  position: relative;
-  background-color: $color_terciary;
+.container-footer {
+  display: flex;
+  flex-direction: column;
+  .footer-one {
+    position: relative;
+    background-color: $color_terciary;
 
-  .footer-body {
-    .grid {
-      display: flex;
-      margin-top: 3rem;
-      margin-bottom: 3rem;
-      .contact-info {
-        text-align: start;
-        margin-top: 1rem;
-        .contact-text {
-          margin-bottom: 30px;
-          .text-row {
-          }
-        }
-        .socialmedia {
-          text-align: center;
-          .socialmedia-text {
-            margin-bottom: 10px;
-          }
-          .socialmedia-buttons {
-          }
-        }
-      }
-      .info {
-      }
-      .recent {
-        .recent-img {
-          border-radius: 5px;
-          height: 50px;
-          width: 50;
-          margin-right: 10px;
-        }
-        .recent-content {
-          text-align: start;
-          .recent-price {
-            font-size: 14px;
-            font-family: $font_2;
-            color: #ffc695;
-          }
-        }
-      }
-      .sect {
-        margin-inline: 3rem;
-
-        .list-element {
-          align-self: left;
-          display: flex;
-
-          margin-top: 20px;
-        }
-        .subtitle {
-          color: $color_7;
-          font-family: $font_4;
-          font-size: 16px;
-          font-weight: bold;
-        }
-        .text {
-          font-size: 16px;
-          color: $color_7;
-          font-family: $font_1;
-        }
-        .text2 {
-          font-size: 14px;
-          color: $color_7;
-          font-family: $font_2;
-          font-weight: 500;
-        }
-
-        .animated {
-          padding: 5px;
-          position: relative;
-          animation-duration: 2s;
-          animation-fill-mode: forwards;
-        }
-
-        .animated::before {
-          content: '•';
-          position: absolute;
-          left: -10px;
-          opacity: 0;
-          color: $color_primary;
-          transition: opacity 1s ease-in-out;
-        }
-
-        .animated:hover::before {
-          opacity: 1;
-        }
-
-        .animated:not(:hover) {
-          animation-name: slideout;
-        }
-
-        .animated:hover {
-          animation-name: slidein;
-        }
-
-        @keyframes slidein {
-          from {
-            margin-left: 0%;
-            width: 100%;
-          }
-
-          to {
-            margin-left: 15%;
-            width: 120%;
-          }
-        }
-
-        @keyframes slideout {
-          from {
-            margin-left: 15%;
-            width: 120%;
-          }
-          to {
-            margin-left: 0%;
-            width: 100%;
-          }
-        }
-      }
-    }
-
-    @media (max-width: 1200px) {
+    .footer-body {
       .grid {
-        display: block;
-        text-align: center;
+        display: flex;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        .contact-info {
+          text-align: start;
+          margin-top: 1rem;
+          .contact-text {
+            margin-bottom: 30px;
+            .text-row {
+            }
+          }
+          .socialmedia {
+            text-align: center;
+            .socialmedia-text {
+              margin-bottom: 10px;
+            }
+            .socialmedia-buttons {
+            }
+          }
+        }
+        .info {
+        }
+        .recent {
+          .recent-img {
+            border-radius: 5px;
+            height: 50px;
+            width: 50;
+            margin-right: 10px;
+          }
+          .recent-content {
+            text-align: start;
+            .recent-price {
+              font-size: 14px;
+              font-family: $font_2;
+              color: #ffc695;
+            }
+          }
+        }
         .sect {
-          margin-top: 2rem;
-          justify-content: center;
-          text-align: center;
+          margin-inline: 3rem;
+
+          .list-element {
+            align-self: left;
+            display: flex;
+
+            margin-top: 20px;
+          }
+          .subtitle {
+            color: $color_7;
+            font-family: $font_4;
+            font-size: 16px;
+            font-weight: bold;
+          }
+          .text {
+            font-size: 16px;
+            color: $color_7;
+            font-family: $font_1;
+          }
+          .text2 {
+            font-size: 14px;
+            color: $color_7;
+            font-family: $font_2;
+            font-weight: 500;
+          }
+
           .animated {
-            animation-duration: 4s;
+            padding: 5px;
+            position: relative;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+          }
+
+          .animated::before {
+            content: '•';
+            position: absolute;
+            left: -10px;
+            opacity: 0;
+            color: $color_primary;
+            transition: opacity 1s ease-in-out;
+          }
+
+          .animated:hover::before {
+            opacity: 1;
+          }
+
+          .animated:not(:hover) {
+            animation-name: slideout;
+          }
+
+          .animated:hover {
+            animation-name: slidein;
+          }
+
+          @keyframes slidein {
+            from {
+              margin-left: 0%;
+              width: 100%;
+            }
+
+            to {
+              margin-left: 15%;
+              width: 120%;
+            }
+          }
+
+          @keyframes slideout {
+            from {
+              margin-left: 15%;
+              width: 120%;
+            }
+            to {
+              margin-left: 0%;
+              width: 100%;
+            }
           }
         }
       }
-    }
 
-    .rights_reserved {
-      text-align: center;
-      height: 60px;
-      width: auto;
-      background-color: $color_5;
-      .rights_reserved-text {
-        padding-top: 20px;
-        color: $color_4;
-        font-family: $font_2;
-        font-size: 14px;
-        font-weight: 500;
+      @media (max-width: 1200px) {
+        .grid {
+          display: block;
+          text-align: center;
+          .sect {
+            margin-top: 2rem;
+            justify-content: center;
+            text-align: center;
+            .animated {
+              animation-duration: 4s;
+            }
+          }
+        }
       }
+
+      
+    }
+  }
+  .rights_reserved {
+    text-align: center;
+    height: 60px;
+    width: 100;
+    background-color: $color_5;
+    .rights_reserved-text {
+      padding-top: 20px;
+      color: $color_4;
+      font-family: $font_2;
+      font-size: 14px;
+      font-weight: 500;
     }
   }
 }
