@@ -4,11 +4,18 @@ import { useTheme } from '@mui/material/styles';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import CompareArrowsOutlinedIcon from '@mui/icons-material/CompareArrowsOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { AdPreview } from '../modals/AdPreview';
+import { Ad } from '../../api';
+import { LogResForm } from '../modals/LogResForm';
 
-interface Props {}
+interface Props {
+  product: Ad;
+}
 
-const ActionsOne: React.FC<Props> = () => {
+const ActionsOne: React.FC<Props> = ({ product }: Props) => {
   const [compare, SetCompare] = useState<boolean>(false);
+  const [isModalProductOpen, setIsModalProductOpen] = useState<boolean>(false);
+  const [isModalLogResOpen, setIsModalLogResOpen] = useState<boolean>(false);
 
   const onClickCompare = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -16,10 +23,12 @@ const ActionsOne: React.FC<Props> = () => {
   };
 
   const onClickView = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsModalProductOpen(true);
     e.stopPropagation();
   };
 
   const onClickAddFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsModalLogResOpen(true);
     e.stopPropagation();
   };
 
@@ -44,6 +53,7 @@ const ActionsOne: React.FC<Props> = () => {
           }}
         />
       </IconButton>
+
       <IconButton
         className="ms-2"
         sx={{
@@ -85,6 +95,15 @@ const ActionsOne: React.FC<Props> = () => {
           }}
         />
       </IconButton>
+      <AdPreview
+        show={isModalProductOpen}
+        onHide={() => setIsModalProductOpen(false)}
+        product={product}
+      />
+      <LogResForm
+        show={isModalLogResOpen}
+        onHide={() => setIsModalLogResOpen(false)}
+      />
     </div>
   );
 };

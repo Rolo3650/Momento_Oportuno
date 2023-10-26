@@ -9,6 +9,8 @@ import 'jquery';
 import './utils/css/cars-slider.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'jquery/dist/jquery.min.js';
 import './styles/css/index.css';
 import './styles/scss/index.scss';
 import { ThemeOne } from './themes/ThemeOne';
