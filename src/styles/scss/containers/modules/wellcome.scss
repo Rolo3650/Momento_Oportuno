@@ -78,7 +78,7 @@
                 url("/svg/backgrounds/usrback_1.svg");
             background-position:
                 left top;
-            background-size: auto;
+            background-size: cover;
         }
 
         @media screen and (max-width: 1200px) and (min-width: 768px) {
@@ -89,7 +89,7 @@
                 url("/svg/backgrounds/usrback_1.svg");
             background-position:
                 left top;
-            background-size: auto;
+            background-size: cover;
         }
 
         @media screen and (max-width: 768px) {
@@ -97,7 +97,7 @@
             padding-bottom: 35px;
             background-image:
                 url("/svg/backgrounds/usrback_1.svg");
-            background-size: auto;
+            background-size: cover;
         }
 
         & .wellcome-body {
