@@ -16,8 +16,8 @@
 
         @media screen and (max-width: 900px) {
             height: 260px;
-            width: 390px;
-            margin-left: calc((100% - 390px)/2);
+            width: 500px;
+            margin-left: calc((100% - 450px)/2);
             overflow: hidden;
         }
 
@@ -48,7 +48,7 @@
                 z-index: 10;
 
                 @media screen and (max-width: 900px) {
-                    display: none;
+                    display: none !important;
                 }
 
                 &:active {
@@ -76,7 +76,8 @@
                 scrollbar-width: none;
 
                 @media screen and (max-width: 900px) {
-                    grid-auto-columns: calc(100%);
+                    grid-auto-columns: calc(110%);
+                    gap: 0;
                 }
 
                 &::-webkit-scrollbar {
@@ -124,8 +125,8 @@
                         border-radius: 8px;
 
                         @media screen and (max-width: 900px) {
-                            max-height: 240px;
-                            max-width: 350px;
+                            min-height: 260px;
+                            max-width: 390px;
                         }
                     }
 

@@ -3,8 +3,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Home } from '../pages/home/Home';
 import { AdsSearch } from '../pages/ads/AdsSearch';
 import { AdSingle } from '../pages/ads/AdSingle';
-import { LogRes } from "../pages/user/LogRes";
+import { LogRes } from '../pages/user/LogRes';
 import { ProfilePage } from '../pages/user/ProfilePage';
+import { AddNewAd } from '../pages/user/AddNewAd';
 
 const AppRouter = () => {
   return (
@@ -18,8 +19,10 @@ const AppRouter = () => {
         <Route path="/ad" element={<AdSingle />} />
         <Route path="/ad/:param_ad" element={<AdSingle />} />
 
+        {/* User */}
         <Route path="/login-register" element={<LogRes />} />
         <Route path="/user" element={<ProfilePage />} />
+        <Route path="/panel/create" element={<AddNewAd />} />
 
         <Route path="/*" element={<Home />} />
       </Routes>
