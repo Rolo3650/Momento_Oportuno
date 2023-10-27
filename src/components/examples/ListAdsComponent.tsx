@@ -54,7 +54,7 @@ export const ListAdsComponent = () => {
           <li key={ad.id}>
             <h3>{ad.title}</h3>
             <p>{ad.description}</p>
-            <button onClick={() => toggle(ad.id)} disabled={toggleLoad}>
+            <button onClick={() => toggle(ad.id ?? 0)} disabled={toggleLoad}>
               {favorites?.data.some((fav) => fav.id === ad.id)
                 ? 'Remove Favorite'
                 : 'Add Favorite'}

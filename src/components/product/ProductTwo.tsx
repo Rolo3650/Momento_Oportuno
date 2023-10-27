@@ -22,7 +22,7 @@ const ProductTwo: React.FC<Props> = ({ product }) => {
         <div className="info fs-5 fw-bold text text-color-5 text-font-rubik h-100">
           <div className="d-flex justify-content-between actions">
             Hola
-            <ActionsOne />
+            <ActionsOne product={product}/>
           </div>
           <div className="description d-grid">
             <div className="name">{product.title}</div>
