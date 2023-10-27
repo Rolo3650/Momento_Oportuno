@@ -33,6 +33,14 @@ const ProfileButton = () => {
           sx={{
             border: `2px solid ${theme.palette.secondary.main}`,
           }}
+          
+          onClick={() => {
+            if (state?.userState?.token && state?.userState?.token != '') {
+              navigateTo('/list')
+            }else {
+              navigateTo('/login-register')
+            }
+          }}
         >
           <PermIdentityOutlinedIcon
             sx={{
@@ -72,7 +80,7 @@ const ProfileButton = () => {
           >
             <MenuItem
               className="text text-font-helvetica"
-              onClick={() => navigateTo('/panel/create')}
+              onClick={() => navigateTo('/panel/list')}
             >
               <AddCircleOutlineIcon className="text text-color-5" /> &nbsp;
               Publicar Anuncio
@@ -85,25 +93,25 @@ const ProfileButton = () => {
             </MenuItem>
             <MenuItem
               className="text text-font-helvetica"
-              onClick={() => navigateTo('/panel/create')}
+              onClick={() => navigateTo('/panel/messages')}
             >
               <TextsmsIcon /> &nbsp; Mensajes
             </MenuItem>
             <MenuItem
               className="text text-font-helvetica"
-              onClick={() => navigateTo('/panel/create')}
+              onClick={() => navigateTo('/panel/favorites')}
             >
               <FavoriteIcon /> &nbsp; Favoritos
             </MenuItem>
             <MenuItem
               className="text text-font-helvetica"
-              onClick={() => navigateTo('/panel/create')}
+              onClick={() => navigateTo('/panel/my-orders')}
             >
               <AssignmentIcon /> &nbsp; Mis órdenes
             </MenuItem>
             <MenuItem
               className="text text-font-helvetica"
-              onClick={() => navigateTo('/panel/create')}
+              onClick={() => navigateTo('/panel/settings')}
               sx={{
                 borderBottom: `1px solid ${theme?.palette?.secondary.main}`,
               }}

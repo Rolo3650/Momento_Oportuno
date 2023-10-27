@@ -1,12 +1,22 @@
 // import React from 'react';
-
+import { useEffect } from 'react';
 import { Button, useTheme } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useLogOut } from '../../../hooks';
+import { useAppContext } from '../../../context';
 
 const NavbarOne = () => {
   const { pathname } = useLocation();
   const navigateTo = useNavigate();
   const theme = useTheme();
+  const { mutate } = useLogOut();
+  const { state } = useAppContext();
+
+  useEffect(() => {
+    if (!state?.userState?.token) {
+      window.location.assign('/');
+    }
+  }, [state.userState]);
 
   return (
     <div className="navbar navbar-one mx-auto p-0 px-2 justify-content-start">
@@ -174,7 +184,7 @@ const NavbarOne = () => {
             borderRadius: '0',
           }}
           className="text text-font-rubik fw-bold fs-6"
-          onClick={() => navigateTo('/panel/create')}
+          onClick={() => mutate()}
         >
           Cerrar sesión
         </Button>
