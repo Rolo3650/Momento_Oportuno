@@ -1,12 +1,14 @@
 import React from 'react';
-import { LayoutOne } from '../../containers/layout/LayoutOne';
+import { LayoutThree } from '../../containers/layout/LayoutThree';
 
 interface Props {}
 
 const AddNewAd: React.FC<Props> = () => {
-  return <LayoutOne>
-    Hola
-  </LayoutOne>;
+  return (
+    <LayoutThree>
+      <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">Publicar Anuncio</h1>
+    </LayoutThree>
+  );
 };
 
 export { AddNewAd };

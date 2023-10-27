@@ -27,4 +27,29 @@
 
     }
 
+    &.page-body-two {
+
+        background-color: $color_6;
+        width: 100%;
+        min-height: 70vh;
+
+        & .container {
+
+            padding-top: 60px;
+            max-width: 1200px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0;
+            margin-bottom: 0;
+
+            @media screen and (max-width: 768px) {
+                padding-top: 30px;
+            }
+
+
+        }
+
+    }
+
 }
