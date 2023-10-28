@@ -19,7 +19,7 @@ function LogResForm({ show, onHide }: Props) {
       <Modal.Body style={{
         backgroundColor: 'transparent',
       }}>
-        <CardLogRes />
+        <CardLogRes handleClose={onHide}/>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>
     </Modal>
