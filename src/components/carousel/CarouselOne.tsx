@@ -1,8 +1,8 @@
 import React from 'react';
-import { Ad } from '../../api';
+import { Ad, AdFavorite } from '../../api';
 
 interface Props {
-  product: Ad
+  product: Ad | AdFavorite
 }
 
 const CarouselOne: React.FC<Props> = ({ product }) => {

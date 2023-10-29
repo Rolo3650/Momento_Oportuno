@@ -1,17 +1,17 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { IconButton } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import CompareArrowsOutlinedIcon from '@mui/icons-material/CompareArrowsOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { AdPreview } from '../modals/AdPreview';
-import { Ad } from '../../api';
+import { Ad, AdFavorite } from '../../api';
 import { LogResForm } from '../modals/LogResForm';
 import { useAppContext } from '../../context';
 import { useAddFavorite, useRemoveFavorite, useMyFavorites } from '../../hooks';
 
 interface Props {
-  product: Ad;
+  product: Ad | AdFavorite;
 }
 
 const ActionsOne: React.FC<Props> = ({ product }: Props) => {

@@ -11,8 +11,6 @@ interface Props {
 const ProductOne: React.FC<Props> = ({ product }) => {
   const navigateTo = useNavigate();
 
-  console.log(product);
-
   return (
     <div
       className={`w-100 product product-one ${
