@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { IconButton } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
@@ -8,40 +8,32 @@ import { AdPreview } from '../modals/AdPreview';
 import { Ad, AdFavorite } from '../../api';
 import { LogResForm } from '../modals/LogResForm';
 import { useAppContext } from '../../context';
-import { useAddFavorite, useRemoveFavorite, useMyFavorites } from '../../hooks';
+import { useAddFavorite, useRemoveFavorite } from '../../hooks';
 
 interface Props {
   product: Ad | AdFavorite;
+  fav?: boolean | undefined;
 }
 
-const ActionsOne: React.FC<Props> = ({ product }: Props) => {
+const ActionsOne: React.FC<Props> = ({ product, fav }: Props) => {
   const { state } = useAppContext();
 
   const [compare, SetCompare] = useState<boolean>(false);
   const [isModalProductOpen, setIsModalProductOpen] = useState<boolean>(false);
   const [isModalLogResOpen, setIsModalLogResOpen] = useState<boolean>(false);
 
-  const { data: favorites } = useMyFavorites();
   const { mutate: add, isLoading: load1 } = useAddFavorite();
   const { mutate: remove, isLoading: load2 } = useRemoveFavorite();
 
-  // useEffect(() => {
-  //   console.log("favoritos:",favorites?.data);
-  //   console.log("producto:",product);
-  // }, []);
-
   const toggleLoad = load1 || load2;
 
-  const toggle = useCallback(
-    (id: number) => {
-      if (favorites?.data.some((fav) => fav.id === id)) {
-        remove(id);
-      } else {
-        add(id);
-      }
-    },
-    [favorites]
-  );
+  const toggle = (id: number) => {
+    if (fav) {
+      remove(id);
+    } else {
+      add(id);
+    }
+  };
 
   const onClickCompare = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -58,10 +50,8 @@ const ActionsOne: React.FC<Props> = ({ product }: Props) => {
       setIsModalLogResOpen(true);
       return;
     }
-    
-    toggle(product.id);
-    console.log("favorito:", favorites?.data.filter((fav) => fav.id===product.id))
 
+    toggle(product.id);
     e.stopPropagation();
   };
 
@@ -113,8 +103,8 @@ const ActionsOne: React.FC<Props> = ({ product }: Props) => {
       <IconButton
         className="ms-2"
         sx={{
-          backgroundColor: favorites?.data.some((fav) => fav.id === product?.id) ? theme.palette.primary.main : '',
-          color: favorites?.data.some((fav) => fav.id === product?.id) ? 'white' : '',
+          backgroundColor: fav ? theme.palette.primary.main : '',
+          color: fav ? 'white' : '',
           border: `1px solid ${'#FD8A2A'}`,
           transition: '.3s ease-in-out',
           '&:hover': {

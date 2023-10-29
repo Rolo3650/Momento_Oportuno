@@ -4,6 +4,7 @@ import FinesseButton from '../../components/inputs/buttons/FinesseButton';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { Ad } from '../../api';
 import { useNavigate } from 'react-router';
+import { useMyFavorites } from '../../hooks';
 
 interface Props {
   products: Ad[] | undefined;
@@ -13,6 +14,7 @@ interface Props {
 
 const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
   const navigateTo = useNavigate();
+  const { data: favorites } = useMyFavorites();
 
   return (
     <div className="last-ads last-ads-one mx-auto">
@@ -36,7 +38,11 @@ const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
       </div>
       <div className="products">
         {products?.map((product, index) => (
-          <ProductOne key={`${product?.id}-${index}`} product={product} />
+          <ProductOne
+            key={`${product?.id}-${index}`}
+            product={product}
+            fav={favorites?.data.some((fav) => fav.id === product.id)}
+          />
         ))}
       </div>
     </div>

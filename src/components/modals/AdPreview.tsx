@@ -1,11 +1,11 @@
 import Modal from 'react-bootstrap/Modal';
 import { ProductTwo } from '../product/ProductTwo';
-import { Ad } from '../../api';
+import { Ad, AdFavorite } from '../../api';
 
 interface Props {
   show: boolean;
   onHide: () => void;
-  product: Ad;
+  product: Ad | AdFavorite;
 }
 function AdPreview({ show, onHide, product }: Props) {
   return (
@@ -16,8 +16,7 @@ function AdPreview({ show, onHide, product }: Props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
-      </Modal.Header>
+      <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
         <ProductTwo product={product} />
       </Modal.Body>

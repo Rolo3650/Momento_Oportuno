@@ -6,9 +6,10 @@ import { useNavigate } from 'react-router-dom';
 
 interface Props {
   product: Ad;
+  fav?: boolean | undefined;
 }
 
-const ProductOne: React.FC<Props> = ({ product }) => {
+const ProductOne: React.FC<Props> = ({ product, fav }) => {
   const navigateTo = useNavigate();
 
   return (
@@ -41,7 +42,7 @@ const ProductOne: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="d-flex justify-content-between align-items-center actions">
-        <ActionsOne product={product} />
+        <ActionsOne product={product} fav={fav} />
         <div className="text text-font-l-d views">{product?.views} Vistas</div>
       </div>
     </div>

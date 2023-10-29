@@ -10,7 +10,6 @@ import { AboutUsOne } from '../../containers/modules/aboutUs/AboutUsOne';
 import { useInfiniteAds } from '../../hooks';
 
 const Home = () => {
-  // const { data } = useGetStates();
   const { data: campeche } = useInfiniteAds({
     sortBy: 'created_at',
     order: 'desc',

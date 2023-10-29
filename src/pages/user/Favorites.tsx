@@ -2,6 +2,7 @@ import React from 'react';
 import { LayoutThree } from '../../containers/layout/LayoutThree';
 import { useMyFavorites } from '../../hooks';
 import { ProductTwo } from '../../components/product/ProductTwo';
+import { EmptyBoxOne } from '../../components/module/box/EmptyBoxOne';
 
 interface Props {}
 
@@ -9,16 +10,7 @@ const Favorites: React.FC<Props> = () => {
   const { data: favorites } = useMyFavorites();
 
   const FavoritesListEmpty = () => {
-    return (
-      <div className="favorites-empty">
-        <div className="favorites-empty-title">
-          No has agregado publicaciones a favoritos.
-        </div>
-        <div className="favorites-empty-img">
-          <img src="/public/svg/icons/empty_box.svg" />
-        </div>
-      </div>
-    );
+    return <EmptyBoxOne text="No has agregado ningún favorito" />;
   };
 
   const FavoritesList = () => {
@@ -36,7 +28,7 @@ const Favorites: React.FC<Props> = () => {
                 '/img/examples/img_2.webp',
               ];
             }
-            return <ProductTwo product={obj} />;
+            return <ProductTwo product={obj} fav={true} />;
           })}
         </div>
       </div>
@@ -45,16 +37,14 @@ const Favorites: React.FC<Props> = () => {
 
   return (
     <LayoutThree>
-      <div className="favorites-container">
-        {favorites &&
-        favorites?.data &&
-        favorites?.data?.length &&
-        favorites.data.length > 0 ? (
-          <FavoritesList />
-        ) : (
-          <FavoritesListEmpty />
-        )}
-      </div>
+      {favorites &&
+      favorites?.data &&
+      favorites?.data?.length &&
+      favorites.data.length > 0 ? (
+        <FavoritesList />
+      ) : (
+        <FavoritesListEmpty />
+      )}
     </LayoutThree>
   );
 };
