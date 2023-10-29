@@ -24,6 +24,8 @@ export class AdsServices {
     category,
     query,
     state,
+    sortBy,
+    order,
   }: {
     page?: number;
     per_page?: number;
@@ -37,6 +39,12 @@ export class AdsServices {
     }
     if (state) {
       q += `&state=${state}`;
+    }
+    if (sortBy) {
+      q += `&sortBy=${sortBy}`;
+    }
+    if (order) {
+      q += `&order=${order}`;
     }
 
     const { data } = await req.get(`?page=${page}&per_page=${per_page}` + q);

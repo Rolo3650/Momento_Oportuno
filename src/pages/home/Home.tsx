@@ -7,186 +7,114 @@ import { CardTwo } from '../../components/module/cards/CardTwo';
 import { HowItWorksOne } from '../../containers/modules/howItWorks/HowItWorksOne';
 import { LastAdsOne } from '../../containers/lastAds/LastAdsOne';
 import { AboutUsOne } from '../../containers/modules/aboutUs/AboutUsOne';
-// import { useInfiniteAds } from '../../hooks';
-// import { useGetStates } from '../../hooks/querys/useStates';
-// import // LoginComponent,
-// RegisterComponent,
-// ListAdsComponent,
-// ListCategoriesComponent,
-// FavoritesComponent,
-// ListPackagesComponent,
-// ListStatesComponent,
-// '../../components';
-// import { useAppContext } from '../../context';
+import { useInfiniteAds } from '../../hooks';
 
 const Home = () => {
   // const { data } = useGetStates();
-  // const { data } = useInfiniteAds();
+  const { data: campeche } = useInfiniteAds({
+    sortBy: 'created_at',
+    order: 'desc',
+    state: 1,
+  });
+  const { data: yucatan } = useInfiniteAds({
+    sortBy: 'created_at',
+    order: 'desc',
+    state: 2,
+  });
+  const { data: qroo } = useInfiniteAds({
+    sortBy: 'created_at',
+    order: 'desc',
+    state: 3,
+  });
+  const { data: chiapas } = useInfiniteAds({
+    sortBy: 'created_at',
+    order: 'desc',
+    state: 4,
+  });
 
-  // console.log(data?.data);
-
-  // const { state, dispatch } = useAppContext();
-
-  // const increment = () => {
-  //   dispatch({ type: 'INCREMENT' });
-  // };
-  // const decrement = () => {
-  //   dispatch({ type: 'DECREMENT' });
-  // };
-
-  // const reset = () => {
-  //   dispatch({ type: 'RESET' });
-  // };
+  // console.log(campeche?.pages[0]?.);
 
   return (
     <>
-      {/* <div>
-      <h1>Home</h1>
-
-      <p>Counter: {state.counter}</p>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
-      <button onClick={reset}>Reset</button>
-      <div
-        style={{
-          border: '1px solid black',
-          display: 'flex',
-          justifyContent: 'space-around',
-          padding: '1rem',
-          flexDirection: 'column',
-        }}
-      >
-        <LoginComponent />
-        <RegisterComponent />
-        <ListAdsComponent />
-        <ListCategoriesComponent />
-        <FavoritesComponent />
-        <ListPackagesComponent />
-        <ListStatesComponent />
-      </div>
-    </div> */}
       <LayoutOne>
-        {/* <LoginComponent /> */}
         <WellcomeOne>
           <CardOne />
           <CardTwo />
         </WellcomeOne>
         <HowItWorksOne />
-        <LastAdsOne
-          title="Anuncios en"
-          span="Yucatán"
-          products={[
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: false,
-            },
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: false,
-            },
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: true,
-            },
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: false,
-            },
-          ]}
-        />
-        <LastAdsOne
-          title="Anuncios en"
-          span="Quintana Roo"
-          products={[
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: false,
-            },
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: false,
-            },
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: true,
-            },
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: false,
-            },
-          ]}
-        />
-        <LastAdsOne
-          title="Anuncios en"
-          span="Campeche"
-          products={[
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: false,
-            },
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: false,
-            },
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: true,
-            },
-            {
-              id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
-              title: 'Porsche Cayman 2.7 Coupe Pdk At',
-              price: 375000,
-              views: 10,
-              is_featured: false,
-            },
-          ]}
-        />
-        <AboutUsOne/>
+        {chiapas?.pages?.length &&
+          chiapas?.pages?.length > 0 &&
+          chiapas?.pages[0]?.data?.length > 0 && (
+            <LastAdsOne
+              title="Anuncios en"
+              span="Chiapas"
+              products={chiapas?.pages[0]?.data.slice(0, 4)?.map((data) => {
+                const obj = { ...data };
+                if (!obj.imgs || obj.imgs.length === 0) {
+                  obj.imgs = [
+                    './img/examples/img_1.webp',
+                    './img/examples/img_2.webp',
+                  ];
+                }
+                return obj;
+              })}
+            />
+          )}
+        {yucatan?.pages?.length &&
+          yucatan?.pages?.length > 0 &&
+          yucatan?.pages[0]?.data?.length > 0 && (
+            <LastAdsOne
+              title="Anuncios en"
+              span="Yucatán"
+              products={yucatan?.pages[0]?.data.slice(0, 4)?.map((data) => {
+                const obj = { ...data };
+                if (!obj.imgs || obj.imgs.length === 0) {
+                  obj.imgs = [
+                    './img/examples/img_1.webp',
+                    './img/examples/img_2.webp',
+                  ];
+                }
+                return obj;
+              })}
+            />
+          )}
+        {qroo?.pages?.length &&
+          qroo?.pages?.length > 0 &&
+          qroo?.pages[0]?.data?.length > 0 && (
+            <LastAdsOne
+              title="Anuncios en"
+              span="Quintana Roo"
+              products={qroo?.pages[0]?.data.slice(0, 4)?.map((data) => {
+                const obj = { ...data };
+                if (!obj.imgs || obj.imgs.length === 0) {
+                  obj.imgs = [
+                    './img/examples/img_1.webp',
+                    './img/examples/img_2.webp',
+                  ];
+                }
+                return obj;
+              })}
+            />
+          )}
+        {campeche?.pages?.length &&
+          campeche?.pages?.length > 0 &&
+          campeche?.pages[0]?.data?.length > 0 && (
+            <LastAdsOne
+              title="Anuncios en"
+              span="Campeche"
+              products={campeche?.pages[0]?.data.slice(0, 4)?.map((data) => {
+                const obj = { ...data };
+                if (!obj.imgs || obj.imgs.length === 0) {
+                  obj.imgs = [
+                    './img/examples/img_1.webp',
+                    './img/examples/img_2.webp',
+                  ];
+                }
+                return obj;
+              })}
+            />
+          )}
+        <AboutUsOne />
       </LayoutOne>
     </>
   );

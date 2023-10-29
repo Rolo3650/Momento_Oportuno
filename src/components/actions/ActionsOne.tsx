@@ -113,8 +113,8 @@ const ActionsOne: React.FC<Props> = ({ product }: Props) => {
       <IconButton
         className="ms-2"
         sx={{
-          backgroundColor: favorites?.data.some((fav) => fav.id === product.id) ? theme.palette.primary.main : '',
-          color: favorites?.data.some((fav) => fav.id === product.id) ? 'white' : '',
+          backgroundColor: favorites?.data.some((fav) => fav.id === product?.id) ? theme.palette.primary.main : '',
+          color: favorites?.data.some((fav) => fav.id === product?.id) ? 'white' : '',
           border: `1px solid ${'#FD8A2A'}`,
           transition: '.3s ease-in-out',
           '&:hover': {

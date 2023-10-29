@@ -4,10 +4,9 @@ import FinesseButton from '../../components/inputs/buttons/FinesseButton';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { Ad } from '../../api';
 import { useNavigate } from 'react-router';
-import { AdPreview } from '../../components/modals/AdPreview';
 
 interface Props {
-  products: Ad[];
+  products: Ad[] | undefined;
   title: string;
   span: string;
 }
