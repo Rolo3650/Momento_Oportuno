@@ -21,7 +21,7 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
       <div
         onClick={() => {
           window.scrollTo(0, 0);
-          navigateTo('/ad/13');
+          navigateTo(`/ad/${product.id}`);
         }}
       >
         <CarouselOne product={product} />

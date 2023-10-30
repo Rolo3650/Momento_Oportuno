@@ -48,6 +48,7 @@ const AttributeAdSchema = AttributeSchema.omit({
     value: z.union([z.array(AttributeValueSchema), z.string()]),
   })
 );
+export type AttributeAd = z.infer<typeof AttributeAdSchema>;
 
 export const AdSchema = z.object({
   id: z.number(),

@@ -4,11 +4,18 @@ import { useTheme } from '@mui/material/styles';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import CompareArrowsOutlinedIcon from '@mui/icons-material/CompareArrowsOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { Ad } from '../../api';
+import { useAddFavorite, useRemoveFavorite } from '../../hooks';
 
-interface Props {}
+interface Props {
+  product?: Ad | null;
+  fav?: boolean;
+}
 
-const ActionsTwo: React.FC<Props> = () => {
+const ActionsTwo: React.FC<Props> = ({ product, fav }) => {
   const [compare, SetCompare] = useState<boolean>(false);
+  const { mutate: add } = useAddFavorite();
+  const { mutate: remove } = useRemoveFavorite();
 
   const onClickCompare = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -19,8 +26,19 @@ const ActionsTwo: React.FC<Props> = () => {
     e.stopPropagation();
   };
 
+  const toggle = (id: number) => {
+    if (fav) {
+      remove(id);
+    } else {
+      add(id);
+    }
+  };
+
   const onClickAddFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    if (product?.id) {
+      toggle(product?.id);
+    }
   };
 
   const theme = useTheme();
