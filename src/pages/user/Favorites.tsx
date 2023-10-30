@@ -43,7 +43,12 @@ const Favorites: React.FC<Props> = () => {
       favorites.data.length > 0 ? (
         <FavoritesList />
       ) : (
-        <FavoritesListEmpty />
+        <>
+          <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
+            Favoritos
+          </h1>
+          <FavoritesListEmpty />
+        </>
       )}
     </LayoutThree>
   );

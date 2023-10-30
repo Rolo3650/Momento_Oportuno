@@ -5,7 +5,7 @@ import { Ad, AdFavorite } from '../../api';
 
 interface Props {
   product: Ad | AdFavorite;
-  fav: boolean | undefined;
+  fav?: boolean | undefined;
 }
 
 const ProductTwo: React.FC<Props> = ({ product, fav }) => {
