@@ -26,7 +26,7 @@ const LookingFor = () => {
   const onChangeLookingFor = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLookingFor(e.target.value);
     if (e.target.value == '') deleteQuery('keyword');
-    else navigatePersistQuery('keyword', e.target.value);
+    else navigatePersistQuery('keyword', e.target.value?.replace(/\s/g, '%20'));
   };
 
   const onChangeCity = (option: Option) => {
