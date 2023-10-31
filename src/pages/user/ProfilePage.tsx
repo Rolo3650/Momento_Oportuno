@@ -1,7 +1,7 @@
 import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { PhoneNumberOne } from '../../components/phoneNumber/PhoneNumberOne';
 import { SendMessageOne } from '../../components/inputs/sendMessage/SendMessageOne';
-import { UserAdsOne } from '../../containers/userAds/UserAdsOne';
+// import { UserAdsOne } from '../../containers/userAds/UserAdsOne';
 
 const ProfilePage = () => {
   return (
@@ -29,7 +29,7 @@ const ProfilePage = () => {
       </div>
       <PhoneNumberOne phoneNumber={"+52 55 5555 5555"} />
       <SendMessageOne />
-      <UserAdsOne
+      {/* <UserAdsOne
           
           products={[
             {
@@ -42,7 +42,7 @@ const ProfilePage = () => {
             },
             
           ]}
-        />
+        /> */}
     </LayoutOne>
   );
 };
