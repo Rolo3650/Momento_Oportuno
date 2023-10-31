@@ -80,14 +80,14 @@ const ProfileButton = () => {
           >
             <MenuItem
               className="text text-font-helvetica"
-              onClick={() => navigateTo('/panel/list')}
+              onClick={() => navigateTo('/panel/create')}
             >
               <AddCircleOutlineIcon className="text text-color-5" /> &nbsp;
               Publicar Anuncio
             </MenuItem>
             <MenuItem
               className="text text-font-helvetica"
-              onClick={() => navigateTo('/panel/create')}
+              onClick={() => navigateTo('/panel/list')}
             >
               <DescriptionOutlinedIcon /> &nbsp; Mis Anuncios
             </MenuItem>
