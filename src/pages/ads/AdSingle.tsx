@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { CarouselTwo } from '../../components/carousel/CarouselTwo';
 import { LayoutOne } from '../../containers/layout/LayoutOne';
-import { useAdById, useAds } from '../../hooks';
+import { useAdById, useAds, useInfiniteAds } from '../../hooks';
 import { useParams } from 'react-router-dom';
 import { Ad } from '../../api';
 import { BodyOne } from '../../containers/modules/body/BodyOne';
@@ -9,11 +9,15 @@ import { ProductDescriptionOne } from '../../components/product/ProductDescripti
 import { UserMinOne } from '../../components/user/UserMinOne';
 import { ActionsTwo } from '../../components/actions/ActionsTwo';
 import { ProductOne } from '../../components/product/ProductOne';
+import Carousel from 'react-bootstrap/Carousel';
+import { useMyFavorites } from '../../hooks';
 
 const AdSingle = () => {
   const { param_ad } = useParams();
   const { data } = useAdById(param_ad ?? 0);
-  const { setSingleAd } = useAds();
+  const { setSingleAd, adSingleState } = useAds();
+  const { data: ads } = useInfiniteAds();
+  const { data: favorites } = useMyFavorites();
 
   useEffect(() => {
     if (data?.pages[0]?.data) {
@@ -39,21 +43,26 @@ const AdSingle = () => {
           <div>
             <UserMinOne />
             <div className="my-4 d-flex justify-content-center product-decription product-decription-one card-custom p-3">
-              <ActionsTwo />
+              <ActionsTwo product={adSingleState?.ad} fav={favorites?.data.some((fav) => fav.id === adSingleState?.ad?.id)}/>
             </div>
-            <ProductOne
-              product={{
-                id: 1,
-                imgs: [
-                  'https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_826753-MLM69886534058_062023-O-1.webp',
-                  'https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_754622-MLM69886534052_062023-O-1.webp',
-                ],
-                title: 'Porsche Cayman 2.7 Coupe Pdk At',
-                price: 375000,
-                views: 10,
-                is_featured: false,
-              }}
-            />
+            <Carousel>
+              {ads?.pages[0]?.data?.slice(0, 4)?.map((product) => {
+                const obj = { ...product };
+                if (!obj?.imgs?.length) {
+                  obj.imgs = [
+                    'https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_826753-MLM69886534058_062023-O-1.webp',
+                    'https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_754622-MLM69886534052_062023-O-1.webp',
+                  ];
+                }
+                return (
+                  <Carousel.Item>
+                    <div className="p-3">
+                      <ProductOne product={obj} />
+                    </div>
+                  </Carousel.Item>
+                );
+              })}
+            </Carousel>
           </div>
         </BodyOne>
       </div>

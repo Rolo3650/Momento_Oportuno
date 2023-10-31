@@ -7,6 +7,8 @@ export type FilterState = {
   subCategory?: number;
   priceMin?: number;
   priceMax?: number;
+  sortBy?: string;
+  order?: string;
 };
 
 export type FilterParams = Partial<FilterState>;

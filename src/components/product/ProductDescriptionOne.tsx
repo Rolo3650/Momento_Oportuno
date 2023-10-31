@@ -4,7 +4,9 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { useTheme } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Chip } from '@mui/material';
-import CheckIcon from '@mui/icons-material/Check';
+import { NumberOne } from '../atributes/NumberOne';
+import { TextOne } from '../atributes/TextOne';
+import { SelectOne } from './SelectOne';
 
 interface Props {}
 
@@ -53,17 +55,31 @@ const ProductDescriptionOne: React.FC<Props> = () => {
           {adSingleState?.ad?.title}
         </div>
       </div>
-      <div className="my-4 d-flex px-4 justify-content-between align-items-center">
+      <div className="my-4 d-flex px-4 justify-content-start align-items-center flex-wrap">
         <Chip
           sx={{
             borderRadius: '5px',
             fontSize: '16px',
-            borderColor: '#F9A03F',
+            borderColor: theme.palette.primary.main,
+            color: theme.palette.primary.main,
           }}
           label={adSingleState?.ad?.category?.name}
           variant="outlined"
-          className="text text-font-helvetica"
+          className="text text-font-helvetica me-2 mt-2"
         />
+        {adSingleState?.ad?.category?.children.map((child) => (
+          <Chip
+            sx={{
+              borderRadius: '5px',
+              fontSize: '16px',
+              borderColor: '#F9A03F',
+              // color: theme.palette.primary.main,y
+            }}
+            label={child?.name}
+            variant="outlined"
+            className="text text-font-helvetica me-2 mt-2"
+          />
+        ))}
       </div>
       <div className="my-4 d-flex px-4 justify-content-between align-items-center">
         <div className="fs-3 text text-font-r-h-d text-color-5 fw-bold">
@@ -88,79 +104,27 @@ const ProductDescriptionOne: React.FC<Props> = () => {
           buró. Contamos con los mejores planes de Financiamiento.
         </div>
       </div>
-      <div className="my-4 d-flex px-4 justify-content-between align-items-center">
-        <div className="fs-4 text text-font-r-h-d text-color-5 fw-bold">
-          Características
-        </div>
-      </div>
-      <div className="my-4 px-4">
-        <div className="row my-3 w-100">
-          <div className="col d-flex align-items-center">
-            <CheckIcon
-              sx={{
-                background: theme?.palette?.primary.main,
-                color: 'white',
-              }}
-              className="p-1 rounded-circle"
-            />
-            <span className="ms-3 fs-6">ABS</span>
-          </div>
-          <div className="col d-flex align-items-center">
-            <CheckIcon
-              sx={{
-                background: theme?.palette?.primary.main,
-                color: 'white',
-              }}
-              className="p-1 rounded-circle"
-            />
-            <span className="ms-3 fs-6">Arranque sin llave</span>
-          </div>
-        </div>
-        <div className="row my-3 w-100">
-          <div className="col d-flex align-items-center">
-            <CheckIcon
-              sx={{
-                background: theme?.palette?.primary.main,
-                color: 'white',
-              }}
-              className="p-1 rounded-circle"
-            />
-            <span className="ms-3 fs-6">ABS</span>
-          </div>
-          <div className="col d-flex align-items-center">
-            <CheckIcon
-              sx={{
-                background: theme?.palette?.primary.main,
-                color: 'white',
-              }}
-              className="p-1 rounded-circle"
-            />
-            <span className="ms-3 fs-6">Arranque sin llave</span>
-          </div>
-        </div>
-        <div className="row my-3 w-100">
-          <div className="col d-flex align-items-center">
-            <CheckIcon
-              sx={{
-                background: theme?.palette?.primary.main,
-                color: 'white',
-              }}
-              className="p-1 rounded-circle"
-            />
-            <span className="ms-3 fs-6">ABS</span>
-          </div>
-          <div className="col d-flex align-items-center">
-            <CheckIcon
-              sx={{
-                background: theme?.palette?.primary.main,
-                color: 'white',
-              }}
-              className="p-1 rounded-circle"
-            />
-            <span className="ms-3 fs-6">Arranque sin llave</span>
-          </div>
-        </div>
-      </div>
+      {adSingleState?.ad?.attributes?.map((attribute) => {
+        if (attribute?.type == 'number') {
+          return (
+            <div className="my-4 px-4">
+              <NumberOne atribute={attribute} />
+            </div>
+          );
+        } else if (attribute?.type == 'text') {
+          return (
+            <div className="my-4 px-4">
+              <TextOne atribute={attribute} />
+            </div>
+          );
+        } else if (attribute?.type == 'select') {
+          return (
+            <div className="my-4 px-4">
+              <SelectOne atribute={attribute} />
+            </div>
+          );
+        }
+      })}
     </div>
   );
 };

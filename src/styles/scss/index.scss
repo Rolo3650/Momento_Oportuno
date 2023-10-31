@@ -55,6 +55,13 @@ $font_6: 'Monoton', sans-serif;
 @import 'components/modules/sidebar.scss';
 /* Cards */
 @import 'components/modules/cards.scss';
+/* Navbar */
+@import 'components/modules/navbar.scss';
+
+// Modals
+
+/* LogResForm */
+@import 'components/modals/logResForm.scss';
 
 // Containers
 
@@ -142,3 +149,10 @@ $font_6: 'Monoton', sans-serif;
 @import 'pages/adSingle.scss';
 /* Profile Page */
 @import 'pages/profilePage.scss';
+/* Favorites */
+@import 'pages/favorites.scss';
+
+
+// Borders
+
+@import 'borders/borders.scss';

@@ -31,6 +31,30 @@
             height: 40px;
             background-color: $color_secondary;
         }
+
+
+        & .profile-btn {
+
+
+
+            @media screen and (min-width: 1200px) {
+                width: 350px;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+
+            @media screen and (max-width: 1200px) {
+                & .text {
+
+                    display: none;
+                    width: auto;
+
+                }
+            }
+
+        }
+
     }
 
 }

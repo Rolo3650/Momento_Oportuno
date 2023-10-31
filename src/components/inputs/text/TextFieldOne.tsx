@@ -3,7 +3,8 @@ import React, { ChangeEventHandler } from 'react';
 
 interface Props {
   icon?: {
-    url: string;
+    url?: string;
+    mui?: React.ReactNode;
   };
   color: {
     variant: 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
@@ -29,7 +30,8 @@ const TextFieldOne: React.FC<Props> = ({
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <img src={icon?.url} alt="" />
+              {icon?.url && <img src={icon?.url} alt="" />}
+              {icon?.mui}
               {/* Icono de inicio */}
             </InputAdornment>
           ),

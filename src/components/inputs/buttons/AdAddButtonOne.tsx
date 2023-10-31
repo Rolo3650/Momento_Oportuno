@@ -2,9 +2,11 @@
 import { Button } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import AddIcon from '@mui/icons-material/Add';
+import { useNavigate } from 'react-router-dom';
 
 const AdAddButtonOne = () => {
   const theme = useTheme();
+  const navigateTov = useNavigate();
 
   return (
     <Button
@@ -19,6 +21,7 @@ const AdAddButtonOne = () => {
         },
       }}
       endIcon={<AddIcon />}
+      onClick={() => navigateTov('/panel/create')}
     >
       <span className="left"></span>
       <span className="me-4">Crear Anuncio</span>

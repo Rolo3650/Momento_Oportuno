@@ -20,6 +20,10 @@ interface TabPanelProps {
   value: number;
 }
 
+interface CardLogResProps {
+  handleClose?: () => void;
+}
+
 function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
@@ -47,7 +51,7 @@ function a11yProps(index: number) {
   };
 }
 
-const CardLogRes = () => {
+const CardLogRes = ({ handleClose }: CardLogResProps) => {
   const { search } = useLocation();
   const theme = useTheme();
   const [ISusr, setISusr] = useState('');

@@ -4,11 +4,36 @@ import { useTheme } from '@mui/material/styles';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import CompareArrowsOutlinedIcon from '@mui/icons-material/CompareArrowsOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { AdPreview } from '../modals/AdPreview';
+import { Ad, AdFavorite } from '../../api';
+import { LogResForm } from '../modals/LogResForm';
+import { useAppContext } from '../../context';
+import { useAddFavorite, useRemoveFavorite } from '../../hooks';
 
-interface Props {}
+interface Props {
+  product: Ad | AdFavorite;
+  fav?: boolean | undefined;
+}
 
-const ActionsOne: React.FC<Props> = () => {
+const ActionsOne: React.FC<Props> = ({ product, fav }: Props) => {
+  const { state } = useAppContext();
+
   const [compare, SetCompare] = useState<boolean>(false);
+  const [isModalProductOpen, setIsModalProductOpen] = useState<boolean>(false);
+  const [isModalLogResOpen, setIsModalLogResOpen] = useState<boolean>(false);
+
+  const { mutate: add, isLoading: load1 } = useAddFavorite();
+  const { mutate: remove, isLoading: load2 } = useRemoveFavorite();
+
+  const toggleLoad = load1 || load2;
+
+  const toggle = (id: number) => {
+    if (fav) {
+      remove(id);
+    } else {
+      add(id);
+    }
+  };
 
   const onClickCompare = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -16,10 +41,17 @@ const ActionsOne: React.FC<Props> = () => {
   };
 
   const onClickView = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsModalProductOpen(true);
     e.stopPropagation();
   };
 
   const onClickAddFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!state?.userState?.token) {
+      setIsModalLogResOpen(true);
+      return;
+    }
+
+    toggle(product.id);
     e.stopPropagation();
   };
 
@@ -44,6 +76,7 @@ const ActionsOne: React.FC<Props> = () => {
           }}
         />
       </IconButton>
+
       <IconButton
         className="ms-2"
         sx={{
@@ -70,6 +103,8 @@ const ActionsOne: React.FC<Props> = () => {
       <IconButton
         className="ms-2"
         sx={{
+          backgroundColor: fav ? theme.palette.primary.main : '',
+          color: fav ? 'white' : '',
           border: `1px solid ${'#FD8A2A'}`,
           transition: '.3s ease-in-out',
           '&:hover': {
@@ -78,6 +113,7 @@ const ActionsOne: React.FC<Props> = () => {
           },
         }}
         onClick={onClickAddFavorite}
+        disabled={toggleLoad}
       >
         <FavoriteBorderOutlinedIcon
           sx={{
@@ -85,6 +121,15 @@ const ActionsOne: React.FC<Props> = () => {
           }}
         />
       </IconButton>
+      <AdPreview
+        show={isModalProductOpen}
+        onHide={() => setIsModalProductOpen(false)}
+        product={product}
+      />
+      <LogResForm
+        show={isModalLogResOpen}
+        onHide={() => setIsModalLogResOpen(false)}
+      />
     </div>
   );
 };

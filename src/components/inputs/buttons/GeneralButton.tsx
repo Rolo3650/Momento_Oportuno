@@ -5,11 +5,13 @@ import { Button } from '@mui/material';
 interface ButtonProps {
   title: string;
   colorPrimary: 'primary' | 'secondary';
+  hoverColor?: 'primary' | 'secondary'
   endIcon: React.ReactNode;
+  onClick?: () => void;
 }
 const GeneralButton = (props: ButtonProps) => {
-    const theme = useTheme();
-  const { title, colorPrimary, endIcon } = props;
+  const theme = useTheme();
+  const { title, colorPrimary, endIcon, hoverColor, onClick } = props;
 
   return (
     <Button
@@ -19,11 +21,12 @@ const GeneralButton = (props: ButtonProps) => {
       sx={{
         boxShadow: 'none',
         '&:hover': {
-          color: theme.palette.primary.contrastText,
-          backgroundColor: theme.palette.primary.main,
+          color: (hoverColor && hoverColor === "secondary") ? theme.palette.secondary.contrastText : theme.palette.primary.contrastText,
+          backgroundColor: (hoverColor && hoverColor === "secondary") ? theme.palette.secondary.main : theme.palette.primary.main,
         },
       }}
       endIcon={endIcon}
+      onClick={onClick}
     >
       <span className="left"></span>
       <span className="me-4">{title}</span>

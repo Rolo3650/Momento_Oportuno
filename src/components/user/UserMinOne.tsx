@@ -31,12 +31,14 @@ const UserMinOne = () => {
           <div className="fw-bold text text-color-5 fs-5">
             {adSingleState?.ad?.user?.email}
           </div>
-          <div className="text text-color-7 mt-1 text-font-l-d">
+          {/* <div className="text text-color-5 mt-1 text-font-l-d">
             Miembro desde: 2 meses
-          </div>
+          </div> */}
           <Link
+            component={'button'}
             sx={{
               fontSize: '14px',
+              color: `${theme.palette.primary.main} !important`,
             }}
             className="text text-color-7 mt-1 text-font-l-d"
           >
@@ -53,14 +55,19 @@ const UserMinOne = () => {
               backgroundColor: '#FD8A2A',
             },
           }}
-          endIcon={<VisibilityOutlinedIcon sx={{
-            marginRight: '10px',
-            backgroundColor: theme.palette.secondary.main,
-            height: '45px',
-            width: '45px',
-            padding: '10px',
-            color: 'white',
-          }} className='rounded-circle'/>}
+          endIcon={
+            <VisibilityOutlinedIcon
+              sx={{
+                marginRight: '10px',
+                backgroundColor: theme.palette.secondary.main,
+                height: '45px',
+                width: '45px',
+                padding: '10px',
+                color: 'white',
+              }}
+              className="rounded-circle"
+            />
+          }
         >
           <span>
             <SmartphoneOutlinedIcon

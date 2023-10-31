@@ -87,13 +87,18 @@ const FooterOne = () => {
                       margin: '4px',
                       width: 40,
                       height: 40,
-                      transitionDelay: 1,
+                      transition: '.5s ease-in-out',
                       ':hover': {
-                        border: `2px solid orange`,
+                        border: `2px solid #FD542A`,
                       },
                     }}
                   >
-                    <FacebookOutlinedIcon />
+                    <FacebookOutlinedIcon sx={{
+                      transition: '.5s ease-in-out',
+                      ':hover': {
+                        color: `#FD542A`,
+                      },
+                    }} />
                   </IconButton>
                   <IconButton
                     className="icon-button"
@@ -102,13 +107,18 @@ const FooterOne = () => {
                       margin: '4px',
                       width: 40,
                       height: 40,
-                      transitionDelay: 1,
+                      transition: '.5s ease-in-out',
                       ':hover': {
-                        border: `2px solid orange`,
+                        border: `2px solid #FD542A`,
                       },
                     }}
                   >
-                    <WhatsAppIcon />
+                    <WhatsAppIcon sx={{
+                      transition: '.5s ease-in-out',
+                      ':hover': {
+                        color: `#FD542A`,
+                      },
+                    }} />
                   </IconButton>
                   <IconButton
                     className="icon-button"
@@ -117,13 +127,18 @@ const FooterOne = () => {
                       margin: '4px',
                       width: 40,
                       height: 40,
+                      transition: '.5s ease-in-out',
                       ':hover': {
-                        border: `2px solid orange`,
-                        transitionDelay: 2,
+                        border: `2px solid #FD542A`,
                       },
                     }}
                   >
-                    <InstagramIcon />
+                    <InstagramIcon sx={{
+                      transition: '.5s ease-in-out',
+                      ':hover': {
+                        color: `#FD542A`,
+                      },
+                    }} />
                   </IconButton>
                   <IconButton
                     className="icon-button"
@@ -132,9 +147,9 @@ const FooterOne = () => {
                       margin: '4px',
                       width: 40,
                       height: 40,
-                      transitionDelay: 1,
+                      transition: '.5s ease-in-out',
                       ':hover': {
-                        border: `2px solid orange`,
+                        border: `2px solid #FD542A`,
                       },
                     }}
                   ></IconButton>

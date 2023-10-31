@@ -1,0 +1,24 @@
+.favorites-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color_15;
+  border-radius: 5px;
+  max-width: 1118px;
+  min-height: 383px;
+
+  .favorites-empty {
+    display: block;
+    .favorites-empty-title {
+      font-size: 24px;
+      font-family: $font_4;
+      color: $color_5;
+      font-weight: 700;
+    }
+    .favorites-empty-img {
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+    }
+  }
+}
