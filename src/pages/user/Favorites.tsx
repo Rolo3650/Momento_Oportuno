@@ -10,7 +10,7 @@ const Favorites: React.FC<Props> = () => {
   const { data: favorites } = useMyFavorites();
 
   const FavoritesListEmpty = () => {
-    return <EmptyBoxOne text="No has agregado ningún favorito" />;
+    return <EmptyBoxOne text="No has agregado ningún favorito" imgSrc="/svg/icons/box_one.svg" />;
   };
 
   const FavoritesList = () => {

@@ -10,12 +10,14 @@ import { UserMinOne } from '../../components/user/UserMinOne';
 import { ActionsTwo } from '../../components/actions/ActionsTwo';
 import { ProductOne } from '../../components/product/ProductOne';
 import Carousel from 'react-bootstrap/Carousel';
+import { useMyFavorites } from '../../hooks';
 
 const AdSingle = () => {
   const { param_ad } = useParams();
   const { data } = useAdById(param_ad ?? 0);
   const { setSingleAd, adSingleState } = useAds();
   const { data: ads } = useInfiniteAds();
+  const { data: favorites } = useMyFavorites();
 
   useEffect(() => {
     if (data?.pages[0]?.data) {
@@ -41,7 +43,7 @@ const AdSingle = () => {
           <div>
             <UserMinOne />
             <div className="my-4 d-flex justify-content-center product-decription product-decription-one card-custom p-3">
-              <ActionsTwo product={adSingleState?.ad}/>
+              <ActionsTwo product={adSingleState?.ad} fav={favorites?.data.some((fav) => fav.id === adSingleState?.ad?.id)}/>
             </div>
             <Carousel>
               {ads?.pages[0]?.data?.slice(0, 4)?.map((product) => {
