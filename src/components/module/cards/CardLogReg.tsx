@@ -11,7 +11,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Swal from 'sweetalert2';
-import { useLogin, useSearch } from '../../../hooks';
+import { useLogin, useRegister, useSearch } from '../../../hooks';
 import { useLocation } from 'react-router-dom';
 
 interface TabPanelProps {
@@ -64,7 +64,8 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
   const onChangeISpsw = (e: ChangeEvent<HTMLInputElement>) => {
     setISpsw(e.target.value);
   };
-  const { mutate } = useLogin();
+  const login = useLogin();
+  const register = useRegister();
   const { searchParam } = useSearch();
   const [RGusr, setRGusr] = useState('');
   const [RGeml, setRGeml] = useState('');
@@ -120,29 +121,20 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
       ['email']: ISusr,
       ['password']: ISpsw,
     };
-    mutate(obj);
+    login.mutate(obj);
     if (handleClose) {
       handleClose();
     }
   };
   const onClickShowRG = () => {
     setLoadingRG(true);
-    console.log(
-      RGusr +
-        '-' +
-        RGeml +
-        '-' +
-        RGtel +
-        '-' +
-        RGpsw +
-        '-' +
-        RGnmc +
-        '-' +
-        RGape
-    );
-    setTimeout(() => {
-      setLoadingRG(false);
-    }, 1000);
+    const obj ={
+        ['name']: RGusr,
+        ['email']: RGeml,
+        ['password']: RGpsw,
+        ['password_confirmation']: RGpsw
+    };
+    register.mutate(obj);
   };
 
   const onClickLostPSW = () => {
