@@ -1,16 +1,36 @@
 import React, { useState, ChangeEvent } from 'react';
 import SouthIcon from '@mui/icons-material/South';
 import { TextFieldOne } from '../inputs/text/TextFieldOne';
-import { useTheme } from '@mui/material';
+import {
+  Checkbox,
+  useTheme,
+  FormControl,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+} from '@mui/material';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import { useAllCategories } from '../../hooks';
 import { DropdownOne } from '../inputs/dropdown/DropdownOne';
 import { useGetStates } from '../../hooks/querys/useStates';
 import PlaceIcon from '@mui/icons-material/Place';
 import Textarea from '@mui/joy/Textarea';
-import { Box, Button, SvgIcon } from '@mui/joy';
+import { Box, Button } from '@mui/joy';
 import { ThemeTwo } from '../../themes/ThemeTwo';
 import { styled } from '@mui/joy';
+import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
+import PrintIcon from '@mui/icons-material/Print';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
+import ScreenShareIcon from '@mui/icons-material/ScreenShare';
+import ScreenShareOutlined from '@mui/icons-material/ScreenShareOutlined';
+import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
+import ImageIcon from '@mui/icons-material/Image';
+import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import BackupIcon from '@mui/icons-material/Backup';
 
 interface Option {
   label: string;
@@ -45,21 +65,23 @@ const FormOne: React.FC<Props> = () => {
   const [categorySelected, setCategorySelected] =
     useState<Option>(initialState);
   const [city, setCity] = useState<Option>(initialState);
+  const [extraVideo, setExtraVideo] = useState<boolean>(false);
+  const [extraImages, setExtraImages] = useState<boolean>(false);
+  const [extraStates, setExtraSates] = useState<boolean>(false);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
   const onChangeCategory = (option: Option) => {
-    console.log(city)
+    console.log(city);
     setCategorySelected(option);
   };
 
   const onChangeCity = (option: Option) => {
-    console.log(categorySelected)
+    console.log(categorySelected);
     setCity(option);
   };
-
 
   return (
     <div className="form-custom form-custom-one background background-color-7 rounded-4">
@@ -194,27 +216,6 @@ const FormOne: React.FC<Props> = () => {
           </Box>
         </ThemeTwo>
       </div>
-      <div className="mt-3 align-items-center d-flex fw-bold text text-color-5 text-font-rubik title">
-        <div className="text-nowrap">Video</div>
-        <div className="border-pointed w-100 mx-3"> </div>
-        <div>
-          <SouthIcon color="secondary" />
-        </div>
-      </div>
-      <div className="mt-3">
-        <TextFieldOne
-          color={{
-            variant: 'secondary',
-            text: '#464748',
-            field: theme.palette.secondary.main,
-            backgroundColor: '#fff',
-          }}
-          text="https://www.ejemplo.mp4"
-          icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
-          onChange={onChange}
-          value={name}
-        />
-      </div>
       <div className="mt-3 mt-3 align-items-center d-flex fw-bold text text-color-5 text-font-rubik title">
         <div className="text-nowrap">Imágenes</div>
         <div className="border-pointed w-100 mx-3"> </div>
@@ -225,33 +226,194 @@ const FormOne: React.FC<Props> = () => {
       <div className="mt-3">
         <ThemeTwo>
           <Button
+            sx={{
+              width: '100%',
+            }}
+            className="py-5 fs-3"
             component="label"
             role={undefined}
             tabIndex={-1}
             variant="outlined"
             color="primary"
             startDecorator={
-              <SvgIcon>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
-                  />
-                </svg>
-              </SvgIcon>
+              <BackupIcon
+                sx={{
+                  fontSize: '40px',
+                }}
+              />
             }
           >
-            Subir una imagen
+            Subir una Imagen
             <VisuallyHiddenInput type="file" />
           </Button>
         </ThemeTwo>
+      </div>
+      <div className="mt-3 mt-3 align-items-center d-flex fw-bold text text-color-5 text-font-rubik title">
+        <div className="text-nowrap">Addons</div>
+        <div className="border-pointed w-100 mx-3"> </div>
+        <div>
+          <SouthIcon color="secondary" />
+        </div>
+      </div>
+      <div className="mt-3">
+        <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+          <Checkbox
+            color="secondary"
+            icon={<PrintOutlinedIcon color="secondary" />}
+            checkedIcon={<PrintIcon color="secondary" />}
+          />
+          Impreso
+        </div>
+        <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+          <Checkbox
+            color="secondary"
+            icon={<StarBorderIcon color="secondary" />}
+            checkedIcon={<StarIcon color="secondary" />}
+          />
+          Destacado
+        </div>
+        <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+          <Checkbox
+            color="secondary"
+            icon={<ScreenShareOutlined color="secondary" />}
+            checkedIcon={<ScreenShareIcon color="secondary" />}
+          />
+          Redes Sociales
+        </div>
+        <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+          <Checkbox
+            color="secondary"
+            icon={<ImageOutlinedIcon color="secondary" />}
+            checkedIcon={<ImageIcon color="secondary" />}
+            onChange={(e) => {
+              setExtraImages(e.target.checked);
+            }}
+            value={extraImages}
+          />
+          Agregar Más Imagenes
+        </div>
+        <div>
+          {extraImages && <div className="ms-5">
+            <FormControl>
+              <RadioGroup
+                aria-labelledby="demo-controlled-radio-buttons-group"
+                name="controlled-radio-buttons-group"
+                defaultValue={"5"}
+                // value={value}
+                // onChange={handleChange}
+              >
+                <FormControlLabel
+                  value="5"
+                  control={<Radio color='secondary'/>}
+                  label="5 Imagees"
+                />
+                <FormControlLabel
+                  value="10"
+                  control={<Radio color='secondary'/>}
+                  label="10 Imagenes"
+                />
+              </RadioGroup>
+            </FormControl>
+          </div>}
+        </div>
+        <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+          <Checkbox
+            color="secondary"
+            icon={<VideocamOutlinedIcon color="secondary" />}
+            checkedIcon={<VideocamIcon color="secondary" />}
+            onChange={(e) => {
+              setExtraVideo(e.target.checked);
+            }}
+            value={extraVideo}
+          />
+          Agregar Video
+          {extraVideo && (
+            <>
+              {/* <div className="align-items-center d-flex fw-bold text text-color-5 text-font-rubik subtitle">
+                <div className="text-nowrap">Video</div>
+                <div className="border-pointed w-100 mx-3"> </div>
+                <div>
+                  <SouthIcon color="secondary" />
+                </div>
+              </div> */}
+              <div className="mt-3 mb-3">
+                <TextFieldOne
+                  color={{
+                    variant: 'secondary',
+                    text: '#464748',
+                    field: theme.palette.secondary.main,
+                    backgroundColor: '#fff',
+                  }}
+                  text="https://www.ejemplo.mp4"
+                  icon={{
+                    mui: <DriveFileRenameOutlineIcon color="secondary" />,
+                  }}
+                  onChange={onChange}
+                  value={name}
+                />
+              </div>
+              <div className="mt-3 mb-3">
+                <ThemeTwo>
+                  <Button
+                    sx={{
+                      width: '100%',
+                    }}
+                    className="py-5 fs-3"
+                    component="label"
+                    role={undefined}
+                    tabIndex={-1}
+                    variant="outlined"
+                    color="primary"
+                    startDecorator={
+                      <BackupIcon
+                        sx={{
+                          fontSize: '40px',
+                        }}
+                      />
+                    }
+                  >
+                    Subir un Video
+                    <VisuallyHiddenInput type="file" />
+                  </Button>
+                </ThemeTwo>
+              </div>
+            </>
+          )}
+        </div>
+        <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+          <Checkbox
+            color="secondary"
+            icon={<LocationOnOutlinedIcon color="secondary" />}
+            checkedIcon={<LocationOnIcon color="secondary" />}
+            onChange={(e) => {
+              setExtraSates(e.target.checked);
+            }}
+            value={extraStates}
+          />
+          Multi Estado
+          {extraStates && <div className="ms-5">
+            <FormControl>
+              <RadioGroup
+                aria-labelledby="demo-controlled-radio-buttons-group"
+                name="controlled-radio-buttons-group"
+                defaultValue={"1"}
+                // value={value}
+                // onChange={handleChange}
+              >
+                <FormControlLabel
+                  value="1"
+                  control={<Radio color='secondary'/>}
+                  label="Estados Principales"
+                />
+                <FormControlLabel
+                  value="2"
+                  control={<Radio color='secondary'/>}
+                  label="Todos los estados"
+                />
+              </RadioGroup>
+            </FormControl>
+          </div>}
+        </div>
       </div>
     </div>
   );

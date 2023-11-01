@@ -90,3 +90,39 @@ export type GetAdByIdResponse = z.infer<typeof GetAdByIdResponseSchema>;
 export const GetMyAdsResponseSchema = GetAllAdsResponseSchema;
 
 export type GetMyAdsResponse = z.infer<typeof GetMyAdsResponseSchema>;
+
+export const CreateAnuncioResponseSchema = z.object({
+  data: AdSchema.omit({
+    status: true,
+    user: true,
+    user_package: true,
+    state: true,
+    category: true,
+    attributes: true,
+  }),
+})
+
+export type CreateAnuncioResponse = z.infer<typeof CreateAnuncioResponseSchema>
+
+export type GeneralCreateAnuncioParams = {
+  title: string
+  description: string
+  state_id: number
+  user_id: number
+  category_id: number
+  is_featured: boolean
+  includes_printing: boolean
+  includes_video: boolean
+  includes_socials: boolean
+  printing_state_id?: number
+}
+
+export type ListingAttribute = {
+  attribute_id: number
+  value: string
+}
+
+export type CreateAnuncioParams = GeneralCreateAnuncioParams & {
+  subcategory_id: number
+  listingAttributes: ListingAttribute[]
+}

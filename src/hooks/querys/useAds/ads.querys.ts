@@ -6,4 +6,5 @@ export const AdsQuerysKeys = {
   getAdsByCategory: 'getAdsByCategory',
   getAdsByState: 'getAdsByState',
   getAdsByQuery: 'getAdsByQuery',
+  createAdd: 'createAdd',
 } as const;

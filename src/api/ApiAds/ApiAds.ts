@@ -2,12 +2,15 @@ import { Request, Services } from '..';
 import { FilterParams } from '../../context';
 
 import type {
+  CreateAnuncioParams,
+  CreateAnuncioResponse,
   GetAdByIdResponse,
   GetAllAdsResponse,
   GetMyAdsResponse,
 } from './ApiAds.type';
 
 import {
+  CreateAnuncioResponseSchema,
   GetAdByIdResponseSchema,
   GetAllAdsResponseSchema,
   GetMyAdsResponseSchema,
@@ -93,4 +96,14 @@ export class AdsServices {
 
   //   return dataValidated.data;
   // }
+
+  static async createAd(
+    params: CreateAnuncioParams,
+  ): Promise<CreateAnuncioResponse> {
+    // params.status = 'published'
+    const { data } = await req.post('/', params)
+  
+    const parsed = CreateAnuncioResponseSchema.parse(data)
+    return parsed
+  }
 }
