@@ -8,9 +8,33 @@ import { useNavigate } from 'react-router-dom';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 
 interface Props { }
+interface Message {
+  position: string;
+  text: string;
+  date: Date;
+}
 
 const Messages: React.FC<Props> = () => {
   const navigateTo = useNavigate();
+  const [messages, setMessages] = React.useState<Message[]>([]); // Estado para rastrear los mensajes
+  const [messageText, setMessageText] = React.useState(''); // Estado para el texto del mensaje
+
+  const sendMessage = () => {
+    if (messageText.trim() === '') {
+      return;
+    }
+
+    const newMessage = {
+      position: 'right',
+      text: messageText,
+      date: new Date(),
+    };
+
+    setMessages([...messages, newMessage]);
+
+    setMessageText('');
+  };
+
   return (
     <LayoutThree>
       <h1 className="messages-title title text text-font-georgia fw-bold fs-2 text-color-5">
@@ -55,74 +79,35 @@ const Messages: React.FC<Props> = () => {
             />
           </div>
           <div className="chat-conversation">
-            <MessageBox
-              position={'left'}
-              type={'text'}
-              text="Hola!"
-              date={new Date()}
-            />
-            <MessageBox
-              position={'right'}
-              type={'text'}
-              text="Hola Fabian!"
-              date={new Date()}
-            />
-            <MessageBox
-              position={'left'}
-              type={'text'}
-              text="quien eres!"
-              date={new Date()}
-            />
-            <MessageBox
-              position={'right'}
-              type={'text'}
-              text="soy yo!"
-              date={new Date()}
-            />
-            <MessageBox
-              position={'left'}
-              type={'text'}
-              text="quien"
-              date={new Date()}
-            />
-            <MessageBox
-              position={'right'}
-              type={'text'}
-              text="yo"
-              date={new Date()}
-            />
-            <MessageBox
-              position={'left'}
-              type={'text'}
-              text="quien yo"
-              date={new Date()}
-            />
-            <MessageBox
-              position={'right'}
-              type={'text'}
-              text="Hola!"
-              date={new Date()}
-            />
-            <MessageBox
-              position={'left'}
-              type={'text'}
-              text="Hola Yo!"
-              date={new Date()}
-            />
+            {messages.map((message) => {
+              return (
+                <MessageBox
+                  position={message.position}
+                  type={'text'}
+                  text={message.text}
+                  date={message.date}
+                />
+                )
+            })}
+
+
           </div>
           <div className="chat-write-message">
             <Input
-            className="chat-message-input"
+              className="chat-message-input"
               placeholder="Escribe tu mensaje aquí..."
               multiline={true}
+              value={messageText}
+              onChange={(e) => setMessageText(e.target.value)}
             />
             <GeneralButton
-              title="enviar"
+              title="Enviar"
               colorPrimary="primary"
               hoverColor="primary"
               endIcon={<SendIcon />}
               height="40px"
               width="130px"
+              onClick={sendMessage}
             />
           </div>
         </div>
