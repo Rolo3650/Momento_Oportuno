@@ -9,6 +9,7 @@ import 'jquery';
 import './utils/css/cars-slider.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-chat-elements/dist/main.css'
 import './styles/css/index.css';
 import './styles/scss/index.scss';
 import { ThemeOne } from './themes/ThemeOne';
