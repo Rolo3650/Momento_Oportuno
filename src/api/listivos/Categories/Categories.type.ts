@@ -10,6 +10,8 @@ const SubCategorie = z.object({
   updated_at: z.coerce.date(),
 });
 
+export type SubCategorie = z.infer<typeof SubCategorie>;
+
 export const CategorieSchema = z.object({
   id: z.number(),
   slug: z.string(),

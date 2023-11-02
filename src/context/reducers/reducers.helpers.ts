@@ -2,6 +2,7 @@ import { AppState } from '..';
 import type { FilterActions, UserActions } from './';
 import { AdSingleActions } from './adSingle';
 import { CounterActions } from './counter/counter.type';
+import { NewAdFormActions } from './newAdForm';
 
 export type ActionMap<M extends { [index: string]: unknown }> = {
   [Key in keyof M]: M[Key] extends undefined
@@ -29,6 +30,9 @@ export const AppTypes = {
   // adSingleTypes
   SetAdSingle: 'SET_AD_SINGLE',
 
+  // new add
+  SetNewAdForm: 'SET_NEW_AD_FORM',
+
   // counterTypes
   Increment: 'INCREMENT',
   Decrement: 'DECREMENT',
@@ -49,4 +53,5 @@ export type AppActions =
   | UserActions
   | CounterActions
   | AdSingleActions
-  | GlobalActions;
+  | GlobalActions
+  | NewAdFormActions;

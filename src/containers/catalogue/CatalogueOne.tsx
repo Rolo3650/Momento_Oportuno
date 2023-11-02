@@ -30,6 +30,7 @@ const CatalogueOne: React.FC<Props> = () => {
   };
 
   const pageChange = (_e: React.ChangeEvent<unknown>, page: number) => {
+    window.scroll(0, 0);
     navigatePersistQuery('page', page?.toString());
   };
 
@@ -65,9 +66,13 @@ const CatalogueOne: React.FC<Props> = () => {
   }, [params]);
 
   useEffect(() => {
-    if (hasNextPage && ads?.pages && ads?.pages.length > 1) {
-      setPages(pages + 1);
+    // console.log(ads)
+    // console.log(searchParam('page'))
+    // if (hasNextPage && pages == searchParam('page')) {
+    if (ads?.pages[0].meta.last_page) {
+      setPages(ads?.pages[0].meta.last_page);
     }
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasNextPage]);
 
@@ -95,12 +100,12 @@ const CatalogueOne: React.FC<Props> = () => {
         <Stack color={'secondary'}>
           <Pagination
             sx={{
-              "& button": {
+              '& button': {
                 height: '50px',
                 width: '50px',
                 backgroundColor: `${theme.palette.secondary.main} !important`,
-                color: `white !important`
-              }
+                color: `white !important`,
+              },
             }}
             count={pages}
             color="secondary"

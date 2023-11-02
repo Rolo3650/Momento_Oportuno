@@ -12,6 +12,7 @@ import { filterReducer } from './reducers/filter/filter';
 import { counterReducer } from './reducers/counter';
 import Cookies from 'universal-cookie';
 import { adSingleReducer } from './reducers/adSingle';
+import { newAdFormReducer } from './reducers/newAdForm';
 
 const KEY_FOR_APP_STATE = 'state_x_key_for_app' as const;
 
@@ -24,7 +25,7 @@ const AppContext = createContext<{
 });
 
 const mainReducer = (
-  { counter, filterState, userState, adSingleState, ..._ }: AppState,
+  { counter, filterState, userState, adSingleState, newAdForm, ..._ }: AppState,
   action: AppActions
 ): AppState => {
   if (action.type === AppTypes.SetGlobalState) {
@@ -36,6 +37,7 @@ const mainReducer = (
     counter: counterReducer(counter, action),
     filterState: filterReducer(filterState, action),
     adSingleState: adSingleReducer(adSingleState, action),
+    newAdForm: newAdFormReducer(newAdForm, action),
 
     ..._,
   };
@@ -43,7 +45,6 @@ const mainReducer = (
 
 const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [state, dispatch] = useReducer(mainReducer, app_state);
-
   // TODO: CHANGE THIS TO redux-persist OR SOMETHING LIKE THAT
   // load and set state from cookies
   useEffect(() => {
@@ -53,12 +54,13 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
       if (parsedState) {
         dispatch({
           type: AppTypes.SetGlobalState,
-          payload: { state: parsedState },
+          payload: { state: { ...state, userState: parsedState.userState } },
         });
       }
     } catch (error) {
       console.error(error);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // save state to cookies
