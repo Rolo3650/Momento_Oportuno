@@ -1,11 +1,11 @@
 import React from 'react';
 import { CarouselOne } from '../carousel/CarouselOne';
 import { ActionsOne } from '../actions/ActionsOne';
-import { Ad } from '../../api';
+import { Ad, AdFavorite } from '../../api';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {
-  product: Ad;
+  product: Ad | AdFavorite;
   fav?: boolean | undefined;
 }
 
