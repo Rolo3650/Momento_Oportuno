@@ -9,8 +9,8 @@ import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import ScreenShareOutlined from '@mui/icons-material/ScreenShareOutlined';
 import { RadioGroupOne } from './RadioGroupOne';
 import { useForm } from '../../../../../hooks';
-import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
-import ImageIcon from '@mui/icons-material/Image';
+// import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
+// import ImageIcon from '@mui/icons-material/Image';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AddVideo from './AddVideo';
@@ -23,7 +23,7 @@ const Addons: React.FC<Props> = () => {
   return (
     <>
       <div className="mt-3 mt-3 align-items-center d-flex fw-bold text text-color-5 text-font-rubik title">
-        <div className="text-nowrap">Addons</div>
+        <div className="text-nowrap">Complementos</div>
         <div className="border-pointed w-100 mx-3"> </div>
         <div>
           <SouthIcon color="secondary" />
@@ -66,7 +66,7 @@ const Addons: React.FC<Props> = () => {
           />
           Redes Sociales
         </div>
-        <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+        {/* <div className="fw-bold text text-color-5 text-font-l-d subtitle">
           <Checkbox
             color="secondary"
             icon={<ImageOutlinedIcon color="secondary" />}
@@ -123,7 +123,7 @@ const Addons: React.FC<Props> = () => {
               />
             </div>
           )}
-        </div>
+        </div> */}
         <AddVideo />
         <div className="fw-bold text text-color-5 text-font-l-d subtitle">
           <Checkbox

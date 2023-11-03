@@ -28,11 +28,16 @@ const app_state: AppState = {
       set: false,
       value: '1',
     },
-    extraVideo: false,
+    extraVideo: {
+      set: false,
+      type: "file",
+      value: null,
+    },
     print: false,
     feature: false,
     socialMedia: false,
     imgs: null,
+    attributes: [],
   },
 
   [Symbol.iterator]: function () {

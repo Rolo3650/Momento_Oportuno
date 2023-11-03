@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PlaceIcon from '@mui/icons-material/Place';
 import { DropdownOne } from '../../../inputs/dropdown/DropdownOne';
 import SouthIcon from '@mui/icons-material/South';
@@ -6,7 +6,19 @@ import { TextFieldOne } from '../../../inputs/text/TextFieldOne';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import { useTheme } from '@mui/material';
 import { useGetStates } from '../../../../hooks/querys/useStates';
-import { useAllCategories, useForm } from '../../../../hooks';
+import {
+  useAllCategories,
+  useCategoryAttributes,
+  useForm,
+} from '../../../../hooks';
+import { TextFieldTwo } from '../../../inputs/text/TextFieldTwo';
+import {
+  FormControl,
+  Select,
+  MenuItem,
+  Checkbox,
+  ListItemText,
+} from '@mui/material';
 
 interface Option {
   label: string;
@@ -16,11 +28,23 @@ interface Option {
 
 interface Props {}
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
 const StepOne: React.FC<Props> = () => {
   const theme = useTheme();
   const { data } = useGetStates();
   const allCategories = useAllCategories();
   const { setNewAdForm, newAdForm } = useForm();
+  const attributes = useCategoryAttributes(newAdForm.category?.id ?? 0);
 
   const onChangeCategory = (option: Option) => {
     if (option.value != 0) {
@@ -60,6 +84,24 @@ const StepOne: React.FC<Props> = () => {
       setNewAdForm({ state: null });
     }
   };
+
+  useEffect(() => {
+    if (attributes?.data?.data?.length) {
+      const arr_attributes = attributes?.data?.data?.map((atr) => {
+        let value = null;
+        if (atr.type == 'number') value = 0;
+        if (atr.type == 'select') value = [atr.attributeValues[0]?.name];
+        return {
+          set: atr,
+          value: value,
+        };
+      });
+      setNewAdForm({ attributes: arr_attributes });
+    } else {
+      setNewAdForm({ attributes: [] });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [attributes?.data?.data]);
 
   return (
     <>
@@ -141,9 +183,130 @@ const StepOne: React.FC<Props> = () => {
             />
           </div>
         )}
-        <div className="mb-3">
+        {newAdForm.attributes.map((data) => (
+          <div className="mb-3" key={data?.set.name}>
+            <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
+              {data.set.name}{' '}
+              <span className="text text-color-secondary">*</span>
+            </div>
+            {data.set.type == 'text' && (
+              <TextFieldTwo
+                color={{
+                  variant: 'secondary',
+                  text: '#464748',
+                  field: theme.palette.secondary.main,
+                  backgroundColor: '#fff',
+                }}
+                text={data.set.name}
+                onChange={(e) => {
+                  const attributes = [...newAdForm.attributes];
+                  attributes.forEach((atr) => {
+                    if (atr.set.id === data.set.id) {
+                      atr.value = e.target.value;
+                    }
+                  });
+                  setNewAdForm({ attributes: attributes });
+                }}
+                value={data.value?.toString() ?? ''}
+              />
+            )}
+            {data.set.type == 'number' && (
+              <TextFieldTwo
+                color={{
+                  variant: 'secondary',
+                  text: '#464748',
+                  field: theme.palette.secondary.main,
+                  backgroundColor: '#fff',
+                }}
+                text={data.set.name}
+                onChange={(e) => {
+                  const regex = /^[0-9]*$/;
+                  if (regex.test(e.target.value)) {
+                    const price = parseInt(e.target.value);
+                    const attributes = [...newAdForm.attributes];
+                    attributes.forEach((atr) => {
+                      if (atr.set.id === data.set.id) {
+                        atr.value = price?.toString() == 'NaN' ? 0 : price;
+                      }
+                    });
+                    setNewAdForm({ attributes: attributes });
+                  }
+                }}
+                value={data.value?.toString() ?? ''}
+              />
+            )}
+            {data?.set?.type == 'select' && typeof data.value == 'object' && (
+              <div className="hola w-100">
+                <FormControl sx={{ maxWidth: 300, width: '100%' }}>
+                  <Select
+                    sx={{
+                      height: '64px',
+                      borderRadius: '5px',
+                      '& .MuiOutlinedInput-notchedOutline': {
+                        borderColor: theme.palette.secondary.main,
+                      },
+                      '& .MuiInputBase-root': {
+                        height: '64px',
+                      },
+                      '& input::placeholder': {
+                        color: '#464748',
+                        opacity: 1,
+                      },
+                      '& img': {
+                        height: '30px',
+                        padding: '7px',
+                        borderRadius: '5px',
+                        backgroundColor: theme.palette.secondary.main,
+                      },
+                      backgroundColor: '#fff',
+                    }}
+                    labelId="demo-multiple-checkbox-label"
+                    id="demo-multiple-checkbox"
+                    multiple
+                    color="secondary"
+                    value={data.value}
+                    onChange={(e) => {
+                      const attributes = newAdForm.attributes.map(
+                        (attribute) => {
+                          if (attribute.set.id == data.set.id) {
+                            return {
+                              set: attribute.set,
+                              value: e.target.value,
+                            };
+                          } else {
+                            return {
+                              value: attribute.value,
+                              set: attribute.set,
+                            };
+                          }
+                        }
+                      );
+                      setNewAdForm({ attributes });
+                    }}
+                    renderValue={(selected) => selected?.join(', ')}
+                    MenuProps={MenuProps}
+                  >
+                    {data.set.attributeValues.map((value) => (
+                      <MenuItem key={value.name} value={value.name}>
+                        <Checkbox
+                          checked={
+                            Array.isArray(data.value) &&
+                            data?.value?.indexOf(value.name) > -1
+                          }
+                        />
+                        <ListItemText primary={value.name} />
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </div>
+            )}
+          </div>
+        ))}
+        {/* <div className="mb-3">
           <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-            Precio <span className="text text-color-secondary">*</span>
+            {newAdForm?.category?.id == 4 ? 'Sueldo' : 'Precio'}{' '}
+            <span className="text text-color-secondary">*</span>
           </div>
           <TextFieldOne
             color={{
@@ -165,7 +328,7 @@ const StepOne: React.FC<Props> = () => {
             value={newAdForm.price?.toString()}
             // value={name}
           />
-        </div>
+        </div> */}
         <div className="mb-3">
           <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
             Ciudad <span className="text text-color-secondary">*</span>

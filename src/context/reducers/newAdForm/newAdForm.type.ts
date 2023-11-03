@@ -1,5 +1,5 @@
 import { ActionMap, AppTypes } from '..';
-import { Categorie, State, SubCategorie } from '../../../api';
+import { Attribute, Categorie, State, SubCategorie } from '../../../api';
 
 export type NewAdFormState = {
   name: string;
@@ -17,7 +17,15 @@ export type NewAdFormState = {
     set: boolean;
     value: string | number | null;
   };
-  extraVideo: boolean;
+  attributes: {
+    set: Attribute;
+    value: string | number | null | string[];
+  }[];
+  extraVideo: {
+    set: boolean;
+    type: "link" | "file";
+    value: string | File | null;
+  };
   print: boolean;
   feature: boolean;
   socialMedia: boolean;

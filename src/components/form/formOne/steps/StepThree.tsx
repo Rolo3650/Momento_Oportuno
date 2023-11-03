@@ -7,6 +7,8 @@ import BackupIcon from '@mui/icons-material/Backup';
 import { useForm } from '../../../../hooks';
 import ClearIcon from '@mui/icons-material/Clear';
 import Swal from 'sweetalert2';
+import ImageIcon from '@mui/icons-material/Image';
+import { RadioGroupOne } from './Addons/RadioGroupOne';
 
 type Imgs = string | ArrayBuffer | null;
 
@@ -29,7 +31,7 @@ const StepThree: React.FC<Props> = () => {
         } else {
           Swal.fire(
             '¿Necesitas más imágenes?',
-            'Haz alcanzado el límite de imagens, si necesitas subir más puede ir al apartado de Addons y elegir másimagenes',
+            'Haz alcanzado el límite de imagens, para subir más, selecciona la cantidad de imágenes que necesitas en el apartado de arriba.',
             'warning'
           );
         }
@@ -84,8 +86,8 @@ const StepThree: React.FC<Props> = () => {
         setNewAdForm({ imgs: imgs });
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newAdForm.extraImgs.quantity])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newAdForm.extraImgs.quantity]);
 
   return (
     <>
@@ -94,6 +96,41 @@ const StepThree: React.FC<Props> = () => {
         <div className="border-pointed w-100 mx-3"> </div>
         <div>
           <SouthIcon color="secondary" />
+        </div>
+      </div>
+      <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+        <ImageIcon color="primary" className="me-2" />
+        Cantidad de Imágenes
+      </div>
+      <div>
+        <div className="ms-5">
+          <RadioGroupOne
+            value={newAdForm.extraImgs.value}
+            onChange={(e) => {
+              setNewAdForm({
+                extraImgs: {
+                  ...newAdForm.extraImgs,
+                  value: e.value,
+                  quantity: parseInt(e.value.toString() ?? '3'),
+                },
+              });
+            }}
+            defaultValue="5"
+            options={[
+              {
+                label: '3 Imágenes',
+                value: '3',
+              },
+              {
+                label: '5 Imágenes + $50',
+                value: '5',
+              },
+              {
+                label: '10 Imágenes + $100',
+                value: '10',
+              },
+            ]}
+          />
         </div>
       </div>
       <div className="imgs">
