@@ -39,10 +39,10 @@ export function useLogin(cbOnSuccess?: (data: logInRes) => void) {
           alert('Invalid credentials');
           return;
         }
-        alert('Something went wrong');
+        // alert('Something went wrong');
         return;
       }
-      alert('Something went wrong');
+      // alert('Something went wrong');
     },
   });
 

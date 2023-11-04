@@ -79,6 +79,10 @@
             max-width: 500px;
             text-align: center;
         }
+
+        @media (max-width: 768px) {
+            max-width: 300px;
+        }
     }
 
     &.card-login-tabs {
@@ -90,6 +94,7 @@
     }
 
     &.card-login-btns {
+        min-width: 250px;
         height: 50px;
         display: flex;
         align-items: center;
@@ -102,6 +107,11 @@
         background: #ffffff;
         box-shadow: 0px 6px 20px 0px rgba(41.99999999999999, 56.99999999999999, 70, 0.08);
         position: relative;
+
+        @media (max-width: 768px) {
+            min-width: 150px;
+        }
+
     }
 
     &.card-login-cont {
@@ -122,5 +132,10 @@
     &.card-login-lrcont {
         padding: 60px;
         padding-top: 0px;
+
+        @media (max-width: 768px) {
+            padding: 30px;
+        }
+
     }
 }
