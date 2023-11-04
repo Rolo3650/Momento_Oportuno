@@ -1,11 +1,14 @@
 export const config = {
   URL: {
-    DEV: 'http://159.203.113.48',
+    DEV: 'https://elmomentoapi.empresarialti.com',
+    // DEV: 'http://159.203.113.48',
     // TODO: Change to production url
-    PROD: 'http://159.203.113.48',
+    PROD: 'https://elmomentoapi.empresarialti.com',
+    // PROD: 'http://159.203.113.48',
   },
   API_PREFIX: {
-    BASE: '/api',
+    BASE: '/',
+    // BASE: '/api',
     get FULL() {
       return `${this.BASE}` as const;
     },
