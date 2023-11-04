@@ -7,8 +7,8 @@ export const config = {
     // PROD: 'http://159.203.113.48',
   },
   API_PREFIX: {
-    BASE: '/',
-    // BASE: '/api',
+    // BASE: '/',
+    BASE: '/api',
     get FULL() {
       return `${this.BASE}` as const;
     },
