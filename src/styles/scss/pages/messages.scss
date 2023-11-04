@@ -53,3 +53,43 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) and (min-width: 882px) {
+  .chat-container {
+    width: 920px;
+    .chat-list-container {
+      .chat-list {
+        width: 270px;
+      }
+    }
+    .chat-conversation-container {
+      width: 600px;
+      .chat-conversation {
+        width: 550px;
+      }
+      .chat-write-message {
+        width: 600px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 882px) {
+  .chat-container {
+    justify-content: center;
+    width: 500px;
+    .chat-list-container {
+      display: none;
+    }
+    .chat-conversation-container {
+      justify-content: center;
+      width: 500px;
+      .chat-conversation {
+        width: 450px;
+      }
+      .chat-write-message {
+        width: 500px;
+      }
+    }
+  }
+}
