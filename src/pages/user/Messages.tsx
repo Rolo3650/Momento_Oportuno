@@ -1,13 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { LayoutThree } from '../../containers/layout/LayoutThree';
-import { EmptyBoxOne } from '../../components/module/box/EmptyBoxOne';
+// import { EmptyBoxOne } from '../../components/module/box/EmptyBoxOne';
 import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
-import { ChatList, MessageBox, Input } from 'react-chat-elements';
+// import { ChatList, MessageBox, Input } from 'react-chat-elements';
+import { ChatList, Input } from 'react-chat-elements';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 
-interface Props { }
+interface Props {}
 interface Message {
   position: string;
   text: string;
@@ -46,8 +48,11 @@ const Messages: React.FC<Props> = () => {
           <div className="chat-list-title">Conversaciones</div>
           <ChatList
             className="chat-list"
+            id={0}
+            lazyLoadingImage=''
             dataSource={[
               {
+                id: 0,
                 avatar: 'https://avatars.githubusercontent.com/u/80540635?v=4',
                 alt: 'Fabian',
                 title: 'Fabian',
@@ -56,6 +61,7 @@ const Messages: React.FC<Props> = () => {
                 unread: 1,
               },
               {
+                id: 2,
                 avatar: 'https://avatars.githubusercontent.com/u/80540635?v=4',
                 alt: 'Fabian',
                 title: 'Fabian',
@@ -79,26 +85,27 @@ const Messages: React.FC<Props> = () => {
             />
           </div>
           <div className="chat-conversation">
-            {messages.map((message) => {
+            {messages.map((_message) => {
               return (
-                <MessageBox
-                  position={message.position}
-                  type={'text'}
-                  text={message.text}
-                  date={message.date}
-                />
-                )
+                <></>
+                // <MessageBox
+                //   position={message.position}
+                //   type={'text'}
+                //   text={message.text}
+                //   date={message.date}
+                // />
+              );
             })}
-
-
           </div>
           <div className="chat-write-message">
             <Input
+              maxHeight={50}
               className="chat-message-input"
               placeholder="Escribe tu mensaje aquí..."
               multiline={true}
               value={messageText}
-              onChange={(e) => setMessageText(e.target.value)}
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              onChange={(e: any) => setMessageText(e.target.value)}
             />
             <GeneralButton
               title="Enviar"
