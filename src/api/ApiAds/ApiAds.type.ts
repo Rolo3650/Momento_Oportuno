@@ -50,6 +50,18 @@ const AttributeAdSchema = AttributeSchema.omit({
 );
 export type AttributeAd = z.infer<typeof AttributeAdSchema>;
 
+export const MediaSchema = z.object({
+  id: z.number(),
+  collection_name: z.string(),
+  file_name: z.string(),
+  mime_type: z.string(),
+  size: z.number(),
+  original_url: z.string(),
+  preview_url: z.string(),
+});
+
+export type Media = z.infer<typeof MediaSchema>;
+
 export const AdSchema = z.object({
   id: z.number(),
   title: z.string(),
@@ -72,6 +84,7 @@ export const AdSchema = z.object({
   imgs: z.array(z.string()).optional(),
   price: z.number().optional(),
   views: z.number().optional(),
+  media: z.array(MediaSchema).optional(),
 });
 export type Ad = z.infer<typeof AdSchema>;
 
@@ -100,29 +113,29 @@ export const CreateAnuncioResponseSchema = z.object({
     category: true,
     attributes: true,
   }),
-})
+});
 
-export type CreateAnuncioResponse = z.infer<typeof CreateAnuncioResponseSchema>
+export type CreateAnuncioResponse = z.infer<typeof CreateAnuncioResponseSchema>;
 
 export type GeneralCreateAnuncioParams = {
-  title: string
-  description: string
-  state_id: number
-  user_id: number
-  category_id: number
-  is_featured: boolean
-  includes_printing: boolean
-  includes_video: boolean
-  includes_socials: boolean
-  printing_state_id?: number
-}
+  title: string;
+  description: string;
+  state_id: number;
+  user_id: number;
+  category_id: number;
+  is_featured: boolean;
+  includes_printing: boolean;
+  includes_video: boolean;
+  includes_socials: boolean;
+  printing_state_id?: number;
+};
 
 export type ListingAttribute = {
-  attribute_id: number
-  value: string
-}
+  attribute_id: number;
+  value: string;
+};
 
 export type CreateAnuncioParams = GeneralCreateAnuncioParams & {
-  subcategory_id: number
-  listingAttributes: ListingAttribute[]
-}
+  subcategory_id: number;
+  listingAttributes: ListingAttribute[];
+};

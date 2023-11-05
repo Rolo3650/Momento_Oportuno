@@ -81,8 +81,10 @@ const CatalogueOne: React.FC<Props> = () => {
       <div className={`mt-3 view-card`}>
         {ads?.pages[0]?.data?.map((data) => {
           const obj = { ...data };
-          if (!obj.imgs || obj.imgs.length === 0) {
+          if (!obj.media || obj.media.length === 0) {
             obj.imgs = ['/img/examples/img_1.webp', '/img/examples/img_2.webp'];
+          } else {
+            obj.imgs = obj.media.map(img => img.original_url);
           }
           return <ProductOne product={obj} />;
         })}
@@ -90,8 +92,10 @@ const CatalogueOne: React.FC<Props> = () => {
       <div className={`mt-3 view-row`}>
         {ads?.pages[0]?.data?.map((data) => {
           const obj = { ...data };
-          if (!obj.imgs || obj.imgs.length === 0) {
+          if (!obj.media || obj.media.length === 0) {
             obj.imgs = ['/img/examples/img_1.webp', '/img/examples/img_2.webp'];
+          } else {
+            obj.imgs = obj.media.map(img => img.original_url);
           }
           return <ProductTwo product={obj} />;
         })}
