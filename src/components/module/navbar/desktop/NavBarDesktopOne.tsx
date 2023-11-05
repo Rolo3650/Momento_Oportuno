@@ -3,9 +3,15 @@ import { Link } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import { MenuOne } from '../../menu/MenuOne';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../../../context';
+import { useState } from 'react';
+import { LogResForm } from '../../../modals/LogResForm';
 
 const NavBarDesktopOne = () => {
+  const { state } = useAppContext();
   const navigateTo = useNavigate();
+
+  const [isModalLogResOpen, setIsModalLogResOpen] = useState<boolean>(false);
 
   return (
     <>
@@ -36,7 +42,9 @@ const NavBarDesktopOne = () => {
             name: 'menu-row-down',
           }}
         >
-          <MenuItem onClick={() => navigateTo('/ads')}>Todos los anuncios</MenuItem>
+          <MenuItem onClick={() => navigateTo('/ads')}>
+            Todos los anuncios
+          </MenuItem>
           <MenuItem>
             <MenuOne
               title="Micrositios"
@@ -57,7 +65,18 @@ const NavBarDesktopOne = () => {
               <MenuItem>Campeche</MenuItem>
               <MenuItem>Quintana Roo</MenuItem>
               <MenuItem>Yucatán</MenuItem>
-              <MenuItem onClick={() => navigateTo("/micrositio/create")}>Comprar Micrositio</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  if (!state?.userState?.token) {
+                    setIsModalLogResOpen(true);
+                    return;
+                  }
+                  
+                  navigateTo('/micrositio/create');
+                }}
+              >
+                Comprar Micrositio
+              </MenuItem>
             </MenuOne>
           </MenuItem>
           <MenuItem>Directorios Locales</MenuItem>
@@ -83,6 +102,10 @@ const NavBarDesktopOne = () => {
           <MenuItem>¿Quienes somos?</MenuItem>
           <MenuItem>Contactanos</MenuItem>
         </MenuOne>
+        <LogResForm
+          show={isModalLogResOpen}
+          onHide={() => setIsModalLogResOpen(false)}
+        />
       </div>
     </>
   );
