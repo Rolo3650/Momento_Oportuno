@@ -12,6 +12,7 @@ import { Messages } from '../pages/user/Messages';
 import { MyOrders } from '../pages/user/MyOrders';
 import { Directories } from '../pages/user/Directories';
 import { Setting } from '../pages/user/Settings';
+import { CreateMicrositio } from '../pages/user/CreateMicrositio';
 
 const AppRouter = () => {
   return (
@@ -28,6 +29,7 @@ const AppRouter = () => {
         {/* User */}
         <Route path="/login-register" element={<LogRes />} />
         <Route path="/user" element={<ProfilePage />} />
+        <Route path="/micrositio/create" element={<CreateMicrositio />} />
         <Route path="/panel/create" element={<AddNewAd />} />
         <Route path="/panel/list" element={<MyAds />} />
         <Route path="/panel/favorites" element={<Favorites />} />

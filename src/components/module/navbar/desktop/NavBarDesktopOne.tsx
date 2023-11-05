@@ -57,6 +57,7 @@ const NavBarDesktopOne = () => {
               <MenuItem>Campeche</MenuItem>
               <MenuItem>Quintana Roo</MenuItem>
               <MenuItem>Yucatán</MenuItem>
+              <MenuItem onClick={() => navigateTo("/micrositio/create")}>Comprar Micrositio</MenuItem>
             </MenuOne>
           </MenuItem>
           <MenuItem>Directorios Locales</MenuItem>

@@ -4,6 +4,7 @@ import Request from '../request';
 import type {
   getMicrositioByIdRes,
   GetMicrositiosRes,
+  Micrositio,
 } from './Microsites.type';
 
 export class MicrositesServices {
@@ -21,4 +22,14 @@ export class MicrositesServices {
 
     return data;
   }
+
+  /* Checar */
+  // static async createMicrositio(params: Micrositio) {
+  //   const { data } = await this.#request.post<Micrositio>(
+  //     `/get/`,
+  //     params
+  //   );
+
+  //   return data;
+  // }
 }
