@@ -33,7 +33,10 @@ export type NewAdFormState = {
     type: 'link' | 'file';
     value: string | File | null;
   };
-  print: boolean;
+  print: {
+    set: boolean;
+    value: string | number | null;
+  };
   feature: boolean;
   socialMedia: boolean;
   imgs: File[] | null;

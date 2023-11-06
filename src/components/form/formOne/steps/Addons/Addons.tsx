@@ -36,11 +36,42 @@ const Addons: React.FC<Props> = () => {
             icon={<PrintOutlinedIcon color="secondary" />}
             checkedIcon={<PrintIcon color="primary" />}
             onChange={(e) => {
-              setNewAdForm({ print: e.target.checked });
+              setNewAdForm({
+                print: {
+                  ...newAdForm.print,
+                  set: e.target.checked,
+                },
+              });
             }}
-            value={newAdForm.print}
+            value={newAdForm.print.set}
           />
           Impreso
+          {newAdForm?.print.set && (
+            <div className="ms-5">
+              <RadioGroupOne
+                value={newAdForm?.print.value}
+                onChange={(e) => {
+                  setNewAdForm({
+                    print: {
+                      ...newAdForm.print,
+                      value: e.value,
+                    },
+                  });
+                }}
+                defaultValue="1"
+                options={[
+                  {
+                    label: 'Anuncio Impreso por 3 días +$100',
+                    value: '1',
+                  },
+                  {
+                    label: 'Anuncio Impreso por 7 días +$150',
+                    value: '2',
+                  },
+                ]}
+              />
+            </div>
+          )}
         </div>
         <div className="fw-bold text text-color-5 text-font-l-d subtitle">
           <Checkbox
@@ -52,7 +83,7 @@ const Addons: React.FC<Props> = () => {
             }}
             value={newAdForm.feature}
           />
-          Destacado
+          Destacado +$100
         </div>
         <div className="fw-bold text text-color-5 text-font-l-d subtitle">
           <Checkbox
@@ -64,7 +95,7 @@ const Addons: React.FC<Props> = () => {
             }}
             value={newAdForm.socialMedia}
           />
-          Redes Sociales
+          Redes Sociales +$100
         </div>
         {/* <div className="fw-bold text text-color-5 text-font-l-d subtitle">
           <Checkbox
@@ -156,15 +187,15 @@ const Addons: React.FC<Props> = () => {
                 defaultValue="1"
                 options={[
                   {
-                    label: 'Estados del Sureste',
+                    label: 'Estados del Sureste +$100',
                     value: '1',
                   },
                   {
-                    label: 'Nacional',
+                    label: 'Nacional +$100',
                     value: '2',
                   },
                   {
-                    label: 'Todos los estados',
+                    label: 'Todos los estados +$200',
                     value: '3',
                   },
                 ]}

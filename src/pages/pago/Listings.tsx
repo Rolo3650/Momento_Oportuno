@@ -1,13 +1,19 @@
 import { useState } from 'react';
 
-import { useEffect } from 'react';
 import { LayoutThree } from '../../containers/layout/LayoutThree';
 import { useForm } from '../../hooks';
 import { Button, useTheme } from '@mui/material';
 import { OrdersServices } from '../../api/Orders';
 import { TextFieldTwo } from '../../components/inputs/text/TextFieldTwo';
 import Swal from 'sweetalert2';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import { PayOne } from '../../components/pay/PayOne';
 // import SouthIcon from '@mui/icons-material/South';
+
+const stripePromise = loadStripe(
+  'pk_test_51O3l3TKsMUZdYHBYf1tQxzYgxuI3AnwaHApYA8GFH9QR0mFkq222o9ISceK4Ucg1nQqZt9nkr4wr5Ryn1LBXwKRs00m40i9780'
+);
 
 const Listings = () => {
   const { newAdForm } = useForm();
@@ -27,24 +33,30 @@ const Listings = () => {
       });
 
       if (response_3.paypal_link) {
-        window.location.assign(response_3.paypal_link.replace('\\/', '/'))
+        window.location.assign(response_3.paypal_link.replace('\\/', '/'));
       }
     }
   };
 
-  useEffect(() => {
-    console.log(newAdForm);
+  // useEffect(() => {
+  //   console.log(newAdForm);
 
-    // const response_3 = await OrdersServices.createOrder({
-    //     billing_address: 'dir',
-    //     package_id: 4,
-    //     payment_method: 'paypal',
-    //     related_id: response_1.data.id,
-    //     type: 'listing',
-    //   });
+  //   // const response_3 = await OrdersServices.createOrder({
+  //   //     billing_address: 'dir',
+  //   //     package_id: 4,
+  //   //     payment_method: 'paypal',
+  //   //     related_id: response_1.data.id,
+  //   //     type: 'listing',
+  //   //   });
 
-    //   console.log(response_3)
-  }, [newAdForm]);
+  //   //   console.log(response_3)
+  // }, [newAdForm]);
+
+  const options = {
+    // passing the client secret obtained from the server
+    clientSecret:
+      'pi_1Gt0Mi2eZvKYlo2C5JxhMqP7_secret_51O3l3TKsMUZdYHBYWVfYN8uhV13VEAL2tUPptSC5AB5KftRKYZslgxz4C3BuLETKwKRdJt5SnfIMM4COj1U14bL800mCLqQCkL',
+  };
 
   return (
     <LayoutThree>
@@ -55,8 +67,8 @@ const Listings = () => {
         Nombre de la publicación{' '}
         <span className="text text-color-secondary">*</span>
       </div>
-      <div className="mt-2 pb-5">
-        <div className="d-flex justify-content-center mb-4">
+      <div className="mt-2 pb-3">
+        <div className="d-flex justify-content-center mb-3">
           <TextFieldTwo
             color={{
               variant: 'secondary',
@@ -71,7 +83,7 @@ const Listings = () => {
             value={dir}
           />
         </div>
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center my-4">
           <Button
             onClick={onClickPP}
             variant="contained"
@@ -80,6 +92,11 @@ const Listings = () => {
           >
             Pagar con Paypal
           </Button>
+        </div>
+        <div className="pay pay-one">
+          <Elements stripe={stripePromise} options={options}>
+            <PayOne />
+          </Elements>
         </div>
       </div>
     </LayoutThree>

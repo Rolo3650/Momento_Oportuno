@@ -7,6 +7,7 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import SouthIcon from '@mui/icons-material/South';
 import moment from 'moment';
 
 const StepFour = () => {
@@ -27,6 +28,17 @@ const StepFour = () => {
 
   return (
     <>
+      <div className="mt-3 align-items-center d-flex fw-bold text text-color-5 text-font-rubik title">
+        <div className="text-nowrap">Paquetes</div>
+        <div className="border-pointed w-100 mx-3"></div>
+        <div>
+          <SouthIcon color="secondary" />
+        </div>
+      </div>
+      <div className="mt-2 fw-bold text text-color-5 text-font-l-d subtitle mb-3">
+        Selecciona la cantidad de días
+        <span className="text text-color-secondary">*</span>
+      </div>
       <div className="packages mt-4">
         {data?.data.length != 0 &&
           data?.data.map((data) => (
@@ -57,7 +69,11 @@ const StepFour = () => {
             </div>
           ))}
       </div>
-      <div className='mt-5'>
+      <div className="mt-5 fw-bold text text-color-5 text-font-l-d subtitle mb-3">
+        Selecciona la fecha de publicación
+        <span className="text text-color-secondary">*</span>
+      </div>
+      <div className="">
         <LocalizationProvider dateAdapter={AdapterMoment}>
           <DemoContainer components={['DatePicker']}>
             <DatePicker

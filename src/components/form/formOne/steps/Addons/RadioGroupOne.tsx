@@ -22,7 +22,7 @@ const RadioGroupOne: React.FC<Props> = ({
   options,
   defaultValue,
   onChange,
-  value
+  value,
 }) => {
   const [innnerValue, setValue] = useState<number | string>(defaultValue);
 
@@ -35,7 +35,7 @@ const RadioGroupOne: React.FC<Props> = ({
         onChange={(e) => {
           setValue(e.target.value);
           if (onChange) {
-            const option = options.find(o => o.value == e.target.value);
+            const option = options.find((o) => o.value == e.target.value);
             if (option?.value) {
               onChange(option);
             }
@@ -49,6 +49,11 @@ const RadioGroupOne: React.FC<Props> = ({
             value={option.value}
             control={<Radio color="secondary" />}
             label={option.label}
+            sx={{
+              '& .MuiTypography-root': {
+                fontFamily: '"Lexend Deca", sans-serif !important',
+              },
+            }}
           />
         ))}
       </RadioGroup>
