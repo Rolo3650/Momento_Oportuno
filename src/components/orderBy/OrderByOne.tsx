@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SelectTwo } from '../inputs/select/SelectTwo';
 import { useNavigateCustom, useSearch } from '../../hooks';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { IconButton, useTheme } from '@mui/material';
 import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 import TableRowsRoundedIcon from '@mui/icons-material/TableRowsRounded';

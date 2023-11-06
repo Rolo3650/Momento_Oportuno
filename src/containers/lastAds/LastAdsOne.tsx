@@ -3,7 +3,7 @@ import { ProductOne } from '../../components/product/ProductOne';
 import FinesseButton from '../../components/inputs/buttons/FinesseButton';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { Ad } from '../../api';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { useMyFavorites } from '../../hooks';
 
 interface Props {

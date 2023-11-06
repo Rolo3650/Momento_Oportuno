@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ProductOne } from '../../components/product/ProductOne';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { useInfiniteAds, useNavigateCustom, useSearch } from '../../hooks';
 import { ProductTwo } from '../../components/product/ProductTwo';
 import { Pagination, Stack, useTheme } from '@mui/material';
@@ -84,7 +84,7 @@ const CatalogueOne: React.FC<Props> = () => {
           if (!obj.media || obj.media.length === 0) {
             obj.imgs = ['/img/examples/img_1.webp', '/img/examples/img_2.webp'];
           } else {
-            obj.imgs = obj.media.map(img => img.original_url);
+            obj.imgs = obj.media.map((img) => img.original_url);
           }
           return <ProductOne product={obj} />;
         })}
@@ -95,7 +95,7 @@ const CatalogueOne: React.FC<Props> = () => {
           if (!obj.media || obj.media.length === 0) {
             obj.imgs = ['/img/examples/img_1.webp', '/img/examples/img_2.webp'];
           } else {
-            obj.imgs = obj.media.map(img => img.original_url);
+            obj.imgs = obj.media.map((img) => img.original_url);
           }
           return <ProductTwo product={obj} />;
         })}

@@ -34,6 +34,7 @@
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-query": "^3.39.3",
+    "react-router": "^6.18.0",
     "react-router-dom": "^6.16.0",
     "sass": "^1.69.3",
     "sweetalert2": "^11.7.32",

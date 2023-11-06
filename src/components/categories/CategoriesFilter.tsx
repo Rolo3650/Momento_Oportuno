@@ -2,7 +2,7 @@
 import CircleIcon from '@mui/icons-material/Circle';
 import { SelectOne } from '../inputs/select/SelectOne';
 import { useAllCategories, useNavigateCustom, useSearch } from '../../hooks';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 interface Option {

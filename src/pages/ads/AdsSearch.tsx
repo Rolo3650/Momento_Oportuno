@@ -1,6 +1,6 @@
 // import React from 'react';
 
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { BreadcrumbOne } from '../../components/breadcrumb/BreadcrumbOne';
 import { CategoriesFilter } from '../../components/categories/CategoriesFilter';
 import LookingFor from '../../components/lookingFor/LookingForOne';

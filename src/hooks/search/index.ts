@@ -1,6 +1,6 @@
 // import React from 'react';
 
-import { useLocation, useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router-dom';
 // import { Categorie } from '../../api';
 import { useAllCategories } from '..';
 
