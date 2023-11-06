@@ -7,7 +7,18 @@ import { OrdersServices } from '../../api/Orders';
 import { TextFieldTwo } from '../../components/inputs/text/TextFieldTwo';
 import Swal from 'sweetalert2';
 import { PayOne } from '../../components/pay/PayOne';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 // import SouthIcon from '@mui/icons-material/South';
+
+const stripe = loadStripe(
+  // (() => {
+  //   const key = config.STRIPE.PK_DEV;
+  //   console.log('on IIFE', key);
+  //   return key;
+  // })()
+  'pk_test_51O3l3TKsMUZdYHBYf1tQxzYgxuI3AnwaHApYA8GFH9QR0mFkq222o9ISceK4Ucg1nQqZt9nkr4wr5Ryn1LBXwKRs00m40i9780'
+);
 
 const Listings = () => {
   const { newAdForm } = useForm();
@@ -77,12 +88,15 @@ const Listings = () => {
             variant="contained"
             color="secondary"
             size="large"
+            // disabled={!token || token.trim().length === 0 || dir.length == 0}
           >
             Pagar con Paypal
           </Button>
         </div>
         <div className="pay pay-one">
-          <PayOne />
+          <Elements stripe={stripe}>
+            <PayOne disabled={dir.length == 0} />
+          </Elements>
         </div>
       </div>
     </LayoutThree>

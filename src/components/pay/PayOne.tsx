@@ -1,11 +1,20 @@
 import React from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { OrdersServices } from '../../api/Orders';
+import { useForm } from '../../hooks';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
-import { StripeWrapper } from './Wrapper';
+type PayOneProps = {
+  disabled?: boolean;
+};
 
-const PayOne = () => {
+const PayOne = ({ disabled }: PayOneProps) => {
   const stripe = useStripe();
   const elements = useElements();
+  const nav = useNavigate();
+
+  const { newAdForm } = useForm();
 
   const [validForm, setValidForm] = React.useState(false);
 
@@ -23,34 +32,59 @@ const PayOne = () => {
 
     const res = await stripe.createToken(cardElement);
 
+    if (res.error) {
+      console.log(res.error);
+      return;
+    }
+
+    const orderCreated = await OrdersServices.createOrder({
+      billing_address: 'dir',
+      package_id: 4,
+      payment_method: 'stripe',
+      related_id: newAdForm.responseForm ? newAdForm.responseForm.data.id : 0,
+      type: 'listing',
+      token: res.token?.id,
+    });
+
     console.log({
       cardElement,
       token: res.token,
       card: res.token?.card,
+      orderCreated,
     });
+
+    // example
+
+    if (orderCreated.order.id) {
+      await Swal.fire(
+        'Success',
+        `Órden #${orderCreated.order.id} creada `,
+        'success'
+      );
+      nav('/panel/list');
+      return;
+    }
   };
 
   return (
-    <StripeWrapper>
-      <form onSubmit={handleSubmit}>
-        <CardElement
-          onChange={(p) => {
-            console.log(p);
-            setValidForm(p.complete);
-          }}
-          options={{
-            hidePostalCode: true,
-          }}
-        />
-        <button
-          disabled={!stripe || !elements || !validForm}
-          type="submit"
-          className="btn btn-primary mt-3"
-        >
-          Submit
-        </button>
-      </form>
-    </StripeWrapper>
+    <form onSubmit={handleSubmit}>
+      <CardElement
+        onChange={(p) => {
+          console.log(p);
+          setValidForm(p.complete);
+        }}
+        options={{
+          hidePostalCode: true,
+        }}
+      />
+      <button
+        disabled={!stripe || !elements || !validForm || disabled}
+        type="submit"
+        className="btn btn-primary mt-3"
+      >
+        Pagar con Stripe
+      </button>
+    </form>
   );
 };
 
