@@ -75,7 +75,7 @@ export const AdSchema = z.object({
   is_active: z.boolean(),
   auto_renew: z.boolean(),
   user: UserAdSchema,
-  user_package: UserPackageSchema,
+  user_package: UserPackageSchema.nullable(),
   state: StateSchema,
   category: CategorieSchema,
   attributes: z.array(AttributeAdSchema),

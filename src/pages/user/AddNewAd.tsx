@@ -17,7 +17,7 @@ const AddNewAd: React.FC<Props> = () => {
       <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
         Publicar Anuncio
       </h1>
-      <div className="mt-4">
+      <div className="mt-4 pb-5">
         <FormOne />
       </div>
     </LayoutThree>

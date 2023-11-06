@@ -37,6 +37,26 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
                 })}
               </>
             )}
+            {product?.attributes?.find((atr) => atr.id == 4) &&
+            product?.attributes?.find((atr) => atr.id == 4)?.value ? (
+              <>
+                $
+                {parseInt(
+                  product?.attributes &&
+                    product?.attributes?.find((atr) => atr.id == 4) &&
+                    product?.attributes?.find((atr) => atr.id == 4)?.value
+                    ? product?.attributes
+                        ?.find((atr) => atr.id == 4)
+                        ?.value?.toString() ?? '0'
+                    : '0'
+                )?.toLocaleString('es-MX', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>
