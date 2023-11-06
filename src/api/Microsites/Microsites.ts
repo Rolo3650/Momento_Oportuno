@@ -2,34 +2,59 @@ import { Services } from '..';
 import Request from '../request';
 
 import type {
-  getMicrositioByIdRes,
-  GetMicrositiosRes,
-  Micrositio,
+  GetMicrositesResponse,
+  CreateMicrositeParams,
+  CreateMicrositeResponse,
 } from './Microsites.type';
+
+import {
+  CreateMicrositeResponseSchema,
+  GetMicrositesResponseSchema,
+} from './Microsites.type';
+
+import { GetMicrositeByIdResponse } from './Micrositios.module';
 
 export class MicrositesServices {
   static #request = Request(Services.MICROSITIOS);
-  static async getAllMicrositios() {
-    const { data } = await this.#request.get<GetMicrositiosRes>('/get');
 
-    return data;
+  // static async getAllMicrositios() {
+  //   const { data } = await this.#request.get<GetMicrositesResponse>('/get');
+
+  //   const parsed = GetMicrositesResponseSchema.parse(data);
+
+  //   return parsed;
+  // }
+
+  static async getAllMicrositios(params?: {
+    state?: string
+  }): Promise<GetMicrositesResponse> {
+    let q = '/'
+    if (params?.state) {
+      q = `?state=${params.state}`
+    }
+    const { data } = await this.#request.get<GetMicrositesResponse>(q);
+
+    const parsed = GetMicrositesResponseSchema.parse(data)
+
+    return parsed
   }
 
   static async getMicrositioById(id: number) {
-    const { data } = await this.#request.get<getMicrositioByIdRes>(
+    const { data } = await this.#request.get<GetMicrositeByIdResponse>(
       `/get/${id}`
     );
 
-    return data;
+    const parsed = GetMicrositesResponseSchema.parse(data);
+
+    return parsed;
   }
 
-  /* Checar */
-  // static async createMicrositio(params: Micrositio) {
-  //   const { data } = await this.#request.post<Micrositio>(
-  //     `/get/`,
-  //     params
-  //   );
+  static async createMicrositio(
+    params: CreateMicrositeParams
+  ): Promise<CreateMicrositeResponse> {
+    const { data } = await this.#request.post(`/post`, params);
+    const parsed = CreateMicrositeResponseSchema.parse(data);
 
-  //   return data;
-  // }
+    return parsed;
+  }
 }

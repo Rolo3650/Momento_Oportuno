@@ -1,0 +1,17 @@
+.micrositio-content {
+    min-height: 500px;
+}
+.micrositios-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: flex-start;
+}
+
+.micrositios-card {
+    width: calc(25% - 30px); 
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}

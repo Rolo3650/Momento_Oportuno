@@ -13,6 +13,7 @@ import { MyOrders } from '../pages/user/MyOrders';
 import { Directories } from '../pages/user/Directories';
 import { Setting } from '../pages/user/Settings';
 import { CreateMicrositio } from '../pages/user/CreateMicrositio';
+import { Micrositios } from '../pages/user/Micrositios';
 
 const AppRouter = () => {
   return (
@@ -29,13 +30,16 @@ const AppRouter = () => {
         {/* User */}
         <Route path="/login-register" element={<LogRes />} />
         <Route path="/user" element={<ProfilePage />} />
-        <Route path="/micrositio/create" element={<CreateMicrositio />} />
         <Route path="/panel/create" element={<AddNewAd />} />
         <Route path="/panel/list" element={<MyAds />} />
         <Route path="/panel/favorites" element={<Favorites />} />
         <Route path="/panel/Messages" element={<Messages />} />
         <Route path="/panel/my-orders" element={<MyOrders />} />
         <Route path="/panel/directories" element={<Directories />} />
+        <Route path="/micrositios/create" element={<CreateMicrositio />} />
+        <Route path="/micrositios/micrositios-campeche" element={<Micrositios cityName="Campeche" />} />
+        <Route path="/micrositios/micrositios-quintanaroo" element={<Micrositios cityName="Quintana Roo"/>} />
+        <Route path="/micrositios/micrositios-yucatan" element={<Micrositios cityName="Yucatan"  />} />
         <Route path="/panel/settings" element={<Setting />} />
 
         <Route path="/*" element={<Home />} />
