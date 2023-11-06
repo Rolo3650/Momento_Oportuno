@@ -14,7 +14,7 @@ const MicrositioCardOne: React.FC<Props> = ({ micrositio }) => {
       <div
         onClick={() =>navigateTo(`/microsite/${micrositio.id}`)}>
         <div>
-          <img src={micrositio.image} alt="" />
+          <img src={micrositio.image ?? ''} alt="" />
         </div>
         <div className="info fs-5 fw-bold text text-color-5 text-font-rubik">
           <div className="name">{micrositio.title}</div>
