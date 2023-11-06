@@ -33,7 +33,10 @@ const app_state: AppState = {
       type: 'file',
       value: null,
     },
-    print: false,
+    print: {
+      set: false,
+      value: '1',
+    },
     feature: false,
     socialMedia: false,
     imgs: null,

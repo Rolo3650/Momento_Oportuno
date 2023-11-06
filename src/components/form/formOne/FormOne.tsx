@@ -70,7 +70,7 @@ const FormOne: React.FC<Props> = () => {
         title: newAdForm.name,
         category_id: newAdForm.category?.id ?? 0,
         description: newAdForm.desc,
-        includes_printing: newAdForm.print,
+        includes_printing: newAdForm.print.set,
         includes_socials: newAdForm.socialMedia,
         includes_video: newAdForm.extraVideo.set,
         is_featured: newAdForm.feature,
@@ -124,8 +124,8 @@ const FormOne: React.FC<Props> = () => {
           });
           const response_2 = await AdsServices.uploadImage({
             file: newAdForm.imgs[0],
-            // id: response_1.data.id,
-            id: 47,
+            id: response_1.data.id,
+            // id: 47,
           });
 
           if (!response_2.data.id) {

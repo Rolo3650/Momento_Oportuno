@@ -33,7 +33,7 @@ const AddVideo: React.FC<Props> = () => {
         }}
         value={newAdForm.extraVideo}
       />
-      Agregar Video
+      Agregar Video +$100
       {newAdForm.extraVideo.set && (
         <>
           {/* <div className="align-items-center d-flex fw-bold text text-color-5 text-font-rubik subtitle">
