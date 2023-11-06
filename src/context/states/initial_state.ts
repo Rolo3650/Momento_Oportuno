@@ -30,7 +30,7 @@ const app_state: AppState = {
     },
     extraVideo: {
       set: false,
-      type: "file",
+      type: 'file',
       value: null,
     },
     print: false,
@@ -38,6 +38,8 @@ const app_state: AppState = {
     socialMedia: false,
     imgs: null,
     attributes: [],
+    responseForm: null,
+    package: null,
   },
 
   [Symbol.iterator]: function () {
