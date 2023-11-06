@@ -7,12 +7,14 @@ interface Props {
 }
 
 const MicrositiosOne: React.FC<Props> = ({ cityId }) => {
-  const { data, isLoading, refetch: refresh } = useMicrositios();
+  // const { data, isLoading, refetch: refresh } = useMicrositios();
+  const { data, isLoading } = useMicrositios();
 
   const micrositios = data?.data.filter((ms) => ms.state.id === cityId);
 
   useEffect(() => {
     console.log('MICROSITIOS', micrositios);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

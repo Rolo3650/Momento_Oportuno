@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { useGetStates } from '../../hooks/querys/useStates';
 import { MicrositiosOne } from '../../components/micrositios/MicrositiosOne';
@@ -7,11 +7,11 @@ interface Props {
   cityName: string;
 }
 
-const Micrositios: React.FC<Props> = ({cityName}) => {
+const Micrositios: React.FC<Props> = ({ cityName }) => {
   const { data } = useGetStates();
-  const city = data?.data?.find((c) => c.name===cityName);
+  const city = data?.data?.find((c) => c.name === cityName);
   // useEffect(() => {}, []);
-  
+
   return (
     <LayoutOne>
       <div className="d-flex justify-content-center align-items-center">
@@ -20,7 +20,7 @@ const Micrositios: React.FC<Props> = ({cityName}) => {
             Micrositios | {cityName}
           </h1>
           <div className="mt-4">
-            <MicrositiosOne cityId={ city?.id }/>
+            <MicrositiosOne cityId={city?.id} />
           </div>
         </div>
       </div>

@@ -33,9 +33,9 @@ export type GetMicrositeByIdResponse = z.infer<
   typeof GetMicrositeByIdResponseSchema
 >
 
-type asd = NonNullable<
-  GetMicrositeByIdResponse['data']['user']['listings']
->[number]
+// type asd = NonNullable<
+//   GetMicrositeByIdResponse['data']['user']['listings']
+// >[number]
 
 // z.object({
 //   listings: z
