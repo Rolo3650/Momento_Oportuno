@@ -5,9 +5,10 @@ import { Button } from '@mui/material';
 interface Props {
   img?: string;
   text?: string;
+  onClick?: () => void;
 }
 
-const PopularCategoriesButton: React.FC<Props> = ({ text, img }) => {
+const PopularCategoriesButton: React.FC<Props> = ({ text, img, onClick }) => {
   const theme = useTheme();
 
   return (
@@ -28,6 +29,7 @@ const PopularCategoriesButton: React.FC<Props> = ({ text, img }) => {
         },
       }}
       className="btn btn-popular-category mx-2"
+      onClick={onClick}
     >
       <div>
         <img src={img} alt="vehicle-category" />

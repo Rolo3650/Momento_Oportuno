@@ -77,6 +77,7 @@ const StepFour = () => {
         <LocalizationProvider dateAdapter={AdapterMoment}>
           <DemoContainer components={['DatePicker']}>
             <DatePicker
+              minDate={moment(new Date())}
               defaultValue={moment(new Date())}
               label="Selecciona una fecha"
               sx={{

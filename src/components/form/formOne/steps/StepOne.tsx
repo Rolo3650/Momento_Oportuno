@@ -91,6 +91,7 @@ const StepOne: React.FC<Props> = () => {
         let value = null;
         if (atr.type == 'number') value = 0;
         if (atr.type == 'select') value = [atr.attributeValues[0]?.name];
+        if (atr.type == 'checkbox') value = [atr.attributeValues[0]?.name];
         return {
           set: atr,
           value: value,
@@ -235,72 +236,73 @@ const StepOne: React.FC<Props> = () => {
                 value={data.value?.toString() ?? ''}
               />
             )}
-            {data?.set?.type == 'select' && typeof data.value == 'object' && (
-              <div className="hola w-100">
-                <FormControl sx={{ maxWidth: 300, width: '100%' }}>
-                  <Select
-                    sx={{
-                      height: '64px',
-                      borderRadius: '5px',
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderColor: theme.palette.secondary.main,
-                      },
-                      '& .MuiInputBase-root': {
+            {(data?.set?.type == 'select' || data?.set?.type == 'checkbox') &&
+              typeof data.value == 'object' && (
+                <div className="hola w-100">
+                  <FormControl sx={{ maxWidth: 300, width: '100%' }}>
+                    <Select
+                      sx={{
                         height: '64px',
-                      },
-                      '& input::placeholder': {
-                        color: '#464748',
-                        opacity: 1,
-                      },
-                      '& img': {
-                        height: '30px',
-                        padding: '7px',
                         borderRadius: '5px',
-                        backgroundColor: theme.palette.secondary.main,
-                      },
-                      backgroundColor: '#fff',
-                    }}
-                    labelId="demo-multiple-checkbox-label"
-                    id="demo-multiple-checkbox"
-                    multiple
-                    color="secondary"
-                    value={data.value}
-                    onChange={(e) => {
-                      const attributes = newAdForm.attributes.map(
-                        (attribute) => {
-                          if (attribute.set.id == data.set.id) {
-                            return {
-                              set: attribute.set,
-                              value: e.target.value,
-                            };
-                          } else {
-                            return {
-                              value: attribute.value,
-                              set: attribute.set,
-                            };
+                        '& .MuiOutlinedInput-notchedOutline': {
+                          borderColor: theme.palette.secondary.main,
+                        },
+                        '& .MuiInputBase-root': {
+                          height: '64px',
+                        },
+                        '& input::placeholder': {
+                          color: '#464748',
+                          opacity: 1,
+                        },
+                        '& img': {
+                          height: '30px',
+                          padding: '7px',
+                          borderRadius: '5px',
+                          backgroundColor: theme.palette.secondary.main,
+                        },
+                        backgroundColor: '#fff',
+                      }}
+                      labelId="demo-multiple-checkbox-label"
+                      id="demo-multiple-checkbox"
+                      multiple
+                      color="secondary"
+                      value={data.value}
+                      onChange={(e) => {
+                        const attributes = newAdForm.attributes.map(
+                          (attribute) => {
+                            if (attribute.set.id == data.set.id) {
+                              return {
+                                set: attribute.set,
+                                value: e.target.value,
+                              };
+                            } else {
+                              return {
+                                value: attribute.value,
+                                set: attribute.set,
+                              };
+                            }
                           }
-                        }
-                      );
-                      setNewAdForm({ attributes });
-                    }}
-                    renderValue={(selected) => selected?.join(', ')}
-                    MenuProps={MenuProps}
-                  >
-                    {data.set.attributeValues.map((value) => (
-                      <MenuItem key={value.name} value={value.name}>
-                        <Checkbox
-                          checked={
-                            Array.isArray(data.value) &&
-                            data?.value?.indexOf(value.name) > -1
-                          }
-                        />
-                        <ListItemText primary={value.name} />
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </div>
-            )}
+                        );
+                        setNewAdForm({ attributes });
+                      }}
+                      renderValue={(selected) => selected?.join(', ')}
+                      MenuProps={MenuProps}
+                    >
+                      {data.set.attributeValues.map((value) => (
+                        <MenuItem key={value.name} value={value.name}>
+                          <Checkbox
+                            checked={
+                              Array.isArray(data.value) &&
+                              data?.value?.indexOf(value.name) > -1
+                            }
+                          />
+                          <ListItemText primary={value.name} />
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </div>
+              )}
           </div>
         ))}
         {/* <div className="mb-3">

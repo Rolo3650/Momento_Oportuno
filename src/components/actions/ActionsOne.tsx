@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { IconButton } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import CompareArrowsOutlinedIcon from '@mui/icons-material/CompareArrowsOutlined';
+// import CompareArrowsOutlinedIcon from '@mui/icons-material/CompareArrowsOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { AdPreview } from '../modals/AdPreview';
 import { Ad, AdFavorite } from '../../api';
 import { LogResForm } from '../modals/LogResForm';
 import { useAppContext } from '../../context';
 import { useAddFavorite, useRemoveFavorite } from '../../hooks';
+import ShareIcon from '@mui/icons-material/Share';
 
 interface Props {
   product: Ad | AdFavorite;
@@ -18,7 +19,8 @@ interface Props {
 const ActionsOne: React.FC<Props> = ({ product, fav }: Props) => {
   const { state } = useAppContext();
 
-  const [compare, SetCompare] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [compare, _SetCompare] = useState<boolean>(false);
   const [isModalProductOpen, setIsModalProductOpen] = useState<boolean>(false);
   const [isModalLogResOpen, setIsModalLogResOpen] = useState<boolean>(false);
 
@@ -35,9 +37,12 @@ const ActionsOne: React.FC<Props> = ({ product, fav }: Props) => {
     }
   };
 
-  const onClickCompare = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onClickCompare = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    SetCompare(!compare);
+    // SetCompare(!compare);
+    await navigator.clipboard.writeText(
+      'https://momento-oportuno.vercel.app/ad/' + product.id
+    );
   };
 
   const onClickView = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -94,7 +99,8 @@ const ActionsOne: React.FC<Props> = ({ product, fav }: Props) => {
         }}
         onClick={onClickCompare}
       >
-        <CompareArrowsOutlinedIcon
+        <ShareIcon
+          // onClick={}
           sx={{
             fontSize: '17px',
           }}
