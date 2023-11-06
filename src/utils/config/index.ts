@@ -35,5 +35,11 @@ export const config = {
   //     return base64;
   //   },
   // },
+  STRIPE: {
+    PK_DEV:
+      'pk_test_51O3l3TKsMUZdYHBYf1tQxzYgxuI3AnwaHApYA8GFH9QR0mFkq222o9ISceK4Ucg1nQqZt9nkr4wr5Ryn1LBXwKRs00m40i9780',
+    PK_PROD:
+      'pk_test_51O3l3TKsMUZdYHBYf1tQxzYgxuI3AnwaHApYA8GFH9QR0mFkq222o9ISceK4Ucg1nQqZt9nkr4wr5Ryn1LBXwKRs00m40i9780',
+  },
   JWT_SECRET: import.meta.env.VITE_JWT_SECRET,
 } as const;
