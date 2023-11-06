@@ -1,0 +1,27 @@
+.container-userads-quantity {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: $color_secondary;
+    .container-userads-quantity-number {
+        font-size: 16px;
+        color: $color_7;
+        font-family: $font_4;
+    }
+}
+
+.results {
+    margin-top: 30px;
+    font-family: $font_1;
+    font-size: 16px;
+    .number {
+        margin-inline: 6px;
+        font-family: $font_2;
+        color: $color_5;
+        font-weight: bold;
+    }
+}

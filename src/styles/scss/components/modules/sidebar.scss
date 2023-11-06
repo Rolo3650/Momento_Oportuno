@@ -1,0 +1,12 @@
+.sidebar {
+
+    &.sidebar-one {
+
+        & hr {
+            border-top: solid 1px $color_4;
+            opacity: 100%;
+        }
+
+    }
+
+}

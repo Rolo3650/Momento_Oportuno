@@ -1,0 +1,11 @@
+.desktop {
+    @media screen and (max-width: 1200px) {
+        display: none;
+    }
+}
+
+.phone {
+    @media screen and (min-width: 1200px) {
+        display: none;
+    }
+}

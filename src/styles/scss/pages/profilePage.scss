@@ -1,0 +1,64 @@
+.profile-toppart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  .profile-background {
+    margin-bottom: 5rem;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    background-image: url('/svg/backgrounds/usrback_1.svg');
+    background-position: center top;
+    background-size: cover;
+    .profile-picture {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: -50%;
+      background-color: $color_12;
+      height: 220px;
+      width: 220px;
+      border-radius: 50%;
+      .profile-userimg {
+        max-width: 120px;
+        color: orange;
+      }
+    }
+  }
+
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    .profile-usernamediv {
+      .profile-username {
+        color: $color_5;
+        font-size: 36px;
+        font-family: $font_3;
+        font-weight: bold;
+      }
+    }
+
+    .profile-time {
+        display: inline-flex;
+        font-size: 16px;
+        font-family: $font_1;
+        .profile-time_user-img {
+            display: flex;
+            justify-content: center;
+            margin-inline: 5px;
+            margin-top: 1px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: $color_secondary;
+            .profile-time_user-imguser {
+                max-width: 10px;
+            }
+        }
+    }
+  }
+}

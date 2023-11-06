@@ -1,0 +1,59 @@
+.navbar {
+
+    &.navbar-one {
+
+        width: 100%;
+        max-width: 1200px;
+        height: 110px;
+        overflow: auto;
+
+        /* width */
+        &::-webkit-scrollbar {
+            width: 10px;
+            height: 5px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        & .links-container {
+            height: 110px;
+            width: 1200px;
+            white-space: nowrap;
+        }
+
+        @media screen and (min-width: 768px) {
+
+            & .links-container {
+                padding-top: 30px !important;
+
+            }
+
+        }
+
+        @media screen and (max-width: 768px) {
+            height: 80px;
+
+            & .links-container {
+                height: 80px;
+
+            }
+
+        }
+
+    }
+
+}

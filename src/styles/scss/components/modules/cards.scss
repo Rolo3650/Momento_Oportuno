@@ -1,0 +1,141 @@
+.card-custom {
+    &.card-custom-one {
+        max-width: 100%;
+
+        @media screen and (min-width: 1024px) {
+            max-width: 500px;
+        }
+
+        @media screen and (max-width: 1024px) {
+            text-align: center;
+        }
+
+        & .card-custom-heading {
+            font-size: 68px;
+            font-family: $font_3;
+            letter-spacing: -2px;
+            line-height: 68px;
+
+            @media screen and (max-width: 768px) {
+                br {
+                    display: none;
+                }
+            }
+
+            @media screen and (max-width: 768px) {
+                font-size: 48px;
+                letter-spacing: -2px;
+                line-height: 48px;
+            }
+        }
+
+        & .text-description {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            & .popular-categories {
+                overflow: scroll;
+
+                & .popular-categories-body {
+                    width: 500px;
+                }
+            }
+        }
+    }
+}
+
+.card-custom {
+    &.card-custom-two {
+        max-width: 450px;
+        width: 100%;
+        background-color: rgba($color: $color_7, $alpha: 0.95);
+        border-radius: 10px;
+        box-shadow: 0px 6px 20px 0px rgba(41.99999999999999, 56.99999999999999, 70, 0.08);
+
+        @media screen and (max-width: 1200px) {
+            margin-top: 30px;
+            margin-bottom: 70px;
+        }
+
+        & .card-custom-heading {
+            font-weight: 600;
+            color: $color_5;
+        }
+    }
+}
+
+.card-login {
+    &.card-login-logres {
+        width: 100%;
+
+        @media screen and (min-width: 1024px) {
+            max-width: 500px;
+        }
+
+        @media screen and (max-width: 1024px) {
+            max-width: 500px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            max-width: 300px;
+        }
+    }
+
+    &.card-login-tabs {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        position: relative;
+        overflow: hidden;
+    }
+
+    &.card-login-btns {
+        min-width: 250px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #464748;
+        cursor: pointer;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        width: calc(50% - 3px);
+        background: #ffffff;
+        box-shadow: 0px 6px 20px 0px rgba(41.99999999999999, 56.99999999999999, 70, 0.08);
+        position: relative;
+
+        @media (max-width: 768px) {
+            min-width: 150px;
+        }
+
+    }
+
+    &.card-login-cont {
+        background-color: #ffffff;
+        border: 1px solid #ffffff;
+        box-shadow: 0 0 30px rgba($color: #2a3946, $alpha: 0.2);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        position: relative;
+        z-index: 12;
+        padding-top: 60px;
+
+        @media screen and (max-width: 767px) {
+            padding-top: 30px;
+        }
+    }
+
+    &.card-login-lrcont {
+        padding: 60px;
+        padding-top: 0px;
+
+        @media (max-width: 768px) {
+            padding: 30px;
+        }
+
+    }
+}

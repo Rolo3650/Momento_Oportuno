@@ -1,0 +1,166 @@
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+// - Google Fonts:
+
+// @import url("https://fonts.cdnfonts.com/css/georgia");
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+// Variables
+
+// - Colors:
+
+$color_primary: #E4032E;
+$color_secondary: #FD542A;
+$color_terciary: #533745;
+$color_4: #FD8A2A;
+$color_5: #464748;
+$color_6: #F8FAFD;
+$color_7: #FFFFFF;
+$color_8: #6D6D6D;
+$color_9: #FF5B52;
+$color_10: #73718C;
+$color_11: #F73F41;
+$color_12: #FFC89B;
+$color_13: #FFF1EA;
+$color_14: #F1D9CC;
+$color_15: #F9A03F;
+$color_16: #374B5C;
+// - Fonts:
+
+$font_1: Helvetica, sans-serif;
+$font_2: "Lexend Deca", sans-serif;
+$font_3: "Georgia";
+$font_4: 'Rubik', sans-serif;
+$font_5: 'Red Hat Display', sans-serif;
+$font_6: 'Monoton', sans-serif;
+
+// Components
+
+/* PhoneNumber */
+@import 'components/inputs/phoneNumber.scss';
+/* sendMessage */
+@import 'components/inputs/sendMessage.scss';
+
+// - Modules:
+
+/* Header */
+@import 'components/modules/header.scss';
+/* Footer */
+@import 'components/modules/footer.scss';
+/* Sidebar */
+@import 'components/modules/sidebar.scss';
+/* Cards */
+@import 'components/modules/cards.scss';
+/* Navbar */
+@import 'components/modules/navbar.scss';
+
+// Modals
+
+/* LogResForm */
+@import 'components/modals/logResForm.scss';
+
+// Containers
+
+// - Modules:
+
+/* Wellcome */
+@import 'containers/modules/wellcome.scss';
+/* How it works */
+@import 'containers/modules/howItWorks.scss';
+/* About us */
+@import 'containers/modules/aboutUs.scss';
+
+// - Carousel:
+
+/* Carousel */
+@import 'containers/carousel.scss';
+
+// - Body:
+
+/* Body */
+@import 'containers/body.scss';
+
+// - Inputs:
+
+/* Button */
+@import 'components/inputs/button.scss';
+/* Dropdown */
+@import 'components/inputs/dropdown.scss';
+/* Checkbox */
+@import 'components/inputs/checkbox.scss';
+
+// - Products:
+
+/* Products */
+@import 'components/products/products.scss';
+/* Product Description */
+@import 'components/products/productDescription.scss';
+
+// - Breadcrumbs:
+
+/* Breadcrumbs */
+@import 'components/breadcrumbs.scss';
+
+// - Looking For:
+
+/* Looking For */
+@import 'components/lookingFor.scss';
+
+// - Categories:
+
+/* Categories */
+@import 'components/categories.scss';
+
+// - Forms:
+
+/* Forms */
+@import 'components/form.scss';
+@import 'components/formMicrositio.scss';
+
+// Screen 
+
+/* Sizes */
+@import 'screen/sizes.scss';
+
+// Last Ads
+
+/* Last Ads */
+@import 'containers/lastAds.scss';
+
+// Last Ads
+
+/* User Ads */
+@import 'containers/userAds.scss';
+
+// Texts
+
+/* Fonts */
+@import 'texts/fonts.scss';
+/* Sidebar */
+@import 'texts/colors.scss';
+
+// Backgrounds
+
+@import 'backgrounds/colors.scss';
+
+// Pages
+
+/* Ads Search */
+@import 'pages/addSearch.scss';
+/* Ads Single */
+@import 'pages/adSingle.scss';
+/* Profile Page */
+@import 'pages/profilePage.scss';
+/* Favorites */
+@import 'pages/favorites.scss';
+/* Messages */
+@import 'pages/messages.scss';
+
+
+// Borders
+
+@import 'borders/borders.scss';

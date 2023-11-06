@@ -1,0 +1,61 @@
+.last-ads {
+
+    &.last-ads-one {
+
+        @media screen and (min-width: 1024px) {
+            max-width: 1200px;
+            padding: 30px;
+            margin-bottom: 100px;
+        }
+
+        @media screen and (max-width: 1024px) and (min-width: 768px) {
+            max-width: 780px;
+            padding: 15px;
+            margin-bottom: 100px;
+        }
+
+        @media screen and (max-width: 768px) {
+            max-width: 390px;
+            padding: 15px;
+            margin-bottom: 100px;
+        }
+
+
+        .products {
+
+            display: grid;
+            grid-gap: 15px;
+
+            @media screen and (min-width: 1024px) {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            @media screen and (max-width: 1024px) and (min-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        .title {
+
+            @media screen and (min-width: 1024px) {
+                font-size: 36px;
+            }
+
+            @media screen and (max-width: 1024px) and (min-width: 768px) {
+                font-size: 36px;
+            }
+
+            @media screen and (max-width: 768px) {
+                font-size: 24px;
+
+                & .btn-container {
+                    display: none;
+                }
+            }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,61 @@
+.how-it-works {
+
+    &.how-it-works-one {
+
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 60px;
+        padding-bottom: 60px;
+
+        & .steps {
+
+            max-width: 1140px;
+            gap: 30px;
+
+            & .step {
+
+                position: relative;
+                width: 262px;
+
+                & .icon {
+
+                    position: relative;
+                    height: 90px;
+                    width: 90px;
+                    border-radius: 50%;
+                    z-index: 10;
+
+                    & img {
+                        height: 45px;
+                        width: 45px;
+                    }
+
+                }
+
+                & span {
+
+                    position: absolute;
+                    content: "";
+                    width: calc(100% + 30px);
+                    height: 3px;
+                    // background: var(--e-global-color-lcolor4);
+                    left: -15px;
+                    top: 45px;
+
+                }
+
+                & .text {
+
+                    margin-top: 30px;
+                    line-height: 24px;
+                    font-weight: 600;
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

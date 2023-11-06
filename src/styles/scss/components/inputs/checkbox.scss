@@ -1,0 +1,43 @@
+.chkbox{
+    &.chkbox-main{
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    &.chkbox-remember{
+        display: flex;
+        align-items: center;
+        color: #464748;
+        cursor: pointer;
+        margin-right: 5px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 29px;
+        letter-spacing: 0;
+    }
+    &.chkbox-custom{
+        margin-right: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        border: 1px solid #FD8A2A;
+        background-color: #fff;
+        cursor: pointer;
+        transition: .3s ease-in-out;
+    }
+    &.chkbox-lostpsw{
+        margin-top: 5px;
+        color: #E4032E;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 29px;
+        letter-spacing: 0;
+        position: relative;
+        transition: .3s ease-in-out;
+    }
+}
