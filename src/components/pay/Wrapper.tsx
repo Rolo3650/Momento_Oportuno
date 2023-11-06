@@ -3,7 +3,7 @@ import { FC, PropsWithChildren } from 'react';
 
 import { loadStripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe(
+const stripe = await loadStripe(
   // (() => {
   //   const key = config.STRIPE.PK_DEV;
   //   console.log('on IIFE', key);
@@ -13,5 +13,5 @@ const stripePromise = loadStripe(
 );
 
 export const StripeWrapper: FC<PropsWithChildren> = ({ children }) => {
-  return <Elements stripe={stripePromise}>{children}</Elements>;
+  return <Elements stripe={stripe}>{children}</Elements>;
 };
