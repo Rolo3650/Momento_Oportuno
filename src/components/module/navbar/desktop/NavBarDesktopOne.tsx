@@ -62,9 +62,9 @@ const NavBarDesktopOne = () => {
                 name: 'menu-row-right',
               }}
             >
-              <MenuItem>Campeche</MenuItem>
-              <MenuItem>Quintana Roo</MenuItem>
-              <MenuItem>Yucatán</MenuItem>
+              <MenuItem onClick={() => navigateTo('/micrositios/micrositios-campeche')}>Campeche</MenuItem>
+              <MenuItem onClick={() => navigateTo('/micrositios/micrositios-quintanaroo')}>Quintana Roo</MenuItem>
+              <MenuItem onClick={() => navigateTo('/micrositios/micrositios-yucatan')}>Yucatán</MenuItem>
               <MenuItem
                 onClick={() => {
                   if (!state?.userState?.token) {

@@ -33,10 +33,10 @@ export const useAdById = (id: string | number) => {
   });
 };
 
-export const useMyAds = () => {
+export const useMyAds = ({ page }: { page?: number }) => {
   return useQuery<GetAllAdsResponse, RequestErrors>({
     queryKey: [AdsQuerysKeys.getMyAds],
-    queryFn: () => AdsServices.getMyAds(),
+    queryFn: () => AdsServices.getMyAds({ page }),
   });
 };
 

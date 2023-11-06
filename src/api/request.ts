@@ -11,7 +11,7 @@ export default function Request(
 
   const req = axios.create({
     baseURL: `${url}${service}`,
-    timeout: 1000,
+    timeout: 99999999999,
     maxBodyLength: Infinity,
     headers: {
       'Content-Type': 'application/json',

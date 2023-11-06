@@ -19,6 +19,7 @@ export const Services = {
   DIRECTORY: '/directories',
   MICROSITIOS: '/microsites',
   UPLOAD_IMAGE: '/media',
+  ORDERS: '/orders',
 } as const;
 
 export type SERVICES = (typeof Services)[keyof typeof Services];
