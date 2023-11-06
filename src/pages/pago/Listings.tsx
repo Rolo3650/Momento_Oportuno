@@ -6,14 +6,8 @@ import { Button, useTheme } from '@mui/material';
 import { OrdersServices } from '../../api/Orders';
 import { TextFieldTwo } from '../../components/inputs/text/TextFieldTwo';
 import Swal from 'sweetalert2';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
 import { PayOne } from '../../components/pay/PayOne';
 // import SouthIcon from '@mui/icons-material/South';
-
-const stripePromise = loadStripe(
-  'pk_test_51O3l3TKsMUZdYHBYf1tQxzYgxuI3AnwaHApYA8GFH9QR0mFkq222o9ISceK4Ucg1nQqZt9nkr4wr5Ryn1LBXwKRs00m40i9780'
-);
 
 const Listings = () => {
   const { newAdForm } = useForm();
@@ -52,12 +46,6 @@ const Listings = () => {
   //   //   console.log(response_3)
   // }, [newAdForm]);
 
-  const options = {
-    // passing the client secret obtained from the server
-    clientSecret:
-      'pi_1Gt0Mi2eZvKYlo2C5JxhMqP7_secret_51O3l3TKsMUZdYHBYWVfYN8uhV13VEAL2tUPptSC5AB5KftRKYZslgxz4C3BuLETKwKRdJt5SnfIMM4COj1U14bL800mCLqQCkL',
-  };
-
   return (
     <LayoutThree>
       <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
@@ -94,9 +82,7 @@ const Listings = () => {
           </Button>
         </div>
         <div className="pay pay-one">
-          <Elements stripe={stripePromise} options={options}>
-            <PayOne />
-          </Elements>
+          <PayOne />
         </div>
       </div>
     </LayoutThree>
