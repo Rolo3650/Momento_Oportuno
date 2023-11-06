@@ -10,7 +10,9 @@ import { CreateAnuncioParams, ListingAttribute } from '../../../api';
 import { useAppContext } from '../../../context';
 import { AdsServices } from '../../../api';
 import { useNavigate } from 'react-router-dom';
-import { OrdersServices } from '../../../api/Orders';
+// import {  } from '../../../hooks/querys/usePackages';
+import { StepFour } from './steps/StepFour';
+// import { OrdersServices } from '../../../api/Orders';
 
 interface Props {}
 
@@ -143,46 +145,10 @@ const FormOne: React.FC<Props> = () => {
       } else {
         Swal.fire('¡Listo!', 'Anuncio creado correctamente', 'success').then(
           () => {
-            setNewAdForm({
-              name: '',
-              category: null,
-              subCategory: null,
-              state: null,
-              price: 0,
-              desc: '',
-              extraImgs: {
-                set: false,
-                value: '5',
-                quantity: 3,
-              },
-              extraStates: {
-                set: false,
-                value: '1',
-              },
-              extraVideo: {
-                set: false,
-                type: 'file',
-                value: null,
-              },
-              print: false,
-              feature: false,
-              socialMedia: false,
-              imgs: null,
-              attributes: [],
-            });
-            navigateTo('/panel/list');
+            setNewAdForm({ responseForm: response_1 });
+            navigateTo('/panel/listings/pago');
           }
         );
-
-        const response_3 = await OrdersServices.createOrder({
-          billing_address: 'dir',
-          package_id: 4,
-          payment_method: 'paypal',
-          related_id: response_1.data.id,
-          type: 'listing',
-        });
-
-        console.log(response_3)
       }
     }
   };
@@ -193,6 +159,7 @@ const FormOne: React.FC<Props> = () => {
       <StepTwo />
       <StepThree />
       <Addons />
+      <StepFour />
       <div className="my-3 d-flex justify-content-end">
         <Button onClick={createNewAd} color="secondary" variant="contained">
           Crear Anuncio

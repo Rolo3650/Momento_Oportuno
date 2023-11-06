@@ -24,8 +24,8 @@ export const PackageSchema = z.object({
   includes_printing: z.number(),
   max_number_of_characters: z.number(),
   number_of_images: z.number(),
-  created_at: z.coerce.date(),
-  updated_at: z.coerce.date(),
+  // created_at: z.coerce.date(),
+  // updated_at: z.coerce.date(),
 });
 export type Package = z.infer<typeof PackageSchema>;
 

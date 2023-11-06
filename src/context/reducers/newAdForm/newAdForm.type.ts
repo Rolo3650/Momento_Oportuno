@@ -1,5 +1,12 @@
 import { ActionMap, AppTypes } from '..';
-import { Attribute, Categorie, State, SubCategorie } from '../../../api';
+import {
+  Attribute,
+  Categorie,
+  CreateAnuncioResponse,
+  Package,
+  State,
+  SubCategorie,
+} from '../../../api';
 
 export type NewAdFormState = {
   name: string;
@@ -23,13 +30,15 @@ export type NewAdFormState = {
   }[];
   extraVideo: {
     set: boolean;
-    type: "link" | "file";
+    type: 'link' | 'file';
     value: string | File | null;
   };
   print: boolean;
   feature: boolean;
   socialMedia: boolean;
   imgs: File[] | null;
+  responseForm: CreateAnuncioResponse | null;
+  package: Package | null;
 };
 
 export type NewAdFormPayload = {
