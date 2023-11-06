@@ -3,8 +3,6 @@ import { FC, PropsWithChildren } from 'react';
 
 import { loadStripe } from '@stripe/stripe-js';
 
-import { config } from '../../utils';
-
 const stripePromise = loadStripe(
   // (() => {
   //   const key = config.STRIPE.PK_DEV;
