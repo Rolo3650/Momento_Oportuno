@@ -5,6 +5,7 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import WebIcon from '@mui/icons-material/Web';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import WorkIcon from '@mui/icons-material/Work';
+import BackupIcon from '@mui/icons-material/Backup';
 import PlaceIcon from '@mui/icons-material/Place';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import { useGetStates } from '../../hooks/querys/useStates';
@@ -12,7 +13,8 @@ import { GeneralButton } from '../inputs/buttons/GeneralButton';
 import { useState, useEffect } from 'react';
 import { useAppContext } from '../../context';
 import { State } from '../../api';
-
+import { ThemeTwo } from '../../themes/ThemeTwo';
+import { Button } from '@mui/joy';
 // interface Option {
 //   label: string;
 //   value: number | string;
@@ -23,6 +25,7 @@ interface DirectoryAd {
   title: string;
   businessType: string;
   address: string;
+//   img: string | null;
   schedule: string;
   email: string;
   phone: string;
@@ -63,6 +66,27 @@ const FormDirectoryOne = () => {
       setFormData({ ...formData, [name]: value });
     }
   };
+
+//   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+//     if (e.target.files?.length) {
+//       let files: File[] = [];
+//       if (newAdForm?.imgs?.length) {
+//         files = [...newAdForm.imgs];
+//       }
+//       for (let i = 0; i < e.target.files.length; i++) {
+//         if (files?.length < newAdForm.extraImgs.quantity) {
+//           files.push(e.target.files[i]);
+//         } else {
+//           Swal.fire(
+//             '¿Necesitas más imágenes?',
+//             'Haz alcanzado el límite de imagens, para subir más, selecciona la cantidad de imágenes que necesitas en el apartado de arriba.',
+//             'warning'
+//           );
+//         }
+//       }
+//       setFormData({ imgs: [...files] });
+//     }
+//   };
 
   const onCreateMicrositio = () => {
     console.log(formData);
@@ -125,6 +149,37 @@ const FormDirectoryOne = () => {
             onChange={(e) => handleInputChange('address', e.target.value)}
             value={formData.address}
           />
+        </div>
+        <div className="directory-form-item">
+        <ThemeTwo>
+          <Button
+            sx={{
+              width: '100%',
+            }}
+            className="py-5 fs-3"
+            component="label"
+            role={undefined}
+            tabIndex={-1}
+            variant="outlined"
+            color="primary"
+            startDecorator={
+              <BackupIcon
+                sx={{
+                  fontSize: '40px',
+                }}
+              />
+            }
+          >
+            Subir una Imagen
+            <input
+              type="file"
+              className="d-none"
+              multiple
+              accept="image/*"
+            //   onChange={onChange}
+            />
+          </Button>
+        </ThemeTwo>
         </div>
         <div className="directory-form-item">
           <TextFieldOne
