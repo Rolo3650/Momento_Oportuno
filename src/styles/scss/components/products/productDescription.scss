@@ -1,8 +1,18 @@
 .product-decription {
-    
+
     &.product-decription-one {
 
-        
+        & .email {
+
+            width: 75%;
+            white-space: nowrap;
+            /* No permite saltos de línea */
+            overflow: hidden;
+            /* Oculta el contenido que desborda */
+            text-overflow: ellipsis;
+            /* Agrega puntos suspensivos */
+
+        }
 
     }
 
