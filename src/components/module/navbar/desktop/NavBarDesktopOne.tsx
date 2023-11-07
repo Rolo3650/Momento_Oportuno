@@ -72,7 +72,7 @@ const NavBarDesktopOne = () => {
                     return;
                   }
                   
-                  navigateTo('/micrositio/create');
+                  navigateTo('/micrositios/create');
                 }}
               >
                 Comprar Micrositio
