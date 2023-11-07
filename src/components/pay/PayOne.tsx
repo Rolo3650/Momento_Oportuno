@@ -4,6 +4,7 @@ import { OrdersServices } from '../../api/Orders';
 import { useForm } from '../../hooks';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 type PayOneProps = {
   disabled?: boolean;
@@ -77,13 +78,19 @@ const PayOne = ({ disabled }: PayOneProps) => {
           hidePostalCode: true,
         }}
       />
-      <button
-        disabled={!stripe || !elements || !validForm || disabled}
-        type="submit"
-        className="btn btn-primary mt-3"
-      >
-        Pagar con Stripe
-      </button>
+      <div className="w-100 d-flex justify-content-center">
+        <Button
+          disabled={!stripe || !elements || !validForm || disabled}
+          type="submit"
+          className="btn btn-primary mt-4"
+          variant="contained"
+          sx={{
+            textTransform: 'none',
+          }}
+        >
+          Pagar con Stripe
+        </Button>
+      </div>
     </form>
   );
 };

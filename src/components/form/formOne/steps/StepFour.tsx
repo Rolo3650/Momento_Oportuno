@@ -15,6 +15,28 @@ const StepFour = () => {
   const theme = useTheme();
   const { setNewAdForm, newAdForm } = useForm();
 
+  const getTotal = (price: number) => {
+    let total = price;
+
+    if (newAdForm.print.set) {
+      if (newAdForm.print.value == '1') total += 100;
+      if (newAdForm.print.value == '2') total += 150;
+    }
+    if (newAdForm.feature) total += 100;
+    if (newAdForm.socialMedia) total += 100;
+    if (newAdForm.extraVideo.set) total += 100;
+    if (newAdForm.extraStates.set) {
+      if (newAdForm.extraStates.value == '1') total += 100;
+      if (newAdForm.extraStates.value == '2') total += 100;
+      if (newAdForm.extraStates.value == '3') total += 150;
+    }
+
+    if (newAdForm.extraImgs.quantity == 5) total += 100;
+    if (newAdForm.extraImgs.quantity == 10) total += 200;
+
+    return total;
+  };
+
   useEffect(() => {
     if (data?.data.length) {
       if (data.data[0] != newAdForm.package) {
@@ -61,7 +83,7 @@ const StepFour = () => {
 
               <div className="price text text-color-primary fw-bold fs-4">
                 ${' '}
-                {data.price?.toLocaleString('es-MX', {
+                {getTotal(data.price)?.toLocaleString('es-MX', {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
                 })}

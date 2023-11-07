@@ -43,6 +43,30 @@ const Listings = () => {
     }
   };
 
+  const getTotal = (price: number) => {
+    // console.log(newAdForm)
+    let total = price;
+
+    if (newAdForm.print.set) {
+      if (newAdForm.print.value == '1') total += 100;
+      if (newAdForm.print.value == '2') total += 150;
+    }
+    if (newAdForm.feature) total += 100;
+    if (newAdForm.socialMedia) total += 100;
+    if (newAdForm.extraVideo.set) total += 100;
+    if (newAdForm.extraStates.set) {
+      if (newAdForm.extraStates.value == '1') total += 100;
+      if (newAdForm.extraStates.value == '2') total += 100;
+      if (newAdForm.extraStates.value == '3') total += 150;
+    }
+
+    if (newAdForm.extraImgs.quantity == 5) total += 100;
+    if (newAdForm.extraImgs.quantity == 10) total += 200;
+
+
+    return total;
+  };
+
   // useEffect(() => {
   //   console.log(newAdForm);
 
@@ -59,44 +83,119 @@ const Listings = () => {
 
   return (
     <LayoutThree>
-      <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
-        Pago
-      </h1>
-      <div className="mt-4 fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-        Nombre de la publicación{' '}
-        <span className="text text-color-secondary">*</span>
-      </div>
-      <div className="mt-2 pb-3">
-        <div className="d-flex justify-content-center mb-3">
-          <TextFieldTwo
-            color={{
-              variant: 'secondary',
-              text: '#464748',
-              field: theme.palette.secondary.main,
-              backgroundColor: '#fff',
-            }}
-            text={'Direccoón de pago'}
-            onChange={(e) => {
-              SetDir(e.target.value);
-            }}
-            value={dir}
-          />
+      <div className="pay-page">
+        <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
+          Pago
+        </h1>
+        <div className="mt-4 fw-bold fs-3 text text-color-secondary text-font-rubik subtitle mb-3 text-center">
+          Resumen de tu Órden
         </div>
-        <div className="d-flex justify-content-center my-4">
-          <Button
-            onClick={onClickPP}
-            variant="contained"
-            color="secondary"
-            size="large"
-            // disabled={!token || token.trim().length === 0 || dir.length == 0}
-          >
-            Pagar con Paypal
-          </Button>
+        <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
+          Nombre del Paquete
         </div>
-        <div className="pay pay-one">
-          <Elements stripe={stripe}>
-            <PayOne disabled={dir.length == 0} />
-          </Elements>
+        <div className="fw-bold fs-4 text text-color-8 text-font-l-d subtitle mb-3 text-center">
+          {newAdForm.package?.name}
+        </div>
+        <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
+          Precio del paquete
+        </div>
+        <div className="fw-bold fs-1 text text-color-primary text-font-georgia subtitle mb-3 text-center">
+          ${' '}
+          {getTotal(newAdForm.package?.price ?? 0).toLocaleString('es-MX', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}{' '}
+          MXN
+        </div>
+        <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
+          Descripción del paquete
+        </div>
+        <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3 text-center">
+          {newAdForm.package?.description}
+        </div>
+        <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
+          Cantidad de Imágenes
+        </div>
+        <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3 text-center">
+          {newAdForm.package?.number_of_images}
+        </div>
+        <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
+          Complementos
+        </div>
+        <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3 text-center">
+          {/* <ul> */}
+          {/* {newAdForm.extraStates.set && <li>{newAdForm.extraStates.value}</li>} */}
+          {newAdForm.extraImgs.quantity > 3 && (
+            <li>
+              {newAdForm.extraImgs.quantity == 5
+                ? '5 Imágenes +$100'
+                : `10 Imágenes +$200`}
+            </li>
+          )}
+          {newAdForm.extraStates.set && (
+            <li>
+              {newAdForm.extraStates.value == '1'
+                ? 'Estados del Sureste +$100'
+                : `${
+                    newAdForm.extraStates.value == '2'
+                      ? 'Nacional +$100'
+                      : 'Todos los estados +$200'
+                  }`}
+            </li>
+          )}
+          {newAdForm.print.set && (
+            <li>
+              {newAdForm.extraStates.value == '1'
+                ? 'Anuncio Impreso por 3 días +$100'
+                : 'Anuncio Impreso por 7 días +$150'}
+            </li>
+          )}
+          {newAdForm.feature && <li>Destacado +$100</li>}
+          {newAdForm.socialMedia && <li>Redes Social +$100</li>}
+          {newAdForm.extraVideo.set && <li>Agregar Video +$100</li>}
+          {/* </ul> */}
+        </div>
+        <div className="mt-2 pb-3 body mx-auto mb-5">
+          <div className="mt-4 fw-bold text text-color-5 text-font-l-d subtitle mb-3">
+            Dirección de Pago{' '}
+            <span className="text text-color-secondary">*</span>
+          </div>
+          <div className="d-flex justify-content-center mb-3">
+            <TextFieldTwo
+              color={{
+                variant: 'secondary',
+                text: '#464748',
+                field: theme.palette.secondary.main,
+                backgroundColor: '#fff',
+              }}
+              text={'Direción de pago'}
+              onChange={(e) => {
+                SetDir(e.target.value);
+              }}
+              value={dir}
+            />
+          </div>
+          <div className="d-flex justify-content-center my-4">
+            <Button
+              onClick={onClickPP}
+              variant="contained"
+              color="secondary"
+              size="large"
+              // disabled={!token || token.trim().length === 0 || dir.length == 0}
+            >
+              Pagar con Paypal
+            </Button>
+          </div>
+          <div className="pay pay-one stripe">
+            <div className="mb-2 fw-bold text text-color-5 text-font-l-d subtitle">
+              Ingresa una tergeta
+            </div>
+            <div className="">
+              <Elements stripe={stripe}>
+                <PayOne disabled={dir.length == 0} />
+              </Elements>
+            </div>
+          </div>
         </div>
       </div>
     </LayoutThree>
