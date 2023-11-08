@@ -129,7 +129,7 @@ const NavbarOne = () => {
           className="text text-font-rubik fw-bold fs-6"
           onClick={() => navigateTo('/panel/my-orders')}
         >
-          Mis órdenes
+          Mis ordenes
         </Button>
         <Button
           sx={{

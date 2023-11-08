@@ -10,7 +10,7 @@ const MicrositioCardOne: React.FC<Props> = ({ micrositio }) => {
   const navigateTo = useNavigate();
 
   return (
-      <div className="micrositios-card" onClick={() => navigateTo(`/microsit/${micrositio.id}`)}>
+      <div className="micrositios-card" onClick={() => navigateTo(`/micrositio/${micrositio.id}`)}>
         <div>
           <img src={micrositio.image ?? ''} alt="" />
         </div>
