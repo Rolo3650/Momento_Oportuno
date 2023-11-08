@@ -16,6 +16,7 @@ import { CreateMicrositio } from '../pages/user/CreateMicrositio';
 import { Micrositios } from '../pages/user/Micrositios';
 import { Listings } from '../pages/pago/Listings';
 import { AddNewDirectory } from '../pages/user/AddNewDirectory';
+import { Confirmacion } from '../pages/pago/Confirmacion';
 
 const AppRouter = () => {
   return (
@@ -56,6 +57,7 @@ const AppRouter = () => {
 
         {/* Pago */}
         <Route path="/panel/listings/pago" element={<Listings />} />
+        <Route path="/comprobante/:orderid" element={<Confirmacion />} />
 
         <Route path="/*" element={<Home />} />
       </Routes>

@@ -34,12 +34,16 @@ const FormOne: React.FC<Props> = () => {
       message = 'Selecciona una categoría';
       error = true;
     }
-    if (!newAdForm.category || !newAdForm.category.id) {
-      message = 'Selecciona una categoría';
+    if (
+      newAdForm.category?.children.length &&
+      newAdForm.category?.children.length > 0 &&
+      (!newAdForm.subCategory || !newAdForm.subCategory.id)
+    ) {
+      message = 'Selecciona una sub-categoría';
       error = true;
     }
-    if (!newAdForm.subCategory || !newAdForm.subCategory.id) {
-      message = 'Selecciona una sub-categoría';
+    if (!newAdForm.category || !newAdForm.category.id) {
+      message = 'Selecciona una categoría';
       error = true;
     }
     if (!newAdForm.state || !newAdForm.state.id) {
@@ -62,6 +66,10 @@ const FormOne: React.FC<Props> = () => {
           error = true;
         }
       });
+    }
+    if (!newAdForm.package) {
+      message = 'Selecciona un paquete';
+      error = true;
     }
     if (error) {
       Swal.fire('Error', message, 'error');

@@ -188,7 +188,7 @@ const Listings = () => {
           </div>
           <div className="pay pay-one stripe">
             <div className="mb-2 fw-bold text text-color-5 text-font-l-d subtitle">
-              Ingresa una tergeta
+              Ingresa una targeta
             </div>
             <div className="">
               <Elements stripe={stripe}>

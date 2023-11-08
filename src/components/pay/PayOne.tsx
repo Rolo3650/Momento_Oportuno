@@ -61,8 +61,10 @@ const PayOne = ({ disabled }: PayOneProps) => {
         'Success',
         `Órden #${orderCreated.order.id} creada `,
         'success'
-      );
-      nav('/panel/list');
+      ).then(() => {
+        nav('/comprobante/' + orderCreated.order.id);
+      });
+      // nav('/panel/list');
       return;
     }
   };

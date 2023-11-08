@@ -87,7 +87,7 @@ const StepThree: React.FC<Props> = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newAdForm.extraImgs.quantity]);
+  }, [newAdForm.extraImgs.quantity, newAdForm?.imgs]);
 
   return (
     <>
