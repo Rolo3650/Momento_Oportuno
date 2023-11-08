@@ -12,7 +12,7 @@ import {
   GetMicrositesResponseSchema,
 } from './Microsites.type';
 
-import { GetMicrositeByIdResponse } from './Micrositios.module';
+import { GetMicrositeByIdResponse, GetMicrositeByIdResponseSchema } from './Micrositios.module';
 
 export class MicrositesServices {
   static #request = Request(Services.MICROSITIOS);
@@ -39,15 +39,27 @@ export class MicrositesServices {
     return parsed
   }
 
-  static async getMicrositioById(id: number) {
+  // static async getMicrositioById(id: number) {
+  //   const { data } = await this.#request.get<GetMicrositeByIdResponse>(
+  //     `/${id}`
+  //   );
+
+  //   const parsed = GetMicrositesResponseSchema.parse(data);
+
+  //   return parsed;
+  // }
+
+  static async getMicrositioById(
+    id: number,
+  ): Promise<GetMicrositeByIdResponse> {
     const { data } = await this.#request.get<GetMicrositeByIdResponse>(
-      `/get/${id}`
+      `/${id}`
     );
+    const parsed = GetMicrositeByIdResponseSchema.parse(data)
 
-    const parsed = GetMicrositesResponseSchema.parse(data);
-
-    return parsed;
+    return parsed
   }
+
 
   static async createMicrositio(
     params: CreateMicrositeParams

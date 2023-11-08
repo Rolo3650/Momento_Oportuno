@@ -17,6 +17,7 @@ import { Micrositios } from '../pages/user/Micrositios';
 import { Listings } from '../pages/pago/Listings';
 import { AddNewDirectory } from '../pages/user/AddNewDirectory';
 import { Confirmacion } from '../pages/pago/Confirmacion';
+import { Micrositio } from '../pages/micrositio/Micrositio';
 
 const AppRouter = () => {
   return (
@@ -41,6 +42,7 @@ const AppRouter = () => {
         <Route path="/panel/directories" element={<Directories />} />
         <Route path="/panel/directories/create" element={<AddNewDirectory />} />
         <Route path="/micrositios/create" element={<CreateMicrositio />} />
+        <Route path="/micrositio/:id" element={<Micrositio />} />
         <Route
           path="/micrositios/micrositios-campeche"
           element={<Micrositios cityName="Campeche" />}
