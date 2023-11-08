@@ -98,7 +98,21 @@ const StepOne: React.FC<Props> = () => {
           value: value,
         };
       });
-      setNewAdForm({ attributes: arr_attributes });
+      let isTrue = true;
+      attributes?.data?.data?.forEach((atr) => {
+        let isTrue2 = false;
+        newAdForm.attributes.forEach((attribute) => {
+          if (!isTrue2) {
+            if (attribute.set.id == atr.id) {
+              isTrue2 = true;
+            }
+          }
+        });
+        if (!isTrue2) {
+          isTrue = false;
+        }
+      });
+      if (!isTrue) setNewAdForm({ attributes: arr_attributes });
     } else {
       setNewAdForm({ attributes: [] });
     }
@@ -115,6 +129,11 @@ const StepOne: React.FC<Props> = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newAdForm.category]);
+
+  useEffect(() => {
+    // console.log('hola: 1');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newAdForm.attributes]);
 
   return (
     <>
