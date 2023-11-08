@@ -58,7 +58,7 @@ const OrderByOne: React.FC<Props> = () => {
       <div className="fw-bold fs-4 text text-font-rubik text-color-5">
         22 Resultados &nbsp;
         <span className="text-color-primary fs-6 fw-normal text text-font-l-d">
-          Classified Ads
+          Anuncios Clasificados
         </span>
       </div>
       <div className="d-flex">

@@ -78,7 +78,7 @@ export const AdSchema = z.object({
   user_package: UserPackageSchema.nullable(),
   state: StateSchema,
   category: CategorieSchema,
-  attributes: z.array(AttributeAdSchema),
+  attributes: z.array(AttributeAdSchema)?.optional(),
   create_at: z.coerce.date(),
   updated_at: z.coerce.date(),
   imgs: z.array(z.string()).optional(),
