@@ -13,6 +13,7 @@ import { counterReducer } from './reducers/counter';
 import Cookies from 'universal-cookie';
 import { adSingleReducer } from './reducers/adSingle';
 import { newAdFormReducer } from './reducers/newAdForm';
+import { newDirectoryFormReducer } from './reducers/newDirectoryForm';
 
 const KEY_FOR_APP_STATE = 'state_x_key_for_app' as const;
 
@@ -25,7 +26,15 @@ const AppContext = createContext<{
 });
 
 const mainReducer = (
-  { counter, filterState, userState, adSingleState, newAdForm, ..._ }: AppState,
+  {
+    counter,
+    filterState,
+    userState,
+    adSingleState,
+    newAdForm,
+    newDirectoryForm,
+    ..._
+  }: AppState,
   action: AppActions
 ): AppState => {
   if (action.type === AppTypes.SetGlobalState) {
@@ -38,6 +47,7 @@ const mainReducer = (
     filterState: filterReducer(filterState, action),
     adSingleState: adSingleReducer(adSingleState, action),
     newAdForm: newAdFormReducer(newAdForm, action),
+    newDirectoryForm: newDirectoryFormReducer(newDirectoryForm, action),
 
     ..._,
   };
@@ -60,7 +70,7 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
     } catch (error) {
       console.error(error);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // save state to cookies

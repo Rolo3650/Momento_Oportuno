@@ -3,6 +3,7 @@ import type { FilterActions, UserActions } from './';
 import { AdSingleActions } from './adSingle';
 import { CounterActions } from './counter/counter.type';
 import { NewAdFormActions } from './newAdForm';
+import { NewDirectoryFormActions } from './newDirectoryForm';
 
 export type ActionMap<M extends { [index: string]: unknown }> = {
   [Key in keyof M]: M[Key] extends undefined
@@ -33,6 +34,9 @@ export const AppTypes = {
   // new add
   SetNewAdForm: 'SET_NEW_AD_FORM',
 
+  // new directory
+  SetNewDirectoryForm: 'SET_NEW_DIRECTORY_FORM',
+
   // counterTypes
   Increment: 'INCREMENT',
   Decrement: 'DECREMENT',
@@ -54,4 +58,5 @@ export type AppActions =
   | CounterActions
   | AdSingleActions
   | GlobalActions
-  | NewAdFormActions;
+  | NewAdFormActions
+  | NewDirectoryFormActions;
