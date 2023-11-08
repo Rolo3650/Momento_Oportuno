@@ -20,6 +20,7 @@ import { ThemeTwo } from '../../themes/ThemeTwo';
 import { Button } from '@mui/joy';
 import Swal from 'sweetalert2';
 import { CreateDirectorio } from '../../api';
+import { useNavigate } from 'react-router';
 
 interface DirectoryParams {
   title: string;
@@ -37,6 +38,7 @@ type Imgs = string | ArrayBuffer | null;
 
 const FormDirectoryOne = () => {
   const { state } = useAppContext();
+  const navigateTo = useNavigate();
   const theme = useTheme();
 
   const { data } = useGetStates();
@@ -184,26 +186,30 @@ const FormDirectoryOne = () => {
       let error_2: boolean = false;
       const res1 = await DirectoriesServices.createDirectorio(obj);
       console.log('RES1', res1);
-      if (imgFile && res1) {
-        const res2 = await DirectoriesServices.uploadImage({
-          file: imgFile,
-          id: res1.id,
-        });
-        console.log('RES2:', res2);
-        if (!res2.data.id) {
-          error_2 = true;
-        }
-      } else {
-        error_2 = true;
-      }
+      // if (imgFile && res1) {
+      //   const res2 = await DirectoriesServices.uploadImage({
+      //     file: imgFile,
+      //     id: res1.id,
+      //   });
+      //   console.log('RES2:', res2);
+      //   if (!res2.data.id || !res2) {
+      //     // error_2 = true;
+      //   }
+      // } else {
+      //   error_2 = true;
+      // }
 
       if (error_2) {
-        v;
+        Swal.fire(
+          'Error',
+          'Error al conectar con el servidor, por favor intentalo más tarde',
+          'error'
+        );
       } else {
         Swal.fire('¡Listo!', 'Anuncio creado correctamente', 'success').then(
           () => {
             // setNewAdForm({ responseForm: response_1 });
-            // navigateTo('/panel/listings/pago');
+            navigateTo('/panel/directories/pago');
           }
         );
       }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { LayoutThree } from '../../containers/layout/LayoutThree';
+import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { useForm } from '../../hooks';
 import { Button, useTheme } from '@mui/material';
 import { OrdersServices } from '../../api/Orders';
@@ -20,7 +20,7 @@ const stripe = loadStripe(
   'pk_test_51O3l3TKsMUZdYHBYf1tQxzYgxuI3AnwaHApYA8GFH9QR0mFkq222o9ISceK4Ucg1nQqZt9nkr4wr5Ryn1LBXwKRs00m40i9780'
 );
 
-const Listings = () => {
+const DirectoriesPayment = () => {
   const { newAdForm } = useForm();
   const theme = useTheme();
   const [dir, SetDir] = useState('');
@@ -82,8 +82,8 @@ const Listings = () => {
   // }, [newAdForm]);
 
   return (
-    <LayoutThree>
-      <div className="pay-page">
+    <LayoutOne>
+      <div className="pay-page" style={{padding: 30}}>
         <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
           Pago
         </h1>
@@ -109,51 +109,6 @@ const Listings = () => {
         </div>
         <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
           Descripción del paquete
-        </div>
-        <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3 text-center">
-          {newAdForm.package?.description}
-        </div>
-        <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
-          Cantidad de Imágenes
-        </div>
-        <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3 text-center">
-          {newAdForm.package?.number_of_images}
-        </div>
-        <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
-          Complementos
-        </div>
-        <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3 text-center">
-          {/* <ul> */}
-          {/* {newAdForm.extraStates.set && <li>{newAdForm.extraStates.value}</li>} */}
-          {newAdForm.extraImgs.quantity > 3 && (
-            <li>
-              {newAdForm.extraImgs.quantity == 5
-                ? '5 Imágenes +$100'
-                : `10 Imágenes +$200`}
-            </li>
-          )}
-          {newAdForm.extraStates.set && (
-            <li>
-              {newAdForm.extraStates.value == '1'
-                ? 'Estados del Sureste +$100'
-                : `${
-                    newAdForm.extraStates.value == '2'
-                      ? 'Nacional +$100'
-                      : 'Todos los estados +$200'
-                  }`}
-            </li>
-          )}
-          {newAdForm.print.set && (
-            <li>
-              {newAdForm.extraStates.value == '1'
-                ? 'Anuncio Impreso por 3 días +$100'
-                : 'Anuncio Impreso por 7 días +$150'}
-            </li>
-          )}
-          {newAdForm.feature && <li>Destacado +$100</li>}
-          {newAdForm.socialMedia && <li>Redes Social +$100</li>}
-          {newAdForm.extraVideo.set && <li>Agregar Video +$100</li>}
-          {/* </ul> */}
         </div>
         <div className="mt-2 pb-3 body mx-auto mb-5">
           <div className="mt-4 fw-bold text text-color-5 text-font-l-d subtitle mb-3">
@@ -198,8 +153,8 @@ const Listings = () => {
           </div>
         </div>
       </div>
-    </LayoutThree>
+    </LayoutOne>
   );
 };
 
-export { Listings };
+export { DirectoriesPayment };
