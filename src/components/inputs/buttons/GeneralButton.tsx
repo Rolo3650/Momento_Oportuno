@@ -5,15 +5,17 @@ import { Button } from '@mui/material';
 interface ButtonProps {
   title: string;
   colorPrimary: 'primary' | 'secondary';
-  hoverColor?: 'primary' | 'secondary'
+  hoverColor?: 'primary' | 'secondary';
   endIcon: React.ReactNode;
   height?: string;
   width?: string;
   onClick?: () => void;
+  disabled?: boolean;
 }
 const GeneralButton = (props: ButtonProps) => {
   const theme = useTheme();
-  const { title, colorPrimary, endIcon, hoverColor, onClick, height, width } = props;
+  const { title, colorPrimary, endIcon, hoverColor, onClick, height, width } =
+    props;
 
   return (
     <Button
@@ -21,16 +23,23 @@ const GeneralButton = (props: ButtonProps) => {
       variant="contained"
       className="px-4 py-3 btn-ad-add btn"
       sx={{
-        height: {height},
-        width: {width},
+        height: { height },
+        width: { width },
         boxShadow: 'none',
         '&:hover': {
-          color: (hoverColor && hoverColor === "secondary") ? theme.palette.secondary.contrastText : theme.palette.primary.contrastText,
-          backgroundColor: (hoverColor && hoverColor === "secondary") ? theme.palette.secondary.main : theme.palette.primary.main,
+          color:
+            hoverColor && hoverColor === 'secondary'
+              ? theme.palette.secondary.contrastText
+              : theme.palette.primary.contrastText,
+          backgroundColor:
+            hoverColor && hoverColor === 'secondary'
+              ? theme.palette.secondary.main
+              : theme.palette.primary.main,
         },
       }}
       endIcon={endIcon}
       onClick={onClick}
+      disabled={props.disabled ?? false}
     >
       <span className="left"></span>
       <span className="me-4">{title}</span>

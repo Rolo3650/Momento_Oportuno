@@ -20,7 +20,7 @@ export const TypePackagePojo = {
   DIRECTORY: 'directory',
 } as const;
 
-export type AddonsRecord = Record<`addons[${number}]`, 1>
+export type AddonsRecord = Record<`addons[${number}]`, 1>;
 
 export type CreateOrderParams = (BaseCreateOrderParams &
   (
@@ -72,3 +72,8 @@ export const CreateOrderResponseSchema = z.object({
   paypal_link: z.string().nullable().optional(),
 });
 export type CreateOrderResponse = z.infer<typeof CreateOrderResponseSchema>;
+
+export const GetOrderByIdResponseSchema = z.object({
+  data: OrderSchema,
+});
+export type GetOrderByIdResponse = z.infer<typeof GetOrderByIdResponseSchema>;
