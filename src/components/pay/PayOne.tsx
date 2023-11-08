@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { OrdersServices } from '../../api/Orders';
+import { CreateOrderParams, OrdersServices } from '../../api/Orders';
 import { useForm } from '../../hooks';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
@@ -38,14 +38,26 @@ const PayOne = ({ disabled }: PayOneProps) => {
       return;
     }
 
-    const orderCreated = await OrdersServices.createOrder({
+    const obj: CreateOrderParams = {
       billing_address: 'dir',
       package_id: 4,
-      payment_method: 'stripe',
+      payment_method: 'paypal',
       related_id: newAdForm.responseForm ? newAdForm.responseForm.data.id : 0,
       type: 'listing',
-      token: res.token?.id,
-    });
+    };
+
+    if (newAdForm.extraImgs.quantity == 3) obj['addons[1]'] = 1;
+    if (newAdForm.extraImgs.quantity == 5) obj['addons[2]'] = 1;
+    if (newAdForm.extraImgs.quantity == 10) obj['addons[3]'] = 1;
+    if (newAdForm.extraVideo.set) obj['addons[4]'] = 1;
+    if (newAdForm.feature) obj['addons[5]'] = 1;
+    if (newAdForm.print.set) {
+      if (newAdForm.print.value == 1) obj['addons[6]'] = 1;
+      if (newAdForm.print.value == 2) obj['addons[7]'] = 1;
+    }
+    if (newAdForm.socialMedia) obj['addons[8]'] = 1;
+
+    const orderCreated = await OrdersServices.createOrder(obj);
 
     console.log({
       cardElement,
@@ -59,7 +71,7 @@ const PayOne = ({ disabled }: PayOneProps) => {
     if (orderCreated.order.id) {
       await Swal.fire(
         'Success',
-        `Órden #${orderCreated.order.id} creada `,
+        `Orden #${orderCreated.order.id} creada `,
         'success'
       ).then(() => {
         nav('/comprobante/' + orderCreated.order.id);

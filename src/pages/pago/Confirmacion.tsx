@@ -36,14 +36,14 @@ const Confirmacion = () => {
       {order?.id > 0 && (
         <>
           <div className="mt-5 fw-bold fs-3 text text-color-secondary text-font-rubik subtitle mb-3 text-center">
-            Resumen de tu Órden
+            Resumen de tu Orden
           </div>
           <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
-            Nombre de la Órden
+            Nombre de la Orden
           </div>
           <div className="fw-bold fs-4 text text-color-8 text-font-l-d subtitle mb-3 text-center">
             {order?.title
-              ?.replace('Order for', 'Órden para')
+              ?.replace('Order for', 'Orden para')
               .replace('listing', 'anuncio')
               .replace('directory', 'directorio')
               .replace('with addons', 'con complementos')
@@ -60,7 +60,7 @@ const Confirmacion = () => {
           </div>
           <div className="fw-bold fs-4 text text-color-8 text-font-l-d subtitle mb-3 text-center">
             {order?.type
-              ?.replace('Order for', 'Órden para')
+              ?.replace('Order for', 'Orden para')
               .replace('listing', 'Anuncio')
               .replace('directory', 'Directorio')
               .replace('with addons', 'Con complementos')
@@ -70,7 +70,7 @@ const Confirmacion = () => {
             Estatus
           </div>
           <div className="fw-bold fs-4 text text-color-8 text-font-l-d subtitle mb-3 text-center">
-            {order?.status}
+            {order?.status?.replace("paid", "Pagado").replace("pending", "Pendiente")}
           </div>
           <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
             Dirección de Pago
@@ -85,7 +85,7 @@ const Confirmacion = () => {
             {moment(order.created_at ?? new Date()).format('DD/MM/YYYY')}
           </div>
           <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
-            Precio de la Órden
+            Precio de la Orden
           </div>
           <div className="fw-bold fs-1 text text-color-primary text-font-georgia subtitle mb-5 text-center">
             ${' '}

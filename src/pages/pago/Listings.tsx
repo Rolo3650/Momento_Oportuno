@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { LayoutThree } from '../../containers/layout/LayoutThree';
 import { useForm } from '../../hooks';
 import { Button, useTheme } from '@mui/material';
-import { OrdersServices } from '../../api/Orders';
+import { CreateOrderParams, OrdersServices } from '../../api/Orders';
 import { TextFieldTwo } from '../../components/inputs/text/TextFieldTwo';
 import Swal from 'sweetalert2';
 import { PayOne } from '../../components/pay/PayOne';
@@ -29,13 +29,26 @@ const Listings = () => {
     if (dir.length == 0) {
       Swal.fire('Error', 'Ingresa una dirección de pago válida', 'error');
     } else {
-      const response_3 = await OrdersServices.createOrder({
+      const obj: CreateOrderParams = {
         billing_address: 'dir',
         package_id: 4,
         payment_method: 'paypal',
         related_id: newAdForm.responseForm ? newAdForm.responseForm.data.id : 0,
         type: 'listing',
-      });
+      };
+
+      if (newAdForm.extraImgs.quantity == 3) obj['addons[1]'] = 1;
+      if (newAdForm.extraImgs.quantity == 5) obj['addons[2]'] = 1;
+      if (newAdForm.extraImgs.quantity == 10) obj['addons[3]'] = 1;
+      if (newAdForm.extraVideo.set) obj['addons[4]'] = 1;
+      if (newAdForm.feature) obj['addons[5]'] = 1;
+      if (newAdForm.print.set) {
+        if (newAdForm.print.value == 1) obj['addons[6]'] = 1;
+        if (newAdForm.print.value == 2) obj['addons[7]'] = 1;
+      }
+      if (newAdForm.socialMedia) obj['addons[8]'] = 1;
+
+      const response_3 = await OrdersServices.createOrder(obj);
 
       if (response_3.paypal_link) {
         window.location.assign(response_3.paypal_link.replace('\\/', '/'));
@@ -63,7 +76,6 @@ const Listings = () => {
     if (newAdForm.extraImgs.quantity == 5) total += 100;
     if (newAdForm.extraImgs.quantity == 10) total += 200;
 
-
     return total;
   };
 
@@ -88,7 +100,7 @@ const Listings = () => {
           Pago
         </h1>
         <div className="mt-4 fw-bold fs-3 text text-color-secondary text-font-rubik subtitle mb-3 text-center">
-          Resumen de tu Órden
+          Resumen de tu Orden
         </div>
         <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
           Nombre del Paquete

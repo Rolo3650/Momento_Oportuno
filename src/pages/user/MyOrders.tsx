@@ -49,7 +49,7 @@ const MyOrders: React.FC<Props> = () => {
           <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
             Mis Ordenes
           </h1>
-          <div className="orders-one mt-5 mb-5">
+          <div className="orders-one mt-5 mb-5 pb-5">
             {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               orders?.map((order: any) => (
