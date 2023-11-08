@@ -28,7 +28,7 @@ const UserMinOne = () => {
           </IconButton>
         </div>
         <div className="w-100 px-3">
-          <div className="fw-bold text text-color-5 fs-5">
+          <div className="fw-bold text text-color-5 fs-5 email">
             {adSingleState?.ad?.user?.email}
           </div>
           {/* <div className="text text-color-5 mt-1 text-font-l-d">

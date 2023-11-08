@@ -44,6 +44,9 @@ const app_state: AppState = {
     responseForm: null,
     package: null,
   },
+  newDirectoryForm: {
+    responseForm: null,
+  },
 
   [Symbol.iterator]: function () {
     let index = 0;

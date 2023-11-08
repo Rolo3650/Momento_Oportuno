@@ -119,7 +119,10 @@ $font_6: 'Monoton', sans-serif;
 
 /* Forms */
 @import 'components/form.scss';
+/* Micrositio Form */
 @import 'components/formMicrositio.scss';
+/* Directory Form */
+@import 'components/formDirectory.scss';
 
 // Screen 
 
@@ -163,7 +166,10 @@ $font_6: 'Monoton', sans-serif;
 @import 'pages/micrositios.scss';
 /* My Ads */
 @import 'pages/myAds.scss';
-
+/* Pay */
+@import 'pages/pay.scss';
+/* Order */
+@import 'pages/myOrders.scss';
 
 // Borders
 

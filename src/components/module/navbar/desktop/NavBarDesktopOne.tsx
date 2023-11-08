@@ -72,14 +72,14 @@ const NavBarDesktopOne = () => {
                     return;
                   }
                   
-                  navigateTo('/micrositio/create');
+                  navigateTo('/micrositios/create');
                 }}
               >
                 Comprar Micrositio
               </MenuItem>
             </MenuOne>
           </MenuItem>
-          <MenuItem>Directorios Locales</MenuItem>
+          <MenuItem onClick={() => navigateTo('/directories/')}>Directorios Locales</MenuItem>
         </MenuOne>
       </div>
       <div className="desktop">

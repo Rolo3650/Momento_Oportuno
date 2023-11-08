@@ -87,7 +87,7 @@ const StepThree: React.FC<Props> = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newAdForm.extraImgs.quantity]);
+  }, [newAdForm.extraImgs.quantity, newAdForm?.imgs]);
 
   return (
     <>
@@ -122,11 +122,11 @@ const StepThree: React.FC<Props> = () => {
                 value: '3',
               },
               {
-                label: '5 Imágenes + $50',
+                label: '5 Imágenes + $100',
                 value: '5',
               },
               {
-                label: '10 Imágenes + $100',
+                label: '10 Imágenes + $200',
                 value: '10',
               },
             ]}

@@ -89,10 +89,10 @@ const Messages: React.FC<Props> = () => {
               return (
                 <></>
                 // <MessageBox
-                //   position={message.position}
+                //   position={_message.position}
                 //   type={'text'}
-                //   text={message.text}
-                //   date={message.date}
+                //   text={_message.text}
+                //   date={_message.date}
                 // />
               );
             })}

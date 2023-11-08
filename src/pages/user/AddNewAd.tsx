@@ -1,16 +1,55 @@
 import React, { useEffect } from 'react';
 import { LayoutThree } from '../../containers/layout/LayoutThree';
 import { FormOne } from '../../components/form/formOne/FormOne';
-import { useAppContext } from '../../context';
+// import { useAppContext } from '../../context';
+import { useForm } from '../../hooks';
 
 interface Props {}
 
 const AddNewAd: React.FC<Props> = () => {
-  const { state } = useAppContext();
+  // const { state } = useAppContext();
+  const { setNewAdForm } = useForm();
 
-  useEffect(() => {
-    console.log(state?.newAdForm);
-  }, [state]);
+  useEffect(
+    () => {
+      setNewAdForm({
+        name: '',
+        category: null,
+        subCategory: null,
+        state: null,
+        price: 0,
+        desc: '',
+        extraImgs: {
+          set: false,
+          value: '5',
+          quantity: 3,
+        },
+        extraStates: {
+          set: false,
+          value: '1',
+        },
+        extraVideo: {
+          set: false,
+          type: 'file',
+          value: null,
+        },
+        print: {
+          set: false,
+          value: '1',
+        },
+        feature: false,
+        socialMedia: false,
+        imgs: null,
+        attributes: [],
+        responseForm: null,
+        package: null,
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [
+      // state
+    ]
+  );
 
   return (
     <LayoutThree>

@@ -107,7 +107,7 @@ const ProfileButton = () => {
               className="text text-font-helvetica"
               onClick={() => navigateTo('/panel/my-orders')}
             >
-              <AssignmentIcon /> &nbsp; Mis órdenes
+              <AssignmentIcon /> &nbsp; Mis ordenes
             </MenuItem>
             <MenuItem
               className="text text-font-helvetica"

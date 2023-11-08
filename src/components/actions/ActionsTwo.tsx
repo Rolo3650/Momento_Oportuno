@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { IconButton } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import CompareArrowsOutlinedIcon from '@mui/icons-material/CompareArrowsOutlined';
+// import CompareArrowsOutlinedIcon from '@mui/icons-material/CompareArrowsOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { Ad } from '../../api';
 import { LogResForm } from '../modals/LogResForm';
 import { useAddFavorite, useRemoveFavorite } from '../../hooks';
+import ShareIcon from '@mui/icons-material/Share';
 import { useAppContext } from '../../context';
 
 interface Props {
@@ -17,7 +18,8 @@ interface Props {
 const ActionsTwo: React.FC<Props> = ({ product, fav }) => {
   const { state } = useAppContext();
 
-  const [compare, SetCompare] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [compare, _SetCompare] = useState<boolean>(false);
   const [isModalLogResOpen, setIsModalLogResOpen] = useState<boolean>(false);
 
   const { mutate: add, isLoading: load1 } = useAddFavorite();
@@ -25,9 +27,13 @@ const ActionsTwo: React.FC<Props> = ({ product, fav }) => {
 
   const toggleLoad = load1 || load2;
 
-  const onClickCompare = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onClickCompare = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    SetCompare(!compare);
+    // SetCompare(!compare);
+    await navigator.clipboard.writeText(
+      'https://momento-oportuno.vercel.app/ad/' +
+        (state?.adSingleState?.ad?.id ?? 0)
+    );
   };
 
   const onClickView = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -80,8 +86,9 @@ const ActionsTwo: React.FC<Props> = ({ product, fav }) => {
         className="ms-2"
         sx={{
           color: compare ? 'white' : '',
-          border: `1px solid ${compare ? `${theme.palette.primary.main} !important` : '#FD8A2A'
-            }`,
+          border: `1px solid ${
+            compare ? `${theme.palette.primary.main} !important` : '#FD8A2A'
+          }`,
           transition: '.3s ease-in-out',
           '&:hover': {
             color: compare ? 'white' : theme.palette.primary.main,
@@ -92,7 +99,7 @@ const ActionsTwo: React.FC<Props> = ({ product, fav }) => {
         }}
         onClick={onClickCompare}
       >
-        <CompareArrowsOutlinedIcon
+        <ShareIcon
           sx={{
             fontSize: '25px',
           }}

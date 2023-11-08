@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-import { LayoutThree } from '../../containers/layout/LayoutThree';
+import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { useForm } from '../../hooks';
 import { Button, useTheme } from '@mui/material';
-import { CreateOrderParams, OrdersServices } from '../../api/Orders';
+import { OrdersServices } from '../../api/Orders';
 import { TextFieldTwo } from '../../components/inputs/text/TextFieldTwo';
 import Swal from 'sweetalert2';
-import { PayOne } from '../../components/pay/PayOne';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import { PayTwo } from '../../components/pay/PayTwo';
 // import SouthIcon from '@mui/icons-material/South';
 
 const stripe = loadStripe(
@@ -20,8 +20,8 @@ const stripe = loadStripe(
   'pk_test_51O3l3TKsMUZdYHBYf1tQxzYgxuI3AnwaHApYA8GFH9QR0mFkq222o9ISceK4Ucg1nQqZt9nkr4wr5Ryn1LBXwKRs00m40i9780'
 );
 
-const Listings = () => {
-  const { newAdForm } = useForm();
+const DirectoriesPayment = () => {
+  const { newAdForm, newDirectoryForm } = useForm();
   const theme = useTheme();
   const [dir, SetDir] = useState('');
 
@@ -29,26 +29,13 @@ const Listings = () => {
     if (dir.length == 0) {
       Swal.fire('Error', 'Ingresa una dirección de pago válida', 'error');
     } else {
-      const obj: CreateOrderParams = {
+      const response_3 = await OrdersServices.createOrder({
         billing_address: 'dir',
         package_id: 4,
         payment_method: 'paypal',
         related_id: newAdForm.responseForm ? newAdForm.responseForm.data.id : 0,
-        type: 'listing',
-      };
-
-      if (newAdForm.extraImgs.quantity == 3) obj['addons[1]'] = 1;
-      if (newAdForm.extraImgs.quantity == 5) obj['addons[2]'] = 1;
-      if (newAdForm.extraImgs.quantity == 10) obj['addons[3]'] = 1;
-      if (newAdForm.extraVideo.set) obj['addons[4]'] = 1;
-      if (newAdForm.feature) obj['addons[5]'] = 1;
-      if (newAdForm.print.set) {
-        if (newAdForm.print.value == 1) obj['addons[6]'] = 1;
-        if (newAdForm.print.value == 2) obj['addons[7]'] = 1;
-      }
-      if (newAdForm.socialMedia) obj['addons[8]'] = 1;
-
-      const response_3 = await OrdersServices.createOrder(obj);
+        type: 'directory',
+      });
 
       if (response_3.paypal_link) {
         window.location.assign(response_3.paypal_link.replace('\\/', '/'));
@@ -56,29 +43,34 @@ const Listings = () => {
     }
   };
 
-  const getTotal = (price: number) => {
-    // console.log(newAdForm)
-    let total = price;
+  // const getTotal = (price: number) => {
+  //   // console.log(newAdForm)
+  //   let total = price;
 
-    if (newAdForm.print.set) {
-      if (newAdForm.print.value == '1') total += 100;
-      if (newAdForm.print.value == '2') total += 150;
-    }
-    if (newAdForm.feature) total += 100;
-    if (newAdForm.socialMedia) total += 100;
-    if (newAdForm.extraVideo.set) total += 100;
-    if (newAdForm.extraStates.set) {
-      if (newAdForm.extraStates.value == '1') total += 100;
-      if (newAdForm.extraStates.value == '2') total += 100;
-      if (newAdForm.extraStates.value == '3') total += 150;
-    }
+  //   if (newAdForm.print.set) {
+  //     if (newAdForm.print.value == '1') total += 100;
+  //     if (newAdForm.print.value == '2') total += 150;
+  //   }
+  //   if (newAdForm.feature) total += 100;
+  //   if (newAdForm.socialMedia) total += 100;
+  //   if (newAdForm.extraVideo.set) total += 100;
+  //   if (newAdForm.extraStates.set) {
+  //     if (newAdForm.extraStates.value == '1') total += 100;
+  //     if (newAdForm.extraStates.value == '2') total += 100;
+  //     if (newAdForm.extraStates.value == '3') total += 150;
+  //   }
 
-    if (newAdForm.extraImgs.quantity == 5) total += 100;
-    if (newAdForm.extraImgs.quantity == 10) total += 200;
+  //   if (newAdForm.extraImgs.quantity == 5) total += 100;
+  //   if (newAdForm.extraImgs.quantity == 10) total += 200;
 
-    return total;
-  };
 
+  //   return total;
+  // };
+  
+  useEffect(()=>{
+    console.log(newDirectoryForm)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
   // useEffect(() => {
   //   console.log(newAdForm);
 
@@ -94,13 +86,13 @@ const Listings = () => {
   // }, [newAdForm]);
 
   return (
-    <LayoutThree>
-      <div className="pay-page">
+    <LayoutOne>
+      <div className="pay-page" style={{padding: 30}}>
         <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
           Pago
         </h1>
         <div className="mt-4 fw-bold fs-3 text text-color-secondary text-font-rubik subtitle mb-3 text-center">
-          Resumen de tu Orden
+          Resumen de tu Órden
         </div>
         <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
           Nombre del Paquete
@@ -113,59 +105,15 @@ const Listings = () => {
         </div>
         <div className="fw-bold fs-1 text text-color-primary text-font-georgia subtitle mb-3 text-center">
           ${' '}
-          {getTotal(newAdForm.package?.price ?? 0).toLocaleString('es-MX', {
+          100
+          {/* {getTotal(newAdForm.package?.price ?? 0).toLocaleString('es-MX', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
-          })}{' '}
+          })}{' '} */}
           MXN
         </div>
         <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
           Descripción del paquete
-        </div>
-        <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3 text-center">
-          {newAdForm.package?.description}
-        </div>
-        <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
-          Cantidad de Imágenes
-        </div>
-        <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3 text-center">
-          {newAdForm.package?.number_of_images}
-        </div>
-        <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
-          Complementos
-        </div>
-        <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3 text-center">
-          {/* <ul> */}
-          {/* {newAdForm.extraStates.set && <li>{newAdForm.extraStates.value}</li>} */}
-          {newAdForm.extraImgs.quantity > 3 && (
-            <li>
-              {newAdForm.extraImgs.quantity == 5
-                ? '5 Imágenes +$100'
-                : `10 Imágenes +$200`}
-            </li>
-          )}
-          {newAdForm.extraStates.set && (
-            <li>
-              {newAdForm.extraStates.value == '1'
-                ? 'Estados del Sureste +$100'
-                : `${
-                    newAdForm.extraStates.value == '2'
-                      ? 'Nacional +$100'
-                      : 'Todos los estados +$200'
-                  }`}
-            </li>
-          )}
-          {newAdForm.print.set && (
-            <li>
-              {newAdForm.extraStates.value == '1'
-                ? 'Anuncio Impreso por 3 días +$100'
-                : 'Anuncio Impreso por 7 días +$150'}
-            </li>
-          )}
-          {newAdForm.feature && <li>Destacado +$100</li>}
-          {newAdForm.socialMedia && <li>Redes Social +$100</li>}
-          {newAdForm.extraVideo.set && <li>Agregar Video +$100</li>}
-          {/* </ul> */}
         </div>
         <div className="mt-2 pb-3 body mx-auto mb-5">
           <div className="mt-4 fw-bold text text-color-5 text-font-l-d subtitle mb-3">
@@ -204,14 +152,14 @@ const Listings = () => {
             </div>
             <div className="">
               <Elements stripe={stripe}>
-                <PayOne disabled={dir.length == 0} />
+                <PayTwo disabled={dir.length == 0} />
               </Elements>
             </div>
           </div>
         </div>
       </div>
-    </LayoutThree>
+    </LayoutOne>
   );
 };
 
-export { Listings };
+export { DirectoriesPayment };

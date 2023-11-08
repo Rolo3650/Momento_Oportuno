@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PlaceIcon from '@mui/icons-material/Place';
 import { DropdownOne } from '../../../inputs/dropdown/DropdownOne';
 import SouthIcon from '@mui/icons-material/South';
@@ -42,9 +42,10 @@ const MenuProps = {
 const StepOne: React.FC<Props> = () => {
   const theme = useTheme();
   const { data } = useGetStates();
+  const [cateogoryId, setCategoryId] = useState<number>(0);
   const allCategories = useAllCategories();
   const { setNewAdForm, newAdForm } = useForm();
-  const attributes = useCategoryAttributes(newAdForm.category?.id ?? 0);
+  const attributes = useCategoryAttributes(cateogoryId);
 
   const onChangeCategory = (option: Option) => {
     if (option.value != 0) {
@@ -91,6 +92,7 @@ const StepOne: React.FC<Props> = () => {
         let value = null;
         if (atr.type == 'number') value = 0;
         if (atr.type == 'select') value = [atr.attributeValues[0]?.name];
+        if (atr.type == 'checkbox') value = [atr.attributeValues[0]?.name];
         return {
           set: atr,
           value: value,
@@ -102,6 +104,17 @@ const StepOne: React.FC<Props> = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attributes?.data?.data]);
+
+  useEffect(() => {
+    if (newAdForm.category) {
+      if (newAdForm.category?.id != cateogoryId)
+        setCategoryId(newAdForm.category?.id);
+    } else {
+      setCategoryId(0);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newAdForm.category]);
 
   return (
     <>
@@ -235,72 +248,73 @@ const StepOne: React.FC<Props> = () => {
                 value={data.value?.toString() ?? ''}
               />
             )}
-            {data?.set?.type == 'select' && typeof data.value == 'object' && (
-              <div className="hola w-100">
-                <FormControl sx={{ maxWidth: 300, width: '100%' }}>
-                  <Select
-                    sx={{
-                      height: '64px',
-                      borderRadius: '5px',
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderColor: theme.palette.secondary.main,
-                      },
-                      '& .MuiInputBase-root': {
+            {(data?.set?.type == 'select' || data?.set?.type == 'checkbox') &&
+              typeof data.value == 'object' && (
+                <div className="hola w-100">
+                  <FormControl sx={{ maxWidth: 300, width: '100%' }}>
+                    <Select
+                      sx={{
                         height: '64px',
-                      },
-                      '& input::placeholder': {
-                        color: '#464748',
-                        opacity: 1,
-                      },
-                      '& img': {
-                        height: '30px',
-                        padding: '7px',
                         borderRadius: '5px',
-                        backgroundColor: theme.palette.secondary.main,
-                      },
-                      backgroundColor: '#fff',
-                    }}
-                    labelId="demo-multiple-checkbox-label"
-                    id="demo-multiple-checkbox"
-                    multiple
-                    color="secondary"
-                    value={data.value}
-                    onChange={(e) => {
-                      const attributes = newAdForm.attributes.map(
-                        (attribute) => {
-                          if (attribute.set.id == data.set.id) {
-                            return {
-                              set: attribute.set,
-                              value: e.target.value,
-                            };
-                          } else {
-                            return {
-                              value: attribute.value,
-                              set: attribute.set,
-                            };
+                        '& .MuiOutlinedInput-notchedOutline': {
+                          borderColor: theme.palette.secondary.main,
+                        },
+                        '& .MuiInputBase-root': {
+                          height: '64px',
+                        },
+                        '& input::placeholder': {
+                          color: '#464748',
+                          opacity: 1,
+                        },
+                        '& img': {
+                          height: '30px',
+                          padding: '7px',
+                          borderRadius: '5px',
+                          backgroundColor: theme.palette.secondary.main,
+                        },
+                        backgroundColor: '#fff',
+                      }}
+                      labelId="demo-multiple-checkbox-label"
+                      id="demo-multiple-checkbox"
+                      multiple
+                      color="secondary"
+                      value={data.value}
+                      onChange={(e) => {
+                        const attributes = newAdForm.attributes.map(
+                          (attribute) => {
+                            if (attribute.set.id == data.set.id) {
+                              return {
+                                set: attribute.set,
+                                value: e.target.value,
+                              };
+                            } else {
+                              return {
+                                value: attribute.value,
+                                set: attribute.set,
+                              };
+                            }
                           }
-                        }
-                      );
-                      setNewAdForm({ attributes });
-                    }}
-                    renderValue={(selected) => selected?.join(', ')}
-                    MenuProps={MenuProps}
-                  >
-                    {data.set.attributeValues.map((value) => (
-                      <MenuItem key={value.name} value={value.name}>
-                        <Checkbox
-                          checked={
-                            Array.isArray(data.value) &&
-                            data?.value?.indexOf(value.name) > -1
-                          }
-                        />
-                        <ListItemText primary={value.name} />
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              </div>
-            )}
+                        );
+                        setNewAdForm({ attributes });
+                      }}
+                      renderValue={(selected) => selected?.join(', ')}
+                      MenuProps={MenuProps}
+                    >
+                      {data.set.attributeValues.map((value) => (
+                        <MenuItem key={value.name} value={value.name}>
+                          <Checkbox
+                            checked={
+                              Array.isArray(data.value) &&
+                              data?.value?.indexOf(value.name) > -1
+                            }
+                          />
+                          <ListItemText primary={value.name} />
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </div>
+              )}
           </div>
         ))}
         {/* <div className="mb-3">

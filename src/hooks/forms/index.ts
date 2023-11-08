@@ -12,7 +12,20 @@ const useForm = () => {
     });
   };
 
-  return { setNewAdForm, newAdForm: state.newAdForm };
+  const setNewDirectoryForm = (payload: object) => {
+    dispatch({
+      type: AppTypes.SetNewDirectoryForm,
+      payload: { ...state.newDirectoryForm, ...payload },
+    });
+  };
+
+  return {
+    setNewAdForm,
+    newAdForm: state.newAdForm,
+    setNewDirectoryForm,
+    newDirectoryForm: state.newDirectoryForm,
+  };
+
 };
 
 export { useForm };
