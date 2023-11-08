@@ -58,6 +58,8 @@ const FormDirectoryOne = () => {
   const [imgFile, setImgFile] = useState<File | null>(null);
   const [selectedImage, setSelectedImage] = useState<Imgs>(null);
 
+  const [agree, setAgree] = useState(false);
+
   useEffect(() => {
     if (!state?.userState?.token) {
       window.location.assign('/');
@@ -119,8 +121,12 @@ const FormDirectoryOne = () => {
     }));
   };
 
-  const onCreateMicrositio = async () => {
-    console.log(formData);
+  const onSubmit = async () => {
+    // console.log(formData);
+    if (!agree) {
+      Swal.fire('Error', 'Acepta los términos y condiciones', 'warning');
+      return;
+    }
     let error: boolean = false;
     let message: string = '';
 
@@ -177,12 +183,13 @@ const FormDirectoryOne = () => {
       };
       let error_2: boolean = false;
       const res1 = await DirectoriesServices.createDirectorio(obj);
-      // console.log("RES1", res1);
+      console.log('RES1', res1);
       if (imgFile && res1) {
         const res2 = await DirectoriesServices.uploadImage({
           file: imgFile,
           id: res1.id,
         });
+        console.log('RES2:', res2);
         if (!res2.data.id) {
           error_2 = true;
         }
@@ -191,11 +198,7 @@ const FormDirectoryOne = () => {
       }
 
       if (error_2) {
-        Swal.fire(
-          'Error',
-          'Error al conectar con el servidor, por favor intentalo más tarde',
-          'error'
-        );
+        v;
       } else {
         Swal.fire('¡Listo!', 'Anuncio creado correctamente', 'success').then(
           () => {
@@ -204,7 +207,6 @@ const FormDirectoryOne = () => {
           }
         );
       }
-
     }
   };
 
@@ -409,12 +411,19 @@ const FormDirectoryOne = () => {
           />
         </div>
         <div className="directory-form-item">
+          <input type="checkbox" id="agree" onChange={() => setAgree(!agree)} />
+          <label htmlFor="agree">
+            {' '}
+            Acepto los <b>términos y condiciones</b>
+          </label>
+        </div>
+        <div className="directory-form-item">
           <GeneralButton
             title="Crear anuncio en directorio"
             endIcon={<PostAddIcon />}
             colorPrimary="primary"
             width="350px"
-            onClick={onCreateMicrositio}
+            onClick={onSubmit}
           />
         </div>
       </div>
