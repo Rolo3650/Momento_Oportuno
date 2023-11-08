@@ -17,15 +17,15 @@ const OrderOne: React.FC<Props> = ({ name, desc, total, id }) => {
         Orden {id}{' '}
         {name
           ?.replace('listing', 'anuncio')
-          .replace('directory', 'directorio')
-          .replace('microsite', 'micrositio')}
+          ?.replace('directory', 'directorio')
+          ?.replace('microsite', 'micrositio')}
       </div>
       <div className="desc text text-rubik pb-2">
         {desc
           ?.replace('Order for', 'Orden para')
-          .replace('listing', 'anuncio')
-          .replace('directory', 'directorio')
-          .replace('microsite', 'micrositio')}
+          ?.replace('listing', 'anuncio')
+          ?.replace('directory', 'directorio')
+          ?.replace('microsite', 'micrositio')}
       </div>
 
       <div className="price text text-color-primary fw-bold fs-4">

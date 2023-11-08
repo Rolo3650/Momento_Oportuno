@@ -54,6 +54,7 @@ const MyOrders: React.FC<Props> = () => {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               orders?.map((order: any) => (
                 <OrderOne
+                  key={order?.id}
                   desc={order?.title ?? ''}
                   total={order?.total ?? 0}
                   name={order?.type ?? ''}
