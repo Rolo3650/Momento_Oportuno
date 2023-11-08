@@ -21,6 +21,7 @@ import { Button } from '@mui/joy';
 import Swal from 'sweetalert2';
 import { CreateDirectorio } from '../../api';
 import { useNavigate } from 'react-router';
+import { useForm } from '../../hooks';
 
 interface DirectoryParams {
   title: string;
@@ -42,7 +43,7 @@ const FormDirectoryOne = () => {
   const theme = useTheme();
 
   const { data } = useGetStates();
-
+  const { setNewDirectoryForm } = useForm();
   const initialDirectoryAd: DirectoryParams = {
     title: '',
     type: '',
@@ -76,7 +77,10 @@ const FormDirectoryOne = () => {
   const handleInputChange = (name: string, value: string | number) => {
     if (name === 'state_id') {
       const selectedState = data?.data?.find((city) => city.id === value);
-      setFormData({ ...formData, state_id: selectedState?.id });
+      setFormData({
+        ...formData,
+        state_id: selectedState?.id ? selectedState?.id : 0,
+      });
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -180,7 +184,7 @@ const FormDirectoryOne = () => {
         address: formData.address,
         phone: formData.phone,
         email: formData.email,
-        user_id: formData.user_id,
+        user_id: formData.user_id ? formData.user_id : 0,
         thumbnail: formData.thumbnail,
       };
       let error_2: boolean = false;
@@ -208,7 +212,7 @@ const FormDirectoryOne = () => {
       } else {
         Swal.fire('¡Listo!', 'Anuncio creado correctamente', 'success').then(
           () => {
-            // setNewAdForm({ responseForm: response_1 });
+            setNewDirectoryForm({ responseForm: res1 });
             navigateTo('/panel/directories/pago');
           }
         );

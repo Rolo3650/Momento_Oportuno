@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { useForm } from '../../hooks';
@@ -6,9 +6,9 @@ import { Button, useTheme } from '@mui/material';
 import { OrdersServices } from '../../api/Orders';
 import { TextFieldTwo } from '../../components/inputs/text/TextFieldTwo';
 import Swal from 'sweetalert2';
-import { PayOne } from '../../components/pay/PayOne';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import { PayTwo } from '../../components/pay/PayTwo';
 // import SouthIcon from '@mui/icons-material/South';
 
 const stripe = loadStripe(
@@ -21,7 +21,7 @@ const stripe = loadStripe(
 );
 
 const DirectoriesPayment = () => {
-  const { newAdForm } = useForm();
+  const { newAdForm, newDirectoryForm } = useForm();
   const theme = useTheme();
   const [dir, SetDir] = useState('');
 
@@ -34,7 +34,7 @@ const DirectoriesPayment = () => {
         package_id: 4,
         payment_method: 'paypal',
         related_id: newAdForm.responseForm ? newAdForm.responseForm.data.id : 0,
-        type: 'listing',
+        type: 'directory',
       });
 
       if (response_3.paypal_link) {
@@ -66,7 +66,10 @@ const DirectoriesPayment = () => {
 
     return total;
   };
-
+  
+  useEffect(()=>{
+    console.log(newDirectoryForm)
+  },[]);
   // useEffect(() => {
   //   console.log(newAdForm);
 
@@ -101,10 +104,11 @@ const DirectoriesPayment = () => {
         </div>
         <div className="fw-bold fs-1 text text-color-primary text-font-georgia subtitle mb-3 text-center">
           ${' '}
-          {getTotal(newAdForm.package?.price ?? 0).toLocaleString('es-MX', {
+          100
+          {/* {getTotal(newAdForm.package?.price ?? 0).toLocaleString('es-MX', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
-          })}{' '}
+          })}{' '} */}
           MXN
         </div>
         <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
@@ -147,7 +151,7 @@ const DirectoriesPayment = () => {
             </div>
             <div className="">
               <Elements stripe={stripe}>
-                <PayOne disabled={dir.length == 0} />
+                <PayTwo disabled={dir.length == 0} />
               </Elements>
             </div>
           </div>

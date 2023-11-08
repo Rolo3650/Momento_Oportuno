@@ -19,6 +19,7 @@ import { AddNewDirectory } from '../pages/user/AddNewDirectory';
 import { Confirmacion } from '../pages/pago/Confirmacion';
 import { Micrositio } from '../pages/micrositio/Micrositio';
 import { DirectoriesPayment } from '../pages/pago/DirectoriesPayment';
+import { LocalDirectories } from '../pages/user/LocalDirectories';
 
 const AppRouter = () => {
   return (
@@ -40,6 +41,7 @@ const AppRouter = () => {
         <Route path="/panel/favorites" element={<Favorites />} />
         <Route path="/panel/Messages" element={<Messages />} />
         <Route path="/panel/my-orders" element={<MyOrders />} />
+        <Route path="/directories/" element={<LocalDirectories />} />
         <Route path="/panel/directories" element={<Directories />} />
         <Route path="/panel/directories/create" element={<AddNewDirectory />} />
         <Route path="/micrositios/create" element={<CreateMicrositio />} />
