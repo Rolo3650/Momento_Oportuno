@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PlaceIcon from '@mui/icons-material/Place';
 import { DropdownOne } from '../../../inputs/dropdown/DropdownOne';
 import SouthIcon from '@mui/icons-material/South';
@@ -42,9 +42,10 @@ const MenuProps = {
 const StepOne: React.FC<Props> = () => {
   const theme = useTheme();
   const { data } = useGetStates();
+  const [cateogoryId, setCategoryId] = useState<number>(0);
   const allCategories = useAllCategories();
   const { setNewAdForm, newAdForm } = useForm();
-  const attributes = useCategoryAttributes(newAdForm.category?.id ?? 0);
+  const attributes = useCategoryAttributes(cateogoryId);
 
   const onChangeCategory = (option: Option) => {
     if (option.value != 0) {
@@ -103,6 +104,17 @@ const StepOne: React.FC<Props> = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attributes?.data?.data]);
+
+  useEffect(() => {
+    if (newAdForm.category) {
+      if (newAdForm.category?.id != cateogoryId)
+        setCategoryId(newAdForm.category?.id);
+    } else {
+      setCategoryId(0);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newAdForm.category]);
 
   return (
     <>

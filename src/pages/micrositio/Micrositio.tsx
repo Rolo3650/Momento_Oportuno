@@ -8,10 +8,11 @@ import { useEffect } from 'react';
 
 const Micrositio = () => {
   const { id } = useParams();
-  const { data } = useMicrositio(parseInt(id, 10));
+  const { data } = useMicrositio(parseInt(id ?? '0', 10));
 
   useEffect(() => {
-    console.log('DATAMICRO:', data, parseInt(id, 10));
+    console.log('DATAMICRO:', data, parseInt(id ?? '0', 10));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -43,32 +43,33 @@ const DirectoriesPayment = () => {
     }
   };
 
-  const getTotal = (price: number) => {
-    // console.log(newAdForm)
-    let total = price;
+  // const getTotal = (price: number) => {
+  //   // console.log(newAdForm)
+  //   let total = price;
 
-    if (newAdForm.print.set) {
-      if (newAdForm.print.value == '1') total += 100;
-      if (newAdForm.print.value == '2') total += 150;
-    }
-    if (newAdForm.feature) total += 100;
-    if (newAdForm.socialMedia) total += 100;
-    if (newAdForm.extraVideo.set) total += 100;
-    if (newAdForm.extraStates.set) {
-      if (newAdForm.extraStates.value == '1') total += 100;
-      if (newAdForm.extraStates.value == '2') total += 100;
-      if (newAdForm.extraStates.value == '3') total += 150;
-    }
+  //   if (newAdForm.print.set) {
+  //     if (newAdForm.print.value == '1') total += 100;
+  //     if (newAdForm.print.value == '2') total += 150;
+  //   }
+  //   if (newAdForm.feature) total += 100;
+  //   if (newAdForm.socialMedia) total += 100;
+  //   if (newAdForm.extraVideo.set) total += 100;
+  //   if (newAdForm.extraStates.set) {
+  //     if (newAdForm.extraStates.value == '1') total += 100;
+  //     if (newAdForm.extraStates.value == '2') total += 100;
+  //     if (newAdForm.extraStates.value == '3') total += 150;
+  //   }
 
-    if (newAdForm.extraImgs.quantity == 5) total += 100;
-    if (newAdForm.extraImgs.quantity == 10) total += 200;
+  //   if (newAdForm.extraImgs.quantity == 5) total += 100;
+  //   if (newAdForm.extraImgs.quantity == 10) total += 200;
 
 
-    return total;
-  };
+  //   return total;
+  // };
   
   useEffect(()=>{
     console.log(newDirectoryForm)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
   // useEffect(() => {
   //   console.log(newAdForm);

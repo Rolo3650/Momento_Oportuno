@@ -4,7 +4,7 @@ import { LayoutThree } from '../../containers/layout/LayoutThree';
 // import { EmptyBoxOne } from '../../components/module/box/EmptyBoxOne';
 import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
 // import { ChatList, MessageBox, Input } from 'react-chat-elements';
-import { ChatList, Input, MessageBox } from 'react-chat-elements';
+import { ChatList, Input } from 'react-chat-elements';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
 import ArrowForward from '@mui/icons-material/ArrowForward';
@@ -87,13 +87,13 @@ const Messages: React.FC<Props> = () => {
           <div className="chat-conversation">
             {messages.map((_message) => {
               return (
-                
-                <MessageBox
-                  position={_message.position}
-                  type={'text'}
-                  text={_message.text}
-                  date={_message.date}
-                />
+                <></>
+                // <MessageBox
+                //   position={_message.position}
+                //   type={'text'}
+                //   text={_message.text}
+                //   date={_message.date}
+                // />
               );
             })}
           </div>
