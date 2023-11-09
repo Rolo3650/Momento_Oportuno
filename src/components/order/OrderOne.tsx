@@ -13,14 +13,11 @@ const OrderOne: React.FC<Props> = ({ name, desc, total, id }) => {
   useEffect(() => {
     console.log({
       name,
-      desc: desc
-      ?.replace('Order for', 'Orden para')
-      ?.replace('listing', 'anuncio')
-      ?.replace('directory', 'directorio')
-      ?.replace('microsite', 'micrositio'),
+      desc, 
       total,
       id,
     });
+    console.log(typeof desc)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
