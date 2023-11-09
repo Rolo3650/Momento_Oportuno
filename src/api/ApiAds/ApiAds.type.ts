@@ -68,7 +68,7 @@ export const AdSchema = z.object({
   slug: z.string(),
   url: z.string().optional(),
   status: z.string(),
-  image: z.union([z.null(), z.string()]),
+  image: z.union([z.null(), z.string()])?.optional(),
   description: z.string().nullable(),
   is_featured: z.boolean(),
   is_multistate: z.boolean(),
