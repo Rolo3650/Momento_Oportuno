@@ -29,8 +29,8 @@ const useDirectorioById = (id: number) => {
 }
 const useDirectorios = () => {
   return useQuery({
-    queryKey: [DirectoriosQuerys.getAllDirectorios],
-    queryFn: DirectoriesServices.getAllDirectorio,
+    queryKey: DirectoriosQuerys.getAllDirectorios,
+    queryFn: DirectoriesServices.getAllDirectorios,
   })
 }
 

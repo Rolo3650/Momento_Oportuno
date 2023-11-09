@@ -12,8 +12,8 @@ const req2 = Request(Services.UPLOAD_IMAGE);
 export class DirectoriesServices {
   static #request = Request(Services.DIRECTORY);
 
-  static async getAllDirectorio() {
-    const { data } = await this.#request.get<GetAllDirectoriosRes>('/get');
+  static async getAllDirectorios() {
+    const { data } = await this.#request.get<GetAllDirectoriosRes>('/');
 
     return data;
   }
