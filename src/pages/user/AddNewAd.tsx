@@ -21,7 +21,7 @@ const AddNewAd: React.FC<Props> = () => {
         desc: '',
         extraImgs: {
           set: false,
-          value: '5',
+          value: '3',
           quantity: 3,
         },
         extraStates: {

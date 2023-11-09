@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StepOne } from './steps/StepOne';
 import { StepTwo } from './steps/StepTwo';
 import StepThree from './steps/StepThree';
@@ -21,8 +21,10 @@ const FormOne: React.FC<Props> = () => {
   const { state } = useAppContext();
   const { setNewAdForm } = useForm();
   const navigateTo = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const createNewAd = async () => {
+    setLoading(true);
     let error: boolean = false;
     let message: string = '';
 
@@ -159,6 +161,7 @@ const FormOne: React.FC<Props> = () => {
         );
       }
     }
+    setLoading(false);
   };
 
   return (
@@ -169,7 +172,12 @@ const FormOne: React.FC<Props> = () => {
       <Addons />
       <StepFour />
       <div className="my-3 d-flex justify-content-end">
-        <Button onClick={createNewAd} color="secondary" variant="contained">
+        <Button
+          disabled={loading}
+          onClick={createNewAd}
+          color="secondary"
+          variant="contained"
+        >
           Crear Anuncio
         </Button>
       </div>

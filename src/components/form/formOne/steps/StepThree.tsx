@@ -38,6 +38,7 @@ const StepThree: React.FC<Props> = () => {
       }
       setNewAdForm({ imgs: [...files] });
     }
+    e.target.files = new DataTransfer().files;
   };
 
   const onDelete = (index: number) => {
