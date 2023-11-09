@@ -20,6 +20,7 @@ import { Confirmacion } from '../pages/pago/Confirmacion';
 import { Micrositio } from '../pages/micrositio/Micrositio';
 import { DirectoriesPayment } from '../pages/pago/DirectoriesPayment';
 import { LocalDirectories } from '../pages/user/LocalDirectories';
+import { MicrositesPayment } from '../pages/pago/MicrositesPayment';
 
 const AppRouter = () => {
   return (
@@ -62,7 +63,11 @@ const AppRouter = () => {
 
         {/* Pago */}
         <Route path="/panel/listings/pago" element={<Listings />} />
-        <Route path="/panel/directories/pago" element={<DirectoriesPayment />} />
+        <Route
+          path="/panel/directories/pago"
+          element={<DirectoriesPayment />}
+        />
+        <Route path="/panel/microsites/pago" element={<MicrositesPayment />} />
         <Route path="/comprobante/:orderid" element={<Confirmacion />} />
 
         <Route path="/*" element={<Home />} />
