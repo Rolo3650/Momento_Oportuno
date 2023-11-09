@@ -56,7 +56,7 @@ const PayTwo = ({
         billing_address,
         package_id: 2,
         payment_method: 'paypal',
-        related_id: newMicrositeForm.responseForm.data.id,
+        related_id: parseInt(`${newMicrositeForm.responseForm.data.id}`),
         type,
       };
     } else if (type === 'directory') {

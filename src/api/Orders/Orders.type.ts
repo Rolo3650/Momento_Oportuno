@@ -11,7 +11,7 @@ export type PaymentMethods =
 export type BaseCreateOrderParams = {
   billing_address: string;
   package_id: number;
-  related_id: number | undefined;
+  related_id: number | string;
 };
 
 export const TypePackagePojo = {
