@@ -17,7 +17,7 @@ const OrderOne: React.FC<Props> = ({ name, desc, total, id }) => {
       total,
       id,
     });
-    console.log(typeof desc)
+    // console.log(typeof desc)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
