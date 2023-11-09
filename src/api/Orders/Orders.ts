@@ -7,6 +7,8 @@ import {
   CreateOrderResponseSchema,
   GetOrderByIdResponse,
   GetOrderByIdResponseSchema,
+  OrderResponse,
+  OrderResponseSchema,
 } from './Orders.type';
 
 const api = Request(Services.ORDERS);
@@ -26,12 +28,12 @@ export class OrdersServices {
     return parsed;
   }
 
-  static async myOrders() {
-    const response = await api.get('/mine');
+  static async myOrders(): Promise<OrderResponse> {
+    const { data } = await api.get('/mine');
 
-    // const parsed = CreateOrderResponseSchema.parse(data);
+    const parsed = OrderResponseSchema.parse(data);
 
-    return response;
+    return parsed;
   }
 
   static async myOrder({ id }: { id: number }): Promise<GetOrderByIdResponse> {

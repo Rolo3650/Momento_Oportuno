@@ -71,7 +71,14 @@ export const CreateOrderResponseSchema = z.object({
   order: OrderSchema,
   paypal_link: z.string().nullable().optional(),
 });
+
+export const OrderResponseSchema = z.object({
+  data: z.array(OrderSchema)
+});
+
 export type CreateOrderResponse = z.infer<typeof CreateOrderResponseSchema>;
+
+export type OrderResponse = z.infer<typeof OrderResponseSchema>;
 
 export const GetOrderByIdResponseSchema = z.object({
   data: OrderSchema,
