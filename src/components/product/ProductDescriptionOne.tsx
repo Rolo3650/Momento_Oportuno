@@ -95,13 +95,13 @@ const ProductDescriptionOne: React.FC<Props> = () => {
         <div className="fs-6 text text-font-helvetica text-color-5">
           {adSingleState?.ad?.description}
           <br />
-          <br />
-          Seminuevos Certificados y Garantía de 1 año en Transmisión y Motor*
+          {/* <br /> */}
+          {/* Seminuevos Certificados y Garantía de 1 año en Transmisión y Motor*
           <br />
           <br />
           Tenemos una nueva manera de vender y comprar autos seminuevos. +140
           autos certificados y garantizados. Tenemos un crédito sin revisar
-          buró. Contamos con los mejores planes de Financiamiento.
+          buró. Contamos con los mejores planes de Financiamiento. */}
         </div>
       </div>
       {adSingleState?.ad?.attributes?.map((attribute) => {

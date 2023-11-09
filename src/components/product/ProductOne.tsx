@@ -2,7 +2,7 @@ import React from 'react';
 import { CarouselOne } from '../carousel/CarouselOne';
 import { ActionsOne } from '../actions/ActionsOne';
 import { Ad, AdFavorite } from '../../api';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 interface Props {
   product: Ad | AdFavorite;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const ProductOne: React.FC<Props> = ({ product, fav }) => {
-  const navigateTo = useNavigate();
+  // const navigateTo = useNavigate();
 
   return (
     <div
@@ -21,7 +21,7 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
       <div
         onClick={() => {
           window.scrollTo(0, 0);
-          navigateTo(`/ad/${product.id}`);
+          window.location.assign(`/ad/${product.id}`);
         }}
       >
         <CarouselOne product={product} />

@@ -15,7 +15,8 @@ const ProductTwo: React.FC<Props> = ({ product, fav }) => {
         product?.is_featured ? 'feauture' : ''
       }`}
       onClick={() => {
-        window.location.assign('/');
+        window.scrollTo(0, 0);
+        window.location.assign(`/ad/${product.id}`);
       }}
     >
       <CarouselOne product={product} />
