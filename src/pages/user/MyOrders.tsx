@@ -10,15 +10,17 @@ import { OrdersServices } from '../../api/Orders';
 interface Props {}
 
 const MyOrders: React.FC<Props> = () => {
-  const [orders, setOrders] = useState<object[]>([]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+  const [orders, _setOrders] = useState<object[]>([]);
 
   const init = async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const response: any = await OrdersServices.myOrders();
 
     // console.log(response);
-    if (response.data && response.status === 200) {
-      setOrders(response.data.data);
+      console.log(response.data && response.status)
+      if (response.data && response.status === 200) {
+      // setOrders(response.data.data);
     }
   };
 
@@ -29,7 +31,7 @@ const MyOrders: React.FC<Props> = () => {
   const navigateTo = useNavigate();
   return (
     <LayoutThree>
-      {orders?.length == 0 && (
+      {orders?.length && orders?.length == 0 && (
         <EmptyBoxOne
           text="Aún no tienes ningún pedido."
           imgSrc="/svg/icons/box_one.svg"
@@ -44,7 +46,7 @@ const MyOrders: React.FC<Props> = () => {
           }
         />
       )}
-      {orders?.length > 0 && (
+      {orders?.length && orders?.length > 0 && (
         <>
           <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
             Mis Ordenes

@@ -4,6 +4,7 @@ import { AdSingleActions } from './adSingle';
 import { CounterActions } from './counter/counter.type';
 import { NewAdFormActions } from './newAdForm';
 import { NewDirectoryFormActions } from './newDirectoryForm';
+import { NewMicrositeFormActions } from './newMicrositeForm';
 
 export type ActionMap<M extends { [index: string]: unknown }> = {
   [Key in keyof M]: M[Key] extends undefined
@@ -37,6 +38,8 @@ export const AppTypes = {
   // new directory
   SetNewDirectoryForm: 'SET_NEW_DIRECTORY_FORM',
 
+  SetNewMicrositeForm: 'SET_NEW_MICROSITE_FORM',
+
   // counterTypes
   Increment: 'INCREMENT',
   Decrement: 'DECREMENT',
@@ -59,4 +62,5 @@ export type AppActions =
   | AdSingleActions
   | GlobalActions
   | NewAdFormActions
-  | NewDirectoryFormActions;
+  | NewDirectoryFormActions
+  | NewMicrositeFormActions;
