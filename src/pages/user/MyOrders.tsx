@@ -5,7 +5,7 @@ import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import { useNavigate } from 'react-router-dom';
 import { OrdersServices } from '../../api/Orders';
-import { OrderOne } from '../../components/order/OrderOne';
+// import { OrderOne } from '../../components/order/OrderOne';
 
 interface Props {}
 
@@ -50,7 +50,7 @@ const MyOrders: React.FC<Props> = () => {
             Mis Ordenes
           </h1>
           <div className="orders-one mt-5 mb-5 pb-5">
-            {
+            {/* {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               orders?.map((order: any) => (
                 <OrderOne
@@ -61,7 +61,7 @@ const MyOrders: React.FC<Props> = () => {
                   id={order?.id ?? 0}
                 />
               ))
-            }
+            } */}
           </div>
         </>
       )}

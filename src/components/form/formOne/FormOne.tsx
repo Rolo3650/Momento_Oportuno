@@ -55,7 +55,7 @@ const FormOne: React.FC<Props> = () => {
       error = true;
     }
     if (!newAdForm.imgs?.length || newAdForm.imgs?.length == 0) {
-      message = 'Ingresa mínimo una imagen de publicación válido';
+      message = 'Ingresa mínimo una imagen de publicación';
       error = true;
     }
     if (newAdForm.attributes.length) {
