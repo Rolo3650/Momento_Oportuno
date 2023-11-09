@@ -53,7 +53,7 @@ export const OrderSchema = z.object({
   payment_method: z.string(),
   // package_id: z.string(),
   type: TypePackageSchema,
-  related_id: z.number(),
+  related_id: z.number().optional(),
   user_id: z.number(),
   status: OrderStatus,
   payment_status: z.string(),

@@ -44,7 +44,7 @@ const OrderOne: React.FC<Props> = ({ name, desc, total, id }) => {
         {`${total?.toLocaleString('es-MX', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
-        })}}`}
+        })}`}
         <div className="w-100 mt-3 d-flex justify-content-center btn-container">
           <Button
             variant="contained"
