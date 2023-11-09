@@ -190,18 +190,18 @@ const FormDirectoryOne = () => {
       let error_2: boolean = false;
       const res1 = await DirectoriesServices.createDirectorio(obj);
       console.log('RES1', res1);
-      // if (imgFile && res1) {
-      //   const res2 = await DirectoriesServices.uploadImage({
-      //     file: imgFile,
-      //     id: res1.id,
-      //   });
-      //   console.log('RES2:', res2);
-      //   if (!res2.data.id || !res2) {
-      //     // error_2 = true;
-      //   }
-      // } else {
-      //   error_2 = true;
-      // }
+      if (imgFile && res1) {
+        const res2 = await DirectoriesServices.uploadImage({
+          file: imgFile,
+          id: res1.data.id,
+        });
+        console.log('RES2:', res2);
+        if (!res2.data.id || !res2) {
+          // error_2 = true;
+        }
+      } else {
+        error_2 = true;
+      }
 
       if (error_2) {
         Swal.fire(

@@ -1,0 +1,24 @@
+.directorios-card-container {
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+}
+.directorio-card {
+  width: 400px;
+  height: 400px;
+  margin: 30px;
+  padding: 15px;
+  border: 1px solid $color_secondary;
+  border-radius: 5px;
+  justify-content: center;
+  .directorio-card-img-container {
+    width: 100%;
+    padding-block: 15px;
+    .directorio-card-img {
+      max-height: 100px;
+      max-width: 100px;
+    }
+  }
+}

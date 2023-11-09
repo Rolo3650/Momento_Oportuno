@@ -1,9 +1,12 @@
 import * as z from 'zod';
+import { State } from '..';
 export type Directorio = Omit<CreateDirectorio, 'package' | 'state'> & {
   id: number;
   user_id: number;
   status: string;
   thumbnail: string;
+  state: State;
+  media: any;
   expire: string;
 };
 
@@ -12,7 +15,7 @@ export type DirectorioMapped = Omit<
   '_links' | 'acf' | 'date_gmt' | 'modified_gmt' | 'slug' | 'template'
 >;
 
-export type GetAllDirectoriosRes = Directorio[];
+export type GetAllDirectoriosRes = {data: Directorio[]};
 
 export const DirectorioSchema = z.object({
   title: z.string().nonempty(),
@@ -34,15 +37,19 @@ export type CreateDirectorio = DirectorioType & {
 };
 
 export type CreateDirectorioResponse = {
-  id: number;
-  title: string;
-  state: null;
-  type: string;
-  hours: string;
-  address: string;
-  phone: string;
-  email: string;
-  user_id: number;
-  expire: string;
-  status: string;
+  data: {
+    id: number;
+    title: string;
+    state: State;
+    type: string;
+    hours: string;
+    address: string;
+    phone: string;
+    email: string;
+    user_id: number;
+    expire: string;
+    status: string;
+
+  }
+
 };
