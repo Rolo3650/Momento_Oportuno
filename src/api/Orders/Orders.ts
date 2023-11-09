@@ -15,7 +15,11 @@ export class OrdersServices {
   static async createOrder(
     params: CreateOrderParams
   ): Promise<CreateOrderResponse> {
-    const { data } = await api.post('/', params);
+    const { data } = await api.post('/', params, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    });
 
     const parsed = CreateOrderResponseSchema.parse(data);
 

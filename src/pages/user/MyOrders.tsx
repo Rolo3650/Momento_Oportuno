@@ -5,7 +5,7 @@ import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import { useNavigate } from 'react-router-dom';
 import { OrdersServices } from '../../api/Orders';
-// import { OrderOne } from '../../components/order/OrderOne';
+import { OrderOne } from '../../components/order/OrderOne';
 
 interface Props {}
 
@@ -57,22 +57,22 @@ const MyOrders: React.FC<Props> = () => {
             {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               orders?.map((order: any) => {
-                console.log({
-                  id: order?.id,
-                  title: order?.title,
-                  total: order?.total,
-                  type: order?.type,
-                });
-                return <div key={order?.id}>Hola</div>;
-                // return (
-                //   <OrderOne
-                //     key={order?.id}
-                //     desc={order?.title ?? ''}
-                //     total={order?.total ?? 0}
-                //     name={order?.type ?? ''}
-                //     id={order?.id ?? 0}
-                //   />
-                // );
+                // console.log({
+                //   id: order?.id,
+                //   title: order?.title,
+                //   total: order?.total,
+                //   type: order?.type,
+                // });
+                // return <div key={order?.id}>Hola</div>;
+                return (
+                  <OrderOne
+                    key={order?.id ?? 0}
+                    desc={order?.title ?? ''}
+                    total={order?.total ?? 0}
+                    name={order?.type ?? ''}
+                    id={order?.id ?? 0}
+                  />
+                );
               })
             }
           </div>
