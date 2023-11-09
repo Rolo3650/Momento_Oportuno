@@ -17,7 +17,7 @@ const MyOrders: React.FC<Props> = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const response: any = await OrdersServices.myOrders();
 
-    // console.log(response);
+    console.log(response);
       console.log(response.data && response.status)
       if (response.data && response.status === 200) {
       // setOrders(response.data.data);
