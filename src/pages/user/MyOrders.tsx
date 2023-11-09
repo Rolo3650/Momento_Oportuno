@@ -13,7 +13,6 @@ const MyOrders: React.FC<Props> = () => {
   const [orders, setOrders] = useState<object[]>([]);
 
   const init = async () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const response = await OrdersServices.myOrders();
 
     // console.log(response);

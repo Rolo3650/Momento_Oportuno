@@ -54,10 +54,10 @@ const OrderOne: React.FC<Props> = ({ name, desc, total, id }) => {
             color="secondary"
             onClick={() => {
               // // navigateTo('/comprobante/' + id);
-              navigateTo('/comprobante/');
-              // if (id) {
-              //   navigateTo(`/comprobante/${id ?? 0}`);
-              // }
+              // navigateTo('/comprobante/');
+              if (id) {
+                navigateTo(`/comprobante/${id ?? 0}`);
+              }
             }}
           >
             Ver Detalle
