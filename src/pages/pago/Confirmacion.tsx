@@ -1,39 +1,22 @@
 // import React from 'react';
-import { useEffect, useState } from 'react';
 import { LayoutThree } from '../../containers/layout/LayoutThree';
-import { useParams } from 'react-router';
-import { OrdersServices } from '../../api/Orders';
+import { useParams } from 'react-router-dom';
 import moment from 'moment';
+import { useOrderById } from '../../hooks';
 
 const Confirmacion = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [order, setOrder] = useState<any>({ id: 0 });
-  const { orderid } = useParams();
-
-  const init = async () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const response: any = await OrdersServices.myOrder({
-      id: parseInt(orderid ?? '0'),
-    });
-
-    // console.log(response);
-    if (response.data && response.status === 200) {
-      console.log(response.data.data);
-      setOrder(response.data.data);
-    }
-  };
-
-  useEffect(() => {
-    init();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const params = useParams();
+  const { data: { data: order } = {}, isLoading } = useOrderById(
+    params.orderid
+  );
 
   return (
     <LayoutThree>
       <h1 className="mt-3 title text text-font-georgia fw-bold fs-2 text-color-5">
         Comproban de Pago
       </h1>
-      {order?.id > 0 && (
+      {!isLoading && order && order?.id > 0 && (
         <>
           <div className="mt-5 fw-bold fs-3 text text-color-secondary text-font-rubik subtitle mb-3 text-center">
             Resumen de tu Orden
@@ -70,7 +53,9 @@ const Confirmacion = () => {
             Estatus
           </div>
           <div className="fw-bold fs-4 text text-color-8 text-font-l-d subtitle mb-3 text-center">
-            {order?.status?.replace("paid", "Pagado").replace("pending", "Pendiente")}
+            {order?.status
+              ?.replace('paid', 'Pagado')
+              .replace('pending', 'Pendiente')}
           </div>
           <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
             Dirección de Pago

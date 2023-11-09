@@ -5,6 +5,8 @@ import {
   type CreateOrderParams,
   type CreateOrderResponse,
   CreateOrderResponseSchema,
+  GetOrderByIdResponse,
+  GetOrderByIdResponseSchema,
 } from './Orders.type';
 
 const api = Request(Services.ORDERS);
@@ -28,11 +30,11 @@ export class OrdersServices {
     return response;
   }
 
-  static async myOrder({ id }: { id: number }) {
-    const response = await api.get('/' + id);
+  static async myOrder({ id }: { id: number }): Promise<GetOrderByIdResponse> {
+    const { data } = await api.get('/' + id);
 
-    // const parsed = CreateOrderResponseSchema.parse(data);
+    const parsed = GetOrderByIdResponseSchema.parse(data);
 
-    return response;
+    return parsed;
   }
 }
