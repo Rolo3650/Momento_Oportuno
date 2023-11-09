@@ -24,18 +24,18 @@ const OrderOne: React.FC<Props> = ({ name, desc, total, id }) => {
   return (
     <div className={`order order-one p-3`}>
       <div className="name text text-font-l-d fw-bold fs-5 pb-3 text-color-5">
-        {/* Orden {id?.toString()}{' '} */}
+        Orden {id ? id?.toString() : ''}{' '}
         {name
           ?.replace('listing', 'anuncio')
           ?.replace('directory', 'directorio')
           ?.replace('microsite', 'micrositio')}
       </div>
       <div className="desc text text-rubik pb-2">
-        {/* {desc
+        {desc
           ?.replace('Order for', 'Orden para')
           ?.replace('listing', 'anuncio')
           ?.replace('directory', 'directorio')
-          ?.replace('microsite', 'micrositio')} */}
+          ?.replace('microsite', 'micrositio')}
       </div>
 
       <div className="price text text-color-primary fw-bold fs-4">
