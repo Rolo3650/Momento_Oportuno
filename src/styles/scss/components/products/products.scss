@@ -83,11 +83,21 @@
 
                 & .carousel-item {
 
-                    overflow: hidden;
+                    height: 200px;
 
-                    & img {
-                        max-height: 200px;
-                        width: auto;
+                    & .carousel-item-container {
+                        height: 200px;
+                        overflow: hidden;
+                        display: flex;
+                        align-items: center;
+
+                        & img {
+                            // max-height: 200px;
+                            height: auto;
+                            width: auto;
+                            min-width: 100%;
+                            min-height: 200px;
+                        }
                     }
                 }
 
@@ -248,6 +258,13 @@
                 & .carousel-item {
 
                     overflow: hidden;
+
+                    // & img {
+
+                    //     height: auto !important;
+                    //     width: 100% !important;
+
+                    // }
                 }
 
             }
