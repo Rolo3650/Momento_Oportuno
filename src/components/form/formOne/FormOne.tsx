@@ -3,7 +3,7 @@ import { StepOne } from './steps/StepOne';
 import { StepTwo } from './steps/StepTwo';
 import StepThree from './steps/StepThree';
 import { Addons } from './steps/Addons/Addons';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import { useForm } from '../../../hooks';
 import Swal from 'sweetalert2';
 import { CreateAnuncioParams, ListingAttribute } from '../../../api';
@@ -133,7 +133,7 @@ const FormOne: React.FC<Props> = () => {
             id: 38,
           });
           const response_2 = await AdsServices.uploadImage({
-            file: newAdForm.imgs[0],
+            file: newAdForm.imgs[i],
             id: response_1.data.id,
             // id: 47,
           });
@@ -173,12 +173,16 @@ const FormOne: React.FC<Props> = () => {
       <StepFour />
       <div className="my-3 d-flex justify-content-end">
         <Button
+          sx={{
+            width: 200,
+          }}
           disabled={loading}
           onClick={createNewAd}
           color="secondary"
           variant="contained"
         >
-          Crear Anuncio
+          {loading && <CircularProgress sx={{ color: 'white' }} />}
+          {!loading && 'Crear Anuncio'}
         </Button>
       </div>
     </div>

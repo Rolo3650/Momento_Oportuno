@@ -40,7 +40,7 @@ const MyOrders: React.FC<Props> = () => {
           button={
             <GeneralButton
               onClick={() => navigateTo('/panel/create')}
-              title="Comprar Paquete"
+              title="Crear Anuncio"
               colorPrimary="secondary"
               hoverColor="secondary"
               endIcon={<ArrowForward />}
