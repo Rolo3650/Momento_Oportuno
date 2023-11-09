@@ -40,13 +40,13 @@ const OrderOne: React.FC<Props> = ({ name, desc, total, id }) => {
       </div> */}
 
       <div className="price text text-color-primary fw-bold fs-4">
-        Total ${' '}
+        {/* Total ${' '}
         {`${total
         // .toLocaleString('es-MX', {
         //   minimumFractionDigits: 2,
         //   maximumFractionDigits: 2,
         // })
-        }`}
+        }`} */}
         <div className="w-100 mt-3 d-flex justify-content-center btn-container">
           <Button
             variant="contained"
