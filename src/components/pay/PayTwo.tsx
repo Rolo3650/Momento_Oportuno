@@ -8,23 +8,29 @@ import { Button } from '@mui/material';
 
 type PayTwoProps = {
   disabled?: boolean;
+  type?: 'microsite' | 'directory';
+  billing_address: string;
 };
 
-const PayTwo = ({ disabled }: PayTwoProps) => {
+const PayTwo = ({
+  disabled,
+  type = 'directory',
+  billing_address,
+}: PayTwoProps) => {
   const stripe = useStripe();
   const elements = useElements();
   const nav = useNavigate();
 
-  const { newDirectoryForm } = useForm();
+  const { newDirectoryForm, newMicrositeForm } = useForm();
 
   const [validForm, setValidForm] = React.useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!validForm) return;
+    if (!validForm) return console.log('invalid form');
 
     if (!stripe || !elements) {
-      return;
+      return console.log('no stripe or elements');
     }
 
     const cardElement = elements.getElement(CardElement);
@@ -32,32 +38,56 @@ const PayTwo = ({ disabled }: PayTwoProps) => {
     if (!cardElement) return console.log('No card element');
 
     const res = await stripe.createToken(cardElement);
+    console.log({ res });
 
     if (res.error) {
       console.log(res.error);
       return;
     }
+    let obj: CreateOrderParams;
+    if (type === 'microsite') {
+      if (!newMicrositeForm.responseForm)
+        return Swal.fire(
+          'Error',
+          'Ocurrió un error al procesar el pago',
+          'error'
+        );
+      obj = {
+        billing_address,
+        package_id: 2,
+        payment_method: 'paypal',
+        related_id: newMicrositeForm.responseForm.data.id,
+        type,
+      };
+    } else if (type === 'directory') {
+      if (!newDirectoryForm.responseForm?.data.id)
+        return Swal.fire(
+          'Error',
+          'Ocurrió un error al procesar el pago',
+          'error'
+        );
+      obj = {
+        billing_address,
+        package_id: 7,
+        payment_method: 'paypal',
+        related_id: newDirectoryForm.responseForm.data.id,
+        type: 'directory',
+      };
+    } else {
+      return Swal.fire(
+        'Error',
+        'Ocurrió un error al procesar el pago',
+        'error'
+      );
+    }
 
-    const obj: CreateOrderParams = {
-      billing_address: 'dir',
-      package_id: 7,
-      payment_method: 'paypal',
-      related_id: newDirectoryForm.responseForm
-        ? newDirectoryForm.responseForm.data.id
-        : 0,
-      type: 'directory',
-    };
-
-    console.log('OBJ', obj);
+    console.log({ obj });
 
     const orderCreated = await OrdersServices.createOrder(obj);
 
-    // console.log('ORDER', {
-    //   cardElement,
-    //   token: res.token,
-    //   card: res.token?.card,
-    //   orderCreated,
-    // });
+    console.log({
+      orderCreated,
+    });
 
     // example
 
