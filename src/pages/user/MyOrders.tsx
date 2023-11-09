@@ -57,20 +57,24 @@ const MyOrders: React.FC<Props> = () => {
             {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               orders?.map((order: any) => {
-                // console.log({
-                //   id: order?.id,
-                //   title: order?.title,
-                //   total: order?.total,
-                //   type: order?.type,
-                // });
+                const orderId = order.id ? order.id : 0;
+                const title = order.title
+                  ? order.title
+                      ?.replace('Order for', 'Orden para')
+                      ?.replace('listing', 'anuncio')
+                      ?.replace('directory', 'directorio')
+                      ?.replace('microsite', 'micrositio')
+                  : '';
+                const desc = order?.type ? order?.type : '';
+                const total = order?.total ? order?.total : 0;
                 // return <div key={order?.id}>Hola</div>;
                 return (
                   <OrderOne
-                    key={order?.id ?? 0}
-                    desc={order?.title ?? ''}
-                    total={order?.total ?? 0}
-                    name={order?.type ?? ''}
-                    id={order?.id ?? 0}
+                    key={orderId}
+                    desc={title}
+                    total={total}
+                    name={desc}
+                    id={orderId}
                   />
                 );
               })

@@ -13,11 +13,7 @@ const OrderOne: React.FC<Props> = ({ name, desc, total, id }) => {
   useEffect(() => {
     console.log({
       name,
-      desc: desc
-      ?.replace('Order for', 'Orden para')
-      ?.replace('listing', 'anuncio')
-      ?.replace('directory', 'directorio')
-      ?.replace('microsite', 'micrositio'),
+      desc,
       total,
       id,
     });
@@ -35,11 +31,11 @@ const OrderOne: React.FC<Props> = ({ name, desc, total, id }) => {
           ?.replace('microsite', 'micrositio')}
       </div>
       <div className="desc text text-rubik pb-2">
-        {`${desc
+        {/* {`${desc
           ?.replace('Order for', 'Orden para')
           ?.replace('listing', 'anuncio')
           ?.replace('directory', 'directorio')
-          ?.replace('microsite', 'micrositio')}`}
+          ?.replace('microsite', 'micrositio')}`} */}
       </div>
 
       <div className="price text text-color-primary fw-bold fs-4">
