@@ -93,7 +93,7 @@ const PayTwo = ({
 
     if (orderCreated.order.id) {
       await Swal.fire(
-        'Success',
+        '¡Listo!',
         `Orden #${orderCreated.order.id} creada `,
         'success'
       ).then(() => {

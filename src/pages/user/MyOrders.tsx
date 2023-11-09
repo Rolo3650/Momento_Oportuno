@@ -63,7 +63,7 @@ const MyOrders: React.FC<Props> = () => {
                   total: order?.total,
                   type: order?.type,
                 });
-                return <></>
+                return <div key={order?.id}>Hola</div>;
                 // return (
                 //   <OrderOne
                 //     key={order?.id}

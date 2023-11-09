@@ -47,6 +47,9 @@ const app_state: AppState = {
   newDirectoryForm: {
     responseForm: null,
   },
+  newMicrositeForm: {
+    responseForm: null,
+  },
 
   [Symbol.iterator]: function () {
     let index = 0;
