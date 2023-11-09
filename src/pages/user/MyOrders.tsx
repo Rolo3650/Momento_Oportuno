@@ -5,7 +5,7 @@ import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import { useNavigate } from 'react-router-dom';
 import { OrdersServices } from '../../api/Orders';
-// import { OrderOne } from '../../components/order/OrderOne';
+import { OrderOne } from '../../components/order/OrderOne';
 
 interface Props {}
 
@@ -33,7 +33,7 @@ const MyOrders: React.FC<Props> = () => {
   const navigateTo = useNavigate();
   return (
     <LayoutThree>
-      {(orders?.length && orders?.length == 0) && (
+      {orders?.length && orders?.length == 0 && (
         <EmptyBoxOne
           text="Aún no tienes ningún pedido."
           imgSrc="/svg/icons/box_one.svg"
@@ -48,24 +48,27 @@ const MyOrders: React.FC<Props> = () => {
           }
         />
       )}
-      {(orders?.length && orders?.length > 0) && (
+      {orders?.length && orders?.length > 0 && (
         <>
           <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
             Mis Ordenes
           </h1>
           <div className="orders-one mt-5 mb-5 pb-5">
-            {/* {
+            {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              orders?.map((order: any) => (
-                <OrderOne
-                  key={order?.id}
-                  desc={order?.title ?? ''}
-                  total={order?.total ?? 0}
-                  name={order?.type ?? ''}
-                  id={order?.id ?? 0}
-                />
-              ))
-            } */}
+              orders?.map((order: any) => {
+                console.log(order);
+                return (
+                  <OrderOne
+                    key={order?.id}
+                    desc={order?.title ?? ''}
+                    total={order?.total ?? 0}
+                    name={order?.type ?? ''}
+                    id={order?.id ?? 0}
+                  />
+                );
+              })
+            }
           </div>
         </>
       )}
