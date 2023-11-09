@@ -25,7 +25,7 @@ export type AddonsRecord = Record<`addons[${number}]`, 1>;
 export type CreateOrderParams = (BaseCreateOrderParams &
   (
     | { payment_method: typeof PaymentMethods.PAYPAL }
-    | { payment_method: typeof PaymentMethods.STRIPE; token: string }
+    | { payment_method: typeof PaymentMethods.STRIPE; token?: string | undefined }
   )) &
   (
     | ({
