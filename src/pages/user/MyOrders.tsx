@@ -25,7 +25,9 @@ const MyOrders: React.FC<Props> = () => {
   };
 
   useEffect(() => {
+    console.log('holaa:', orders?.length)
     init();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const navigateTo = useNavigate();

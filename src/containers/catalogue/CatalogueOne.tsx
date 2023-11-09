@@ -56,9 +56,9 @@ const CatalogueOne: React.FC<Props> = () => {
       delete obj.category;
     }
     if (searchCategoryChildren()) {
-      obj.subCategory = searchCategoryChildren()?.id;
+      obj.category = searchCategoryChildren()?.id;
     } else {
-      delete obj.subCategory;
+      // delete obj.subCategory;
     }
     setFilter(obj);
     // console.log(obj)
