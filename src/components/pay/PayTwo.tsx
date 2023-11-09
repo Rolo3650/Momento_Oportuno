@@ -60,7 +60,7 @@ const PayTwo = ({
         type,
       };
     } else if (type === 'directory') {
-      if (!newDirectoryForm.responseForm?.data.data.id)
+      if (!newDirectoryForm.responseForm?.data.id)
         return Swal.fire(
           'Error',
           'Ocurrió un error al procesar el pago',
@@ -70,7 +70,7 @@ const PayTwo = ({
         billing_address,
         package_id: 7,
         payment_method: 'paypal',
-        related_id: newDirectoryForm.responseForm.data.data.id,
+        related_id: newDirectoryForm.responseForm.data.id,
         type: 'directory',
       };
     } else {

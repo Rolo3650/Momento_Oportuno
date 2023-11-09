@@ -35,7 +35,7 @@ export type newDirectoryFormState = {
   //   feature: boolean;
   //   socialMedia: boolean;
   //   imgs: File[] | null;
-  responseForm: { data: CreateDirectorioResponse } | null;
+  responseForm: CreateDirectorioResponse | null;
   //   package: Package | null;
 };
 
