@@ -21,7 +21,9 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
       <div
         onClick={() => {
           window.scrollTo(0, 0);
-          window.location.assign(`/ad/${product.id}`);
+          if (product.is_active) {
+            window.location.assign(`/ad/${product.id}`);
+          }
         }}
       >
         <CarouselOne product={product} />
