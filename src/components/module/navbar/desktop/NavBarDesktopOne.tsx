@@ -79,7 +79,7 @@ const NavBarDesktopOne = () => {
               </MenuItem>
             </MenuOne>
           </MenuItem>
-          <MenuItem>Directorios Locales</MenuItem>
+          <MenuItem onClick={() => navigateTo('/directories/')}>Directorios Locales</MenuItem>
         </MenuOne>
       </div>
       <div className="desktop">

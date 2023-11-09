@@ -1,0 +1,40 @@
+.orders-one {
+
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+
+    @media (min-width: 768px) and (max-width: 1100px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 800px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 550px) {
+        grid-template-columns: 1fr
+    }
+
+    & .order-one {
+
+        border-radius: 15px;
+        box-shadow: 0px 6px 20px 0px rgba(41.99999999999999, 56.99999999999999, 70, 0.08);
+        // border: 2px solid $color_secondary;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        // &.active {
+        //     border: 2px solid $color_secondary;
+        //     background-color: $color_13;
+
+        // }
+
+        display: grid;
+        grid-template-rows: auto 80px;
+
+    }
+
+}

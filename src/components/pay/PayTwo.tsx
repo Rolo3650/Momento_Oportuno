@@ -6,16 +6,16 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
-type PayOneProps = {
+type PayTwoProps = {
   disabled?: boolean;
 };
 
-const PayOne = ({ disabled }: PayOneProps) => {
+const PayTwo = ({ disabled }: PayTwoProps) => {
   const stripe = useStripe();
   const elements = useElements();
   const nav = useNavigate();
 
-  const { newAdForm } = useForm();
+  const { newDirectoryForm } = useForm();
 
   const [validForm, setValidForm] = React.useState(false);
 
@@ -28,7 +28,7 @@ const PayOne = ({ disabled }: PayOneProps) => {
     }
 
     const cardElement = elements.getElement(CardElement);
-    console.log({ elements, CardElement });
+    // console.log({ elements, CardElement });
     if (!cardElement) return console.log('No card element');
 
     const res = await stripe.createToken(cardElement);
@@ -40,31 +40,24 @@ const PayOne = ({ disabled }: PayOneProps) => {
 
     const obj: CreateOrderParams = {
       billing_address: 'dir',
-      package_id: 4,
+      package_id: 7,
       payment_method: 'paypal',
-      related_id: newAdForm.responseForm ? newAdForm.responseForm.data.id : 0,
-      type: 'listing',
+      related_id: newDirectoryForm.responseForm
+        ? newDirectoryForm.responseForm.data.id
+        : 0,
+      type: 'directory',
     };
 
-    if (newAdForm.extraImgs.quantity == 3) obj['addons[1]'] = 1;
-    if (newAdForm.extraImgs.quantity == 5) obj['addons[2]'] = 1;
-    if (newAdForm.extraImgs.quantity == 10) obj['addons[3]'] = 1;
-    if (newAdForm.extraVideo.set) obj['addons[4]'] = 1;
-    if (newAdForm.feature) obj['addons[5]'] = 1;
-    if (newAdForm.print.set) {
-      if (newAdForm.print.value == 1) obj['addons[6]'] = 1;
-      if (newAdForm.print.value == 2) obj['addons[7]'] = 1;
-    }
-    if (newAdForm.socialMedia) obj['addons[8]'] = 1;
+    console.log('OBJ', obj);
 
     const orderCreated = await OrdersServices.createOrder(obj);
 
-    console.log({
-      cardElement,
-      token: res.token,
-      card: res.token?.card,
-      orderCreated,
-    });
+    // console.log('ORDER', {
+    //   cardElement,
+    //   token: res.token,
+    //   card: res.token?.card,
+    //   orderCreated,
+    // });
 
     // example
 
@@ -109,4 +102,4 @@ const PayOne = ({ disabled }: PayOneProps) => {
   );
 };
 
-export { PayOne };
+export { PayTwo };

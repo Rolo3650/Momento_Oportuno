@@ -22,13 +22,15 @@ export const DirectorioSchema = z.object({
   address: z.string().nonempty(),
   phone: z.string().nonempty(),
   email: z.string().nonempty(),
+  thumbnail: z.string().nonempty(),
+  user_id: z.number().nonnegative(),
 });
 
 export type DirectorioType = z.infer<typeof DirectorioSchema>;
 
 export type CreateDirectorio = DirectorioType & {
-  package: number;
-  state: number;
+  package?: number;
+  state_id: number;
 };
 
 export type CreateDirectorioResponse = {

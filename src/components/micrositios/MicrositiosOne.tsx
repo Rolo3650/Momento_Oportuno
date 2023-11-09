@@ -18,16 +18,18 @@ const MicrositiosOne: React.FC<Props> = ({ cityId }) => {
   }, []);
 
   return (
-    <div className="micrositios-card-container">
-      {!data || isLoading ? (
-        <p>Cargando</p>
-      ) : micrositios?.length && micrositios?.length > 0 ? (
-        micrositios?.map((ms) => {
-          return <MicrositioCardOne micrositio={ms} />;
-        })
-      ) : (
-        <p>No hay micrositios</p>
-      )}
+    <div className="d-flex justify-content-center align-items-center">
+      <div className="micrositios-card-container">
+        {!data || isLoading ? (
+          <p>Cargando</p>
+        ) : micrositios?.length && micrositios?.length > 0 ? (
+          micrositios?.map((ms) => {
+            return <MicrositioCardOne micrositio={ms} />;
+          })
+        ) : (
+          <p>No hay micrositios</p>
+        )}
+      </div>  
     </div>
   );
 };

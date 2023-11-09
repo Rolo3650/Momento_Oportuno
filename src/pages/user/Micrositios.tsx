@@ -16,9 +16,12 @@ const Micrositios: React.FC<Props> = ({ cityName }) => {
     <LayoutOne>
       <div className="d-flex justify-content-center align-items-center">
         <div className="micrositio-content justify-content-center">
-          <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
-            Micrositios | {cityName}
-          </h1>
+          <div className="d-flex justify-content-center align-items-center">
+            <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
+              Micrositios | {cityName}
+            </h1>
+          </div>
+
           <div className="mt-4">
             <MicrositiosOne cityId={city?.id} />
           </div>

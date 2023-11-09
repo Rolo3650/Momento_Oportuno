@@ -16,6 +16,10 @@ import { CreateMicrositio } from '../pages/user/CreateMicrositio';
 import { Micrositios } from '../pages/user/Micrositios';
 import { Listings } from '../pages/pago/Listings';
 import { AddNewDirectory } from '../pages/user/AddNewDirectory';
+import { Confirmacion } from '../pages/pago/Confirmacion';
+import { Micrositio } from '../pages/micrositio/Micrositio';
+import { DirectoriesPayment } from '../pages/pago/DirectoriesPayment';
+import { LocalDirectories } from '../pages/user/LocalDirectories';
 
 const AppRouter = () => {
   return (
@@ -37,9 +41,11 @@ const AppRouter = () => {
         <Route path="/panel/favorites" element={<Favorites />} />
         <Route path="/panel/Messages" element={<Messages />} />
         <Route path="/panel/my-orders" element={<MyOrders />} />
+        <Route path="/directories/" element={<LocalDirectories />} />
         <Route path="/panel/directories" element={<Directories />} />
         <Route path="/panel/directories/create" element={<AddNewDirectory />} />
         <Route path="/micrositios/create" element={<CreateMicrositio />} />
+        <Route path="/micrositio/:id" element={<Micrositio />} />
         <Route
           path="/micrositios/micrositios-campeche"
           element={<Micrositios cityName="Campeche" />}
@@ -56,6 +62,8 @@ const AppRouter = () => {
 
         {/* Pago */}
         <Route path="/panel/listings/pago" element={<Listings />} />
+        <Route path="/panel/directories/pago" element={<DirectoriesPayment />} />
+        <Route path="/comprobante/:orderid" element={<Confirmacion />} />
 
         <Route path="/*" element={<Home />} />
       </Routes>
