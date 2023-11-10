@@ -7,18 +7,40 @@
 }
 .directorio-card {
   width: 400px;
-  height: 400px;
+  height: 500px;
   margin: 30px;
   padding: 15px;
   border: 1px solid $color_secondary;
   border-radius: 5px;
   justify-content: center;
   .directorio-card-img-container {
+    height: 200px;
+    display: flex;
+    justify-content: center;
     width: 100%;
     padding-block: 15px;
     .directorio-card-img {
-      max-height: 100px;
-      max-width: 100px;
+      max-height: 200px;
+      max-width: 200px;
+    }
+  }
+  .directorio-card-text-container {
+    word-wrap: break-word;
+    white-space: pre-line;
+
+    .directorio-card-title {
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 18px;
+      font-family: $font_2;
+      font-weight: 600;
+    }
+    .directorio-card-text {
+      margin-bottom: 10px;
+      font-family: $font_2;
+      color: $color_5;
+      word-wrap: break-word;
+      white-space: pre-line;
     }
   }
 }
