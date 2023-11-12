@@ -39,7 +39,7 @@ const Micrositio = () => {
         </div>
       </div>
       <PhoneNumberOne phoneNumber={'+52 55 5555 5555'} />
-      <SendMessageOne />
+      {/* <SendMessageOne /> */}
       {/* <UserAdsOne
           
           products={[
