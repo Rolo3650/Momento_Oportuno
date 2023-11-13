@@ -1,0 +1,43 @@
+.offcanvas-custom {
+
+    &.offcanvas-custom-one {
+
+        box-shadow: 0px 6px 20px 0px rgba(41.99999999999999, 56.99999999999999, 70, 0.08);
+
+        & .header {
+
+            cursor: pointer;
+
+        }
+
+        & .form {
+
+            border-top: 1px solid $color_secondary;
+
+        }
+
+        & .MuiSvgIcon-root {
+
+            transition: transform 0.3s ease-in-out !important;
+
+            &:hover {
+
+                transform: rotateZ(-90deg);
+
+            }
+
+        }
+
+        & .open {
+
+            & .MuiSvgIcon-root {
+
+                transform: rotateZ(-90deg);
+
+            }
+
+        }
+
+    }
+
+}

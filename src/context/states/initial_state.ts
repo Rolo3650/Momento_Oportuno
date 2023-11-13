@@ -50,6 +50,22 @@ const app_state: AppState = {
   newMicrositeForm: {
     responseForm: null,
   },
+  acountSettings: {
+    open: false,
+    userName: '',
+    completeName: '',
+    cellphone: '',
+    description: '',
+  },
+  socialMediaSettings: {
+    open: false,
+    facebook: '',
+    instagram: '',
+    twitter: '',
+    youtube: '',
+    linkedIn: '',
+    tikTok: '',
+  },
 
   [Symbol.iterator]: function () {
     let index = 0;

@@ -5,3 +5,4 @@ export * from './search';
 export * from './navigate';
 export * from './ads';
 export * from './forms';
+export * from './settings';
