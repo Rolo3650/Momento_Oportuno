@@ -3,6 +3,8 @@ import { CarouselOne } from '../carousel/CarouselOne';
 import { ActionsOne } from '../actions/ActionsOne';
 import { Ad, AdFavorite } from '../../api';
 // import { useNavigate } from 'react-router-dom';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import { useTheme } from '@mui/material';
 
 interface Props {
   product: Ad | AdFavorite;
@@ -11,6 +13,7 @@ interface Props {
 
 const ProductOne: React.FC<Props> = ({ product, fav }) => {
   // const navigateTo = useNavigate();
+  const theme = useTheme();
 
   return (
     <div
@@ -29,7 +32,19 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
         <CarouselOne product={product} />
         <div className="info fs-5 fw-bold text text-color-5 text-font-rubik">
           <div className="name">{product.title}</div>
-          <div className="mt-3">
+          <div className="mt-3 fs-6 fw-normal d-flex align-items-center">
+            <LocationOnOutlinedIcon
+              sx={{
+                color: 'white',
+                backgroundColor: theme.palette.secondary.main,
+                height: '30px',
+                width: '30px',
+              }}
+              className='rounded'
+            />
+            <span className="ms-2">{product.state?.name}</span>
+          </div>
+          <div className="mt-3 fs-6 fw-normal">
             {product.price && (
               <>
                 $
@@ -60,6 +75,9 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
               ''
             )}
           </div>
+          <span className="fw-bold badge bg-secondary text-color-5 text text-font-l-d fw-normal fs-6 py-2 mx-auto background background-color-14 px-3 mt-3">
+            {product.category?.name}
+          </span>
         </div>
       </div>
 
