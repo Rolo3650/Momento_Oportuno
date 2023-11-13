@@ -25,13 +25,13 @@ const LocalDirectories: React.FC<Props> = () => {
         style={{ padding: 30, marginBottom: 250 }}
         className="d-flex justify-content-center align-items-center w-100"
       >
-        <div className={directories.length > 0 ? "" : "w-75"}>
+        <div className={directories.length > 0 ? "w-100" : "w-75"}>
           <div className="d-flex justify-content-between">
             <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
               Directorios Locales
             </h1>
           </div>
-          <div className={directories.length > 0 ? "directorios-card-container" : "d-flex"}>
+          <div className={directories.length > 0 ? "cards" : "d-flex"}>
             {directories.length && directories.length > 0 ? (
               directories.map((dir) => {
                 return <DirectorioCardOne directorio={dir} />;
