@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { MicrositioCardOne } from './micrositioCard/MicrositioCardOne';
 import { useMicrositios } from '../../hooks/micrositios';
+import { EmptyBoxOne } from '../../components/module/box/EmptyBoxOne';
 
 interface Props {
   cityId?: number;
@@ -27,7 +28,14 @@ const MicrositiosOne: React.FC<Props> = ({ cityId }) => {
             return <MicrositioCardOne micrositio={ms} />;
           })
         ) : (
-          <p>No hay micrositios</p>
+          <div className={'justify-content-center d-flex w-100'}>
+                <div className="w-100">
+                  <EmptyBoxOne
+                    text="No hay directorios"
+                    imgSrc="/svg/icons/box_one.svg"
+                  />
+                </div>
+              </div>
         )}
       </div>  
     </div>

@@ -11,9 +11,9 @@ const Micrositio = () => {
   const { data } = useMicrositio(parseInt(id ?? '0', 10));
 
   useEffect(() => {
-    console.log('DATAMICRO:', data, parseInt(id ?? '0', 10));
+    console.log('DATAMICRO:', data);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [data]);
 
   return (
     <LayoutOne>

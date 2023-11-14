@@ -121,15 +121,15 @@ const Messages: React.FC<Props> = () => {
         </div>
         <div className="chat-conversation-container">
           <div className="d-flex align-items-center justify-content-between">
-            <div className="chat-list-title"></div>
-            <GeneralButton
+            <div className="chat-list-title">{currentChat.seller.name}</div>
+            {/* <GeneralButton
               onClick={() => navigateTo('/user')}
               title="Ver Perfil"
               colorPrimary="secondary"
               hoverColor="secondary"
               endIcon={<ArrowForward />}
               height="40px"
-            />
+            /> */}
           </div>
           <div className="chat-conversation">
             {messages
