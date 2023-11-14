@@ -21,7 +21,7 @@ const app_state: AppState = {
     desc: '',
     extraImgs: {
       set: false,
-      value: '5',
+      value: '3',
       quantity: 3,
     },
     extraStates: {
@@ -46,6 +46,25 @@ const app_state: AppState = {
   },
   newDirectoryForm: {
     responseForm: null,
+  },
+  newMicrositeForm: {
+    responseForm: null,
+  },
+  acountSettings: {
+    open: false,
+    userName: '',
+    completeName: '',
+    cellphone: '',
+    description: '',
+  },
+  socialMediaSettings: {
+    open: false,
+    facebook: '',
+    instagram: '',
+    twitter: '',
+    youtube: '',
+    linkedIn: '',
+    tikTok: '',
   },
 
   [Symbol.iterator]: function () {

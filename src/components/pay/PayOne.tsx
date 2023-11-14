@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { CreateOrderParams, OrdersServices } from '../../api/Orders';
 import { useForm } from '../../hooks';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 
 type PayOneProps = {
   disabled?: boolean;
@@ -12,6 +12,7 @@ type PayOneProps = {
 
 const PayOne = ({ disabled }: PayOneProps) => {
   const stripe = useStripe();
+  const [loading, setLoading] = useState(false);
   const elements = useElements();
   const nav = useNavigate();
 
@@ -21,6 +22,7 @@ const PayOne = ({ disabled }: PayOneProps) => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
     if (!validForm) return;
 
     if (!stripe || !elements) {
@@ -67,10 +69,11 @@ const PayOne = ({ disabled }: PayOneProps) => {
     });
 
     // example
+    setLoading(false);
 
     if (orderCreated.order.id) {
       await Swal.fire(
-        'Success',
+        '¡Listo!',
         `Orden #${orderCreated.order.id} creada `,
         'success'
       ).then(() => {
@@ -94,7 +97,7 @@ const PayOne = ({ disabled }: PayOneProps) => {
       />
       <div className="w-100 d-flex justify-content-center">
         <Button
-          disabled={!stripe || !elements || !validForm || disabled}
+          disabled={!stripe || !elements || !validForm || disabled || loading}
           type="submit"
           className="btn btn-primary mt-4"
           variant="contained"
@@ -102,7 +105,11 @@ const PayOne = ({ disabled }: PayOneProps) => {
             textTransform: 'none',
           }}
         >
-          Pagar con Stripe
+          {loading ? (
+            <CircularProgress sx={{ color: 'white' }} />
+          ) : (
+            'Pagar con Stripe'
+          )}
         </Button>
       </div>
     </form>

@@ -15,6 +15,8 @@ import { adSingleReducer } from './reducers/adSingle';
 import { newAdFormReducer } from './reducers/newAdForm';
 import { newDirectoryFormReducer } from './reducers/newDirectoryForm';
 import { newMicrositeFormReducer } from './reducers/newMicrositeForm';
+import { AcountSettingsReducer } from './reducers/acountSettings';
+import { SocialMediaSettingsReducer } from './reducers/socialMediaSettings copy';
 
 const KEY_FOR_APP_STATE = 'state_x_key_for_app' as const;
 
@@ -35,6 +37,8 @@ const mainReducer = (
     newAdForm,
     newDirectoryForm,
     newMicrositeForm,
+    acountSettings,
+    socialMediaSettings,
     ..._
   }: AppState,
   action: AppActions
@@ -51,6 +55,8 @@ const mainReducer = (
     newAdForm: newAdFormReducer(newAdForm, action),
     newDirectoryForm: newDirectoryFormReducer(newDirectoryForm, action),
     newMicrositeForm: newMicrositeFormReducer(newMicrositeForm, action),
+    acountSettings: AcountSettingsReducer(acountSettings, action),
+    socialMediaSettings: SocialMediaSettingsReducer(socialMediaSettings, action),
 
     ..._,
   };

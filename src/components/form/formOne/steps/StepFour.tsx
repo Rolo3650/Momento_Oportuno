@@ -51,7 +51,7 @@ const StepFour = () => {
   return (
     <>
       <div className="mt-3 align-items-center d-flex fw-bold text text-color-5 text-font-rubik title">
-        <div className="text-nowrap">Paquetes</div>
+        <div className="text-nowrap">Periodo de Publicación</div>
         <div className="border-pointed w-100 mx-3"></div>
         <div>
           <SouthIcon color="secondary" />
@@ -81,8 +81,45 @@ const StepFour = () => {
                 {data.description}
               </div>
 
+              <div className="mt-4 fw-bold text text-color-5 text-font-l-d subtitle">
+                Complementos
+              </div>
+              <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3">
+                {/* <ul> */}
+                {/* {newAdForm.extraStates.set && <li>{newAdForm.extraStates.value}</li>} */}
+                {newAdForm.extraImgs.quantity > 3 && (
+                  <li>
+                    {newAdForm.extraImgs.quantity == 5
+                      ? '5 Imágenes +$100'
+                      : `10 Imágenes +$200`}
+                  </li>
+                )}
+                {newAdForm.extraStates.set && (
+                  <li>
+                    {newAdForm.extraStates.value == '1'
+                      ? 'Estados del Sureste +$100'
+                      : `${
+                          newAdForm.extraStates.value == '2'
+                            ? 'Nacional +$100'
+                            : 'Todos los estados +$200'
+                        }`}
+                  </li>
+                )}
+                {newAdForm.print.set && (
+                  <li>
+                    {newAdForm.extraStates.value == '1'
+                      ? 'Anuncio Impreso por 3 días +$100'
+                      : 'Anuncio Impreso por 7 días +$150'}
+                  </li>
+                )}
+                {newAdForm.feature && <li>Destacado +$100</li>}
+                {newAdForm.socialMedia && <li>Redes Social +$100</li>}
+                {newAdForm.extraVideo.set && <li>Agregar Video +$100</li>}
+                {/* </ul> */}
+              </div>
+
               <div className="price text text-color-primary fw-bold fs-4">
-                ${' '}
+                Total: ${' '}
                 {getTotal(data.price)?.toLocaleString('es-MX', {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,

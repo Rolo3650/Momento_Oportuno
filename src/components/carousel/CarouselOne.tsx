@@ -27,7 +27,7 @@ const CarouselOne: React.FC<Props> = ({ product }) => {
               key={img.original_url}
               className={`carousel-item w-100 ${index == 0 ? 'active' : ''}`}
             >
-              <div className="w-100 d-flex align-items-center justify-content-center">
+              <div className="carousel-item-container w-100 d-flex align-items-center justify-content-center">
                 <img
                   src={img.original_url}
                   className="d-block"

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useAds } from '../../hooks';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { useTheme } from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+// import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Chip } from '@mui/material';
 import { NumberOne } from '../atributes/NumberOne';
 import { TextOne } from '../atributes/TextOne';
@@ -36,7 +36,7 @@ const ProductDescriptionOne: React.FC<Props> = () => {
           )}
         </div>
         <div>
-          <VisibilityIcon
+          {/* <VisibilityIcon
             sx={{
               color: 'white',
               backgroundColor: theme.palette.secondary.main,
@@ -47,7 +47,7 @@ const ProductDescriptionOne: React.FC<Props> = () => {
             <span className="fs-bold ms-2 text text-font-helvetica">
               {adSingleState?.ad?.create_at?.toLocaleDateString()}
             </span>
-          )}
+          )} */}
         </div>
       </div>
       <div className="my-4 d-flex px-4 justify-content-between align-items-center">

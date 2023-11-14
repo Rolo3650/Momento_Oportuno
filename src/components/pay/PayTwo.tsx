@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { CreateOrderParams, OrdersServices } from '../../api/Orders';
 import { useForm } from '../../hooks';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 
 type PayTwoProps = {
   disabled?: boolean;
@@ -18,6 +18,7 @@ const PayTwo = ({
   billing_address,
 }: PayTwoProps) => {
   const stripe = useStripe();
+  const [loading, setLoading] = useState(false);
   const elements = useElements();
   const nav = useNavigate();
 
@@ -26,6 +27,7 @@ const PayTwo = ({
   const [validForm, setValidForm] = React.useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     event.preventDefault();
     if (!validForm) return console.log('invalid form');
 
@@ -40,6 +42,7 @@ const PayTwo = ({
     const res = await stripe.createToken(cardElement);
     console.log({ res });
 
+    setLoading(false);
     if (res.error) {
       console.log(res.error);
       return;
@@ -56,7 +59,7 @@ const PayTwo = ({
         billing_address,
         package_id: 2,
         payment_method: 'paypal',
-        related_id: newMicrositeForm.responseForm.data.id,
+        related_id: parseInt(`${newMicrositeForm.responseForm.data.id}`),
         type,
       };
     } else if (type === 'directory') {
@@ -93,7 +96,7 @@ const PayTwo = ({
 
     if (orderCreated.order.id) {
       await Swal.fire(
-        'Success',
+        '¡Listo!',
         `Orden #${orderCreated.order.id} creada `,
         'success'
       ).then(() => {
@@ -117,7 +120,7 @@ const PayTwo = ({
       />
       <div className="w-100 d-flex justify-content-center">
         <Button
-          disabled={!stripe || !elements || !validForm || disabled}
+          disabled={!stripe || !elements || !validForm || disabled || loading}
           type="submit"
           className="btn btn-primary mt-4"
           variant="contained"
@@ -125,7 +128,11 @@ const PayTwo = ({
             textTransform: 'none',
           }}
         >
-          Pagar con Stripe
+          {loading ? (
+            <CircularProgress sx={{ color: 'white' }} />
+          ) : (
+            'Pagar con Stripe'
+          )}
         </Button>
       </div>
     </form>

@@ -28,6 +28,7 @@ const useForm = () => {
         payload: { ...state.newMicrositeForm, ...payload },
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [state.newMicrositeForm]
   );
 

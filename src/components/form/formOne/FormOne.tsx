@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StepOne } from './steps/StepOne';
 import { StepTwo } from './steps/StepTwo';
 import StepThree from './steps/StepThree';
 import { Addons } from './steps/Addons/Addons';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import { useForm } from '../../../hooks';
 import Swal from 'sweetalert2';
 import { CreateAnuncioParams, ListingAttribute } from '../../../api';
@@ -21,8 +21,10 @@ const FormOne: React.FC<Props> = () => {
   const { state } = useAppContext();
   const { setNewAdForm } = useForm();
   const navigateTo = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const createNewAd = async () => {
+    setLoading(true);
     let error: boolean = false;
     let message: string = '';
 
@@ -131,7 +133,7 @@ const FormOne: React.FC<Props> = () => {
             id: 38,
           });
           const response_2 = await AdsServices.uploadImage({
-            file: newAdForm.imgs[0],
+            file: newAdForm.imgs[i],
             id: response_1.data.id,
             // id: 47,
           });
@@ -159,6 +161,7 @@ const FormOne: React.FC<Props> = () => {
         );
       }
     }
+    setLoading(false);
   };
 
   return (
@@ -169,8 +172,17 @@ const FormOne: React.FC<Props> = () => {
       <Addons />
       <StepFour />
       <div className="my-3 d-flex justify-content-end">
-        <Button onClick={createNewAd} color="secondary" variant="contained">
-          Crear Anuncio
+        <Button
+          sx={{
+            width: 200,
+          }}
+          disabled={loading}
+          onClick={createNewAd}
+          color="secondary"
+          variant="contained"
+        >
+          {loading && <CircularProgress sx={{ color: 'white' }} />}
+          {!loading && 'Crear Anuncio'}
         </Button>
       </div>
     </div>
