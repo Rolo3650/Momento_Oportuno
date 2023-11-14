@@ -65,6 +65,8 @@ export type Chat = z.infer<typeof ChatSchema>
 export const GetMyChatsResponseSchema = z.object({
   data: ChatSchema.array(),
 })
+
+export type ChatType = z.infer<typeof ChatSchema>
 export type GetMyChatsResponse = z.infer<typeof GetMyChatsResponseSchema>
 
 export const PostMessageResponseSchema = z.object({

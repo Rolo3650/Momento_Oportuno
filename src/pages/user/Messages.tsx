@@ -4,12 +4,13 @@ import { LayoutThree } from '../../containers/layout/LayoutThree';
 // import { EmptyBoxOne } from '../../components/module/box/EmptyBoxOne';
 import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
 // import { ChatList, MessageBox, Input } from 'react-chat-elements';
-import { ChatList, Input } from 'react-chat-elements';
+import { ChatList, Input, MessageBox } from 'react-chat-elements';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
 import ArrowForward from '@mui/icons-material/ArrowForward';
-import { useGetMyChats } from '../../hooks/querys/chats';
-import { ChatsServices } from '../../api/Chats';
+import { useGetMyChats, useGetChatMessages } from '../../hooks/querys/chats';
+import { ChatType, ChatsServices } from '../../api/Chats';
+import { useAppContext } from '../../context';
 
 interface Props {}
 interface Message {
@@ -18,10 +19,21 @@ interface Message {
   date: Date;
 }
 
+interface Chat {
+  id: number;
+  avatar: string;
+  alt: string;
+  title: string;
+  subtitle: string;
+  date: Date;
+  unread?: number;
+}
 const Messages: React.FC<Props> = () => {
+  const { state } = useAppContext();
   const navigateTo = useNavigate();
-  const [messages, setMessages] = React.useState<Message[]>([]); // Estado para rastrear los mensajes
   const [messageText, setMessageText] = React.useState(''); // Estado para el texto del mensaje
+  const [chatList, setChatList] = useState<Chat[] | undefined>([]);
+  const [messages, setMessages] = useState([]);
 
   const {
     data: chats,
@@ -30,10 +42,43 @@ const Messages: React.FC<Props> = () => {
     isSuccess,
     refetch,
   } = useGetMyChats();
+  const [currentChat, setCurrentChat] = useState<ChatType | null>(
+    chats?.data && chats?.data.length ? chats.data[0] : null
+  );
+  // const { data: messages } = useGetChatMessages(
+  //   currentChat ? currentChat.id : chats?.data[0].id
+  // );
+  ChatsServices.getMessages(
+    currentChat ? currentChat.id : chats?.data[0].id
+  ).then((data) => {
+    setMessages(data.reverse());
+  });
 
-  
-  
-  const sendMessage = async() => {
+  useEffect(() => {
+    console.log(messages);
+  }, [currentChat]);
+  useEffect(() => {
+    if (chats?.data.length) {
+      // console.log(chats);
+      setChatList(
+        chats?.data.map((chat) => {
+          return {
+            id: chat.id,
+            avatar: chat.listing.thumbnail
+              ? chat.listing.thumbnail
+              : '/svg/icons/usr_frm.svg',
+            alt: chat.seller.name,
+            title: chat.seller.name,
+            subtitle: chat.last_message.message,
+            date: chat.last_message.created_at,
+          };
+        })
+      );
+    }
+  }, [chats]);
+
+  const sendMessage = async () => {
+    console.log(currentChat);
     if (messageText.trim() === '') {
       return;
     }
@@ -44,11 +89,12 @@ const Messages: React.FC<Props> = () => {
       date: new Date(),
     };
 
-    setMessages([...messages, newMessage]);
-
     setMessageText('');
-    console.log("CHTATS", chats)
+  };
 
+  const onChatClick = async () => {
+    const data = ChatsServices.getMessages(currentChat.id);
+    setMessages(data.reverse());
   };
 
   return (
@@ -64,31 +110,18 @@ const Messages: React.FC<Props> = () => {
             className="chat-list"
             id={0}
             lazyLoadingImage=""
-            dataSource={[
-              {
-                id: 0,
-                avatar: 'https://avatars.githubusercontent.com/u/80540635?v=4',
-                alt: 'Fabian',
-                title: 'Fabian',
-                subtitle: 'Hola!',
-                date: new Date(),
-                unread: 1,
-              },
-              {
-                id: 2,
-                avatar: 'https://avatars.githubusercontent.com/u/80540635?v=4',
-                alt: 'Fabian',
-                title: 'Fabian',
-                subtitle: 'Hola!',
-                date: new Date(),
-                unread: 1,
-              },
-            ]}
+            dataSource={chatList}
+            onClick={(chat) => {
+              setCurrentChat(
+                chats?.data.find((c) => Number(chat.id) === c.id)
+              );
+              onChatClick;
+            }}
           />
         </div>
         <div className="chat-conversation-container">
           <div className="d-flex align-items-center justify-content-between">
-            <div className="chat-list-title">Fabian</div>
+            <div className="chat-list-title"></div>
             <GeneralButton
               onClick={() => navigateTo('/user')}
               title="Ver Perfil"
@@ -99,17 +132,27 @@ const Messages: React.FC<Props> = () => {
             />
           </div>
           <div className="chat-conversation">
-            {messages.map((_message) => {
-              return (
-                <></>
-                // <MessageBox
-                //   position={_message.position}
-                //   type={'text'}
-                //   text={_message.text}
-                //   date={_message.date}
-                // />
-              );
-            })}
+            {messages
+              ? messages.map((msg) => {
+                  return (
+                    <MessageBox
+                      position={
+                        msg.user_id == state.userState?.user.id
+                          ? 'right'
+                          : 'left'
+                      }
+                      type={'text'}
+                      title={
+                        msg.user_id == state.userState?.user.id
+                          ? state.userState.user.name
+                          : currentChat.seller.name
+                      }
+                      text={msg.message}
+                      date={msg.created_at}
+                    />
+                  );
+                })
+              : null}
           </div>
           <div className="chat-write-message">
             <Input
