@@ -18,8 +18,8 @@ const MicrositiosOne: React.FC<Props> = ({ cityId }) => {
   }, []);
 
   return (
-    <div className="d-flex justify-content-center align-items-center">
-      <div className="micrositios-card-container">
+    <div className="microsites">
+      <div className="wrap">
         {!data || isLoading ? (
           <p>Cargando</p>
         ) : micrositios?.length && micrositios?.length > 0 ? (
