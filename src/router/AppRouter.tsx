@@ -21,12 +21,14 @@ import { Micrositio } from '../pages/micrositio/Micrositio';
 import { DirectoriesPayment } from '../pages/pago/DirectoriesPayment';
 import { LocalDirectories } from '../pages/user/LocalDirectories';
 import { MicrositesPayment } from '../pages/pago/MicrositesPayment';
+import { Nosotros } from '../pages/info/Nosotros';
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about-us" element={<Nosotros />} />
 
         {/* Ads */}
         <Route path="/ads" element={<AdsSearch />} />

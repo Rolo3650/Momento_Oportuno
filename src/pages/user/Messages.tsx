@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { LayoutThree } from '../../containers/layout/LayoutThree';
 // import { EmptyBoxOne } from '../../components/module/box/EmptyBoxOne';
 import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
@@ -8,6 +8,8 @@ import { ChatList, Input } from 'react-chat-elements';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
 import ArrowForward from '@mui/icons-material/ArrowForward';
+import { useGetMyChats } from '../../hooks/querys/chats';
+import { ChatsServices } from '../../api/Chats';
 
 interface Props {}
 interface Message {
@@ -21,7 +23,17 @@ const Messages: React.FC<Props> = () => {
   const [messages, setMessages] = React.useState<Message[]>([]); // Estado para rastrear los mensajes
   const [messageText, setMessageText] = React.useState(''); // Estado para el texto del mensaje
 
-  const sendMessage = () => {
+  const {
+    data: chats,
+    isLoading,
+    isError,
+    isSuccess,
+    refetch,
+  } = useGetMyChats();
+
+  
+  
+  const sendMessage = async() => {
     if (messageText.trim() === '') {
       return;
     }
@@ -35,6 +47,8 @@ const Messages: React.FC<Props> = () => {
     setMessages([...messages, newMessage]);
 
     setMessageText('');
+    console.log("CHTATS", chats)
+
   };
 
   return (
@@ -49,7 +63,7 @@ const Messages: React.FC<Props> = () => {
           <ChatList
             className="chat-list"
             id={0}
-            lazyLoadingImage=''
+            lazyLoadingImage=""
             dataSource={[
               {
                 id: 0,

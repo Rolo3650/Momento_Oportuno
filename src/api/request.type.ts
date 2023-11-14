@@ -9,6 +9,7 @@ import { ZodError } from 'zod';
 export const Services = {
   INDEX: '/',
   ADS: '/listings',
+  CHATS: '/chats',
   USERS: '/users',
   REGISTER: '/register',
   PRODUCT: '/product',
