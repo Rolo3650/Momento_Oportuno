@@ -48,14 +48,16 @@ const Messages: React.FC<Props> = () => {
   // const { data: messages } = useGetChatMessages(
   //   currentChat ? currentChat.id : chats?.data[0].id
   // );
+
+  useEffect(() => {
+    console.log(messages);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   ChatsServices.getMessages(
     currentChat ? currentChat.id : chats?.data[0].id
   ).then((data) => {
     setMessages(data.reverse());
   });
-
-  useEffect(() => {
-    console.log(messages);
   }, [currentChat]);
   useEffect(() => {
     if (chats?.data.length) {
@@ -121,7 +123,7 @@ const Messages: React.FC<Props> = () => {
         </div>
         <div className="chat-conversation-container">
           <div className="d-flex align-items-center justify-content-between">
-            <div className="chat-list-title">{currentChat.seller.name}</div>
+            <div className="chat-list-title">{currentChat?.seller?.name}</div>
             {/* <GeneralButton
               onClick={() => navigateTo('/user')}
               title="Ver Perfil"
