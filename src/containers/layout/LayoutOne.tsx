@@ -12,7 +12,7 @@ const LayoutOne: React.FC<Props> = ({ children }) => {
     <>
       <HeaderOne />
       <SideBarOne />
-      {children}
+      <div className="min-height-all">{children}</div>
       <FooterOne />
     </>
   );

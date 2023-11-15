@@ -81,7 +81,7 @@ const LookingFor = () => {
           options={data?.data?.map((city) => ({
             label: city?.name,
             value: city?.id,
-            quantity: 1,
+            quantity: city.listings_count ?? 0,
           }))}
           onChange={onChangeCity}
         />

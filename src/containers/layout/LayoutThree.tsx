@@ -14,8 +14,10 @@ const LayoutThree: React.FC<Props> = ({ children }) => {
       <HeaderOne />
       <SideBarOne />
       <NavbarOne />
-      <div className="page-body page-body-two">
-        <div className="container d-block">{children}</div>
+      <div className="min-height-all">
+        <div className="page-body page-body-two">
+          <div className="container d-block">{children}</div>
+        </div>
       </div>
       <FooterOne />
     </>

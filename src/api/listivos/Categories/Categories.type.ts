@@ -18,6 +18,7 @@ export const CategorieSchema = z.object({
   name: z.string(),
   description: z.null(),
   children: z.array(SubCategorie),
+  listings_count : z.number().optional().nullable(),
 });
 export type Categorie = z.infer<typeof CategorieSchema>;
 
