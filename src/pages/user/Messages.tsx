@@ -11,6 +11,7 @@ import ArrowForward from '@mui/icons-material/ArrowForward';
 import { useGetMyChats, useGetChatMessages } from '../../hooks/querys/chats';
 import { ChatType, ChatsServices } from '../../api/Chats';
 import { useAppContext } from '../../context';
+import Swal from 'sweetalert2';
 
 interface Props {}
 interface Message {
@@ -88,8 +89,14 @@ const Messages: React.FC<Props> = () => {
       return;
     }
 
-    ChatsServices.postMessage({ message: messageText }, currentChat?.id);
+    ChatsServices.postMessage({ message: messageText }, currentChat?.id).catch(
+      (e) => {
+        Swal.fire('Error', 'Error al enviar el mensaje');
+      }
+    );
+
     setMessageText('');
+
     setTimeout(() => {
       setCounter(counter + 1);
     }, 100);
@@ -156,6 +163,7 @@ const Messages: React.FC<Props> = () => {
               placeholder="Escribe tu mensaje aquí..."
               multiline={true}
               value={messageText}
+              onReset={() => setMessageText('')}
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               onChange={(e: any) => setMessageText(e.target.value)}
             />
