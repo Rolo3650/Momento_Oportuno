@@ -1,9 +1,11 @@
 import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { PhoneNumberOne } from '../../components/phoneNumber/PhoneNumberOne';
-import { SendMessageOne } from '../../components/inputs/sendMessage/SendMessageOne';
+// import { SendMessageOne } from '../../components/inputs/sendMessage/SendMessageOne';
 import { useMicrositio } from '../../hooks/micrositios';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import moment from 'moment';
+import { ProductOne } from '../../components/product/ProductOne';
 // import { UserAdsOne } from '../../containers/userAds/UserAdsOne';
 
 const Micrositio = () => {
@@ -12,7 +14,7 @@ const Micrositio = () => {
 
   useEffect(() => {
     console.log('DATAMICRO:', data);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   return (
@@ -20,25 +22,33 @@ const Micrositio = () => {
       <div className="profile-toppart">
         <div className="profile-background">
           <div className="profile-picture">
-            <img className="profile-userimg" src="/svg/icons/usr_frm.svg" />
+            <img
+              className="profile-userimg"
+              src={
+                data?.data.media?.length ? data?.data.media[0].original_url : ''
+              }
+            />
           </div>
         </div>
         <div className="profile-info">
           <div className="profile-usernamediv">
-            <h3 className="profile-username">user</h3>
+            <h4 className="profile-username">{data?.data?.title}</h4>
           </div>
-          <div className="profile-time">
+          <div className="mt-3 text text-font-l-d text-color-">
+            <h3 className="">{data?.data?.email}</h3>
+          </div>
+          <div className="profile-time mt-3">
             <div className="profile-time_user-img">
               <img
                 className="profile-time_user-imguser"
                 src="/svg/icons/usr_frm.svg"
               />
             </div>
-            Miembro desde hace 3 semanas
+            {moment(data?.data.created_at ?? new Date()).format('DD/MM/YYYY')}
           </div>
         </div>
       </div>
-      <PhoneNumberOne phoneNumber={'+52 55 5555 5555'} />
+      <PhoneNumberOne phoneNumber={data?.data.phone ?? ''} />
       {/* <SendMessageOne /> */}
       {/* <UserAdsOne
           
@@ -54,6 +64,15 @@ const Micrositio = () => {
             
           ]}
         /> */}
+      <div className="microsite-single listings mx-auto mb-5">
+        {data?.data.user &&
+          data?.data.user.listings?.length &&
+          data?.data.user.listings?.length > 0 &&
+          data?.data.user.listings?.map((listing) => {
+            // listing.imgs = [`${listing.thumbnail}`];
+            return <ProductOne product={listing} />;
+          })}
+      </div>
     </LayoutOne>
   );
 };

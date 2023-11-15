@@ -7,11 +7,11 @@ export const UserWithListingsSchema = UserSchema.extend({
   listings: z
     .lazy(() =>
       AdSchema.omit({
-        user: true,
-        attributes: true,
-        category: true,
-        state: true,
-        updated_at: true,
+        // user: true,
+        // attributes: true,
+        // category: true,
+        // state: true,
+        // updated_at: true,
       }).array(),
     )
     .nullable()
