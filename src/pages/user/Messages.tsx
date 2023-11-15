@@ -35,6 +35,8 @@ const Messages: React.FC<Props> = () => {
   const [chatList, setChatList] = useState<Chat[] | undefined>([]);
   const [messages, setMessages] = useState([]);
 
+  const [counter, setCounter] = useState<number>(0);
+
   const {
     data: chats,
     isLoading,
@@ -51,14 +53,15 @@ const Messages: React.FC<Props> = () => {
 
   useEffect(() => {
     console.log(messages);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  ChatsServices.getMessages(
-    currentChat ? currentChat.id : chats?.data[0].id
-  ).then((data) => {
-    setMessages(data.reverse());
-  });
-  }, [currentChat]);
+    ChatsServices.getMessages(
+      currentChat ? currentChat.id : chats?.data[0].id
+    ).then((data) => {
+      setMessages(data.reverse());
+    });
+  }, [currentChat, counter]);
+
   useEffect(() => {
     if (chats?.data.length) {
       // console.log(chats);
@@ -85,18 +88,11 @@ const Messages: React.FC<Props> = () => {
       return;
     }
 
-    const newMessage = {
-      position: 'right',
-      text: messageText,
-      date: new Date(),
-    };
-
+    ChatsServices.postMessage({ message: messageText }, currentChat?.id);
     setMessageText('');
-  };
-
-  const onChatClick = async () => {
-    const data = ChatsServices.getMessages(currentChat.id);
-    setMessages(data.reverse());
+    setTimeout(() => {
+      setCounter(counter + 1);
+    }, 100);
   };
 
   return (
@@ -114,10 +110,7 @@ const Messages: React.FC<Props> = () => {
             lazyLoadingImage=""
             dataSource={chatList}
             onClick={(chat) => {
-              setCurrentChat(
-                chats?.data.find((c) => Number(chat.id) === c.id)
-              );
-              onChatClick;
+              setCurrentChat(chats?.data.find((c) => Number(chat.id) === c.id));
             }}
           />
         </div>
