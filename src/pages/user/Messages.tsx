@@ -1,26 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { LayoutThree } from '../../containers/layout/LayoutThree';
-// import { EmptyBoxOne } from '../../components/module/box/EmptyBoxOne';
 import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
-// import { ChatList, MessageBox, Input } from 'react-chat-elements';
 import { ChatList, Input, MessageBox } from 'react-chat-elements';
 import SendIcon from '@mui/icons-material/Send';
-import { useNavigate } from 'react-router-dom';
-import ArrowForward from '@mui/icons-material/ArrowForward';
-import { useGetMyChats, useGetChatMessages } from '../../hooks/querys/chats';
-import { ChatType, ChatsServices } from '../../api/Chats';
+// import { useNavigate } from 'react-router-dom';
+import { useGetMyChats } from '../../hooks/querys/chats';
+import { Chat, ChatsServices, GetChatMessagesResponse } from '../../api/Chats';
 import { useAppContext } from '../../context';
 import Swal from 'sweetalert2';
 
 interface Props {}
-interface Message {
-  position: string;
-  text: string;
-  date: Date;
-}
 
-interface Chat {
+interface ChatL {
   id: number;
   avatar: string;
   alt: string;
@@ -31,37 +23,49 @@ interface Chat {
 }
 const Messages: React.FC<Props> = () => {
   const { state } = useAppContext();
-  const navigateTo = useNavigate();
+  // const navigateTo = useNavigate();
   const [messageText, setMessageText] = React.useState(''); // Estado para el texto del mensaje
-  const [chatList, setChatList] = useState<Chat[] | undefined>([]);
-  const [messages, setMessages] = useState([]);
+  const [chatList, setChatList] = useState<ChatL[] | undefined>([]);
+  const [messages, setMessages] = useState<GetChatMessagesResponse>([]);
 
   const [counter, setCounter] = useState<number>(0);
 
-  const {
-    data: chats,
-    isLoading,
-    isError,
-    isSuccess,
-    refetch,
-  } = useGetMyChats();
-  const [currentChat, setCurrentChat] = useState<ChatType | null>(
-    chats?.data && chats?.data.length ? chats.data[0] : null
-  );
+  const { data: chats, isLoading, isSuccess, refetch } = useGetMyChats();
+
+  const [currentChat, setCurrentChat] = useState<Chat | null | undefined>(null);
+
   // const { data: messages } = useGetChatMessages(
   //   currentChat ? currentChat.id : chats?.data[0].id
   // );
 
   useEffect(() => {
+    const fetchMessages = async () => {
+      const messagesData = await ChatsServices.getMessages(
+        currentChat && currentChat.id && chats ? chats.data[0].id : 0
+      );
+      const reversedMessages = messagesData.reverse();
+      setMessages(reversedMessages);
+    };
+
+    const messagesIntervalId = setInterval(fetchMessages, 5000);
+    const chatsIntervalId = setInterval(() => {
+      refetch();
+    }, 2000);
+
+    return () => {
+      clearInterval(messagesIntervalId);
+      clearInterval(chatsIntervalId);
+    };
+  }, [currentChat, refetch, chats]);
+
+  useEffect(() => {
     console.log(messages);
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    ChatsServices.getMessages(
-      currentChat ? currentChat.id : chats?.data[0].id
-    ).then((data) => {
+    ChatsServices.getMessages(currentChat ? currentChat.id : 0).then((data) => {
       setMessages(data.reverse());
     });
-  }, [currentChat, counter]);
+  }, [currentChat, counter, messages]);
 
   useEffect(() => {
     if (chats?.data.length) {
@@ -89,11 +93,12 @@ const Messages: React.FC<Props> = () => {
       return;
     }
 
-    ChatsServices.postMessage({ message: messageText }, currentChat?.id).catch(
-      (e) => {
-        Swal.fire('Error', 'Error al enviar el mensaje');
-      }
-    );
+    ChatsServices.postMessage(
+      { message: messageText },
+      currentChat ? currentChat?.id : 0
+    ).catch(() => {
+      Swal.fire('Error', 'Error al enviar el mensaje');
+    });
 
     setMessageText('');
 
@@ -111,15 +116,27 @@ const Messages: React.FC<Props> = () => {
       <div className="chat-container d-flex">
         <div className="chat-list-container">
           <div className="chat-list-title">Conversaciones</div>
-          <ChatList
-            className="chat-list"
-            id={0}
-            lazyLoadingImage=""
-            dataSource={chatList}
-            onClick={(chat) => {
-              setCurrentChat(chats?.data.find((c) => Number(chat.id) === c.id));
-            }}
-          />
+          {!isLoading && isSuccess ? (
+            <ChatList
+              className="chat-list"
+              id={0}
+              lazyLoadingImage=""
+              dataSource={
+                chatList
+                  ? chatList
+                  : [{ id: 0, avatar: '/svg/icons/usr_frm.svg' }]
+              }
+              onClick={(chat) => {
+                setCurrentChat(
+                  chats && chats.data
+                    ? chats.data.find((c) => Number(chat.id === c.id))
+                    : null
+                );
+              }}
+            />
+          ) : (
+            <div>No hay conversaciones</div>
+          )}
         </div>
         <div className="chat-conversation-container">
           <div className="d-flex align-items-center justify-content-between">
@@ -138,6 +155,7 @@ const Messages: React.FC<Props> = () => {
               ? messages.map((msg) => {
                   return (
                     <MessageBox
+                      id={msg.id}
                       position={
                         msg.user_id == state.userState?.user.id
                           ? 'right'
@@ -147,10 +165,20 @@ const Messages: React.FC<Props> = () => {
                       title={
                         msg.user_id == state.userState?.user.id
                           ? state.userState.user.name
-                          : currentChat.seller.name
+                          : currentChat
+                          ? currentChat.seller.name
+                          : 'Vendedor'
                       }
                       text={msg.message}
                       date={msg.created_at}
+                      focus={false}
+                      titleColor={'#000'}
+                      forwarded={false}
+                      replyButton={false}
+                      removeButton={false}
+                      status="received"
+                      notch={false}
+                      retracted={false}
                     />
                   );
                 })
