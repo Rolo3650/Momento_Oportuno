@@ -3,26 +3,84 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import { useTheme, Button } from '@mui/material';
 import { useSettings } from '../../../hooks';
 import Swal from 'sweetalert2';
+import { UsersServices } from '../../../api';
+import { useAppContext, AppTypes } from '../../../context';
 
 const FormFour = () => {
   const theme = useTheme();
   const { socialMediaSettings, setSocialMediaSettings } = useSettings();
+  const { state, dispatch } = useAppContext();
 
-  const onSubmit = () => {
-    Swal.fire('Listo', 'Información guardada exitosamente', 'success').then(
-      () => {
-        window.scrollTo(0, 0);
-        setSocialMediaSettings({
-          open: false,
-          facebook: '',
-          instagram: '',
-          twitter: '',
-          linkedIn: '',
-          tikTok: '',
-          youtube: '',
-        });
+  const onSubmit = async () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const obj: any = {
+      name: state.userState?.user.name,
+      phone: state.userState?.user.phone,
+    };
+
+    if (socialMediaSettings.facebook_url) {
+      obj.facebook_url = socialMediaSettings.facebook_url;
+    }
+    if (socialMediaSettings.instagram_url) {
+      obj.instagram_url = socialMediaSettings.instagram_url;
+    }
+    if (socialMediaSettings.twitter_url) {
+      obj.twitter_url = socialMediaSettings.twitter_url;
+    }
+    if (socialMediaSettings.linkedIn_url) {
+      obj.linkedIn_url = socialMediaSettings.linkedIn_url;
+    }
+    if (socialMediaSettings.tikTok_url) {
+      obj.tikTok_url = socialMediaSettings.tikTok_url;
+    }
+    if (socialMediaSettings.youtube_url) {
+      obj.youtube_url = socialMediaSettings.youtube_url;
+    }
+
+    console.log('OBJREDES', obj);
+
+    try {
+      const response = await UsersServices.update(obj);
+
+      console.log('REDES', response);
+
+      if (response?.status == 200) {
+        Swal.fire('Listo', 'Información guardada exitosamente', 'success').then(
+          () => {
+            window.scrollTo(0, 0);
+            const user = state.userState;
+            if (user) {
+              setSocialMediaSettings({
+                open: false,
+                // completeName: state.userState?.user.name,
+                // cellphone: state.userState?.user.phone,
+                // userName: '',
+                // completeName: '',
+                // cellphone: '',
+                // description: '',
+              });
+
+              dispatch({
+                type: AppTypes.Login,
+                payload: user,
+              });
+            }
+          }
+        );
+      } else {
+        Swal.fire(
+          'Error',
+          'Ocurrió un error al conectar con el servidor, por favor inténtalo en otro momento',
+          'error'
+        );
       }
-    );
+    } catch (e) {
+      Swal.fire(
+        'Error',
+        'Ingresa URL válidas',
+        'error'
+      );
+    }
   };
 
   return (
@@ -41,9 +99,9 @@ const FormFour = () => {
           text="Facebook"
           icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
           onChange={(e) => {
-            setSocialMediaSettings({ facebook: e.target.value });
+            setSocialMediaSettings({ facebook_url: e.target.value });
           }}
-          value={socialMediaSettings.facebook}
+          value={socialMediaSettings.facebook_url}
         />
         <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3 mt-4">
           Instagram <span className="text text-color-secondary">*</span>
@@ -58,9 +116,9 @@ const FormFour = () => {
           text="Instagram"
           icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
           onChange={(e) => {
-            setSocialMediaSettings({ instagram: e.target.value });
+            setSocialMediaSettings({ instagram_url: e.target.value });
           }}
-          value={socialMediaSettings.instagram}
+          value={socialMediaSettings.instagram_url}
         />
         <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3 mt-4">
           Twitter <span className="text text-color-secondary">*</span>
@@ -77,10 +135,10 @@ const FormFour = () => {
           onChange={(e) => {
             const regex = /^[0-9]{0,10}$/;
             if (regex.test(e.target.value)) {
-              setSocialMediaSettings({ twitter: e.target.value });
+              setSocialMediaSettings({ twitter_url: e.target.value });
             }
           }}
-          value={socialMediaSettings.twitter}
+          value={socialMediaSettings.twitter_url}
         />
         <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3 mt-4">
           LinkedIn <span className="text text-color-secondary">*</span>
@@ -95,9 +153,9 @@ const FormFour = () => {
           text="LinkedIn"
           icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
           onChange={(e) => {
-            setSocialMediaSettings({ linkedIn: e.target.value });
+            setSocialMediaSettings({ linkedIn_url: e.target.value });
           }}
-          value={socialMediaSettings.linkedIn}
+          value={socialMediaSettings.linkedIn_url}
         />
         <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3 mt-4">
           Youtube <span className="text text-color-secondary">*</span>
@@ -112,9 +170,9 @@ const FormFour = () => {
           text="Youtube"
           icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
           onChange={(e) => {
-            setSocialMediaSettings({ youtube: e.target.value });
+            setSocialMediaSettings({ youtube_url: e.target.value });
           }}
-          value={socialMediaSettings.youtube}
+          value={socialMediaSettings.youtube_url}
         />
         <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3 mt-4">
           Tik-Tok <span className="text text-color-secondary">*</span>
@@ -129,9 +187,9 @@ const FormFour = () => {
           text="Tik-Tok"
           icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
           onChange={(e) => {
-            setSocialMediaSettings({ tikTok: e.target.value });
+            setSocialMediaSettings({ tikTok_url: e.target.value });
           }}
-          value={socialMediaSettings.tikTok}
+          value={socialMediaSettings.tikTok_url}
         />
       </div>
       <div className="my-4 d-flex justify-content-end">

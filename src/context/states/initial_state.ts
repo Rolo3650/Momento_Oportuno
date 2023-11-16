@@ -59,12 +59,12 @@ const app_state: AppState = {
   },
   socialMediaSettings: {
     open: false,
-    facebook: '',
-    instagram: '',
-    twitter: '',
-    youtube: '',
-    linkedIn: '',
-    tikTok: '',
+    facebook_url: '',
+    instagram_url: '',
+    twitter_url: '',
+    youtube_url: '',
+    linkedIn_url: '',
+    tikTok_url: '',
   },
 
   [Symbol.iterator]: function () {

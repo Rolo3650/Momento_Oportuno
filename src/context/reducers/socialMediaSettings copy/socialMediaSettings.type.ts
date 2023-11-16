@@ -2,12 +2,12 @@ import { ActionMap, AppTypes } from '..';
 
 export type SocialMediaSettingsState = {
   open: boolean;
-  facebook: string;
-  instagram: string;
-  twitter: string;
-  youtube: string;
-  linkedIn: string;
-  tikTok: string;
+  facebook_url: string;
+  instagram_url: string;
+  twitter_url: string;
+  youtube_url: string;
+  linkedIn_url: string;
+  tikTok_url: string;
 };
 
 export type SocialMediaSettingsPayload = {
