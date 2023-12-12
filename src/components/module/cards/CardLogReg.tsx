@@ -2,7 +2,13 @@ import React, { useState, ChangeEvent, useEffect } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { TextFieldOne } from '../../inputs/text/TextFieldOne';
 import { PswFieldOne } from '../../inputs/password/PswFieldOne';
-import { Button, CircularProgress, FormControl } from '@mui/material';
+import {
+  Button,
+  CircularProgress,
+  FormControl,
+  OutlinedInput,
+  InputLabel,
+} from '@mui/material';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -13,6 +19,10 @@ import Checkbox from '@mui/material/Checkbox';
 import Swal from 'sweetalert2';
 import { useLogin, useRegister, useSearch } from '../../../hooks';
 import { useLocation } from 'react-router-dom';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -56,6 +66,7 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
   const theme = useTheme();
   const [ISusr, setISusr] = useState('');
   const [ISpsw, setISpsw] = useState('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [loadingis, setLoadingIS] = useState<boolean>(false);
   const [loadingrg, setLoadingRG] = useState<boolean>(false);
   const onChangeISusr = (e: ChangeEvent<HTMLInputElement>) => {
@@ -260,8 +271,9 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
                   value={ISusr}
                   onChange={onChangeISusr}
                 ></TextFieldOne>
+
                 <div className="mt-3">
-                  <PswFieldOne
+                  {/* <PswFieldOne
                     color={{
                       variant: 'secondary',
                       text: '#464748',
@@ -272,7 +284,37 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
                     icon={{ url: '/svg/icons/psw_frm.svg' }}
                     value={ISpsw}
                     onChange={onChangeISpsw}
-                  ></PswFieldOne>
+                  ></PswFieldOne> */}
+
+                  <FormControl>
+                    <InputLabel htmlFor="auth-login-v2-password">
+                      Contraseña
+                    </InputLabel>
+                    <OutlinedInput
+                      style={{ width: '147%' }}
+                      color="secondary"
+                      label="Password"
+                      id="auth-login-v2-password"
+                      type={showPassword ? 'text' : 'password'}
+                      value={ISpsw}
+                      onChange={onChangeISpsw}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            edge="end"
+                            onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? (
+                              <VisibilityIcon />
+                            ) : (
+                              <VisibilityOffIcon />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                  </FormControl>
                 </div>
                 <div className="mt-2 chkbox chkbox-main">
                   <div className="chkbox chkbox-remember">
@@ -361,8 +403,8 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
                     }}
                   ></TextFieldOne>
                 </div>
-                <div className="mt-3">
-                  <PswFieldOne
+                <div className="mt-3 w-100">
+                  {/* <PswFieldOne
                     color={{
                       variant: 'secondary',
                       text: '#464748',
@@ -375,7 +417,39 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
                     onChange={(e) =>
                       onChangeInput('rgpassword', e.target.value)
                     }
-                  ></PswFieldOne>
+                  ></PswFieldOne> */}
+                  <FormControl>
+                    <InputLabel htmlFor="auth-login-v2-password">
+                      Contraseña
+                    </InputLabel>
+                    <OutlinedInput
+                      
+                      style={{ width: '147%' }}
+                      color="secondary"
+                      label="Password"
+                      id="auth-login-v2-password"
+                      type={showPassword ? 'text' : 'password'}
+                      value={RGpsw}
+                      onChange={(e) =>
+                        onChangeInput('rgpassword', e.target.value)
+                      }
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            edge="end"
+                            onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? (
+                              <VisibilityIcon />
+                            ) : (
+                              <VisibilityOffIcon />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                  </FormControl>
                 </div>
                 <div className="mt-3">
                   <TextFieldOne
