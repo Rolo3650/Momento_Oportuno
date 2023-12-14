@@ -53,10 +53,11 @@ const StepOne: React.FC<Props> = () => {
         return c.slug == option.value;
       });
       if (category?.slug) {
-        setNewAdForm({ category: category });
+        setNewAdForm({ category: category, subCategory: null });
+        // setNewAdForm({ subCategory: null });
       }
     } else {
-      setNewAdForm({ category: null });
+      setNewAdForm({ category: null, subCategory: null });
     }
   };
 

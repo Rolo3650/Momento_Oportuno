@@ -1,0 +1,17 @@
+.background {
+
+    &.background-image-1 {
+
+        background-image: url('/svg/backgrounds/background_4.svg');
+
+    }
+
+    &.background-image-2 {
+
+        background-image: url('/svg/backgrounds/background_5.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+
+}
