@@ -22,6 +22,7 @@ import { DirectoriesPayment } from '../pages/pago/DirectoriesPayment';
 import { LocalDirectories } from '../pages/user/LocalDirectories';
 import { MicrositesPayment } from '../pages/pago/MicrositesPayment';
 import { Nosotros } from '../pages/info/Nosotros';
+import { Contactanos } from '../pages/info/Contactanos';
 
 const AppRouter = () => {
   return (
@@ -29,6 +30,7 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<Nosotros />} />
+        <Route path="/contact-us" element={<Contactanos />} />
 
         {/* Ads */}
         <Route path="/ads" element={<AdsSearch />} />

@@ -3,6 +3,7 @@ import { IconButton } from '@mui/material';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import { Link } from 'react-router-dom';
 // import React from 'react';
 
 const FooterOne = () => {
@@ -164,9 +165,19 @@ const FooterOne = () => {
             </div>
             <div className="info sect">
               <h3 className="subtitle">Te puede ser útil</h3>
-              <div className="list-element text animated">Nosotros</div>
-              <div className="list-element text animated">Contáctanos</div>
-              <div className="list-element text animated">Regístrate</div>
+              <Link to="/about-us" className="list-link">
+              <div className="list-element text animated">
+                Nosotros
+              </div>
+              </Link>
+              <Link to="/contact-us" className="list-link">
+              <div className="list-element text animated">
+                Contáctanos
+              </div>
+              </Link>
+              <Link to="/login-register?tab=register" className="list-link">
+                <div className="list-element text animated">Regístrate</div>
+              </Link>
             </div>
             <div className="categories sect">
               <h3 className="subtitle">Categorías</h3>

@@ -48,6 +48,9 @@
         .sect {
           margin-inline: 3rem;
 
+          .list-link {
+            text-decoration: none;
+          }
           .list-element {
             align-self: left;
             display: flex;
@@ -139,8 +142,6 @@
           }
         }
       }
-
-      
     }
   }
   .rights_reserved {

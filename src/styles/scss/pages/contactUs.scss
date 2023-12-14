@@ -1,0 +1,34 @@
+.contact-us_container {
+  max-width: 1200px;
+  padding: 60px;
+  .contact-us_sect1 {
+    display: flex;
+    .sect1_elmnt1 {
+      .title {
+        font-size: 60px;
+        font-family: $font_4;
+        color: $color_5;
+        font-weight: bolder;
+      }
+      .info-section {
+        max-width: 220px;
+        text-align: center;
+        background-color: #ffc89b;
+        padding: 5px;
+        padding-inline: 10px;
+        border-radius: 5px;
+        .info {
+          color: black;
+          font-family: $font_2;
+          font-size: 14px;
+        }
+      }
+    }
+    .sect1_elmnt2 {
+    }
+  }
+  .contact-us_sect2 {
+    .sect2_elmnt {
+    }
+  }
+}
