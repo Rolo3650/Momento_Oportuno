@@ -116,22 +116,60 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
   };
 
   const onClickShowIS = () => {
-    setLoadingIS(true);
+    // setLoadingIS(true);
     const obj = {
       ['email']: ISusr,
       ['password']: ISpsw,
     };
     login.mutate(obj);
+    // console.log(login.error);
+    if (handleClose) {
+      handleClose();
+    }
   };
   const onClickShowRG = () => {
-    setLoadingRG(true);
-    const obj ={
-        ['name']: RGusr,
-        ['email']: RGeml,
-        ['password']: RGpsw,
-        ['password_confirmation']: RGpsw
+    // setLoadingRG(true);
+    const obj = {
+      ['name']: RGusr,
+      ['email']: RGeml,
+      ['password']: RGpsw,
+      ['password_confirmation']: RGpsw,
     };
-    register.mutate(obj);
+    // console.log(obj);
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const numRegex = /^[0-9]{10}$/;
+
+    let error: boolean = false;
+    let message: string = '';
+    if (RGusr == '') {
+      error = true;
+      message = 'Ingresa un nombre de usuario válido';
+    }
+    if (!emailRegex.test(RGeml)) {
+      error = true;
+      message = 'Ingresa un correo válido';
+    }
+    if (!numRegex.test(RGtel)) {
+      error = true;
+      message = 'Ingresa un número de teléfono válido';
+    }
+    if (RGnmc == '') {
+      error = true;
+      message = 'Ingresa un nombre válido';
+    }
+    if (RGape == '') {
+      error = true;
+      message = 'Ingresa un apellido válido';
+    }
+    if (RGpsw == '' && RGpsw.length >= 8) {
+      error = true;
+      message = 'Ingresa una contaseña válida';
+    }
+    if (!error) {
+      register.mutate(obj);
+    } else {
+      Swal.fire('Error', message, 'error');
+    }
   };
 
   const onClickLostPSW = () => {
@@ -151,6 +189,35 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
       }
     });
   };
+
+  useEffect(() => {
+    if (login.isLoading) {
+      setLoadingIS(true);
+    } else {
+      setLoadingIS(false);
+      if (login.error) {
+        Swal.fire(
+          'Error',
+          'Correo no encontrado o contraseña incorrecta',
+          'error'
+        );
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [login.isLoading]);
+
+  useEffect(() => {
+    if (register.isLoading) {
+      setLoadingRG(true);
+    } else {
+      setLoadingRG(false);
+      if (register.error) {
+        Swal.fire('Error', 'Correo ya registrado', 'error');
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [register.isLoading]);
+
   return (
     <>
       <div className="card-login card-login-logres">
@@ -164,13 +231,13 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
                 aria-label="basic tabs example"
               >
                 <Tab
-                  sx={{ minWidth: '250px', textTransform: 'capitalize' }}
+                  sx={{ textTransform: 'capitalize' }}
                   className="card-login card-login-btns"
                   label="Iniciar Sesión"
                   {...a11yProps(0)}
                 />
                 <Tab
-                  sx={{ minWidth: '250px', textTransform: 'capitalize' }}
+                  sx={{ textTransform: 'capitalize' }}
                   className="card-login card-login-btns"
                   label="Regístrate"
                   {...a11yProps(1)}
@@ -286,7 +353,12 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
                     text="Teléfono"
                     icon={{ url: '/svg/icons/phone_frm.svg' }}
                     value={RGtel}
-                    onChange={(e) => onChangeInput('rgphone', e.target.value)}
+                    onChange={(e) => {
+                      const numbRegex = /^[0-9]{0,10}$/;
+                      if (numbRegex.test(e.target.value)) {
+                        onChangeInput('rgphone', e.target.value);
+                      }
+                    }}
                   ></TextFieldOne>
                 </div>
                 <div className="mt-3">

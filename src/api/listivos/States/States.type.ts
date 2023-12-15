@@ -5,6 +5,7 @@ export const StateSchema = z.object({
   name: z.string(),
   created_at: z.coerce.date(),
   updated_at: z.coerce.date(),
+  listings_count : z.number().optional().nullable(),
 });
 export type State = z.infer<typeof StateSchema>;
 

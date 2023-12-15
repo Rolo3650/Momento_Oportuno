@@ -8,11 +8,12 @@ import {
   GetAllDirectoriosRes,
 } from './Directories.type';
 
+const req2 = Request(Services.UPLOAD_IMAGE);
 export class DirectoriesServices {
   static #request = Request(Services.DIRECTORY);
 
-  static async getAllDirectorio() {
-    const { data } = await this.#request.get<GetAllDirectoriosRes>('/get');
+  static async getAllDirectorios() {
+    const { data } = await this.#request.get<GetAllDirectoriosRes>('/');
 
     return data;
   }
@@ -23,7 +24,7 @@ export class DirectoriesServices {
   }
   static async createDirectorio(params: CreateDirectorio) {
     const { data } = await this.#request.post<CreateDirectorioResponse>(
-      '/add',
+      '',
       params,
       {
         maxBodyLength: Infinity,
@@ -35,6 +36,22 @@ export class DirectoriesServices {
 
     return data;
   }
+  static async uploadImage(params: {
+    file: File;
+    id: number;
+  }): Promise<any> {
+    // params.status = 'published'
+    const formData = new FormData();
+
+    formData.append('media', params.file);
+
+    return req2.post(`directory/${params.id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  }
+  
 }
 
 type generateLinkToCheckoutOpts =

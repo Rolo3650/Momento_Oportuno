@@ -1,30 +1,32 @@
 .profile-toppart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   .profile-background {
     margin-bottom: 5rem;
     display: flex;
     position: relative;
     justify-content: center;
     width: 100%;
-    height: 200px;
+    height: 300px;
     background-image: url('/svg/backgrounds/usrback_1.svg');
     background-position: center top;
     background-size: cover;
+
     .profile-picture {
       display: flex;
       justify-content: center;
       position: absolute;
-      bottom: -50%;
-      background-color: $color_12;
-      height: 220px;
-      width: 220px;
-      border-radius: 50%;
-      .profile-userimg {
-        max-width: 120px;
-        color: orange;
-      }
+      bottom: -20%;
+      // background-color: $color_12;
+      height: 320px;
+      width: 320px;
+      // border-radius: 50%;
+      // .profile-userimg {
+      //   max-width: 220px;
+      //   color: orange;
+      // }
     }
   }
 
@@ -33,6 +35,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 2rem;
+
     .profile-usernamediv {
       .profile-username {
         color: $color_5;
@@ -43,22 +46,40 @@
     }
 
     .profile-time {
-        display: inline-flex;
-        font-size: 16px;
-        font-family: $font_1;
-        .profile-time_user-img {
-            display: flex;
-            justify-content: center;
-            margin-inline: 5px;
-            margin-top: 1px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: $color_secondary;
-            .profile-time_user-imguser {
-                max-width: 10px;
-            }
+      display: inline-flex;
+      font-size: 16px;
+      font-family: $font_1;
+
+      .profile-time_user-img {
+        display: flex;
+        justify-content: center;
+        margin-inline: 5px;
+        margin-top: 1px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: $color_secondary;
+
+        .profile-time_user-imguser {
+          max-width: 10px;
         }
+      }
     }
+  }
+}
+
+
+.microsite-single {
+  &.listings {
+
+    display: grid;
+    align-items: center;
+    max-width: 1200px;
+
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 30px;
+    }
+
   }
 }

@@ -8,8 +8,11 @@ import { HowItWorksOne } from '../../containers/modules/howItWorks/HowItWorksOne
 import { LastAdsOne } from '../../containers/lastAds/LastAdsOne';
 import { AboutUsOne } from '../../containers/modules/aboutUs/AboutUsOne';
 import { useInfiniteAds } from '../../hooks';
+// import { useEffect } from 'react';
+// import { useAppContext } from '../../context';
 
 const Home = () => {
+  // const {state, dispatch} = useAppContext();
   const { data: campeche } = useInfiniteAds({
     sortBy: 'created_at',
     order: 'desc',
@@ -32,6 +35,9 @@ const Home = () => {
   });
 
   // console.log(campeche?.pages[0]?.);
+  // useEffect(() => {
+  //   console.log(state?.newAdForm)
+  // }, [state])
 
   return (
     <>

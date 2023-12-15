@@ -1,10 +1,13 @@
 export const config = {
   URL: {
-    DEV: 'http://159.203.113.48',
+    DEV: 'https://elmomentoapi.empresarialti.com',
+    // DEV: 'http://159.203.113.48',
     // TODO: Change to production url
-    PROD: 'http://159.203.113.48',
+    PROD: 'https://elmomentoapi.empresarialti.com',
+    // PROD: 'http://159.203.113.48',
   },
   API_PREFIX: {
+    // BASE: '/',
     BASE: '/api',
     get FULL() {
       return `${this.BASE}` as const;
@@ -32,5 +35,11 @@ export const config = {
   //     return base64;
   //   },
   // },
+  STRIPE: {
+    PK_DEV:
+      'pk_test_51O3l3TKsMUZdYHBYf1tQxzYgxuI3AnwaHApYA8GFH9QR0mFkq222o9ISceK4Ucg1nQqZt9nkr4wr5Ryn1LBXwKRs00m40i9780',
+    PK_PROD:
+      'pk_test_51O3l3TKsMUZdYHBYf1tQxzYgxuI3AnwaHApYA8GFH9QR0mFkq222o9ISceK4Ucg1nQqZt9nkr4wr5Ryn1LBXwKRs00m40i9780',
+  },
   JWT_SECRET: import.meta.env.VITE_JWT_SECRET,
 } as const;

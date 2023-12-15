@@ -22,6 +22,7 @@ const AdSingle = () => {
   useEffect(() => {
     if (data?.pages[0]?.data) {
       const ad: Ad = data?.pages[0]?.data;
+      // console.log("ad", ad);
       setSingleAd(ad, false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,29 +32,48 @@ const AdSingle = () => {
     <LayoutOne>
       <div className="ad-page ad-page-one">
         <div>
-          <CarouselTwo
-            imgs={[
-              'https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_826753-MLM69886534058_062023-O-1.webp',
-              'https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_754622-MLM69886534052_062023-O-1.webp',
-            ]}
-          />
+          {adSingleState.ad?.media && (
+            <CarouselTwo
+              imgs={(() => {
+                const obj = { ...adSingleState.ad };
+                // if (!obj.media || obj.media.length === 0) {
+                //   obj.imgs = [
+                //     '/img/examples/img_1.webp',
+                //     '/img/examples/img_2.webp',
+                //   ];
+                // } else {
+                if (obj.media)
+                  obj.imgs = obj.media.map((img) => img.original_url);
+                // }
+                return obj.imgs ?? [];
+              })()}
+            />
+          )}
         </div>
         <BodyOne>
           <ProductDescriptionOne />
           <div>
             <UserMinOne />
             <div className="my-4 d-flex justify-content-center product-decription product-decription-one card-custom p-3">
-              <ActionsTwo product={adSingleState?.ad} fav={favorites?.data.some((fav) => fav.id === adSingleState?.ad?.id)}/>
+              <ActionsTwo
+                product={adSingleState?.ad}
+                fav={favorites?.data.some(
+                  (fav) => fav.id === adSingleState?.ad?.id
+                )}
+              />
             </div>
             <Carousel>
               {ads?.pages[0]?.data?.slice(0, 4)?.map((product) => {
                 const obj = { ...product };
-                if (!obj?.imgs?.length) {
+                if (!obj.media || obj.media.length === 0) {
                   obj.imgs = [
-                    'https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_826753-MLM69886534058_062023-O-1.webp',
-                    'https://clicdelsureste.empresarialti.com/wp-content/uploads/2023/08/D_NQ_NP_754622-MLM69886534052_062023-O-1.webp',
+                    '/img/examples/img_1.webp',
+                    '/img/examples/img_2.webp',
                   ];
+                } else {
+                  obj.imgs = obj.media.map((img) => img.original_url);
                 }
+                // console.log(obj);
                 return (
                   <Carousel.Item>
                     <div className="p-3">

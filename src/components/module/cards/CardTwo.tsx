@@ -91,7 +91,7 @@ const CardTwo: React.FC<Props> = () => {
             options={allCategories.data?.data.map((category) => ({
               label: category.name,
               value: category.slug,
-              quantity: 0,
+              quantity: category.listings_count ?? 0,
             }))}
             onChange={onChangeCategory}
           />
@@ -123,7 +123,7 @@ const CardTwo: React.FC<Props> = () => {
             options={data?.data?.map((city) => ({
               label: city?.name,
               value: city?.id,
-              quantity: 1,
+              quantity: city.listings_count ?? 0,
             }))}
             onChange={onChangeCity}
           />

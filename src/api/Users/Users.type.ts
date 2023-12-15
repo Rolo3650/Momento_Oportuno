@@ -3,10 +3,11 @@ import * as z from 'zod';
 export const UserSchema = z.object({
   id: z.number(),
   name: z.string(),
+  phone: z.string().nullable().optional(),
   email: z.string(),
   email_verified_at: z.string().nullable().default(null),
   created_at: z.coerce.date(),
-  updated_at: z.coerce.date(),
+  updated_at: z.coerce.date().nullable().optional(),
 });
 export type User = z.infer<typeof UserSchema>;
 
@@ -31,6 +32,13 @@ export type registerParams = {
   password: string;
   password_confirmation: string;
 };
+
+// export type updateParams = {
+//   name: string;
+//   email: string;
+//   password: string;
+//   password_confirmation: string;
+// };
 
 // export const DataSchema = z.object({
 //   id: z.number(),

@@ -1,7 +1,7 @@
 // import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material';
 
 const MenuButton = () => {
   const theme = useTheme();

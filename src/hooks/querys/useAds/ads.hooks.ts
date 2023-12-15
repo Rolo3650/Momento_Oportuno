@@ -1,8 +1,10 @@
-import { useInfiniteQuery, useQuery } from 'react-query';
+import { useInfiniteQuery, useMutation, useQuery } from 'react-query';
 import { FilterParams } from '../../../context';
 import { AdsQuerysKeys } from '.';
 import {
   AdsServices,
+  CreateAnuncioParams,
+  CreateAnuncioResponse,
   GetAdByIdResponse,
   GetAllAdsResponse,
   RequestErrors,
@@ -31,9 +33,18 @@ export const useAdById = (id: string | number) => {
   });
 };
 
-export const useMyAds = () => {
+export const useMyAds = ({ page }: { page?: number }) => {
   return useQuery<GetAllAdsResponse, RequestErrors>({
     queryKey: [AdsQuerysKeys.getMyAds],
-    queryFn: () => AdsServices.getMyAds(),
+    queryFn: () => AdsServices.getMyAds({ page }),
   });
+};
+
+export const useCreateAnuncio = () => {
+  return useMutation<CreateAnuncioResponse, RequestErrors, CreateAnuncioParams>(
+    {
+      mutationKey: AdsQuerysKeys.createAdd,
+      mutationFn: AdsServices.createAd,
+    }
+  );
 };

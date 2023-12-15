@@ -10,12 +10,15 @@ const SubCategorie = z.object({
   updated_at: z.coerce.date(),
 });
 
+export type SubCategorie = z.infer<typeof SubCategorie>;
+
 export const CategorieSchema = z.object({
   id: z.number(),
   slug: z.string(),
   name: z.string(),
   description: z.null(),
   children: z.array(SubCategorie),
+  listings_count : z.number().optional().nullable(),
 });
 export type Categorie = z.infer<typeof CategorieSchema>;
 

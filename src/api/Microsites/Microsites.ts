@@ -2,23 +2,70 @@ import { Services } from '..';
 import Request from '../request';
 
 import type {
-  getMicrositioByIdRes,
-  GetMicrositiosRes,
+  GetMicrositesResponse,
+  CreateMicrositeParams,
+  CreateMicrositeResponse,
 } from './Microsites.type';
 
-export class MicrositesServices {
-  static #request = Request(Services.MICROSITIOS);
-  static async getAllMicrositios() {
-    const { data } = await this.#request.get<GetMicrositiosRes>('/get');
+import {
+  CreateMicrositeResponseSchema,
+  GetMicrositesResponseSchema,
+} from './Microsites.type';
 
-    return data;
+import {
+  GetMicrositeByIdResponse,
+  GetMicrositeByIdResponseSchema,
+} from './Micrositios.module';
+
+const request = Request(Services.MICROSITIOS);
+export class MicrositesServices {
+  // static async getAllMicrositios() {
+  //   const { data } = await request.get<GetMicrositesResponse>('/get');
+
+  //   const parsed = GetMicrositesResponseSchema.parse(data);
+
+  //   return parsed;
+  // }
+
+  static async getAllMicrositios(params?: {
+    state?: string;
+  }): Promise<GetMicrositesResponse> {
+    let q = '/';
+    if (params?.state) {
+      q = `?state=${params.state}`;
+    }
+    const { data } = await request.get<GetMicrositesResponse>(q);
+
+    const parsed = GetMicrositesResponseSchema.parse(data);
+
+    return parsed;
   }
 
-  static async getMicrositioById(id: number) {
-    const { data } = await this.#request.get<getMicrositioByIdRes>(
-      `/get/${id}`
-    );
+  // static async getMicrositioById(id: number) {
+  //   const { data } = await request.get<GetMicrositeByIdResponse>(
+  //     `/${id}`
+  //   );
 
-    return data;
+  //   const parsed = GetMicrositesResponseSchema.parse(data);
+
+  //   return parsed;
+  // }
+
+  static async getMicrositioById(
+    id: number
+  ): Promise<GetMicrositeByIdResponse> {
+    const { data } = await request.get<GetMicrositeByIdResponse>(`/${id}`);
+    const parsed = GetMicrositeByIdResponseSchema.parse(data);
+
+    return parsed;
+  }
+
+  static async createMicrositio(
+    params: CreateMicrositeParams
+  ): Promise<CreateMicrositeResponse> {
+    const { data } = await request.post(`/`, params);
+    const parsed = CreateMicrositeResponseSchema.parse(data);
+
+    return parsed;
   }
 }

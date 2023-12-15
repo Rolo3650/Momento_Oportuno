@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SelectTwo } from '../inputs/select/SelectTwo';
 import { useNavigateCustom, useSearch } from '../../hooks';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { IconButton, useTheme } from '@mui/material';
 import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 import TableRowsRoundedIcon from '@mui/icons-material/TableRowsRounded';
@@ -56,9 +56,9 @@ const OrderByOne: React.FC<Props> = () => {
   return (
     <div className="d-flex justify-content-between flex-wrap align-items-center">
       <div className="fw-bold fs-4 text text-font-rubik text-color-5">
-        22 Resultados &nbsp;
+        Lista de resultados &nbsp;
         <span className="text-color-primary fs-6 fw-normal text text-font-l-d">
-          Classified Ads
+          Anuncios Clasificados
         </span>
       </div>
       <div className="d-flex">

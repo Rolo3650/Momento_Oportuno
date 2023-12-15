@@ -3,6 +3,10 @@
 
         overflow: hidden;
 
+        display: grid;
+        grid-template-rows: auto 80px;
+        grid-template-columns: 100%;
+
         &.feauture {
             border: 2px solid $color_secondary;
 
@@ -26,6 +30,7 @@
 
         border-radius: 5px;
         cursor: pointer;
+        box-shadow: 0px 6px 20px 0px rgba(41.99999999999999, 56.99999999999999, 70, 0.08);
 
         &:hover {
 
@@ -37,6 +42,7 @@
             box-shadow: 0px 6px 20px 0px rgba(41.99999999999999, 56.99999999999999, 70, 0.08);
 
             & .carousel {
+
 
 
                 & .carousel-control-next {
@@ -78,7 +84,22 @@
 
                 & .carousel-item {
 
-                    overflow: hidden;
+                    height: 200px;
+
+                    & .carousel-item-container {
+                        height: 200px;
+                        overflow: hidden;
+                        display: flex;
+                        align-items: center;
+
+                        & img {
+                            // max-height: 200px;
+                            height: auto;
+                            width: auto;
+                            min-width: 100%;
+                            min-height: 200px;
+                        }
+                    }
                 }
 
             }
@@ -122,12 +143,14 @@
             }
         }
 
+
         & .info {
 
-            line-height: 20px;
+            line-height: 23px;
             padding: 20px;
             border: 1px solid $color_12;
             transition: .3s ease-in-out;
+            height: calc(100% - 200px);
 
             & .name {
                 display: -webkit-box;
@@ -140,6 +163,7 @@
 
         & .actions {
 
+            height: 80px;
             line-height: 20px;
             padding: 20px;
             border: 1px solid $color_12;
@@ -235,6 +259,13 @@
                 & .carousel-item {
 
                     overflow: hidden;
+
+                    // & img {
+
+                    //     height: auto !important;
+                    //     width: 100% !important;
+
+                    // }
                 }
 
             }

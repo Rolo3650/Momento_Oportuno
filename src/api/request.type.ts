@@ -9,6 +9,7 @@ import { ZodError } from 'zod';
 export const Services = {
   INDEX: '/',
   ADS: '/listings',
+  CHATS: '/chats',
   USERS: '/users',
   REGISTER: '/register',
   PRODUCT: '/product',
@@ -19,6 +20,7 @@ export const Services = {
   DIRECTORY: '/directories',
   MICROSITIOS: '/microsites',
   UPLOAD_IMAGE: '/media',
+  ORDERS: '/orders',
 } as const;
 
 export type SERVICES = (typeof Services)[keyof typeof Services];

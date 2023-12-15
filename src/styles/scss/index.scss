@@ -4,6 +4,12 @@ body {
     padding: 0;
 }
 
+.min-height-all {
+
+    min-height: 80vh;
+
+}
+
 // - Google Fonts:
 
 // @import url("https://fonts.cdnfonts.com/css/georgia");
@@ -115,6 +121,15 @@ $font_6: 'Monoton', sans-serif;
 /* Categories */
 @import 'components/categories.scss';
 
+// - Forms:
+
+/* Forms */
+@import 'components/form.scss';
+/* Micrositio Form */
+@import 'components/formMicrositio.scss';
+/* Directory Form */
+@import 'components/formDirectory.scss';
+
 // Screen 
 
 /* Sizes */
@@ -138,8 +153,10 @@ $font_6: 'Monoton', sans-serif;
 @import 'texts/colors.scss';
 
 // Backgrounds
-
+// Colors
 @import 'backgrounds/colors.scss';
+// Images
+@import 'backgrounds/images.scss';
 
 // Pages
 
@@ -151,7 +168,22 @@ $font_6: 'Monoton', sans-serif;
 @import 'pages/profilePage.scss';
 /* Favorites */
 @import 'pages/favorites.scss';
-
+/* Messages */
+@import 'pages/messages.scss';
+/* Micrositios */
+@import 'pages/micrositios.scss';
+/* My Ads */
+@import 'pages/myAds.scss';
+/* Pay */
+@import 'pages/pay.scss';
+/* Order */
+@import 'pages/myOrders.scss';
+/* localDirectories */
+@import 'pages/localDirectories.scss';
+/* Settings */
+@import 'pages/settings.scss';
+/* About Us */
+@import 'pages/aboutUs.scss';
 
 // Borders
 

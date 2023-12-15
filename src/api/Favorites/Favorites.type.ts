@@ -5,10 +5,10 @@ import { AdSchema } from '../ApiAds';
 export const AdFavoriteSchema = AdSchema.omit({
   user: true,
   user_package: true,
-  state: true,
-  attributes: true,
+  // state: true,
+  // attributes: true,
   attributeValues: true,
-  category: true,
+  // category: true,
 });
 
 export type AdFavorite = z.infer<typeof AdFavoriteSchema>;

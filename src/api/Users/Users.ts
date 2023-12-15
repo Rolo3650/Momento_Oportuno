@@ -45,4 +45,15 @@ export class UsersServices {
 
     return parsed;
   }
+
+  /**
+   * @throws {AxiosError,ZodError}
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  static async update(params: any): Promise<any> {
+    const response = await req.post('/users/me', params);
+    // const parsed = GeneralLogInSchema.parse(data);
+    // return parsed;
+    return response;
+  }
 }

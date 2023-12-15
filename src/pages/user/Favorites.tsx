@@ -3,8 +3,9 @@ import { LayoutThree } from '../../containers/layout/LayoutThree';
 import { useMyFavorites } from '../../hooks';
 import { ProductTwo } from '../../components/product/ProductTwo';
 import { EmptyBoxOne } from '../../components/module/box/EmptyBoxOne';
+import { ProductOne } from '../../components/product/ProductOne';
 
-interface Props {}
+interface Props { }
 
 const Favorites: React.FC<Props> = () => {
   const { data: favorites } = useMyFavorites();
@@ -19,17 +20,31 @@ const Favorites: React.FC<Props> = () => {
         <h1 className="title text text-font-georgia fw-bold fs-2 text-color-5">
           Favoritos
         </h1>
-        <div>
-          {favorites?.data?.map((fav) => {
-            const obj = { ...fav };
-            if (!obj.imgs || obj.imgs.length === 0) {
-              obj.imgs = [
-                '/img/examples/img_1.webp',
-                '/img/examples/img_2.webp',
-              ];
-            }
-            return <ProductTwo product={obj} fav={true} />;
-          })}
+        <div className={`mt-3 contain-view`}>
+          <div className="favorites-view-row">
+            {favorites?.data?.map((fav) => {
+              const obj = { ...fav };
+              if (!obj.imgs || obj.imgs.length === 0) {
+                obj.imgs = [
+                  '/img/examples/img_1.webp',
+                  '/img/examples/img_2.webp',
+                ];
+              }
+              return <ProductTwo product={obj} fav={true} />;
+            })}
+          </div>
+          <div className="favorites-view-card">
+            {favorites?.data?.map((fav) => {
+              const obj = { ...fav };
+              if (!obj.imgs || obj.imgs.length === 0) {
+                obj.imgs = [
+                  '/img/examples/img_1.webp',
+                  '/img/examples/img_2.webp',
+                ];
+              }
+              return <ProductOne product={obj} fav={true} />;
+            })}
+          </div>
         </div>
       </div>
     );
@@ -38,9 +53,9 @@ const Favorites: React.FC<Props> = () => {
   return (
     <LayoutThree>
       {favorites &&
-      favorites?.data &&
-      favorites?.data?.length &&
-      favorites.data.length > 0 ? (
+        favorites?.data &&
+        favorites?.data?.length &&
+        favorites.data.length > 0 ? (
         <FavoritesList />
       ) : (
         <>

@@ -6,7 +6,7 @@ import { DropdownOne } from '../inputs/dropdown/DropdownOne';
 import PlaceIcon from '@mui/icons-material/Place';
 import { useGetStates } from '../../hooks/querys/useStates';
 import { useNavigateCustom, useSearch } from '../../hooks';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 
 interface Option {
   label: string;
@@ -81,7 +81,7 @@ const LookingFor = () => {
           options={data?.data?.map((city) => ({
             label: city?.name,
             value: city?.id,
-            quantity: 1,
+            quantity: city.listings_count ?? 0,
           }))}
           onChange={onChangeCity}
         />

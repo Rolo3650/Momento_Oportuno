@@ -1,7 +1,12 @@
 import { AppState } from '..';
 import type { FilterActions, UserActions } from './';
+import { AcountSettingsActions } from './acountSettings';
 import { AdSingleActions } from './adSingle';
 import { CounterActions } from './counter/counter.type';
+import { NewAdFormActions } from './newAdForm';
+import { NewDirectoryFormActions } from './newDirectoryForm';
+import { NewMicrositeFormActions } from './newMicrositeForm';
+import { SocialMediaSettingsActions } from './socialMediaSettings copy';
 
 export type ActionMap<M extends { [index: string]: unknown }> = {
   [Key in keyof M]: M[Key] extends undefined
@@ -29,6 +34,18 @@ export const AppTypes = {
   // adSingleTypes
   SetAdSingle: 'SET_AD_SINGLE',
 
+  // new add
+  SetNewAdForm: 'SET_NEW_AD_FORM',
+
+  // new directory
+  SetNewDirectoryForm: 'SET_NEW_DIRECTORY_FORM',
+
+  SetNewMicrositeForm: 'SET_NEW_MICROSITE_FORM',
+
+  // Settings
+  SetAcountSettings: 'SET_ACOUNT_SETTINGS_FORM',
+  SetSocialMediaSettings: 'SET_SOCIAL_MEDIA_SETTINGS_FORM',
+
   // counterTypes
   Increment: 'INCREMENT',
   Decrement: 'DECREMENT',
@@ -49,4 +66,9 @@ export type AppActions =
   | UserActions
   | CounterActions
   | AdSingleActions
-  | GlobalActions;
+  | GlobalActions
+  | NewAdFormActions
+  | NewDirectoryFormActions
+  | NewMicrositeFormActions
+  | AcountSettingsActions
+  | SocialMediaSettingsActions;

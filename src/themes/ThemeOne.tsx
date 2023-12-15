@@ -28,7 +28,9 @@ interface Props {
 const ThemeOne: React.FC<Props> = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <div className={`theme-mode-${theme.palette.mode}`}>{children}</div>
+      {/* <ThemeProvider theme={MaterialJoyTheme}> */}
+        <div className={`theme-mode-${theme.palette.mode}`}>{children}</div>
+      {/* </ThemeProvider> */}
     </ThemeProvider>
   );
 };

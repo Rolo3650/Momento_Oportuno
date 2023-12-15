@@ -10,12 +10,13 @@ import React, { useState } from 'react';
 interface Option {
   label: string;
   value: number | string;
+  quantity?: number;
 }
 
 interface Props {
   label: string;
   option?: Option;
-  options: Option[];
+  options: Option[] | undefined;
   onChange?: (option: Option) => void;
 }
 

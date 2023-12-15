@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ProductOne } from '../../components/product/ProductOne';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { useInfiniteAds, useNavigateCustom, useSearch } from '../../hooks';
 import { ProductTwo } from '../../components/product/ProductTwo';
 import { Pagination, Stack, useTheme } from '@mui/material';
@@ -30,6 +30,7 @@ const CatalogueOne: React.FC<Props> = () => {
   };
 
   const pageChange = (_e: React.ChangeEvent<unknown>, page: number) => {
+    window.scroll(0, 0);
     navigatePersistQuery('page', page?.toString());
   };
 
@@ -55,9 +56,9 @@ const CatalogueOne: React.FC<Props> = () => {
       delete obj.category;
     }
     if (searchCategoryChildren()) {
-      obj.subCategory = searchCategoryChildren()?.id;
+      obj.category = searchCategoryChildren()?.id;
     } else {
-      delete obj.subCategory;
+      // delete obj.subCategory;
     }
     setFilter(obj);
     // console.log(obj)
@@ -65,9 +66,13 @@ const CatalogueOne: React.FC<Props> = () => {
   }, [params]);
 
   useEffect(() => {
-    if (hasNextPage && ads?.pages && ads?.pages.length > 1) {
-      setPages(pages + 1);
+    // console.log(ads)
+    // console.log(searchParam('page'))
+    // if (hasNextPage && pages == searchParam('page')) {
+    if (ads?.pages[0].meta.last_page) {
+      setPages(ads?.pages[0].meta.last_page);
     }
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasNextPage]);
 
@@ -76,8 +81,10 @@ const CatalogueOne: React.FC<Props> = () => {
       <div className={`mt-3 view-card`}>
         {ads?.pages[0]?.data?.map((data) => {
           const obj = { ...data };
-          if (!obj.imgs || obj.imgs.length === 0) {
+          if (!obj.media || obj.media.length === 0) {
             obj.imgs = ['/img/examples/img_1.webp', '/img/examples/img_2.webp'];
+          } else {
+            obj.imgs = obj.media.map((img) => img.original_url);
           }
           return <ProductOne product={obj} />;
         })}
@@ -85,8 +92,10 @@ const CatalogueOne: React.FC<Props> = () => {
       <div className={`mt-3 view-row`}>
         {ads?.pages[0]?.data?.map((data) => {
           const obj = { ...data };
-          if (!obj.imgs || obj.imgs.length === 0) {
+          if (!obj.media || obj.media.length === 0) {
             obj.imgs = ['/img/examples/img_1.webp', '/img/examples/img_2.webp'];
+          } else {
+            obj.imgs = obj.media.map((img) => img.original_url);
           }
           return <ProductTwo product={obj} />;
         })}
@@ -95,12 +104,12 @@ const CatalogueOne: React.FC<Props> = () => {
         <Stack color={'secondary'}>
           <Pagination
             sx={{
-              "& button": {
+              '& button': {
                 height: '50px',
                 width: '50px',
                 backgroundColor: `${theme.palette.secondary.main} !important`,
-                color: `white !important`
-              }
+                color: `white !important`,
+              },
             }}
             count={pages}
             color="secondary"

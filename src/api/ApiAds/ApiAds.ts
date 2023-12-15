@@ -2,18 +2,22 @@ import { Request, Services } from '..';
 import { FilterParams } from '../../context';
 
 import type {
+  CreateAnuncioParams,
+  CreateAnuncioResponse,
   GetAdByIdResponse,
   GetAllAdsResponse,
   GetMyAdsResponse,
 } from './ApiAds.type';
 
 import {
+  CreateAnuncioResponseSchema,
   GetAdByIdResponseSchema,
   GetAllAdsResponseSchema,
   GetMyAdsResponseSchema,
 } from './ApiAds.type';
 
 const req = Request(Services.ADS);
+const req2 = Request(Services.UPLOAD_IMAGE);
 export class AdsServices {
   /**
    * @throws {AxiosError}
@@ -67,8 +71,12 @@ export class AdsServices {
   /**
    * @throws {AxiosError}
    */
-  static async getMyAds(): Promise<GetMyAdsResponse> {
-    const { data } = await req.get('/mine');
+  static async getMyAds({
+    page,
+  }: {
+    page?: number;
+  }): Promise<GetMyAdsResponse> {
+    const { data } = await req.get(`/mine?page=${page ?? 1}`);
 
     const dataValidated = GetMyAdsResponseSchema.parse(data);
 
@@ -93,4 +101,30 @@ export class AdsServices {
 
   //   return dataValidated.data;
   // }
+
+  static async createAd(
+    params: CreateAnuncioParams
+  ): Promise<CreateAnuncioResponse> {
+    // params.status = 'published'
+    const { data } = await req.post('/', params);
+
+    const parsed = CreateAnuncioResponseSchema.parse(data);
+    return parsed;
+  }
+
+  static async uploadImage(params: {
+    file: File;
+    id: number;
+  }): Promise<CreateAnuncioResponse> {
+    // params.status = 'published'
+    const formData = new FormData();
+
+    formData.append('media', params.file);
+
+    return req2.post(`listing/${params.id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  }
 }

@@ -1,5 +1,11 @@
 .background {
 
+    &.background-color-6 {
+
+        background-color: $color_6 !important;
+
+    }
+
     &.background-color-7 {
 
         background-color: $color_7 !important;
@@ -21,6 +27,12 @@
     &.background-color-12 {
 
         background-color: $color_12 !important;
+
+    }
+
+    &.background-color-14 {
+
+        background-color: $color_14 !important;
 
     }
 

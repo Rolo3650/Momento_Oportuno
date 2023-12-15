@@ -1,0 +1,113 @@
+.form-custom {
+
+    &.form-custom-one {
+
+        & .packages {
+
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 15px;
+
+            @media (min-width: 768px) and (max-width: 1100px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @media (max-width: 800px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media (max-width: 550px) {
+                grid-template-columns: 1fr
+            }
+
+            & .package {
+
+                border-radius: 15px;
+                border: 2px solid $color_5;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                &.active {
+                    border: 2px solid $color_secondary;
+                    background-color: $color_13;
+
+                }
+
+            }
+
+        }
+
+        .imgs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            @media (min-width: 768px) and (max-width: 1024px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+                // grid-template-columns: 1fr;
+            }
+
+            & .img-container {
+
+                max-height: 200px;
+                padding: 10px;
+
+                img {
+                    padding: 10px;
+                    border-radius: 10px;
+                    background-color: $color_6;
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+
+            }
+        }
+
+        padding: 60px;
+
+        .title {
+
+            font-size: 27px;
+
+        }
+
+        @media (max-width: 768px) {
+            padding: 30px;
+
+            .title {
+
+                font-size: 18px;
+
+            }
+        }
+
+        & .row-custom {
+            display: grid;
+
+            @media (min-width: 768px) and (max-width: 1024px) {
+
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 10px;
+
+            }
+
+            @media (min-width: 1024px) {
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 10px;
+            }
+        }
+
+
+        & .border-pointed {
+            height: 2px;
+            border: 1px dashed #FFC89B;
+        }
+
+    }
+
+}

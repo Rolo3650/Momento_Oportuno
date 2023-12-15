@@ -16,9 +16,33 @@
       font-weight: 700;
     }
     .favorites-empty-img {
-        margin-top: 25px;
-        display: flex;
-        justify-content: center;
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
     }
+  }
+}
+
+.favorites-view-row {
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.favorites-view-card {
+  display: none;
+
+  @media screen and (max-width: 1024px) {
+    display: grid;
+
+    @media screen and (max-width: 1024px) and (min-width: 882px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    grid-gap: 15px;
   }
 }
