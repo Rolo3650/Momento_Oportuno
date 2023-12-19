@@ -176,7 +176,7 @@ const Nosotros = () => {
                     text="Email*"
                     icon={{ url: '/svg/icons/arr_frm.svg' }}
                     value={''}
-                    onChange={(e) => {}}
+                    onChange={() => {}}
                   ></TextFieldOne>
                 </div>
               </div>
