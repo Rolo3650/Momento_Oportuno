@@ -42,7 +42,7 @@ const PayOne = ({ disabled }: PayOneProps) => {
 
     const obj: CreateOrderParams = {
       billing_address: 'dir',
-      package_id: 4,
+      package_id: newAdForm.package?.id ?? 4,
       payment_method: 'paypal',
       related_id: newAdForm.responseForm ? newAdForm.responseForm.data.id : 0,
       type: 'listing',
