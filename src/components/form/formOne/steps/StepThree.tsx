@@ -86,6 +86,8 @@ const StepThree: React.FC<Props> = () => {
         );
         setNewAdForm({ imgs: imgs });
       }
+    } else {
+      setNewAdForm({ imgs: [] });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newAdForm.extraImgs.quantity, newAdForm?.imgs]);

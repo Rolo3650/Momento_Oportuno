@@ -39,7 +39,7 @@ const AddNewAd: React.FC<Props> = () => {
         },
         feature: false,
         socialMedia: false,
-        imgs: null,
+        imgs: [],
         attributes: [],
         responseForm: null,
         package: null,
