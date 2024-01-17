@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { CarouselTwo } from '../../components/carousel/CarouselTwo';
 import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { useAdById, useAds, useInfiniteAds } from '../../hooks';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Ad } from '../../api';
 import { BodyOne } from '../../containers/modules/body/BodyOne';
 import { ProductDescriptionOne } from '../../components/product/ProductDescriptionOne';
@@ -14,10 +14,11 @@ import { useMyFavorites } from '../../hooks';
 
 const AdSingle = () => {
   const { param_ad } = useParams();
-  const { data } = useAdById(param_ad ?? 0);
+  const { data, error } = useAdById(param_ad ?? 0);
   const { setSingleAd, adSingleState } = useAds();
   const { data: ads } = useInfiniteAds();
   const { data: favorites } = useMyFavorites();
+  const navigateTo = useNavigate();
 
   useEffect(() => {
     if (data?.pages[0]?.data) {
@@ -25,8 +26,13 @@ const AdSingle = () => {
       // console.log("ad", ad);
       setSingleAd(ad, false);
     }
+
+    if (error) {
+      navigateTo('/404');
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [data, error]);
 
   return (
     <LayoutOne>
@@ -37,12 +43,10 @@ const AdSingle = () => {
               imgs={(() => {
                 const obj = { ...adSingleState.ad };
                 if (!obj.media || obj.media.length === 0) {
-                  obj.imgs = [
-                    '/img/noimagen.png',
-                  ];
+                  obj.imgs = ['/img/noimagen.png'];
                 } else {
-                if (obj.media)
-                  obj.imgs = obj.media.map((img) => img.original_url);
+                  if (obj.media)
+                    obj.imgs = obj.media.map((img) => img.original_url);
                 }
                 return obj.imgs ?? [];
               })()}

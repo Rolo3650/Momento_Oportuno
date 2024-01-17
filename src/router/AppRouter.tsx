@@ -23,6 +23,7 @@ import { LocalDirectories } from '../pages/user/LocalDirectories';
 import { MicrositesPayment } from '../pages/pago/MicrositesPayment';
 import { Nosotros } from '../pages/info/Nosotros';
 import { Contactanos } from '../pages/info/Contactanos';
+import { Page404 } from '../pages/404/Index';
 
 const AppRouter = () => {
   return (
@@ -73,6 +74,8 @@ const AppRouter = () => {
         />
         <Route path="/panel/microsites/pago" element={<MicrositesPayment />} />
         <Route path="/comprobante/:orderid" element={<Confirmacion />} />
+
+        <Route path="/404" element={<Page404 />} />
 
         <Route path="/*" element={<Home />} />
       </Routes>
