@@ -91,7 +91,7 @@ const StepFour = () => {
               <div className="mt-4 fw-bold text text-color-5 text-font-l-d subtitle">
                 Complementos
               </div>
-              <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3">
+              <div className="fw-bold fs-6 text text-color-8 text-font-l-d subtitle mb-3">
                 {/* <ul> */}
                 {/* {newAdForm.extraStates.set && <li>{newAdForm.extraStates.value}</li>} */}
                 {newAdForm.extraImgs.quantity > 3 && (
@@ -125,12 +125,12 @@ const StepFour = () => {
                 {/* </ul> */}
               </div>
 
-              <div className="price text text-color-primary fw-bold fs-4">
+              <div className="price text text-color-primary fw-bold fs-5">
                 Total: ${' '}
                 {getTotal(data.price)?.toLocaleString('es-MX', {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
-                })}
+                })} MXN
               </div>
             </div>
           ))}
