@@ -26,8 +26,7 @@ const Favorites: React.FC<Props> = () => {
               const obj = { ...fav };
               if (!obj.imgs || obj.imgs.length === 0) {
                 obj.imgs = [
-                  '/img/examples/img_1.webp',
-                  '/img/examples/img_2.webp',
+                  '/img/noimagen.png',
                 ];
               }
               return <ProductTwo product={obj} fav={true} />;
@@ -38,8 +37,7 @@ const Favorites: React.FC<Props> = () => {
               const obj = { ...fav };
               if (!obj.imgs || obj.imgs.length === 0) {
                 obj.imgs = [
-                  '/img/examples/img_1.webp',
-                  '/img/examples/img_2.webp',
+                  '/img/noimagen.png',
                 ];
               }
               return <ProductOne product={obj} fav={true} />;

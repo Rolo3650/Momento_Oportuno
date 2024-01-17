@@ -82,7 +82,7 @@ const CatalogueOne: React.FC<Props> = () => {
         {ads?.pages[0]?.data?.map((data) => {
           const obj = { ...data };
           if (!obj.media || obj.media.length === 0) {
-            obj.imgs = ['/img/examples/img_1.webp', '/img/examples/img_2.webp'];
+            obj.imgs = [ '/img/noimagen.png'];
           } else {
             obj.imgs = obj.media.map((img) => img.original_url);
           }
@@ -93,7 +93,7 @@ const CatalogueOne: React.FC<Props> = () => {
         {ads?.pages[0]?.data?.map((data) => {
           const obj = { ...data };
           if (!obj.media || obj.media.length === 0) {
-            obj.imgs = ['/img/examples/img_1.webp', '/img/examples/img_2.webp'];
+            obj.imgs = [ '/img/noimagen.png'];
           } else {
             obj.imgs = obj.media.map((img) => img.original_url);
           }

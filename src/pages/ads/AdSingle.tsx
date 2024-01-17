@@ -36,15 +36,14 @@ const AdSingle = () => {
             <CarouselTwo
               imgs={(() => {
                 const obj = { ...adSingleState.ad };
-                // if (!obj.media || obj.media.length === 0) {
-                //   obj.imgs = [
-                //     '/img/examples/img_1.webp',
-                //     '/img/examples/img_2.webp',
-                //   ];
-                // } else {
+                if (!obj.media || obj.media.length === 0) {
+                  obj.imgs = [
+                    '/img/noimagen.png',
+                  ];
+                } else {
                 if (obj.media)
                   obj.imgs = obj.media.map((img) => img.original_url);
-                // }
+                }
                 return obj.imgs ?? [];
               })()}
             />
@@ -66,10 +65,7 @@ const AdSingle = () => {
               {ads?.pages[0]?.data?.slice(0, 4)?.map((product) => {
                 const obj = { ...product };
                 if (!obj.media || obj.media.length === 0) {
-                  obj.imgs = [
-                    '/img/examples/img_1.webp',
-                    '/img/examples/img_2.webp',
-                  ];
+                  obj.imgs = ['/img/noimagen.png'];
                 } else {
                   obj.imgs = obj.media.map((img) => img.original_url);
                 }

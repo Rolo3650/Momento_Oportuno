@@ -57,8 +57,7 @@ const Home = () => {
                 const obj = { ...data };
                 if (!obj.imgs || obj.imgs.length === 0) {
                   obj.imgs = [
-                    './img/examples/img_1.webp',
-                    './img/examples/img_2.webp',
+                    './img/noimagen.png',
                   ];
                 }
                 return obj;
@@ -75,8 +74,7 @@ const Home = () => {
                 const obj = { ...data };
                 if (!obj.imgs || obj.imgs.length === 0) {
                   obj.imgs = [
-                    './img/examples/img_1.webp',
-                    './img/examples/img_2.webp',
+                    './img/noimagen.png',
                   ];
                 }
                 return obj;
@@ -93,8 +91,7 @@ const Home = () => {
                 const obj = { ...data };
                 if (!obj.imgs || obj.imgs.length === 0) {
                   obj.imgs = [
-                    './img/examples/img_1.webp',
-                    './img/examples/img_2.webp',
+                    './img/noimagen.png',
                   ];
                 }
                 return obj;
@@ -111,8 +108,7 @@ const Home = () => {
                 const obj = { ...data };
                 if (!obj.imgs || obj.imgs.length === 0) {
                   obj.imgs = [
-                    './img/examples/img_1.webp',
-                    './img/examples/img_2.webp',
+                    './img/noimagen.png',
                   ];
                 }
                 return obj;

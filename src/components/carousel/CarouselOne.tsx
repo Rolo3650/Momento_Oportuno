@@ -39,24 +39,12 @@ const CarouselOne: React.FC<Props> = ({ product }) => {
         {(!product?.media?.length || product?.media?.length == 0) && (
           <>
             <div
-              key={'/img/examples/img_1.webp'}
+              key={'/img/noimagen.png'}
               className={`carousel-item w-100 active`}
             >
               <div className="w-100 d-flex align-items-center justify-content-center">
                 <img
-                  src={'/img/examples/img_1.webp'}
-                  className="d-block"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            <div
-              key={'/img/examples/img_2.webp'}
-              className={`carousel-item w-100 active`}
-            >
-              <div className="w-100 d-flex align-items-center justify-content-center">
-                <img
-                  src={'/img/examples/img_2.webp'}
+                  src={'/img/noimagen.png'}
                   className="d-block"
                   loading="lazy"
                 />

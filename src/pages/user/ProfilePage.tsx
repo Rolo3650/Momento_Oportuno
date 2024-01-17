@@ -34,7 +34,7 @@ const ProfilePage = () => {
           products={[
             {
               id: 1,
-              imgs: ['./img/examples/img_1.webp', './img/examples/img_2.webp'],
+              imgs: ['./img/examples/img_1.webp', './img/noimagen.png'],
               title: 'Porsche Cayman 2.7 Coupe Pdk At',
               price: 375000,
               views: 10,
