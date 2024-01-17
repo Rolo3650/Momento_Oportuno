@@ -99,8 +99,8 @@ const NavBarDesktopOne = () => {
             name: 'menu-row-down',
           }}
         >
-          <MenuItem>¿Quienes somos?</MenuItem>
-          <MenuItem>Contactanos</MenuItem>
+          <MenuItem onClick={() => navigateTo('/about-us')}>¿Quienes somos?</MenuItem>
+          <MenuItem onClick={() => navigateTo('/contact-us')}>Contáctanos</MenuItem>
         </MenuOne>
         <LogResForm
           show={isModalLogResOpen}
