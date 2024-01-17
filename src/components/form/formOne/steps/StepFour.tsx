@@ -58,7 +58,7 @@ const StepFour = () => {
         </div>
       </div>
       <div className="mt-2 fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-        Selecciona la cantidad de días
+        Selecciona la cantidad de días  
         <span className="text text-color-secondary">*</span>
       </div>
       <div className="packages mt-4">
@@ -79,6 +79,13 @@ const StepFour = () => {
               </div>
               <div className="desc text text-rubik fw-bold pb-2">
                 {data.description}
+              </div>
+              <div className="desc text text-rubik fw-bold pb-2">
+                $
+                {data.price.toLocaleString('es-MX', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
               </div>
 
               <div className="mt-4 fw-bold text text-color-5 text-font-l-d subtitle">

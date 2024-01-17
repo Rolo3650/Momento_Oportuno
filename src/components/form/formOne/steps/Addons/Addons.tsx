@@ -29,6 +29,10 @@ const Addons: React.FC<Props> = () => {
           <SouthIcon color="secondary" />
         </div>
       </div>
+      <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
+        Selecciona los complementos para tu publicación
+        <span className="text text-color-secondary">*</span>
+      </div>
       <div className="mt-3">
         <div className="fw-bold text text-color-5 text-font-l-d subtitle">
           <Checkbox

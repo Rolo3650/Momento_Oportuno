@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PlaceIcon from '@mui/icons-material/Place';
-import { DropdownOne } from '../../../inputs/dropdown/DropdownOne';
+// import { DropdownOne } from '../../../inputs/dropdown/DropdownOne';
 import SouthIcon from '@mui/icons-material/South';
 import { TextFieldOne } from '../../../inputs/text/TextFieldOne';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
@@ -19,6 +19,7 @@ import {
   Checkbox,
   ListItemText,
 } from '@mui/material';
+import { DropdownTwo } from '../../../inputs/dropdown/DropdownTwo';
 
 interface Option {
   label: string;
@@ -170,7 +171,7 @@ const StepOne: React.FC<Props> = () => {
           <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
             Categoría <span className="text text-color-secondary">*</span>
           </div>
-          <DropdownOne
+          <DropdownTwo
             color={{
               variant: 'secondary',
               text: '#464748',
@@ -185,7 +186,7 @@ const StepOne: React.FC<Props> = () => {
             options={allCategories.data?.data.map((category) => ({
               label: category.name,
               value: category.slug,
-              quantity: 0,
+              // quantity: category.listings_count,
             }))}
             onChange={onChangeCategory}
           />
@@ -195,7 +196,7 @@ const StepOne: React.FC<Props> = () => {
             <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
               Subcategoría <span className="text text-color-secondary">*</span>
             </div>
-            <DropdownOne
+            <DropdownTwo
               color={{
                 variant: 'secondary',
                 text: '#464748',
@@ -210,7 +211,7 @@ const StepOne: React.FC<Props> = () => {
               options={newAdForm.category.children.map((category) => ({
                 label: category.name,
                 value: category.slug,
-                quantity: 0,
+                // quantity: 0,
               }))}
               onChange={onChangeSubCategory}
             />
@@ -367,7 +368,7 @@ const StepOne: React.FC<Props> = () => {
           <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
             Ciudad <span className="text text-color-secondary">*</span>
           </div>
-          <DropdownOne
+          <DropdownTwo
             color={{
               variant: 'secondary',
               text: '#464748',
@@ -393,7 +394,7 @@ const StepOne: React.FC<Props> = () => {
             options={data?.data?.map((city) => ({
               label: city?.name,
               value: city?.id,
-              quantity: 1,
+              // quantity: city.listings_count,
             }))}
             onChange={onChangeCity}
           />
