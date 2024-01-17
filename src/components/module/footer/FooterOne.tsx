@@ -263,7 +263,7 @@ const FooterOne = () => {
       </div>
       <div className="rights_reserved">
         <div className="rights_reserved-text">
-          Momento Oportuno © 2023 - Todos los derechos reservados
+          El Momento Oportuno © 2023 - Todos los derechos reservados
         </div>
       </div>
     </div>
