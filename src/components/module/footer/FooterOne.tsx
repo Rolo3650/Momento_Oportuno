@@ -263,7 +263,7 @@ const FooterOne = () => {
       </div>
       <div className="rights_reserved">
         <div className="rights_reserved-text">
-          Clic del Sureste © 2023 - Todos los derechos reservados
+          Momento Oportuno © 2023 - Todos los derechos reservados
         </div>
       </div>
     </div>

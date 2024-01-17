@@ -15,7 +15,7 @@ const AboutUsOne = () => {
             </div>
             <div className="info-title">¿Estás buscando algo en tu área?</div>
             <div className="info-text">
-              ¿Estás buscando algo en tu región? ¡Clic del Sureste está aquí
+              ¿Estás buscando algo en tu región? ¡Momento Oportuno está aquí
               para ayudarte! Somos una empresa seria que se dedica a
               proporcionar una plataforma confiable y fácil de usar para
               publicar tus avisos de ocasión. Nuestro objetivo es funcionar como
