@@ -16,7 +16,7 @@ const HowItWorksOne = () => {
         ¿Cómo funciona?
       </span>
       <div className="text-center text text-font-georgia fs-2 mt-3 fw-bold text-color-5">
-        Clic del Sureste <span className=" text text-color-9">te ayuda</span> a
+        El Momento Oportuno <span className=" text text-color-9">te ayuda</span> a
         encontrar lo que necesites
       </div>
       <div className="text text-color-10 mt-3 text-font-r-h-d">
