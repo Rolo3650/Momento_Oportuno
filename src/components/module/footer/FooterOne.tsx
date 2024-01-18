@@ -54,7 +54,7 @@ const FooterOne = () => {
                 </div>
                 <div className="text-row text">
                   <a
-                    href="mailto:ayuda@clicdelsureste.com"
+                    href="mailto:ayuda@elmomentooportuno.com"
                     className="listivo-email text"
                   >
                     <svg
@@ -72,7 +72,7 @@ const FooterOne = () => {
                         fill="#FDFDFE"
                       />
                     </svg>
-                    ayuda@clicdelsureste.com
+                    ayuda@elmomentooportuno.com
                   </a>
                 </div>
               </div>
@@ -166,14 +166,10 @@ const FooterOne = () => {
             <div className="info sect">
               <h3 className="subtitle">Te puede ser útil</h3>
               <Link to="/about-us" className="list-link">
-              <div className="list-element text animated">
-                Nosotros
-              </div>
+                <div className="list-element text animated">Nosotros</div>
               </Link>
               <Link to="/contact-us" className="list-link">
-              <div className="list-element text animated">
-                Contáctanos
-              </div>
+                <div className="list-element text animated">Contáctanos</div>
               </Link>
               <Link to="/login-register?tab=register" className="list-link">
                 <div className="list-element text animated">Regístrate</div>
@@ -182,11 +178,21 @@ const FooterOne = () => {
             <div className="categories sect">
               <h3 className="subtitle">Categorías</h3>
 
-              <div className="list-element text animated">Comunidad</div>
-              <div className="list-element text animated">Empleos</div>
-              <div className="list-element text animated">Vehículos</div>
-              <div className="list-element text animated">Servicios</div>
-              <div className="list-element text animated">Inmuebles</div>
+              <Link to="/ads/comunidad" className="list-link">
+                <div className="list-element text animated">Comunidad</div>
+              </Link>
+              <Link to="/ads/jobs" className="list-link">
+                <div className="list-element text animated">Empleos</div>
+              </Link>
+              <Link to="/ads/vehiculos" className="list-link">
+                <div className="list-element text animated">Vehículos</div>
+              </Link>
+              <Link to="/ads/servicios" className="list-link">
+                <div className="list-element text animated">Servicios</div>
+              </Link>
+              <Link to="/ads/inmuebles" className="list-link">
+                <div className="list-element text animated">Inmuebles</div>
+              </Link>
             </div>
             <div className="recent sect">
               <h3 className="subtitle">Recientemente Publicado</h3>
