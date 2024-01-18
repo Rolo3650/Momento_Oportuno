@@ -58,7 +58,7 @@ const StepFour = () => {
         </div>
       </div>
       <div className="mt-2 fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-        Selecciona la cantidad de días
+        Selecciona la cantidad de días  
         <span className="text text-color-secondary">*</span>
       </div>
       <div className="packages mt-4">
@@ -81,12 +81,17 @@ const StepFour = () => {
                 {data.description}
               </div>
               <div className="desc text text-rubik fw-bold pb-2">
-                ${data.price}
+                $
+                {data.price.toLocaleString('es-MX', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
               </div>
+
               <div className="mt-4 fw-bold text text-color-5 text-font-l-d subtitle">
                 Complementos
               </div>
-              <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3">
+              <div className="fw-bold fs-6 text text-color-8 text-font-l-d subtitle mb-3">
                 {/* <ul> */}
                 {/* {newAdForm.extraStates.set && <li>{newAdForm.extraStates.value}</li>} */}
                 {newAdForm.extraImgs.quantity > 3 && (
@@ -120,12 +125,12 @@ const StepFour = () => {
                 {/* </ul> */}
               </div>
 
-              <div className="price text text-color-primary fw-bold fs-4">
+              <div className="price text text-color-primary fw-bold fs-5">
                 Total: ${' '}
                 {getTotal(data.price)?.toLocaleString('es-MX', {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
-                })}
+                })} MXN
               </div>
             </div>
           ))}
