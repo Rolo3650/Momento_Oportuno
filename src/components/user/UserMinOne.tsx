@@ -1,14 +1,37 @@
 // import React from 'react';
-import { IconButton, Link, Button, useTheme } from '@mui/material';
+import { IconButton, Link, useTheme } from '@mui/material';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { useAds } from '../../hooks';
-import SmartphoneOutlinedIcon from '@mui/icons-material/SmartphoneOutlined';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+// import SmartphoneOutlinedIcon from '@mui/icons-material/SmartphoneOutlined';
+// import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import { PhoneNumberTwo } from '../phoneNumber/PhoneNumberTwo';
+// import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { GeneralButton } from '../inputs/buttons/GeneralButton';
+import ArrowForward from '@mui/icons-material/ArrowForward';
+// import { useInitChat } from '../../hooks/querys/chats';
+import { useAppContext } from '../../context';
 
 const UserMinOne = () => {
   const { adSingleState } = useAds();
   const theme = useTheme();
+  const navigateTo = useNavigate();
+  const { state } = useAppContext();
 
+  // if (adSingleState.ad?.id) {
+  //   const { mutateAsync: initChat, isLoading: loadingChat } = useInitChat(
+  //     adSingleState.ad?.id
+  //   );
+  // }
+
+  // useEffect(()=>{
+  //   console.log("USER", adSingleState?.ad?.user)
+  // },[])
+  const sendMessage = () => {
+    if (!state?.userState?.token) {
+      return;
+    }
+  };
   return (
     <div className="product-decription product-decription-one card-custom py-4">
       <div className="d-flex px-4 mb-4">
@@ -34,56 +57,44 @@ const UserMinOne = () => {
           {/* <div className="text text-color-5 mt-1 text-font-l-d">
             Miembro desde: 2 meses
           </div> */}
-          <Link
-            component={'button'}
-            sx={{
-              fontSize: '14px',
-              color: `${theme.palette.primary.main} !important`,
-            }}
-            className="text text-color-7 mt-1 text-font-l-d"
-          >
-            Ver todas sus publicaciones
-          </Link>
+          {adSingleState?.ad?.user?.microsite &&
+          adSingleState?.ad?.user?.microsite.id ? (
+            <Link
+              component={'button'}
+              sx={{
+                fontSize: '14px',
+                color: `${theme.palette.primary.main} !important`,
+              }}
+              className="text text-color-7 mt-1 text-font-l-d"
+              onClick={() => {
+                if (adSingleState?.ad?.user?.microsite?.id) {
+                  navigateTo(
+                    `/micrositio/${adSingleState.ad.user.microsite.id}`
+                  );
+                }
+              }}
+            >
+              Ver micrositio
+            </Link>
+          ) : null}
         </div>
       </div>
-      <div>
-        <Button
-          className="w-100 p-3 fs-6 d-flex justify-content-between"
-          sx={{
-            backgroundColor: '#FD8A2A',
-            '&:hover': {
-              backgroundColor: '#FD8A2A',
-            },
-          }}
-          endIcon={
-            <VisibilityOutlinedIcon
-              sx={{
-                marginRight: '10px',
-                backgroundColor: theme.palette.secondary.main,
-                height: '45px',
-                width: '45px',
-                padding: '10px',
-                color: 'white',
-              }}
-              className="rounded-circle"
-            />
-          }
-        >
-          <span>
-            <SmartphoneOutlinedIcon
-              sx={{
-                backgroundColor: 'white',
-                color: '#464748',
-                height: '45px',
-                width: '45px',
-                padding: '10px',
-              }}
-              className="rounded-circle"
-            />
-            <span className="ms-3">553 **********</span>
-          </span>
-        </Button>
-      </div>
+      {adSingleState?.ad?.user?.phone ? (
+        <div>
+          <PhoneNumberTwo phoneNumber={adSingleState?.ad?.user?.phone} />
+        </div>
+      ) : null}
+      {state.userState?.token ? (
+        <div className="d-flex justify-content-center">
+          <GeneralButton
+            title="enviar mensaje"
+            colorPrimary="secondary"
+            hoverColor="secondary"
+            onClick={sendMessage}
+            endIcon={<ArrowForward />}
+          />
+        </div>
+      ) : null}
     </div>
   );
 };

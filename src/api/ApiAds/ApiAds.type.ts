@@ -7,6 +7,8 @@ import {
   StateSchema,
 } from '../listivos';
 import { UserPackageSchema } from '../Packages';
+// import { MicrositeSchema } from '..';
+// import { MicrositeSchema } from '..';
 
 const LinkSchema = z.object({
   url: z.union([z.null(), z.string()]),
@@ -38,6 +40,8 @@ const UserAdSchema = UserSchema.omit({
   email_verified_at: true,
   created_at: true,
   updated_at: true,
+}).extend({
+  microsite: z.object({ id: z.number().nullable().optional() }).nullable().optional()
 });
 
 const AttributeAdSchema = AttributeSchema.omit({
