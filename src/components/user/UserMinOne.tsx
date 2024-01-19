@@ -9,7 +9,7 @@ import { PhoneNumberTwo } from '../phoneNumber/PhoneNumberTwo';
 import { useNavigate } from 'react-router-dom';
 import { GeneralButton } from '../inputs/buttons/GeneralButton';
 import ArrowForward from '@mui/icons-material/ArrowForward';
-// import { useInitChat } from '../../hooks/querys/chats';
+import { useInitChat } from '../../hooks/querys/chats';
 import { useAppContext } from '../../context';
 
 const UserMinOne = () => {
@@ -17,21 +17,21 @@ const UserMinOne = () => {
   const theme = useTheme();
   const navigateTo = useNavigate();
   const { state } = useAppContext();
-
-  // if (adSingleState.ad?.id) {
-  //   const { mutateAsync: initChat, isLoading: loadingChat } = useInitChat(
-  //     adSingleState.ad?.id
-  //   );
-  // }
+  const { mutateAsync: initChat } = useInitChat(
+    adSingleState.ad?.id ? adSingleState.ad?.id : 0
+  );
 
   // useEffect(()=>{
   //   console.log("USER", adSingleState?.ad?.user)
   // },[])
-  const sendMessage = () => {
+  const sendMessage = async() => {
     if (!state?.userState?.token) {
       return;
     }
+    initChat()
+    navigateTo('/panel/messages');
   };
+
   return (
     <div className="product-decription product-decription-one card-custom py-4">
       <div className="d-flex px-4 mb-4">
