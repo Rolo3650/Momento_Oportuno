@@ -2,7 +2,7 @@ import React from 'react';
 import { CarouselOne } from '../carousel/CarouselOne';
 import { ActionsOne } from '../actions/ActionsOne';
 import { Ad, AdFavorite } from '../../api';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import { useTheme } from '@mui/material';
 
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const ProductOne: React.FC<Props> = ({ product, fav }) => {
-  // const navigateTo = useNavigate();
+  const navigateTo = useNavigate();
   const theme = useTheme();
 
   // console.log(product)
@@ -27,7 +27,8 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
         onClick={() => {
           window.scrollTo(0, 0);
           if (product.is_active) {
-            window.location.assign(`/ad/${product.id}`);
+            // window.location.assign(`/ad/${product.id}`);
+            navigateTo(`/ad/${product.id}`)
           }
         }}
       >
