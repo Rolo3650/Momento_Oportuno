@@ -60,6 +60,9 @@ const CatalogueOne: React.FC<Props> = () => {
     } else {
       // delete obj.subCategory;
     }
+    if (searchParam('sort-by')) {
+      obj.sortBy = searchParam('sort-by');
+    }
     setFilter(obj);
     // console.log(obj)
     // eslint-disable-next-line react-hooks/exhaustive-deps

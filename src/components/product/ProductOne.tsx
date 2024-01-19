@@ -15,7 +15,7 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
   // const navigateTo = useNavigate();
   const theme = useTheme();
 
-  console.log(product)
+  // console.log(product)
 
   return (
     <div

@@ -16,11 +16,9 @@ interface Props {}
 const OrderByOne: React.FC<Props> = () => {
   const theme = useTheme();
   const optionsOne = [
-    { label: 'Más Relevante', value: 'most-relevant' },
-    { label: 'Fecha de Publicación: La más nueva', value: 'newest' },
-    { label: 'Fecha de Publicación: La más antigua', value: 'latest' },
-    { label: 'Precio: Más alto', value: 'price-high-to-low' },
-    { label: 'Precio: Más bajo', value: 'price-low-to-high' },
+    { label: 'Título', value: 'title' },
+    { label: 'Fecha de Publicación: La más nueva', value: 'created_at' },
+    { label: 'Fecha de Edición: La más nueva', value: 'updated_at' },
   ];
   const initalStateOne = { label: 'Más Relevante', value: 'most-relevant' };
   const initalStateTwo = 'card';
