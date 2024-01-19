@@ -42,6 +42,9 @@ const NavBarPhoneOne = () => {
             sx={{
               color: '#333',
             }}
+            onClick={() => navigateTo('/micrositios/micrositios-campeche')}
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
           >
             Campeche
           </Button>
@@ -52,6 +55,9 @@ const NavBarPhoneOne = () => {
             sx={{
               color: '#333',
             }}
+            onClick={() => navigateTo('/micrositios/micrositios-quintanaroo')}
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
           >
             Quintana Roo
           </Button>
@@ -62,8 +68,24 @@ const NavBarPhoneOne = () => {
             sx={{
               color: '#333',
             }}
+            onClick={() => navigateTo('/micrositios/micrositios-yucatan')}
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
           >
             Yucatan
+          </Button>
+          <hr className="m-0" />
+          <Button
+            variant="text"
+            className="w-100 px-4 d-block text-start m-0 py-4 ms-5"
+            sx={{
+              color: '#333',
+            }}
+            onClick={() => navigateTo('/micrositios/create')}
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            Comprar Micrositio
           </Button>
           <hr className="m-0" />
         </MenuTwo>

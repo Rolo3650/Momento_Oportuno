@@ -52,7 +52,7 @@ const UserMinOne = () => {
         </div>
         <div className="w-100 px-3">
           <div className="fw-bold text text-color-5 fs-5 email">
-            {adSingleState?.ad?.user?.email}
+            {adSingleState?.ad?.user?.email?.replace(/@.+?/g, '')}
           </div>
           {/* <div className="text text-color-5 mt-1 text-font-l-d">
             Miembro desde: 2 meses
@@ -84,6 +84,7 @@ const UserMinOne = () => {
           <PhoneNumberTwo phoneNumber={adSingleState?.ad?.user?.phone} />
         </div>
       ) : null}
+      <br />
       {state.userState?.token ? (
         <div className="d-flex justify-content-center">
           <GeneralButton

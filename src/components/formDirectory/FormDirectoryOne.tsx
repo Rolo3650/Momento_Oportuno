@@ -128,7 +128,7 @@ const FormDirectoryOne = () => {
   };
 
   const onSubmit = async () => {
-    // console.log(formData);
+    console.log(imgFile);
     if (!agree) {
       Swal.fire('Error', 'Acepta los términos y condiciones', 'warning');
       return;

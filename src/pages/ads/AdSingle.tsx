@@ -55,7 +55,7 @@ const AdSingle = () => {
         </div>
         <BodyOne>
           <ProductDescriptionOne />
-          <div>
+          <div style={{maxWidth: "330px"}}>
             <UserMinOne />
             <div className="my-4 d-flex justify-content-center product-decription product-decription-one card-custom p-3">
               <ActionsTwo

@@ -2,8 +2,18 @@
     padding-block: 50px;
 }
 
-.micrositio-form-item {
-    width: 500px;
-    margin-block: 30px;
-    text-align: center;
+@media screen and (min-width: 768px) {
+    .micrositio-form-item {
+        width: 500px;
+        margin-block: 30px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .micrositio-form-item {
+        width: 300px;
+        margin-block: 30px;
+        text-align: center;
+    }
 }

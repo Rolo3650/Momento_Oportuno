@@ -111,6 +111,12 @@ const ProfileButton = () => {
             </MenuItem>
             <MenuItem
               className="text text-font-helvetica"
+              onClick={() => navigateTo('/panel/directories')}
+            >
+              <AssignmentIcon /> &nbsp; Directorios
+            </MenuItem>
+            <MenuItem
+              className="text text-font-helvetica"
               onClick={() => navigateTo('/panel/settings')}
               sx={{
                 borderBottom: `1px solid ${theme?.palette?.secondary.main}`,
