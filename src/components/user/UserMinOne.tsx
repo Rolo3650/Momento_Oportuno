@@ -52,7 +52,7 @@ const UserMinOne = () => {
         </div>
         <div className="w-100 px-3">
           <div className="fw-bold text text-color-5 fs-5 email">
-            {adSingleState?.ad?.user?.email?.replace(/@.+?/g, '')}
+            {adSingleState?.ad?.user?.name}
           </div>
           {/* <div className="text text-color-5 mt-1 text-font-l-d">
             Miembro desde: 2 meses

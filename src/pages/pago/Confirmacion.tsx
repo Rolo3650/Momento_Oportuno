@@ -14,12 +14,18 @@ const Confirmacion = () => {
   return (
     <LayoutThree>
       <h1 className="mt-3 title text text-font-georgia fw-bold fs-2 text-color-5">
-        Comproban de Pago
+        Comprobante de Pago
       </h1>
       {!isLoading && order && order?.id > 0 && (
         <>
           <div className="mt-5 fw-bold fs-3 text text-color-secondary text-font-rubik subtitle mb-3 text-center">
             Resumen de tu Orden
+          </div>
+          <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
+            Número de Orden
+          </div>
+          <div className="fw-bold fs-4 text text-color-8 text-font-l-d subtitle mb-3 text-center">
+            # {order?.id}
           </div>
           <div className="mt-4 fw-bold text text-center text-color-5 text-font-l-d subtitle">
             Nombre de la Orden

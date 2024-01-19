@@ -42,7 +42,7 @@ const DirectorioCardOne: React.FC<Props> = ({ directorio }) => {
     // </div>
     <ul className="cards">
       <li>
-        <a href="" className="card">
+        <a className="card">
           <img src={directorio.thumbnail} className="card__image" alt="" />
           <div className="card__overlay">
             <div className="card__header">

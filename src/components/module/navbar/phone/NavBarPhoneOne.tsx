@@ -95,6 +95,9 @@ const NavBarPhoneOne = () => {
           sx={{
             color: '#333',
           }}
+          onClick={() => navigateTo('/directories')}
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
         >
           Directorios Locales
         </Button>
@@ -113,6 +116,9 @@ const NavBarPhoneOne = () => {
           sx={{
             color: '#333',
           }}
+          onClick={() => navigateTo('/about-us')}
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
         >
           ¿Quienes somos?
         </Button>
@@ -123,6 +129,9 @@ const NavBarPhoneOne = () => {
           sx={{
             color: '#333',
           }}
+          onClick={() => navigateTo('/contact-us')}
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
         >
           Contáctanos
         </Button>

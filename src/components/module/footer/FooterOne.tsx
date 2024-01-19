@@ -4,10 +4,15 @@ import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { Link } from 'react-router-dom';
+import { useInfiniteAds } from '../../../hooks';
 // import React from 'react';
 
 const FooterOne = () => {
   //const theme = useTheme();
+  const { data } = useInfiniteAds({
+    sortBy: 'created_at',
+    order: 'desc',
+  });
 
   return (
     <div className={`container-footer`}>
@@ -197,7 +202,53 @@ const FooterOne = () => {
             <div className="recent sect">
               <h3 className="subtitle">Recientemente Publicado</h3>
 
-              <div className="list-element">
+              {data?.pages?.length &&
+                data?.pages?.length > 0 &&
+                data?.pages[0]?.data?.length > 0 &&
+                data?.pages[0]?.data.slice(0, 3)?.map((data) => (
+                  <>
+                    <div className="list-element">
+                      <a href={/ad/ + `${data.id}`} title={data.title}>
+                        <img
+                          className="recent-img"
+                          src={
+                            data.media && data.media?.length
+                              ? data.media[0].original_url
+                              : '/img/noimagen.png'
+                          }
+                          alt={data.title}
+                        />
+                      </a>
+                      <div className="recent-content">
+                        <a
+                          className="text2"
+                          href={/ad/ + `${data.id}`}
+                          title="Cafetera FOX STEEL MORELIA"
+                        >
+                          {data.title}
+                        </a>
+                        <div className="recent-price">
+                          {data.attributes && data.attributes[0]?.id == 4 && (
+                            <>
+                              ${' '}
+                              {parseInt(
+                                typeof data.attributes[0]?.value == 'string'
+                                  ? data.attributes[0]?.value
+                                  : '0'
+                              )?.toLocaleString('es-MX', {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                              })}{' '}
+                              MXN{' '}
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ))}
+
+              {/* <div className="list-element">
                 <a
                   href="ad/cafetera-fox-steel-morelia/index.html"
                   title="Cafetera FOX STEEL MORELIA"
@@ -262,14 +313,14 @@ const FooterOne = () => {
                   </a>
                   <div className="recent-price">$500.00</div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
       <div className="rights_reserved">
         <div className="rights_reserved-text">
-          El Momento Oportuno © 2023 - Todos los derechos reservados
+          El Momento Oportuno © 2024 - Todos los derechos reservados
         </div>
       </div>
     </div>

@@ -12,7 +12,19 @@ const TextOne: React.FC<Props> = ({ atribute }) => {
         {atribute?.name}
       </div>
       <div className="fs-6 text text-font-helvetica text-color-5">
-        {typeof atribute?.value == 'string' && atribute?.value}
+      {atribute?.id == 14 && (
+          <>
+            ${' '}
+            {parseInt(
+              typeof atribute?.value == 'string' ? atribute?.value : '0'
+            )?.toLocaleString('es-MX', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}{' '}
+            MXN
+          </>
+        )}
+        {atribute?.id != 14 && typeof atribute?.value == 'string' && atribute?.value}
       </div>
     </div>
   );

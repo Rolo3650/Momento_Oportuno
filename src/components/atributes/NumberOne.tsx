@@ -24,7 +24,19 @@ const NumberOne: React.FC<Props> = ({ atribute }) => {
             MXN
           </>
         )}
-        {atribute?.id != 4 && (
+        {atribute?.id == 14 && (
+          <>
+            ${' '}
+            {parseInt(
+              typeof atribute?.value == 'string' ? atribute?.value : '0'
+            )?.toLocaleString('es-MX', {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}{' '}
+            MXN
+          </>
+        )}
+        {atribute?.id != 4 && atribute?.id != 14 &&(
           <>{typeof atribute?.value == 'string' && atribute?.value}</>
         )}
       </div>

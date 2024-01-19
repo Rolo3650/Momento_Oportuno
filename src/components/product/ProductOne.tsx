@@ -15,6 +15,8 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
   // const navigateTo = useNavigate();
   const theme = useTheme();
 
+  console.log(product)
+
   return (
     <div
       className={`w-100 product product-one ${
@@ -33,7 +35,7 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
         <div className="info fs-5 fw-bold text text-color-5 text-font-rubik">
           <div className="name">{product.title}</div>
           <div className="mt-3 fs-6 fw-normal d-flex align-items-center">
-            <LocationOnOutlinedIcon
+            {product.state?.name && <LocationOnOutlinedIcon
               sx={{
                 color: 'white',
                 backgroundColor: theme.palette.secondary.main,
@@ -41,7 +43,7 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
                 width: '30px',
               }}
               className='rounded'
-            />
+            />}
             <span className="ms-2">{product.state?.name}</span>
           </div>
           <div className="mt-3 fs-6 fw-normal">
@@ -74,7 +76,30 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
             ) : (
               ''
             )}
+            {product?.attributes?.find((atr) => atr.id == 14) &&
+            product?.attributes?.find((atr) => atr.id == 14)?.value ? (
+              <>
+                $
+                {parseInt(
+                  product?.attributes &&
+                    product?.attributes?.find((atr) => atr.id == 14) &&
+                    product?.attributes?.find((atr) => atr.id == 14)?.value
+                    ? product?.attributes
+                        ?.find((atr) => atr.id == 14)
+                        ?.value?.toString() ?? '0'
+                    : '0'
+                )?.toLocaleString('es-MX', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </>
+            ) : (
+              ''
+            )}
           </div>
+          {location.pathname.includes('micrositio') && <div className="mt-3 fs-6 fw-normal">
+              {product.description}
+          </div> }
           <span className="fw-bold badge bg-secondary text-color-5 text text-font-l-d fw-normal fs-6 py-2 mx-auto background background-color-14 px-3 mt-3">
             {product.category?.name}
           </span>

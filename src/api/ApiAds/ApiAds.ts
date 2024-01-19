@@ -24,7 +24,7 @@ export class AdsServices {
    */
   static async getAllAds({
     page = 1,
-    per_page = 10,
+    per_page = 12,
     category,
     query,
     state,
