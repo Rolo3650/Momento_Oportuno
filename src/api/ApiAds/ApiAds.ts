@@ -45,13 +45,13 @@ export class AdsServices {
       q += `&state=${state}`;
     }
     if (sortBy) {
-      q += `&sortBy=${sortBy}`;
+      q += `&sortBy=${sortBy}&order=desc`;
     }
     if (order) {
       q += `&order=${order}`;
     }
 
-    const { data } = await req.get(`?page=${page}&per_page=${per_page}` + q);
+    const { data } = await req.get(`?page=${page}&perPage=${per_page}` + q);
     const dataValidated = GetAllAdsResponseSchema.parse(data);
 
     return dataValidated;
