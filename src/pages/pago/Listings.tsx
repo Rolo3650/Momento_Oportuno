@@ -43,8 +43,27 @@ const Listings = () => {
       if (newAdForm.extraVideo.set) obj['addons[4]'] = 1;
       if (newAdForm.feature) obj['addons[5]'] = 1;
       if (newAdForm.print.set) {
-        if (newAdForm.print.value == 1) obj['addons[6]'] = 1;
-        if (newAdForm.print.value == 2) obj['addons[7]'] = 1;
+        if (newAdForm.print.value == 'medio-nac') obj['addons[21]'] = 1;
+        if (newAdForm.print.value == 'medio-qro') obj['addons[22]'] = 1;
+        if (newAdForm.print.value == 'medio-cam') obj['addons[23]'] = 1;
+        if (newAdForm.print.value == 'medio-yuc') obj['addons[24]'] = 1;
+        if (newAdForm.print.value == 'medio-tab') obj['addons[25]'] = 1;
+        if (newAdForm.print.value == 'medio-chi') obj['addons[26]'] = 1;
+        if (newAdForm.print.value == 'medio-ver') obj['addons[27]'] = 1;
+        if (newAdForm.print.value == 'medio-baj') obj['addons[28]'] = 1;
+
+        if (newAdForm.print.size == 'impreso-4x4') obj['addons[9]'] = 1;
+        if (newAdForm.print.size == 'impreso-4x8') obj['addons[10]'] = 1;
+        if (newAdForm.print.size == 'impreso-4x13') obj['addons[11]'] = 1;
+        if (newAdForm.print.size == 'impreso-8x4') obj['addons[12]'] = 1;
+        if (newAdForm.print.size == 'impreso-8x8') obj['addons[13]'] = 1;
+        if (newAdForm.print.size == 'impreso-12x3') obj['addons[14]'] = 1;
+        if (newAdForm.print.size == 'impreso-12x8') obj['addons[15]'] = 1;
+        if (newAdForm.print.size == 'impreso-12x13') obj['addons[16]'] = 1;
+        if (newAdForm.print.size == 'impreso-8x13') obj['addons[17]'] = 1;
+        if (newAdForm.print.size == 'impreso-21x8') obj['addons[18]'] = 1;
+        if (newAdForm.print.size == 'impreso-21x13') obj['addons[19]'] = 1;
+        if (newAdForm.print.size == 'impreso-24x15') obj['addons[20]'] = 1;
       }
       if (newAdForm.socialMedia) obj['addons[8]'] = 1;
 
@@ -61,8 +80,27 @@ const Listings = () => {
     let total = price;
 
     if (newAdForm.print.set) {
-      if (newAdForm.print.value == '1') total += 100;
-      if (newAdForm.print.value == '2') total += 150;
+      if (newAdForm.print.value == 'medio-nac') total += 200;
+      if (newAdForm.print.value == 'medio-qro') total += 100;
+      if (newAdForm.print.value == 'medio-cam') total += 100;
+      if (newAdForm.print.value == 'medio-yuc') total += 100;
+      if (newAdForm.print.value == 'medio-tab') total += 100;
+      if (newAdForm.print.value == 'medio-chi') total += 100;
+      if (newAdForm.print.value == 'medio-ver') total += 100;
+      if (newAdForm.print.value == 'medio-baj') total += 100;
+
+      if (newAdForm.print.size == 'impreso-4x4') total += 100;
+      if (newAdForm.print.size == 'impreso-4x8') total += 110;
+      if (newAdForm.print.size == 'impreso-4x13') total += 120;
+      if (newAdForm.print.size == 'impreso-8x4') total += 130;
+      if (newAdForm.print.size == 'impreso-8x8') total += 140;
+      if (newAdForm.print.size == 'impreso-12x3') total += 150;
+      if (newAdForm.print.size == 'impreso-12x8') total += 160;
+      if (newAdForm.print.size == 'impreso-12x13') total += 170;
+      if (newAdForm.print.size == 'impreso-8x13') total += 180;
+      if (newAdForm.print.size == 'impreso-21x8') total += 190;
+      if (newAdForm.print.size == 'impreso-21x13') total += 200;
+      if (newAdForm.print.size == 'impreso-24x15') total += 210;
     }
     if (newAdForm.feature) total += 100;
     if (newAdForm.socialMedia) total += 100;
@@ -156,11 +194,72 @@ const Listings = () => {
             </li>
           )}
           {newAdForm.print.set && (
-            <li>
-              {newAdForm.extraStates.value == '1'
-                ? 'Anuncio Impreso por 3 días +$100'
-                : 'Anuncio Impreso por 7 días +$150'}
-            </li>
+            <>
+              <li>
+                {newAdForm.print.value == 'medio-nac' && (
+                  <>El Momento Nacional +$200</>
+                )}
+                {newAdForm.print.value == 'medio-qro' && (
+                  <>El Momento Quintana Roo +$100</>
+                )}
+                {newAdForm.print.value == 'medio-cam' && (
+                  <>El Momento Campeche +$100</>
+                )}
+                {newAdForm.print.value == 'medio-yuc' && (
+                  <>El Momento Yucatán +$100</>
+                )}
+                {newAdForm.print.value == 'medio-tab' && (
+                  <>El Momento Tabasco +$100</>
+                )}
+                {newAdForm.print.value == 'medio-chi' && (
+                  <>El Momento Chiapas +$100</>
+                )}
+                {newAdForm.print.value == 'medio-ver' && (
+                  <>El Momento Veracruz +$100</>
+                )}
+                {newAdForm.print.value == 'medio-baj' && (
+                  <>El Momento Baja California Sur +$100</>
+                )}
+              </li>
+              <li>
+                {newAdForm.print.size == 'impreso-4x4' && (
+                  <>Anuncio Impreso Modular 4x4cm +$100</>
+                )}
+                {newAdForm.print.size == 'impreso-4x8' && (
+                  <>Anuncio Impreso Modular 4x8.7cm +$110</>
+                )}
+                {newAdForm.print.size == 'impreso-4x13' && (
+                  <>Anuncio Impreso Modular 4x13.4cm +$120</>
+                )}
+                {newAdForm.print.size == 'impreso-8x4' && (
+                  <>Anuncio Impreso Modular 8.3x4cm +$130</>
+                )}
+                {newAdForm.print.size == 'impreso-8x8' && (
+                  <>Anuncio Impreso Modular 8.3x8.7cm +$140</>
+                )}
+                {newAdForm.print.size == 'impreso-12x3' && (
+                  <>Anuncio Impreso Modular 12.7x3.7cm +$150</>
+                )}
+                {newAdForm.print.size == 'impreso-12x8' && (
+                  <>Anuncio Impreso Modular 12.7x8.7cm +$160</>
+                )}
+                {newAdForm.print.size == 'impreso-12x13' && (
+                  <>Anuncio Impreso Modular 12.7x13.3cm +$170</>
+                )}
+                {newAdForm.print.size == 'impreso-8x13' && (
+                  <>Anuncio Impreso Modular 8.3x13.4cm +$180</>
+                )}
+                {newAdForm.print.size == 'impreso-21x8' && (
+                  <>Anuncio Impreso Modular 21.5x8.7cm +$190</>
+                )}
+                {newAdForm.print.size == 'impreso-21x13' && (
+                  <>Anuncio Impreso Modular 21.5x13.4cm+$200</>
+                )}
+                {newAdForm.print.size == 'impreso-24x15' && (
+                  <>Anuncio Impreso Modular 21.5x13.4cm +$210</>
+                )}
+              </li>
+            </>
           )}
           {newAdForm.feature && <li>Destacado +$100</li>}
           {newAdForm.socialMedia && <li>Redes Social +$100</li>}

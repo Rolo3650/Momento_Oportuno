@@ -4,7 +4,8 @@ import { ActionsOne } from '../actions/ActionsOne';
 import { Ad, AdFavorite } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import { useTheme } from '@mui/material';
+import { Button, FormControl, useTheme } from '@mui/material';
+import { useForm } from '../../hooks';
 
 interface Props {
   product: Ad | AdFavorite;
@@ -14,8 +15,23 @@ interface Props {
 const ProductOne: React.FC<Props> = ({ product, fav }) => {
   const navigateTo = useNavigate();
   const theme = useTheme();
+  const { setNewAdForm } = useForm();
 
   // console.log(product)
+  const onClick = () => {
+    console.log(product);
+    setNewAdForm({
+      name: product.title,
+      category: product.category,
+      desc: product.description,
+      state: product.state,
+      attributes_persist: product.attributes?.map((attributes) => ({
+        set: attributes,
+        value: attributes.value,
+      })),
+      id: product.id,
+    });
+  };
 
   return (
     <div
@@ -28,7 +44,7 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
           window.scrollTo(0, 0);
           if (product.is_active) {
             // window.location.assign(`/ad/${product.id}`);
-            navigateTo(`/ad/${product.id}`)
+            navigateTo(`/ad/${product.id}`);
           }
         }}
       >
@@ -36,15 +52,17 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
         <div className="info fs-5 fw-bold text text-color-5 text-font-rubik">
           <div className="name">{product.title}</div>
           <div className="mt-3 fs-6 fw-normal d-flex align-items-center">
-            {product.state?.name && <LocationOnOutlinedIcon
-              sx={{
-                color: 'white',
-                backgroundColor: theme.palette.secondary.main,
-                height: '30px',
-                width: '30px',
-              }}
-              className='rounded'
-            />}
+            {product.state?.name && (
+              <LocationOnOutlinedIcon
+                sx={{
+                  color: 'white',
+                  backgroundColor: theme.palette.secondary.main,
+                  height: '30px',
+                  width: '30px',
+                }}
+                className="rounded"
+              />
+            )}
             <span className="ms-2">{product.state?.name}</span>
           </div>
           <div className="mt-3 fs-6 fw-normal">
@@ -98,12 +116,28 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
               ''
             )}
           </div>
-          {location.pathname.includes('micrositio') && <div className="mt-3 fs-6 fw-normal">
-              {product.description}
-          </div> }
+          {location.pathname.includes('micrositio') && (
+            <div className="mt-3 fs-6 fw-normal">{product.description}</div>
+          )}
           <span className="fw-bold badge bg-secondary text-color-5 text text-font-l-d fw-normal fs-6 py-2 mx-auto background background-color-14 px-3 mt-3">
             {product.category?.name}
           </span>
+          <div className="pt-4">
+            <FormControl fullWidth>
+              <Button
+                sx={{ textTransform: 'none' }}
+                onClick={(e) => {
+                  onClick();
+                  navigateTo('/panel/edit');
+                  e.stopPropagation();
+                }}
+                variant="contained"
+                color="secondary"
+              >
+                Editar Anuncio
+              </Button>
+            </FormControl>
+          </div>
         </div>
       </div>
 

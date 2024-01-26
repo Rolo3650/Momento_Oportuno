@@ -24,6 +24,7 @@ import { MicrositesPayment } from '../pages/pago/MicrositesPayment';
 import { Nosotros } from '../pages/info/Nosotros';
 import { Contactanos } from '../pages/info/Contactanos';
 import { Page404 } from '../pages/404/Index';
+import { EditAd } from '../pages/user/EditAd';
 
 const AppRouter = () => {
   return (
@@ -43,6 +44,7 @@ const AppRouter = () => {
         <Route path="/login-register" element={<LogRes />} />
         <Route path="/user" element={<ProfilePage />} />
         <Route path="/panel/create" element={<AddNewAd />} />
+        <Route path="/panel/edit" element={<EditAd />} />
         <Route path="/panel/list" element={<MyAds />} />
         <Route path="/panel/favorites" element={<Favorites />} />
         <Route path="/panel/Messages" element={<Messages />} />

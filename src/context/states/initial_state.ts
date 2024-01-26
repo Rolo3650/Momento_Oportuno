@@ -13,6 +13,7 @@ const app_state: AppState = {
   userState: null,
   adSingleState: { ad: null, loading: false },
   newAdForm: {
+    id: '',
     name: '',
     category: null,
     subCategory: null,
@@ -36,6 +37,7 @@ const app_state: AppState = {
     print: {
       set: false,
       value: '1',
+      size: ''
     },
     feature: false,
     socialMedia: false,

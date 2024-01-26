@@ -54,20 +54,34 @@ const PayOne = ({ disabled }: PayOneProps) => {
     if (newAdForm.extraVideo.set) obj['addons[4]'] = 1;
     if (newAdForm.feature) obj['addons[5]'] = 1;
     if (newAdForm.print.set) {
-      if (newAdForm.print.value == 1) obj['addons[6]'] = 1;
-      if (newAdForm.print.value == 2) obj['addons[7]'] = 1;
+      if (newAdForm.print.value == 'medio-nac') obj['addons[21]'] = 1;
+      if (newAdForm.print.value == 'medio-qro') obj['addons[22]'] = 1;
+      if (newAdForm.print.value == 'medio-cam') obj['addons[23]'] = 1;
+      if (newAdForm.print.value == 'medio-yuc') obj['addons[24]'] = 1;
+      if (newAdForm.print.value == 'medio-tab') obj['addons[25]'] = 1;
+      if (newAdForm.print.value == 'medio-chi') obj['addons[26]'] = 1;
+      if (newAdForm.print.value == 'medio-ver') obj['addons[27]'] = 1;
+      if (newAdForm.print.value == 'medio-baj') obj['addons[28]'] = 1;
+
+      if (newAdForm.print.size == 'impreso-4x4') obj['addons[9]'] = 1;
+      if (newAdForm.print.size == 'impreso-4x8') obj['addons[10]'] = 1;
+      if (newAdForm.print.size == 'impreso-4x13') obj['addons[11]'] = 1;
+      if (newAdForm.print.size == 'impreso-8x4') obj['addons[12]'] = 1;
+      if (newAdForm.print.size == 'impreso-8x8') obj['addons[13]'] = 1;
+      if (newAdForm.print.size == 'impreso-12x3') obj['addons[14]'] = 1;
+      if (newAdForm.print.size == 'impreso-12x8') obj['addons[15]'] = 1;
+      if (newAdForm.print.size == 'impreso-12x13') obj['addons[16]'] = 1;
+      if (newAdForm.print.size == 'impreso-8x13') obj['addons[17]'] = 1;
+      if (newAdForm.print.size == 'impreso-21x8') obj['addons[18]'] = 1;
+      if (newAdForm.print.size == 'impreso-21x13') obj['addons[19]'] = 1;
+      if (newAdForm.print.size == 'impreso-24x15') obj['addons[20]'] = 1;
     }
     if (newAdForm.socialMedia) obj['addons[8]'] = 1;
 
+
     const orderCreated = await OrdersServices.createOrder(obj);
 
-    console.log({
-      cardElement,
-      token: res.token,
-      card: res.token?.card,
-      orderCreated,
-    });
-
+    
     // example
     setLoading(false);
 

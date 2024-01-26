@@ -28,6 +28,10 @@ export type NewAdFormState = {
     set: Attribute;
     value: string | number | null | string[];
   }[];
+  attributes_persist?: {
+    set: Attribute;
+    value: string | number | null | string[];
+  }[];
   extraVideo: {
     set: boolean;
     type: 'link' | 'file';
@@ -36,12 +40,14 @@ export type NewAdFormState = {
   print: {
     set: boolean;
     value: string | number | null;
+    size: string | number | null;
   };
   feature: boolean;
   socialMedia: boolean;
   imgs: File[] | null;
   responseForm: CreateAnuncioResponse | null;
   package: Package | null;
+  id: string | null | undefined | number;
 };
 
 export type NewAdFormPayload = {

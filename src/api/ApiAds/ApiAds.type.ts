@@ -144,3 +144,15 @@ export type CreateAnuncioParams = GeneralCreateAnuncioParams & {
   subcategory_id: number;
   listingAttributes: ListingAttribute[];
 };
+
+export type GeneralEditAnuncioParams = {
+  title: string;
+  description: string;
+  state_id: number;
+  category_id: number;
+};
+
+export type EditAnuncioParams = GeneralEditAnuncioParams & {
+  subcategory_id: number;
+  listingAttributes: ListingAttribute[];
+};

@@ -51,30 +51,126 @@ const Addons: React.FC<Props> = () => {
           />
           Impreso
           {newAdForm?.print.set && (
-            <div className="ms-5">
-              <RadioGroupOne
-                value={newAdForm?.print.value}
-                onChange={(e) => {
-                  setNewAdForm({
-                    print: {
-                      ...newAdForm.print,
-                      value: e.value,
+            <>
+              <div className="fw-bold text text-color-5 text-font-l-d subtitle ms-5">
+                Lugar de publicación
+              </div>
+              <div className="ms-5 mb-4">
+                <RadioGroupOne
+                  value={newAdForm?.print.value}
+                  onChange={(e) => {
+                    setNewAdForm({
+                      print: {
+                        ...newAdForm.print,
+                        value: e.value,
+                      },
+                    });
+                  }}
+                  defaultValue="medio-nac"
+                  options={[
+                    {
+                      label: 'El Momento Nacional +$200',
+                      value: 'medio-nac',
                     },
-                  });
-                }}
-                defaultValue="1"
-                options={[
-                  {
-                    label: 'Anuncio Impreso por 3 días +$100',
-                    value: '1',
-                  },
-                  {
-                    label: 'Anuncio Impreso por 7 días +$150',
-                    value: '2',
-                  },
-                ]}
-              />
-            </div>
+                    {
+                      label: 'El Momento Quintana Roo +$100',
+                      value: 'medio-qro',
+                    },
+                    {
+                      label: 'El Momento Campeche +$100',
+                      value: 'medio-cam',
+                    },
+                    {
+                      label: 'El Momento Yucatán +$100',
+                      value: 'medio-yuc',
+                    },
+                    {
+                      label: 'El Momento Tabasco +$100',
+                      value: 'medio-tab',
+                    },
+                    {
+                      label: 'El Momento Chiapas +$100',
+                      value: 'medio-chi',
+                    },
+                    {
+                      label: 'El Momento Veracruz +$100',
+                      value: 'medio-ver',
+                    },
+                    {
+                      label: 'El Momento Baja California Sur +$100',
+                      value: 'medio-baj',
+                    },
+                  ]}
+                />
+              </div>
+              <div className="fw-bold text text-color-5 text-font-l-d subtitle ms-5">
+                Tamaño de impresión
+              </div>
+              <div className="ms-5">
+                <RadioGroupOne
+                  value={newAdForm?.print.size}
+                  onChange={(e) => {
+                    setNewAdForm({
+                      print: {
+                        ...newAdForm.print,
+                        size: e.value,
+                      },
+                    });
+                  }}
+                  defaultValue="impreso-4x4"
+                  options={[
+                    {
+                      label: 'Anuncio Impreso Modular 4x4 cm +$100',
+                      value: 'impreso-4x4',
+                    },
+                    {
+                      label: 'Anuncio Impreso Modular 4x8.7cm +$110',
+                      value: 'impreso-4x8',
+                    },
+                    {
+                      label: 'Anuncio Impreso Modular 4x13.4cm +$120',
+                      value: 'impreso-4x13',
+                    },
+                    {
+                      label: 'Anuncio Impreso Modular 8.3x4cm +$130',
+                      value: 'impreso-8x4',
+                    },
+                    {
+                      label: 'Anuncio Impreso Modular 8.3x8.7cm +$140',
+                      value: 'impreso-8x8',
+                    },
+                    {
+                      label: 'Anuncio Impreso Modular 12.7x3.7cm +$150',
+                      value: 'impreso-12x3',
+                    },
+                    {
+                      label: 'Anuncio Impreso Modular 12.7x8.7cm +$160',
+                      value: 'impreso-12x8',
+                    },
+                    {
+                      label: 'Anuncio Impreso Modular 12.7x13.3cm +$170',
+                      value: 'impreso-12x13',
+                    },
+                    {
+                      label: 'Anuncio Impreso Modular 8.3x13.4cm +$180',
+                      value: 'impreso-8x13',
+                    },
+                    {
+                      label: 'Anuncio Impreso Modular 21.5x8.7cm +$190',
+                      value: 'impreso-21x8'
+                    },
+                    {
+                      label: 'Anuncio Impreso Modular 21.5x13.4cm +$200',
+                      value: 'impreso-21x13',
+                    },
+                    {
+                      label: 'Anuncio Impreso Modular 24.8x15.4cm +$210',
+                      value: 'impreso-24x15',
+                    },
+                  ]}
+                />
+              </div>
+            </>
           )}
         </div>
         <div className="fw-bold text text-color-5 text-font-l-d subtitle">

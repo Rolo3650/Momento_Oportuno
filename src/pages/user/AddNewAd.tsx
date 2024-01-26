@@ -35,7 +35,8 @@ const AddNewAd: React.FC<Props> = () => {
         },
         print: {
           set: false,
-          value: '1',
+          value: 'medio-nac',
+          size: 'impreso-4x4',
         },
         feature: false,
         socialMedia: false,

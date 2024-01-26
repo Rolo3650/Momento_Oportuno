@@ -4,6 +4,7 @@ import { FilterParams } from '../../context';
 import type {
   CreateAnuncioParams,
   CreateAnuncioResponse,
+  EditAnuncioParams,
   GetAdByIdResponse,
   GetAllAdsResponse,
   GetMyAdsResponse,
@@ -107,6 +108,20 @@ export class AdsServices {
   ): Promise<CreateAnuncioResponse> {
     // params.status = 'published'
     const { data } = await req.post('/', params);
+
+    const parsed = CreateAnuncioResponseSchema.parse(data);
+    return parsed;
+  }
+
+  static async editAd({
+    params,
+    id,
+  }: {
+    params: EditAnuncioParams;
+    id: string | number;
+  }): Promise<CreateAnuncioResponse> {
+    // params.status = 'published'
+    const { data } = await req.post(`/${id}`, params);
 
     const parsed = CreateAnuncioResponseSchema.parse(data);
     return parsed;
