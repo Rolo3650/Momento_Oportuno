@@ -56,6 +56,10 @@ const FormOne: React.FC<Props> = () => {
       message = 'Ingresa una descripción de publicación válido';
       error = true;
     }
+    if (newAdForm.print.set && (!newAdForm.print.value || !newAdForm.print.size)) {
+      message = 'Ingresa un tamañ y/o lugar de publicación válido';
+      error = true;
+    }
     if (!newAdForm.imgs?.length || newAdForm.imgs?.length == 0) {
       message = 'Ingresa mínimo una imagen de publicación';
       error = true;

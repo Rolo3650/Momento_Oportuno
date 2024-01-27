@@ -37,7 +37,9 @@ const app_state: AppState = {
     print: {
       set: false,
       value: '1',
-      size: ''
+      size: '',
+      size_label: '',
+      value_label: ''
     },
     feature: false,
     socialMedia: false,

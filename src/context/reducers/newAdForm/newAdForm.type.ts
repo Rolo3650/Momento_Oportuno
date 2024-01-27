@@ -41,6 +41,8 @@ export type NewAdFormState = {
     set: boolean;
     value: string | number | null;
     size: string | number | null;
+    size_label: string | null | undefined;
+    value_label: string | null | undefined;
   };
   feature: boolean;
   socialMedia: boolean;

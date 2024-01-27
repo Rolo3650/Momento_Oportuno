@@ -1,6 +1,6 @@
 import React from 'react';
 import SouthIcon from '@mui/icons-material/South';
-import { Checkbox } from '@mui/material';
+import { Box, Checkbox, Grid, useTheme } from '@mui/material';
 import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
 import PrintIcon from '@mui/icons-material/Print';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -14,11 +14,13 @@ import { useForm } from '../../../../../hooks';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AddVideo from './AddVideo';
+import { DropdownTwo } from '../../../../inputs/dropdown/DropdownTwo';
 
 interface Props {}
 
 const Addons: React.FC<Props> = () => {
   const { setNewAdForm, newAdForm } = useForm();
+  const theme = useTheme();
 
   return (
     <>
@@ -34,29 +36,31 @@ const Addons: React.FC<Props> = () => {
         <span className="text text-color-secondary">*</span>
       </div>
       <div className="mt-3">
-        <div className="fw-bold text text-color-5 text-font-l-d subtitle">
-          <Checkbox
-            color="secondary"
-            icon={<PrintOutlinedIcon color="secondary" />}
-            checkedIcon={<PrintIcon color="primary" />}
-            onChange={(e) => {
-              setNewAdForm({
-                print: {
-                  ...newAdForm.print,
-                  set: e.target.checked,
-                },
-              });
-            }}
-            value={newAdForm.print.set}
-          />
-          Impreso
-          {newAdForm?.print.set && (
-            <>
-              <div className="fw-bold text text-color-5 text-font-l-d subtitle ms-5">
-                Lugar de publicación
-              </div>
-              <div className="ms-5 mb-4">
-                <RadioGroupOne
+        <Grid container spacing={5}>
+          <Grid item xs={12} md={6}>
+            <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+              <Checkbox
+                color="secondary"
+                icon={<PrintOutlinedIcon color="secondary" />}
+                checkedIcon={<PrintIcon color="primary" />}
+                onChange={(e) => {
+                  setNewAdForm({
+                    print: {
+                      ...newAdForm.print,
+                      set: e.target.checked,
+                    },
+                  });
+                }}
+                value={newAdForm.print.set}
+              />
+              Impreso
+              {newAdForm?.print.set && (
+                <>
+                  <div className="fw-bold text text-color-5 text-font-l-d subtitle ms-5 mb-3">
+                    Lugar de publicación
+                  </div>
+                  <div className="ms-5 mb-4">
+                    {/* <RadioGroupOne
                   value={newAdForm?.print.value}
                   onChange={(e) => {
                     setNewAdForm({
@@ -101,13 +105,75 @@ const Addons: React.FC<Props> = () => {
                       value: 'medio-baj',
                     },
                   ]}
-                />
-              </div>
-              <div className="fw-bold text text-color-5 text-font-l-d subtitle ms-5">
-                Tamaño de impresión
-              </div>
-              <div className="ms-5">
-                <RadioGroupOne
+                /> */}
+                    <DropdownTwo
+                      option={{
+                        label:
+                          newAdForm?.print.value_label ??
+                          'El Momento Nacional +$200',
+                        value: newAdForm?.print.value ?? 'imedio-nac',
+                      }}
+                      color={{
+                        variant: 'secondary',
+                        text: '#464748',
+                        field: theme.palette.secondary.main,
+                        backgroundColor: '#fff',
+                      }}
+                      text="Lugar"
+                      icon={{
+                        url: '/svg/icons/ticket_one.svg',
+                        endurl: '/svg/icons/menu_row_down.svg',
+                      }}
+                      options={[
+                        {
+                          label: 'El Momento Nacional +$200',
+                          value: 'medio-nac',
+                        },
+                        {
+                          label: 'El Momento Quintana Roo +$100',
+                          value: 'medio-qro',
+                        },
+                        {
+                          label: 'El Momento Campeche +$100',
+                          value: 'medio-cam',
+                        },
+                        {
+                          label: 'El Momento Yucatán +$100',
+                          value: 'medio-yuc',
+                        },
+                        {
+                          label: 'El Momento Tabasco +$100',
+                          value: 'medio-tab',
+                        },
+                        {
+                          label: 'El Momento Chiapas +$100',
+                          value: 'medio-chi',
+                        },
+                        {
+                          label: 'El Momento Veracruz +$100',
+                          value: 'medio-ver',
+                        },
+                        {
+                          label: 'El Momento Baja California Sur +$100',
+                          value: 'medio-baj',
+                        },
+                      ]}
+                      onChange={(e) => {
+                        setNewAdForm({
+                          print: {
+                            ...newAdForm.print,
+                            value: e.value ?? 'medio-nac',
+                            value_label: e.label ?? 'El Momento Nacional +$200',
+                          },
+                        });
+                      }}
+                    />
+                  </div>
+                  <div className="fw-bold text text-color-5 text-font-l-d subtitle ms-5 mb-3">
+                    Tamaño de impresión
+                  </div>
+                  <div className="ms-5 mb-4">
+                    {/* <RadioGroupOne
                   value={newAdForm?.print.size}
                   onChange={(e) => {
                     setNewAdForm({
@@ -157,7 +223,7 @@ const Addons: React.FC<Props> = () => {
                     },
                     {
                       label: 'Anuncio Impreso Modular 21.5x8.7cm +$190',
-                      value: 'impreso-21x8'
+                      value: 'impreso-21x8',
                     },
                     {
                       label: 'Anuncio Impreso Modular 21.5x13.4cm +$200',
@@ -168,11 +234,108 @@ const Addons: React.FC<Props> = () => {
                       value: 'impreso-24x15',
                     },
                   ]}
+                /> */}
+                    <DropdownTwo
+                      option={{
+                        label:
+                          newAdForm?.print.size_label ??
+                          'Anuncio Impreso Modular 4x4 cm +$100',
+                        value: newAdForm?.print.size ?? 'impreso-4x4',
+                      }}
+                      color={{
+                        variant: 'secondary',
+                        text: '#464748',
+                        field: theme.palette.secondary.main,
+                        backgroundColor: '#fff',
+                      }}
+                      text="Tamaño"
+                      icon={{
+                        url: '/svg/icons/ticket_one.svg',
+                        endurl: '/svg/icons/menu_row_down.svg',
+                      }}
+                      options={[
+                        {
+                          label: 'Anuncio Impreso Modular 4x4 cm +$100',
+                          value: 'impreso-4x4',
+                        },
+                        {
+                          label: 'Anuncio Impreso Modular 4x8.7cm +$110',
+                          value: 'impreso-4x8',
+                        },
+                        {
+                          label: 'Anuncio Impreso Modular 4x13.4cm +$120',
+                          value: 'impreso-4x13',
+                        },
+                        {
+                          label: 'Anuncio Impreso Modular 8.3x4cm +$130',
+                          value: 'impreso-8x4',
+                        },
+                        {
+                          label: 'Anuncio Impreso Modular 8.3x8.7cm +$140',
+                          value: 'impreso-8x8',
+                        },
+                        {
+                          label: 'Anuncio Impreso Modular 12.7x3.7cm +$150',
+                          value: 'impreso-12x3',
+                        },
+                        {
+                          label: 'Anuncio Impreso Modular 12.7x8.7cm +$160',
+                          value: 'impreso-12x8',
+                        },
+                        {
+                          label: 'Anuncio Impreso Modular 12.7x13.3cm +$170',
+                          value: 'impreso-12x13',
+                        },
+                        {
+                          label: 'Anuncio Impreso Modular 8.3x13.4cm +$180',
+                          value: 'impreso-8x13',
+                        },
+                        {
+                          label: 'Anuncio Impreso Modular 21.5x8.7cm +$190',
+                          value: 'impreso-21x8',
+                        },
+                        {
+                          label: 'Anuncio Impreso Modular 21.5x13.4cm +$200',
+                          value: 'impreso-21x13',
+                        },
+                        {
+                          label: 'Anuncio Impreso Modular 24.8x15.4cm +$210',
+                          value: 'impreso-24x15',
+                        },
+                      ]}
+                      onChange={(e) => {
+                        setNewAdForm({
+                          print: {
+                            ...newAdForm.print,
+                            size: e.value ?? 'impreso-4x4',
+                            size_label:
+                              e.label ?? 'Anuncio Impreso Modular 4x4 cm +$100',
+                          },
+                        });
+                      }}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          </Grid>
+          {newAdForm.print.set && (
+            <Grid item xs={12} md={6}>
+              <Box
+                height={'100%'}
+                display={'flex'}
+                alignItems={'center'}
+                justifyContent={'center'}
+              >
+                <img
+                  src="/img/sizes/4x4.jpg"
+                  alt=""
+                  style={{ maxWidth: '300px', width: '100%' }}
                 />
-              </div>
-            </>
+              </Box>
+            </Grid>
           )}
-        </div>
+        </Grid>
         <div className="fw-bold text text-color-5 text-font-l-d subtitle">
           <Checkbox
             color="secondary"
