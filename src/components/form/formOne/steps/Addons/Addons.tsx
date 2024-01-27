@@ -327,11 +327,90 @@ const Addons: React.FC<Props> = () => {
                 alignItems={'center'}
                 justifyContent={'center'}
               >
-                <img
-                  src="/img/sizes/4x4.jpg"
-                  alt=""
-                  style={{ maxWidth: '300px', width: '100%' }}
-                />
+                {newAdForm.print.size == 'impreso-4x4' && (
+                  <img
+                    src="/img/sizes/1.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
+                {newAdForm.print.size == 'impreso-4x8' && (
+                  <img
+                    src="/img/sizes/2.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
+                {newAdForm.print.size == 'impreso-4x13' && (
+                  <img
+                    src="/img/sizes/3.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
+                {newAdForm.print.size == 'impreso-8x4' && (
+                  <img
+                    src="/img/sizes/4.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
+                {newAdForm.print.size == 'impreso-8x8' && (
+                  <img
+                    src="/img/sizes/5.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
+                {newAdForm.print.size == 'impreso-12x3' && (
+                  <img
+                    src="/img/sizes/6.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
+                {newAdForm.print.size == 'impreso-12x8' && (
+                  <img
+                    src="/img/sizes/7.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
+                {newAdForm.print.size == 'impreso-12x13' && (
+                  <img
+                    src="/img/sizes/8.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
+                {newAdForm.print.size == 'impreso-8x13' && (
+                  <img
+                    src="/img/sizes/9.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
+                {newAdForm.print.size == 'impreso-21x8' && (
+                  <img
+                    src="/img/sizes/10.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
+                {newAdForm.print.size == 'impreso-21x13' && (
+                  <img
+                    src="/img/sizes/11.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
+                {newAdForm.print.size == 'impreso-24x15' && (
+                  <img
+                    src="/img/sizes/12.png"
+                    alt=""
+                    style={{ maxWidth: '300px', width: '100%' }}
+                  />
+                )}
               </Box>
             </Grid>
           )}
