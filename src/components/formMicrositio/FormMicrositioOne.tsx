@@ -221,7 +221,7 @@ const FormMicrositioOne = () => {
               field: theme.palette.secondary.main,
               backgroundColor: '#fff',
             }}
-            text="Ciudad"
+            text="Estado"
             icon={{
               muiIcon: (
                 <PlaceIcon

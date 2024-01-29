@@ -271,13 +271,13 @@ const StepOne: React.FC<Props> = () => {
                   }}
                   text={data.set.name}
                   onChange={(e) => {
-                    const regex = /^[0-9]*$/;
+                    const regex = /^[0-9]*(\.){0,1}[0-9]*$/;
                     if (regex.test(e.target.value)) {
-                      const price = parseInt(e.target.value);
+                      // const price = parseFloat(e.target.value);
                       const attributes = [...newAdForm.attributes];
                       attributes.forEach((atr) => {
                         if (atr.set.id === data.set.id) {
-                          atr.value = price?.toString() == 'NaN' ? 0 : price;
+                          atr.value = e.target.value?.toString() == 'NaN' ? 0 : e.target.value;
                         }
                       });
                       setNewAdForm({ attributes: attributes });
@@ -384,11 +384,11 @@ const StepOne: React.FC<Props> = () => {
         </div> */}
         <div className="mb-3">
           <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-            Ciudad <span className="text text-color-secondary">*</span>
+            Estado <span className="text text-color-secondary">*</span>
           </div>
           <DropdownTwo
             option={{
-              label: newAdForm.state?.name ?? 'Ciudad',
+              label: newAdForm.state?.name ?? 'Estado',
               value: newAdForm.state?.id ?? 0,
             }}
             color={{
@@ -397,7 +397,7 @@ const StepOne: React.FC<Props> = () => {
               field: theme.palette.secondary.main,
               backgroundColor: '#fff',
             }}
-            text="Ciudad"
+            text="Estado"
             icon={{
               muiIcon: (
                 <PlaceIcon

@@ -19,7 +19,7 @@ const LookingFor = () => {
   const params = useParams();
   const { navigatePersistQuery, deleteQuery } = useNavigateCustom();
   const [lookingFor, setLookingFor] = useState('');
-  const [city, setCity] = useState<Option>({ label: 'Ciudad', value: 0 });
+  const [city, setCity] = useState<Option>({ label: 'Estado', value: 0 });
   const { data } = useGetStates();
   const { searchParam } = useSearch();
 
@@ -62,7 +62,7 @@ const LookingFor = () => {
             field: theme.palette.secondary.main,
             backgroundColor: '#fff',
           }}
-          text="Ciudad"
+          text="Estado"
           icon={{
             muiIcon: (
               <PlaceIcon

@@ -122,7 +122,8 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
           <span className="fw-bold badge bg-secondary text-color-5 text text-font-l-d fw-normal fs-6 py-2 mx-auto background background-color-14 px-3 mt-3">
             {product.category?.name}
           </span>
-          <div className="pt-4">
+          {product.status != 'published' && location.pathname.includes('/panel/list') && 
+            <div className="pt-4">
             <FormControl fullWidth>
               <Button
                 sx={{ textTransform: 'none' }}
@@ -138,6 +139,7 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
               </Button>
             </FormControl>
           </div>
+          }
         </div>
       </div>
 

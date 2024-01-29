@@ -23,7 +23,7 @@ const CardTwo: React.FC<Props> = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const { data } = useGetStates();
   const allCategories = useAllCategories();
-  const [city, setCity] = useState<Option>({ label: 'Ciudad', value: 0 });
+  const [city, setCity] = useState<Option>({ label: 'Estado', value: 0 });
   const [category, setCategory] = useState<Option>({
     label: 'Categoría',
     value: 0,
@@ -104,7 +104,7 @@ const CardTwo: React.FC<Props> = () => {
               field: theme.palette.secondary.main,
               backgroundColor: '#fff',
             }}
-            text="Ciudad"
+            text="Estado"
             icon={{
               muiIcon: (
                 <PlaceIcon
