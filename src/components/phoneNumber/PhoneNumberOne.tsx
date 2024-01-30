@@ -12,7 +12,7 @@ const PhoneNumberOne = (props: PhoneNumber) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const showPhoneNumber = () => {
     setIsVisible((p) => !p);
-    console.log('HOla');
+    // console.log('HOla');
   };
   return (
     <div className="d-flex justify-content-center align-items-center">

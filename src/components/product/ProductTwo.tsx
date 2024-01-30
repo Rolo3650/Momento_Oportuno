@@ -11,7 +11,7 @@ interface Props {
 const ProductTwo: React.FC<Props> = ({ product, fav }) => {
   return (
     <div
-      className={`d-grid w-100 product product-two ${
+      className={`d-grid w-100 mb-3 product product-two ${
         product?.is_featured ? 'feauture' : ''
       }`}
       onClick={() => {
@@ -23,7 +23,7 @@ const ProductTwo: React.FC<Props> = ({ product, fav }) => {
       <div>
         <div className="info fs-5 fw-bold text text-color-5 text-font-rubik h-100">
           <div className="d-flex justify-content-between actions">
-            Hola
+            <p></p>
             <ActionsOne product={product} fav={fav} />
           </div>
           <div className="description d-grid">
