@@ -56,7 +56,10 @@ const FormOne: React.FC<Props> = () => {
       message = 'Ingresa una descripción de publicación válido';
       error = true;
     }
-    if (newAdForm.print.set && (!newAdForm.print.value || !newAdForm.print.size)) {
+    if (
+      newAdForm.print.set &&
+      (!newAdForm.print.value || !newAdForm.print.size)
+    ) {
       message = 'Ingresa un tamañ y/o lugar de publicación válido';
       error = true;
     }
@@ -109,6 +112,17 @@ const FormOne: React.FC<Props> = () => {
             value: attribute.value?.toString() ?? '',
           });
         } else if (attribute.set.type == 'select') {
+          const value: string[] = [];
+          attribute.set.attributeValues.forEach((atr_value) => {
+            if (attribute.value?.toString()?.includes(atr_value.name)) {
+              value.push(atr_value.id?.toString());
+            }
+          });
+          atributes.push({
+            attribute_id: attribute.set.id,
+            value: '[' + value.join(',') + ']',
+          });
+        } else if (attribute.set.type == 'checkbox') {
           const value: string[] = [];
           attribute.set.attributeValues.forEach((atr_value) => {
             if (attribute.value?.toString()?.includes(atr_value.name)) {

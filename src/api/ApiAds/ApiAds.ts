@@ -77,7 +77,7 @@ export class AdsServices {
   }: {
     page?: number;
   }): Promise<GetMyAdsResponse> {
-    const { data } = await req.get(`/mine?page=${page ?? 1}`);
+    const { data } = await req.get(`/mine?page=${page ?? 1}&perPage=12`);
 
     const dataValidated = GetMyAdsResponseSchema.parse(data);
 

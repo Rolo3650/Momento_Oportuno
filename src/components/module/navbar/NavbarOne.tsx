@@ -13,10 +13,11 @@ const NavbarOne = () => {
   const { state } = useAppContext();
 
   useEffect(() => {
-    if (!state?.userState?.token) {
+    // console.log('navigate: ', !state?.userState?.token && state.init)
+      if (!state?.userState?.token && state.init) {
       window.location.assign('/');
     }
-  }, [state.userState]);
+  }, [state.userState, state.init]);
 
   return (
     <div className="navbar navbar-one mx-auto p-0 px-2 justify-content-start">

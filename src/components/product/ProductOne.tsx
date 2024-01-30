@@ -43,8 +43,8 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
         onClick={() => {
           window.scrollTo(0, 0);
           if (product.is_active) {
-            // window.location.assign(`/ad/${product.id}`);
-            navigateTo(`/ad/${product.id}`);
+            window.location.assign(`/ad/${product.id}`);
+            // navigateTo(`/ad/${product.id}`);
           }
         }}
       >

@@ -56,7 +56,10 @@ const mainReducer = (
     newDirectoryForm: newDirectoryFormReducer(newDirectoryForm, action),
     newMicrositeForm: newMicrositeFormReducer(newMicrositeForm, action),
     acountSettings: AcountSettingsReducer(acountSettings, action),
-    socialMediaSettings: SocialMediaSettingsReducer(socialMediaSettings, action),
+    socialMediaSettings: SocialMediaSettingsReducer(
+      socialMediaSettings,
+      action
+    ),
 
     ..._,
   };
@@ -73,10 +76,21 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
       if (parsedState) {
         dispatch({
           type: AppTypes.SetGlobalState,
-          payload: { state: { ...state, userState: parsedState.userState } },
+          payload: {
+            state: { ...state, userState: parsedState.userState, init: true },
+          },
+        });
+      } else {
+        dispatch({
+          type: AppTypes.SetGlobalState,
+          payload: { state: { ...state, init: true } },
         });
       }
     } catch (error) {
+      dispatch({
+        type: AppTypes.SetGlobalState,
+        payload: { state: { ...state, init: true } },
+      });
       console.error(error);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

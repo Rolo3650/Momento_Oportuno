@@ -1,6 +1,7 @@
 import type { AppState } from '../context.type';
 
 const app_state: AppState = {
+  init: false,
   counter: 0,
   filterState: {
     state: 1,

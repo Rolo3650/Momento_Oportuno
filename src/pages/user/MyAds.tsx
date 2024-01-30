@@ -72,7 +72,9 @@ const MyAds: React.FC<Props> = () => {
             ))}
         </div>
         <div className="pb-4 d-flex justify-content-center">
-          {!loading && (
+          {data?.meta.total != ads.length && 
+            <>
+            {!loading && (
             <Button
               color="secondary"
               variant="contained"
@@ -84,6 +86,8 @@ const MyAds: React.FC<Props> = () => {
             </Button>
           )}
           {loading && <CircularProgress color="secondary" />}
+          </>
+          }
         </div>
       </div>
     </LayoutThree>

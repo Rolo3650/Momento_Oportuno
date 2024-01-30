@@ -8,6 +8,7 @@ import { newMicrositeFormState } from './reducers/newMicrositeForm';
 import { SocialMediaSettingsState } from './reducers/socialMediaSettings copy';
 
 export interface AppState {
+  init: boolean;
   counter: CounterState;
   filterState: FilterState;
   userState: UserState;
