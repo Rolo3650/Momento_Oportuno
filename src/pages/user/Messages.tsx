@@ -27,6 +27,7 @@ const Messages: React.FC<Props> = () => {
   const [messageText, setMessageText] = React.useState(''); // Estado para el texto del mensaje
   const [chatList, setChatList] = useState<ChatL[] | undefined>([]);
   const [messages, setMessages] = useState<GetChatMessagesResponse>([]);
+  const [intervals, setIntervals] = useState<NodeJS.Timeout[]>([])
 
   const [counter, setCounter] = useState<number>(0);
 
@@ -59,13 +60,20 @@ const Messages: React.FC<Props> = () => {
   }, [currentChat, refetch, chats]);
 
   useEffect(() => {
-    console.log(messages);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    intervals.map(interval => clearInterval(interval));
+    const interval = setInterval(() => {
+      console.log(messages);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    ChatsServices.getMessages(currentChat ? currentChat.id : 0).then((data) => {
-      setMessages(data.reverse());
-    });
-  }, [currentChat, counter, messages]);
+      ChatsServices.getMessages(currentChat ? currentChat.id : 0).then(
+        (data) => {
+          setMessages(data.reverse());
+        }
+      );
+    }, 1000);
+    setIntervals([...intervals, interval]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentChat, counter]);
 
   useEffect(() => {
     if (chats?.data.length) {
