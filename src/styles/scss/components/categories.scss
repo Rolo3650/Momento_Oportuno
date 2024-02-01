@@ -9,3 +9,21 @@
     }
 
 }
+
+.popular-categories-two {
+
+    height: 518px;
+    width: 100%;
+    padding-top: 26px;
+    padding-bottom: 26px;
+    background-color: $color_17;
+
+    .categories-container {
+        height: 320px;
+        display: flex;
+        grid-gap: 32px;
+        justify-content: center;
+        min-width: 1328px;
+    }
+
+}

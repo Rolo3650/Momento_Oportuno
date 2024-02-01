@@ -125,4 +125,57 @@
         }
     }
 
+    &.wellcome-three {
+        background-repeat: no-repeat;
+        background-color: $color_6;
+
+
+        @media screen and (min-width: 768px) {
+            padding-top: 120px;
+            min-height: 642px;
+            background-image:
+                url("/img/backgrounds/background_one.png");
+            background-position:
+                center,
+                left bottom;
+            background-size: cover, auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            padding-top: 35px;
+            background-image:
+                url("/svg/backgrounds/background_6.svg");
+            background-size: cover;
+            min-height: 550px;
+        }
+
+        & .wellcome-body {
+
+            flex-wrap: wrap;
+
+            @media screen and (min-width: 768px) {
+                justify-content: space-between;
+                max-width: 1200px;
+            }
+
+            // @media screen and (max-width: 1200px) and (min-width: 1024px) {
+            //     justify-content: center;
+            //     max-width: 730px;
+            // }
+
+
+            // @media screen and (max-width: 1024px) and (min-width: 768px) {
+            //     justify-content: center;
+            //     max-width: 730px;
+            // }
+
+            @media screen and (max-width: 768px) {
+                justify-content: center;
+                max-width: 390px;
+            }
+
+        }
+
+    }
+
 }

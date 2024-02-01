@@ -35,6 +35,8 @@ $color_13: #FFF1EA;
 $color_14: #F1D9CC;
 $color_15: #F9A03F;
 $color_16: #374B5C;
+$color_17: #D02F3C;
+$color_18: #636363;
 // - Fonts:
 
 $font_1: Helvetica, sans-serif;
@@ -50,6 +52,8 @@ $font_6: 'Monoton', sans-serif;
 @import 'components/inputs/phoneNumber.scss';
 /* sendMessage */
 @import 'components/inputs/sendMessage.scss';
+/* Search */
+@import 'components/search.scss';
 
 // - Modules:
 

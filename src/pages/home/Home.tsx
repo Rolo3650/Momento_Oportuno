@@ -1,13 +1,18 @@
 // import { LoginComponent, RegisterComponent } from '../../components';
 // import { useAppContext } from '../../context';
-import { WellcomeOne } from '../../containers/modules/wellcome/WellcomeOne';
+// import { WellcomeOne } from '../../containers/modules/wellcome/WellcomeOne';
 import { LayoutOne } from '../../containers/layout/LayoutOne';
-import { CardOne } from '../../components/module/cards/CardOne';
-import { CardTwo } from '../../components/module/cards/CardTwo';
+// import { CardOne } from '../../components/module/cards/CardOne';
+// import { CardTwo } from '../../components/module/cards/CardTwo';
 import { HowItWorksOne } from '../../containers/modules/howItWorks/HowItWorksOne';
 import { LastAdsOne } from '../../containers/lastAds/LastAdsOne';
 import { AboutUsOne } from '../../containers/modules/aboutUs/AboutUsOne';
 import { useInfiniteAds } from '../../hooks';
+import { CardThree } from '../../components/module/cards/CardThree';
+import { WellcomeThree } from '../../containers/modules/wellcome/WellcomeThree';
+import { PopularCategoriesTwo } from '../../components/categories/PopularCategoriesTwo';
+import { SearchOne } from '../../components/search/SearchOne';
+import { SearchTwo } from '../../components/search/SearchTwo';
 // import { useEffect } from 'react';
 // import { useAppContext } from '../../context';
 
@@ -42,10 +47,13 @@ const Home = () => {
   return (
     <>
       <LayoutOne>
-        <WellcomeOne>
-          <CardOne />
-          <CardTwo />
-        </WellcomeOne>
+        <SearchOne />
+        <SearchTwo />
+        <WellcomeThree>
+          <div></div>
+          <CardThree />
+        </WellcomeThree>
+        <PopularCategoriesTwo />
         <HowItWorksOne />
         {chiapas?.pages?.length &&
           chiapas?.pages?.length > 0 &&

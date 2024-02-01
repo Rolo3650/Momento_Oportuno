@@ -45,6 +45,59 @@
             }
         }
     }
+
+    &.card-custom-three {
+        max-width: 100%;
+
+        @media screen and (min-width: 768px) {
+            max-width: 500px;
+        }
+
+        @media screen and (max-width: 768px) {
+            text-align: center;
+        }
+
+        & .card-custom-heading {
+            font-size: 68px;
+            font-family: $font_3;
+            letter-spacing: -2px;
+            line-height: 68px;
+
+            @media screen and (max-width: 768px) {
+                br {
+                    display: none;
+                }
+            }
+
+            @media screen and (max-width: 768px) {
+                margin-top: 60px;
+                font-size: 32px;
+                letter-spacing: -2px;
+                line-height: 32px;
+                text-align: right !important;
+            }
+        }
+
+        & .text-description {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+
+            @media screen and (max-width: 768px) {
+                text-align: right !important;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            & .popular-categories {
+                overflow: scroll;
+
+                & .popular-categories-body {
+                    width: 500px;
+                }
+            }
+        }
+    }
 }
 
 .card-custom {

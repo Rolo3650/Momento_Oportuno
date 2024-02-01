@@ -1,0 +1,18 @@
+.search-one {
+
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @media screen and (max-width: 768px) {
+        display: none !important;
+    }
+
+}
+
+.search-two {
+
+    @media screen and (min-width: 768px) {
+        display: none !important;
+    }
+
+}
