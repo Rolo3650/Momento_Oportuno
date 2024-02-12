@@ -48,10 +48,10 @@ const Messages: React.FC<Props> = () => {
       setMessages(reversedMessages);
     };
 
-    const messagesIntervalId = setInterval(fetchMessages, 5000);
+    const messagesIntervalId = setInterval(fetchMessages, 10000);
     const chatsIntervalId = setInterval(() => {
       refetch();
-    }, 2000);
+    }, 10000);
 
     return () => {
       clearInterval(messagesIntervalId);
