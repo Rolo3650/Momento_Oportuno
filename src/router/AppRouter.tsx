@@ -25,6 +25,7 @@ import { Nosotros } from '../pages/info/Nosotros';
 import { Contactanos } from '../pages/info/Contactanos';
 import { Page404 } from '../pages/404/Index';
 import { EditAd } from '../pages/user/EditAd';
+import { Terminos } from '../pages/info/Terminos';
 
 const AppRouter = () => {
   return (
@@ -33,6 +34,7 @@ const AppRouter = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<Nosotros />} />
         <Route path="/contact-us" element={<Contactanos />} />
+        <Route path="/legal-terms" element={<Terminos />} />
 
         {/* Ads */}
         <Route path="/ads" element={<AdsSearch />} />

@@ -40,10 +40,23 @@ const Nosotros = () => {
                     Con más de 20 años de experiencia
                   </div>
                   <div className="pt-2">
-                    Arraigados en el medio impreso y ahora también en la
-                    plataforma web, hemos sido testigos de la evolución de la
-                    comunicación y hemos adaptado nuestras habilidades para
-                    prosperar en un mundo en constante cambio.
+                    El Momento Oportuno se destaca como la principal plataforma
+                    de comercio electrónico en la región, congregando a miles de
+                    compradores y vendedores para llevar a cabo transacciones de
+                    una amplia variedad de productos y servicios sin
+                    intermediarios. Arraigados en el medio impreso, hemos
+                    presenciado la evolución de la comunicación y adaptado
+                    nuestras habilidades para prosperar en un mundo en constante
+                    cambio.
+                  </div>
+                  <div className="title text text-font-georgia fs-1 fw-bold mt-3 mb-4">
+                    Nuestra misión
+                  </div>
+                  <div className="pt-2">
+                    Nuestra misión es democratizar el comercio, por lo que
+                    cualquier persona puede vender o comprar en El Momento
+                    Oportuno, ¡sólo necesitas conexión internet! Lo hacemos
+                    fácil, "Contigo, en cualquier lugar"
                   </div>
                   <div className="mt-4">
                     <FinesseButton
@@ -165,7 +178,7 @@ const Nosotros = () => {
                 Suscríbete y recibe novedades y ofertas
               </h2>
               <div className="d-flex justify-content-center pb-5">
-                <div className='p-3 rounded background background-color-7'>
+                <div className="p-3 rounded background background-color-7">
                   <TextFieldOne
                     color={{
                       variant: 'secondary',
