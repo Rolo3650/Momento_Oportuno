@@ -13,15 +13,9 @@ const AboutUsOne = () => {
                 <span className="info">Acerca de Nosotros</span>
               </div>
             </div>
-            <div className="info-title">¿Estás buscando algo en tu área?</div>
+            <div className="info-title">¿Buscas algo en tu región?</div>
             <div className="info-text">
-              ¿Estás buscando algo en tu región? ¡El Momento Oportuno está aquí
-              para ayudarte! Somos una empresa seria que se dedica a
-              proporcionar una plataforma confiable y fácil de usar para
-              publicar tus avisos de ocasión. Nuestro objetivo es funcionar como
-              un enlace entre un gran número de compradores interesados. Confía
-              en nosotros para encontrar lo que necesitas o vender lo que tienes
-              a la venta.
+            El Momento Oportuno te brinda una plataforma confiable y fácil para publicar tus anuncios. Confía en nosotros para encontrar lo que necesitas o vender con éxito.
             </div>
             <div className="info-row">
               <div className="fact">

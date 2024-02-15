@@ -120,7 +120,7 @@ const NavBarPhoneOne = () => {
           data-bs-dismiss="offcanvas"
           aria-label="Close"
         >
-          ¿Quienes somos?
+          ¿Quiénes somos?
         </Button>
         <hr className="m-0" />
         <Button

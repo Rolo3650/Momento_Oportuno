@@ -16,8 +16,9 @@ const HowItWorksOne = () => {
         ¿Cómo funciona?
       </span>
       <div className="text-center text text-font-georgia fs-2 mt-3 fw-bold text-color-5">
-        El Momento Oportuno <span className=" text text-color-9">te ayuda</span> a
-        encontrar lo que necesites
+        {/* El Momento Oportuno <span className=" text text-color-9">te ayuda</span> a
+        encontrar lo que necesites */}
+        Publicar un anuncio es fácil. Selecciona la categoría adecuada y realiza tu publicación de manera rápida y sencilla.
       </div>
       <div className="text text-color-10 mt-3 text-font-r-h-d">
         Te lo explicamos en 4 sencillos pasos
@@ -56,17 +57,9 @@ const HowItWorksOne = () => {
           step="¡Compra y recibe!"
         />
         <p className="text-center fs-5 fw-regular text text-font-helvetica">
-          Utiliza nuestro buscador para encontrar exactamente lo que necesitas.
-          Nuestro sistema realizará una búsqueda en nuestra base de datos que
-          incluye una amplia gama de opciones, como propiedades, automóviles,
-          mascotas y artículos de segunda mano. Encuentra lo que necesites,
-          contacta con el anunciante del aviso y concreten la compra sin la
-          intervención de un tercero. <br />
-          Si tienes dudas, puedes contactar a tu vendedor y una vez finalizada
-          la transacción, califica tu compra.
+        Utiliza nuestro buscador para encontrar exactamente lo que necesitas. Explora opciones como propiedades, automóviles, mascotas y artículos de segunda mano en nuestra amplia base de datos. 
           <br />
-          ¡Facilitamos todo el proceso para que encuentres lo que buscas de
-          manera rápida y sencilla!
+          Contacta directamente con el anunciante para concretar la compra sin intermediarios. Ante cualquier duda, comunícate con tu vendedor y, al finalizar la transacción, califica tu compra. Simplificamos el proceso para que encuentres lo que buscas de manera rápida y fácil.
         </p>
       </div>
     </div>

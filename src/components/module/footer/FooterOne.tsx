@@ -179,6 +179,9 @@ const FooterOne = () => {
               <Link to="/login-register?tab=register" className="list-link">
                 <div className="list-element text animated">Regístrate</div>
               </Link>
+              <Link to="/legal-terms" className="list-link">
+                <div className="list-element text animated">Términos Legales</div>
+              </Link>
             </div>
             <div className="categories sect">
               <h3 className="subtitle">Categorías</h3>
