@@ -1,10 +1,10 @@
 //import { useTheme } from '@mui/material/styles';
 import { IconButton } from '@mui/material';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import { Link } from 'react-router-dom';
 import { useInfiniteAds } from '../../../hooks';
+
 // import React from 'react';
 
 const FooterOne = () => {
@@ -86,10 +86,11 @@ const FooterOne = () => {
                   Siguenos en nuestras redes
                 </div>
                 <div className="socialmedia-buttons">
+                <a href="https://www.facebook.com/profile.php?id=61555843497605&locale=es_LA" target="_blank">
                   <IconButton
                     className="icon-button"
                     sx={{
-                      border: `3px solid #291b22`,
+                      border: `3px solid #FFFFFF`,
                       margin: '4px',
                       width: 40,
                       height: 40,
@@ -101,6 +102,7 @@ const FooterOne = () => {
                   >
                     <FacebookOutlinedIcon
                       sx={{
+                        color: '#FFFFFF',
                         transition: '.5s ease-in-out',
                         ':hover': {
                           color: `#FD542A`,
@@ -108,10 +110,25 @@ const FooterOne = () => {
                       }}
                     />
                   </IconButton>
+                  </a>
+                  <a href="https://www.tiktok.com/@elmomentooportuno?_t=8jxpNzRdmXm&_r=1" target="_blank">
                   <IconButton
                     className="icon-button"
                     sx={{
-                      border: `3px solid #291b22`,
+                      border: `3px solid #FFFFFF`,
+                      margin: '4px',
+                      width: 40,
+                      height: 40,
+                    }}
+                  >
+                  <i class="material-icons" style={{ color: '#FFFFFF' }}>tiktok</i>
+                  </IconButton>
+                  </a>
+                  <a href="https://www.youtube.com/@ElMomentoOportuno" target="_blank">
+                  <IconButton
+                    className="icon-button"
+                    sx={{
+                      border: `3px solid #FFFFFF`,
                       margin: '4px',
                       width: 40,
                       height: 40,
@@ -121,8 +138,9 @@ const FooterOne = () => {
                       },
                     }}
                   >
-                    <WhatsAppIcon
+                    <YouTubeIcon
                       sx={{
+                        color: '#FFFFFF',
                         transition: '.5s ease-in-out',
                         ':hover': {
                           color: `#FD542A`,
@@ -130,7 +148,8 @@ const FooterOne = () => {
                       }}
                     />
                   </IconButton>
-                  <IconButton
+                  </a>
+                  {/* <IconButton
                     className="icon-button"
                     sx={{
                       border: `3px solid #291b22`,
@@ -142,29 +161,7 @@ const FooterOne = () => {
                         border: `2px solid #FD542A`,
                       },
                     }}
-                  >
-                    <InstagramIcon
-                      sx={{
-                        transition: '.5s ease-in-out',
-                        ':hover': {
-                          color: `#FD542A`,
-                        },
-                      }}
-                    />
-                  </IconButton>
-                  <IconButton
-                    className="icon-button"
-                    sx={{
-                      border: `3px solid #291b22`,
-                      margin: '4px',
-                      width: 40,
-                      height: 40,
-                      transition: '.5s ease-in-out',
-                      ':hover': {
-                        border: `2px solid #FD542A`,
-                      },
-                    }}
-                  ></IconButton>
+                  ></IconButton> */}
                 </div>
               </div>
             </div>
