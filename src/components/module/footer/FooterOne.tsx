@@ -121,7 +121,7 @@ const FooterOne = () => {
                       height: 40,
                     }}
                   >
-                  <i class="material-icons" style={{ color: '#FFFFFF' }}>tiktok</i>
+                  <i className="material-icons" style={{ color: '#FFFFFF' }}>tiktok</i>
                   </IconButton>
                   </a>
                   <a href="https://www.youtube.com/@ElMomentoOportuno" target="_blank">
