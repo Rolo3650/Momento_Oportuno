@@ -1,0 +1,33 @@
+@media screen and (min-width: 700px) {
+    .frame-1 {
+        width: 600px;
+        height: 400px;
+    }
+}
+
+.player.player-lg .Text_module_bpxs_fontlg_c5f0df31,
+.player.player-md .Text_module_bpxs_fontlgc5f0df31,
+.player.player-sm .Text_module_bpxs_fontlgc5f0df31,
+.player.player-xl .Text_module_bpxs_fontlgc5f0df31,
+.player.player-xs .Text_module_bpxs_fontlgc5f0df31,
+.player.player-xxl .Text_module_bpxs_fontlg_c5f0df31 {
+    font-size: 16px;
+    display: none;
+}
+
+
+.Title_module_title_da7f0d22 .Title_module_headerda7f0d22 .Title_module_subtitle_da7f0d22 {
+    display: none;
+}
+
+
+.player.player-lg .Title_module_title_da7f0d22 .Title_module_portraitda7f0d22 img,
+.player.player-md .Title_module_titleda7f0d22 .Title_module_portraitda7f0d22 img,
+.player.player-sm .Title_module_titleda7f0d22 .Title_module_portraitda7f0d22 img,
+.player.player-xl .Title_module_titleda7f0d22 .Title_module_portraitda7f0d22 img,
+.player.player-xs .Title_module_titleda7f0d22 .Title_module_portraitda7f0d22 img,
+.player.player-xxl .Title_module_titleda7f0d22 .Title_module_portrait_da7f0d22 img {
+    width: 4.8em;
+    height: 4.8em;
+    display: none;
+}

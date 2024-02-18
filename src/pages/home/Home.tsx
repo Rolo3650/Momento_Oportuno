@@ -55,40 +55,6 @@ const Home = () => {
         </WellcomeThree>
         <PopularCategoriesTwo />
         <HowItWorksOne />
-        {chiapas?.pages?.length &&
-          chiapas?.pages?.length > 0 &&
-          chiapas?.pages[0]?.data?.length > 0 && (
-            <LastAdsOne
-              title="Anuncios en"
-              span="Chiapas"
-              products={chiapas?.pages[0]?.data.slice(0, 4)?.map((data) => {
-                const obj = { ...data };
-                if (!obj.imgs || obj.imgs.length === 0) {
-                  obj.imgs = [
-                    './img/noimagen.png',
-                  ];
-                }
-                return obj;
-              })}
-            />
-          )}
-        {yucatan?.pages?.length &&
-          yucatan?.pages?.length > 0 &&
-          yucatan?.pages[0]?.data?.length > 0 && (
-            <LastAdsOne
-              title="Anuncios en"
-              span="Yucatán"
-              products={yucatan?.pages[0]?.data.slice(0, 4)?.map((data) => {
-                const obj = { ...data };
-                if (!obj.imgs || obj.imgs.length === 0) {
-                  obj.imgs = [
-                    './img/noimagen.png',
-                  ];
-                }
-                return obj;
-              })}
-            />
-          )}
         {qroo?.pages?.length &&
           qroo?.pages?.length > 0 &&
           qroo?.pages[0]?.data?.length > 0 && (
@@ -98,14 +64,45 @@ const Home = () => {
               products={qroo?.pages[0]?.data.slice(0, 4)?.map((data) => {
                 const obj = { ...data };
                 if (!obj.imgs || obj.imgs.length === 0) {
-                  obj.imgs = [
-                    './img/noimagen.png',
-                  ];
+                  obj.imgs = ['./img/noimagen.png'];
                 }
                 return obj;
               })}
             />
           )}
+
+        {yucatan?.pages?.length &&
+          yucatan?.pages?.length > 0 &&
+          yucatan?.pages[0]?.data?.length > 0 && (
+            <LastAdsOne
+              title="Anuncios en"
+              span="Yucatán"
+              products={yucatan?.pages[0]?.data.slice(0, 4)?.map((data) => {
+                const obj = { ...data };
+                if (!obj.imgs || obj.imgs.length === 0) {
+                  obj.imgs = ['./img/noimagen.png'];
+                }
+                return obj;
+              })}
+            />
+          )}
+
+        {chiapas?.pages?.length &&
+          chiapas?.pages?.length > 0 &&
+          chiapas?.pages[0]?.data?.length > 0 && (
+            <LastAdsOne
+              title="Anuncios en"
+              span="Tabasco"
+              products={chiapas?.pages[0]?.data.slice(0, 4)?.map((data) => {
+                const obj = { ...data };
+                if (!obj.imgs || obj.imgs.length === 0) {
+                  obj.imgs = ['./img/noimagen.png'];
+                }
+                return obj;
+              })}
+            />
+          )}
+
         {campeche?.pages?.length &&
           campeche?.pages?.length > 0 &&
           campeche?.pages[0]?.data?.length > 0 && (
@@ -115,9 +112,7 @@ const Home = () => {
               products={campeche?.pages[0]?.data.slice(0, 4)?.map((data) => {
                 const obj = { ...data };
                 if (!obj.imgs || obj.imgs.length === 0) {
-                  obj.imgs = [
-                    './img/noimagen.png',
-                  ];
+                  obj.imgs = ['./img/noimagen.png'];
                 }
                 return obj;
               })}

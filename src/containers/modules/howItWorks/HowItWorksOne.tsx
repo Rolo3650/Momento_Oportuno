@@ -1,5 +1,6 @@
 // import React, { ReactNode } from 'react';
 
+import { Box } from '@mui/material';
 import { StepaOne } from '../../../components/howItWorks/StepOne';
 // import { useTheme } from '@mui/material/styles';
 
@@ -18,11 +19,30 @@ const HowItWorksOne = () => {
       <div className="text-center text text-font-georgia fs-2 mt-3 fw-bold text-color-5">
         {/* El Momento Oportuno <span className=" text text-color-9">te ayuda</span> a
         encontrar lo que necesites */}
-        Publicar un anuncio es fácil. Selecciona la categoría adecuada y realiza tu publicación de manera rápida y sencilla.
+        <Box maxWidth={'1020px'}>
+          Publicar un anuncio es fácil. Selecciona la categoría adecuada y
+          realiza tu publicación de manera rápida y sencilla.
+        </Box>
       </div>
       <div className="text text-color-10 mt-3 text-font-r-h-d">
         Te lo explicamos en 4 sencillos pasos
       </div>
+      <div
+        //  style="padding:56.25% 0 0 0;position:relative;"
+        style={{
+          position: 'relative',
+        }}
+      >
+        <iframe
+          src="https://player.vimeo.com/video/914086030?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+          // frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          // style="position:absolute;top:0;left:0;width:100%;height:100%;"
+          className='frame-1'
+          title="MOMENTO OPORTUNO"
+        ></iframe>
+      </div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
       <div className="w-100 steps d-flex justify-content-center flex-wrap mt-5">
         <StepaOne
           color={{
@@ -57,9 +77,14 @@ const HowItWorksOne = () => {
           step="¡Compra y recibe!"
         />
         <p className="text-center fs-5 fw-regular text text-font-helvetica">
-        Utiliza nuestro buscador para encontrar exactamente lo que necesitas. Explora opciones como propiedades, automóviles, mascotas y artículos de segunda mano en nuestra amplia base de datos. 
+          Utiliza nuestro buscador para encontrar exactamente lo que necesitas.
+          Explora opciones como propiedades, automóviles, mascotas y artículos
+          de segunda mano en nuestra amplia base de datos.
           <br />
-          Contacta directamente con el anunciante para concretar la compra sin intermediarios. Ante cualquier duda, comunícate con tu vendedor y, al finalizar la transacción, califica tu compra. Simplificamos el proceso para que encuentres lo que buscas de manera rápida y fácil.
+          Contacta directamente con el anunciante para concretar la compra sin
+          intermediarios. Ante cualquier duda, comunícate con tu vendedor y, al
+          finalizar la transacción, califica tu compra. Simplificamos el proceso
+          para que encuentres lo que buscas de manera rápida y fácil.
         </p>
       </div>
     </div>
