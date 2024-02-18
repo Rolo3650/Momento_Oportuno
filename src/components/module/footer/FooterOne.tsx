@@ -119,9 +119,16 @@ const FooterOne = () => {
                       margin: '4px',
                       width: 40,
                       height: 40,
+                      transition: '.5s ease-in-out',
+                      ':hover': {
+                        border: `2px solid #FD542A`,
+                      },
                     }}
                   >
-                  <i className="material-icons" style={{ color: '#FFFFFF' }}>tiktok</i>
+                  <i className="material-icons" style={{  color: '#FFFFFF',
+                        transition: '.5s ease-in-out',
+                        ':hover': {
+                          color: `#FD542A`,}  }}>tiktok</i>
                   </IconButton>
                   </a>
                   <a href="https://www.youtube.com/@ElMomentoOportuno" target="_blank">
