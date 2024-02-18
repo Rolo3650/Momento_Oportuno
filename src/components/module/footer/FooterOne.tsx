@@ -125,10 +125,7 @@ const FooterOne = () => {
                       },
                     }}
                   >
-                  <i className="material-icons" style={{  color: '#FFFFFF',
-                        transition: '.5s ease-in-out',
-                        ':hover': {
-                          color: `#FD542A`,}  }}>tiktok</i>
+                  <i className="material-icons" style={{ color: '#FFFFFF'  }}>tiktok</i>
                   </IconButton>
                   </a>
                   <a href="https://www.youtube.com/@ElMomentoOportuno" target="_blank">
