@@ -57,6 +57,7 @@ const MyOrders: React.FC<Props> = () => {
                   total={order?.total ?? 0}
                   name={order?.type ?? ''}
                   id={order?.id ?? 0}
+                  status={order?.status ?? ''}
                 />
               ))
             }

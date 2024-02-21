@@ -4,7 +4,7 @@ import { ActionsOne } from '../actions/ActionsOne';
 import { Ad, AdFavorite } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import { Button, FormControl, useTheme } from '@mui/material';
+import { Badge, Button, FormControl, useTheme } from '@mui/material';
 import { useForm } from '../../hooks';
 
 interface Props {
@@ -122,24 +122,40 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
           <span className="fw-bold badge bg-secondary text-color-5 text text-font-l-d fw-normal fs-6 py-2 mx-auto background background-color-14 px-3 mt-3">
             {product.category?.name}
           </span>
-          {product.status != 'published' && location.pathname.includes('/panel/list') && 
-            <div className="pt-4">
-            <FormControl fullWidth>
-              <Button
-                sx={{ textTransform: 'none' }}
-                onClick={(e) => {
-                  onClick();
-                  navigateTo('/panel/edit');
-                  e.stopPropagation();
-                }}
-                variant="contained"
-                color="secondary"
-              >
-                Editar Anuncio
-              </Button>
-            </FormControl>
-          </div>
-          }
+          {product.status == 'expired' &&
+            location.pathname.includes('/panel/list') && (
+              <>
+                <br />
+                <br />
+                <Badge sx={{
+                  backgroundColor: "#FF4444",
+                  borderRadius: 2,
+                  color: 'white',
+                  fontWeight: 'normal',
+                }} className='px-3 fs-6 text text-font-l-d'>Anuncio expirado</Badge>
+              </>
+            )}
+
+          {product.status != 'expired' &&
+            product.status != 'published' &&
+            location.pathname.includes('/panel/list') && (
+              <div className="pt-4">
+                <FormControl fullWidth>
+                  <Button
+                    sx={{ textTransform: 'none' }}
+                    onClick={(e) => {
+                      onClick();
+                      navigateTo('/panel/edit');
+                      e.stopPropagation();
+                    }}
+                    variant="contained"
+                    color="secondary"
+                  >
+                    Editar Anuncio
+                  </Button>
+                </FormControl>
+              </div>
+            )}
         </div>
       </div>
 

@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { LayoutThree } from '../../containers/layout/LayoutThree';
 import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
-import { ChatList, Input, MessageBox } from 'react-chat-elements';
+import { ChatList, MessageBox } from 'react-chat-elements';
 import SendIcon from '@mui/icons-material/Send';
 // import { useNavigate } from 'react-router-dom';
 import { useGetMyChats } from '../../hooks/querys/chats';
 import { Chat, ChatsServices, GetChatMessagesResponse } from '../../api/Chats';
 import { useAppContext } from '../../context';
 import Swal from 'sweetalert2';
+import { FormControl, TextField } from '@mui/material';
 
 interface Props {}
 
@@ -27,7 +28,7 @@ const Messages: React.FC<Props> = () => {
   const [messageText, setMessageText] = React.useState(''); // Estado para el texto del mensaje
   const [chatList, setChatList] = useState<ChatL[] | undefined>([]);
   const [messages, setMessages] = useState<GetChatMessagesResponse>([]);
-  const [intervals, setIntervals] = useState<NodeJS.Timeout[]>([])
+  const [intervals, setIntervals] = useState<NodeJS.Timeout[]>([]);
 
   const [counter, setCounter] = useState<number>(0);
 
@@ -60,7 +61,7 @@ const Messages: React.FC<Props> = () => {
   }, [currentChat, refetch, chats]);
 
   useEffect(() => {
-    intervals.map(interval => clearInterval(interval));
+    intervals.map((interval) => clearInterval(interval));
     const interval = setInterval(() => {
       console.log(messages);
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -72,7 +73,7 @@ const Messages: React.FC<Props> = () => {
       );
     }, 1000);
     setIntervals([...intervals, interval]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentChat, counter]);
 
   useEffect(() => {
@@ -96,7 +97,6 @@ const Messages: React.FC<Props> = () => {
   }, [chats]);
 
   const sendMessage = async () => {
-    console.log(currentChat);
     if (messageText.trim() === '') {
       return;
     }
@@ -105,12 +105,14 @@ const Messages: React.FC<Props> = () => {
       { message: messageText },
       currentChat ? currentChat?.id : 0
     ).catch(() => {
+      setMessageText('');
       Swal.fire('Error', 'Error al enviar el mensaje');
     });
 
     setMessageText('');
 
     setTimeout(() => {
+      setMessageText('');
       setCounter(counter + 1);
     }, 100);
   };
@@ -193,16 +195,18 @@ const Messages: React.FC<Props> = () => {
               : null}
           </div>
           <div className="chat-write-message">
-            <Input
-              maxHeight={50}
-              className="chat-message-input"
-              placeholder="Escribe tu mensaje aquí..."
-              multiline={true}
-              value={messageText}
-              onReset={() => setMessageText('')}
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              onChange={(e: any) => setMessageText(e.target.value)}
-            />
+            <FormControl fullWidth>
+              <TextField
+                className="mb-2"
+                placeholder="Escribe tu mensaje aquí..."
+                multiline={true}
+                maxRows={2}
+                value={messageText}
+                onReset={() => setMessageText('')}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                onChange={(e: any) => setMessageText(e.target.value)}
+              />
+            </FormControl>
             <GeneralButton
               title="Enviar"
               colorPrimary="primary"

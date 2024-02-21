@@ -33,10 +33,20 @@ const ActionsTwo: React.FC<Props> = ({ product, fav }) => {
   const onClickCompare = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     // SetCompare(!compare);
-    await navigator.clipboard.writeText(
-      'https://momento-oportuno.vercel.app/ad/' +
-        (state?.adSingleState?.ad?.id ?? 0)
-    );
+    try {
+      await navigator.share({
+        title: 'Título del contenido compartido',
+        text: 'Descripción del contenido compartido',
+        url: 'https://tudominio.com', // URL del contenido a compartir
+      });
+      console.log('Contenido compartido con éxito');
+    } catch (error) {
+      console.error('Error al compartir:', error);
+    }
+    // await navigator.clipboard.writeText(
+    //   'https://momento-oportuno.vercel.app/ad/' +
+    //     (state?.adSingleState?.ad?.id ?? 0)
+    // );
     setOpenToast(true);
   };
 

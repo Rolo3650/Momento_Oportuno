@@ -95,7 +95,15 @@ const UserMinOne = () => {
             endIcon={<ArrowForward />}
           />
         </div>
-      ) : null}
+      ) : <div className="d-flex justify-content-center">
+      <GeneralButton
+        title="Iniciar Sesión"
+        colorPrimary="secondary"
+        hoverColor="secondary"
+        onClick={() => navigateTo('/login-register?tab=login')}
+        endIcon={<ArrowForward />}
+      />
+    </div>}
     </div>
   );
 };

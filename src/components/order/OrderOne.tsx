@@ -7,9 +7,10 @@ interface Props {
   desc: string;
   total: number;
   id: number;
+  status: string;
 }
 
-const OrderOne: React.FC<Props> = ({ name, desc, total, id }) => {
+const OrderOne: React.FC<Props> = ({ name, desc, total, id, status }) => {
   const navigateTo = useNavigate();
   return (
     <div className={`order order-one p-3`}>
@@ -26,6 +27,12 @@ const OrderOne: React.FC<Props> = ({ name, desc, total, id }) => {
           .replace('listing', 'anuncio')
           .replace('directory', 'directorio')
           .replace('microsite', 'micrositio')}
+      </div>
+      <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+        Estatus
+      </div>
+      <div className="fw-bold fs-5 text text-color-8 text-font-l-d subtitle mb-3 ">
+        {status?.replace('paid', 'Pagado').replace('pending', 'Pendiente')}
       </div>
 
       <div className="price text text-color-primary fw-bold fs-4">
