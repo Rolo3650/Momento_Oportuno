@@ -24,9 +24,7 @@ const HowItWorksOne = () => {
           realiza tu publicación de manera rápida y sencilla.
         </Box>
       </div>
-      <div className="text text-color-10 mt-3 text-font-r-h-d">
-        Te lo explicamos en 4 sencillos pasos
-      </div>
+
       <div
         //  style="padding:56.25% 0 0 0;position:relative;"
         style={{
@@ -34,15 +32,19 @@ const HowItWorksOne = () => {
         }}
       >
         <iframe
-          src="https://player.vimeo.com/video/914086030?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+          src="https://player.vimeo.com/video/914086030?title=0&byline=0&portrait=0&sidebar=0"
           // frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
+          allow="autoplay; fullscreen;"
           // style="position:absolute;top:0;left:0;width:100%;height:100%;"
           className='frame-1'
           title="MOMENTO OPORTUNO"
         ></iframe>
       </div>
       <script src="https://player.vimeo.com/api/player.js"></script>
+      <div className="text text-color-10 mt-3 text-font-r-h-d">
+        Te lo explicamos en 4 sencillos pasos
+      </div>
+
       <div className="w-100 steps d-flex justify-content-center flex-wrap mt-5">
         <StepaOne
           color={{
