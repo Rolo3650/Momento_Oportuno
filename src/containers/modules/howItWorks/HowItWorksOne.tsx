@@ -32,7 +32,7 @@ const HowItWorksOne = () => {
         }}
       >
         <iframe
-          src="https://player.vimeo.com/video/914086030?title=0&byline=0&portrait=0&sidebar=0"
+          src="https://www.youtube.com/embed/e6vTGtWBrdY?si=s-XoBKcSPWDG5Wys&amp;controls=0"
           // frameborder="0"
           allow="autoplay; fullscreen;"
           // style="position:absolute;top:0;left:0;width:100%;height:100%;"
