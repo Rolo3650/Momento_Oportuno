@@ -20,7 +20,7 @@ const StepThree: React.FC<Props> = () => {
   const theme = useTheme();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const maxTamano = 1048576 * 20;
+    const maxTamano = 1048576 * 5;
     if (e.target.files?.length) {
       let files: File[] = [];
       if (newAdForm?.imgs?.length) {
