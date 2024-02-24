@@ -3,7 +3,7 @@ const AboutUsOne = () => {
     // <div className="w-100 d-flex align-items-center">
       <div className="container mx-auto">
         <div className="container-img">
-          <img className="img" src="./img/aboutUs/aboutUs1.jpeg" />
+          <img className="img" src="./img/aboutUs/5167881-01.png" />
         </div>
 
         <div className="d-flex align-items-center">

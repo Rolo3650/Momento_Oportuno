@@ -133,6 +133,7 @@ const Contactanos = () => {
                 ></IconButton>
               </div>
             </div>
+            <img className='w-100 mt-3' src="./img/aboutUs/5167881-05.png" alt="" />
           </div>
           <div className="sect1_elmnt2">
             <div className="subtitle">Envíanos un mensaje</div>

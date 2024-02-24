@@ -20,6 +20,7 @@ const StepThree: React.FC<Props> = () => {
   const theme = useTheme();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const maxTamano = 1048576 * 20;
     if (e.target.files?.length) {
       let files: File[] = [];
       if (newAdForm?.imgs?.length) {
@@ -27,7 +28,15 @@ const StepThree: React.FC<Props> = () => {
       }
       for (let i = 0; i < e.target.files.length; i++) {
         if (files?.length < newAdForm.extraImgs.quantity) {
-          files.push(e.target.files[i]);
+          if (e.target.files[i].size > maxTamano) {
+            Swal.fire(
+              'Archivo demasiado grande',
+              'El peso del archivo supera el límite de 20 MB',
+              'warning'
+            );
+          } else {
+            files.push(e.target.files[i]);
+          }
         } else {
           Swal.fire(
             '¿Necesitas más imágenes?',
@@ -188,7 +197,7 @@ const StepThree: React.FC<Props> = () => {
               type="file"
               className="d-none"
               multiple
-              accept="image/*"
+              accept=".jpg, .jpeg, .png, .webp"
               onChange={onChange}
             />
           </Button>

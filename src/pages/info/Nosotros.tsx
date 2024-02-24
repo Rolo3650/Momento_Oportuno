@@ -72,7 +72,7 @@ const Nosotros = () => {
               </div>
               <img
                 className="w-100 rounded"
-                src="/img/aboutUs/about_1.jpg"
+                src="/img/aboutUs/5167881-10.png"
                 alt=""
               />
             </div>
