@@ -6,10 +6,17 @@ import { ChatList, MessageBox } from 'react-chat-elements';
 import SendIcon from '@mui/icons-material/Send';
 // import { useNavigate } from 'react-router-dom';
 import { useGetMyChats } from '../../hooks/querys/chats';
-import { Chat, ChatsServices, GetChatMessagesResponse } from '../../api/Chats';
+import {
+  BaseChatMessage,
+  Chat,
+  ChatsServices,
+  GetChatMessagesResponse,
+} from '../../api/Chats';
 import { useAppContext } from '../../context';
 import Swal from 'sweetalert2';
 import { FormControl, TextField } from '@mui/material';
+import Pusher from 'pusher-js';
+import { config } from '../../utils';
 
 interface Props {}
 
@@ -28,53 +35,90 @@ const Messages: React.FC<Props> = () => {
   const [messageText, setMessageText] = React.useState(''); // Estado para el texto del mensaje
   const [chatList, setChatList] = useState<ChatL[] | undefined>([]);
   const [messages, setMessages] = useState<GetChatMessagesResponse>([]);
-  const [intervals, setIntervals] = useState<NodeJS.Timeout[]>([]);
+  const [newMessage, setNewMessage] = useState<BaseChatMessage>({
+    id: 0,
+    chat_id: 0,
+    created_at: new Date(),
+    message: '',
+    read: false,
+    updated_at: new Date(),
+    user_id: 0,
+  });
+  const [newMessageChat, setNewMessageChat] = useState<Partial<Chat>>({});
 
   const [counter, setCounter] = useState<number>(0);
 
-  const { data: chats, isLoading, isSuccess, refetch } = useGetMyChats();
+  const { data: chats, isLoading, isSuccess } = useGetMyChats();
 
   const [currentChat, setCurrentChat] = useState<Chat | null | undefined>(null);
 
-  // const { data: messages } = useGetChatMessages(
-  //   currentChat ? currentChat.id : chats?.data[0].id
-  // );
-
   useEffect(() => {
-    const fetchMessages = async () => {
-      const messagesData = await ChatsServices.getMessages(
-        currentChat && currentChat.id && chats ? chats.data[0].id : 0
-      );
-      const reversedMessages = messagesData.reverse();
-      setMessages(reversedMessages);
-    };
-
-    const messagesIntervalId = setInterval(fetchMessages, 10000);
-    const chatsIntervalId = setInterval(() => {
-      refetch();
-    }, 10000);
-
-    return () => {
-      clearInterval(messagesIntervalId);
-      clearInterval(chatsIntervalId);
-    };
-  }, [currentChat, refetch, chats]);
-
-  useEffect(() => {
-    intervals.map((interval) => clearInterval(interval));
-    const interval = setInterval(() => {
-      console.log(messages);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-
-      ChatsServices.getMessages(currentChat ? currentChat.id : 0).then(
-        (data) => {
-          setMessages(data.reverse());
-        }
-      );
-    }, 1000);
-    setIntervals([...intervals, interval]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    ChatsServices.getMessages(currentChat ? currentChat.id : 0).then((data) => {
+      setMessages(data.reverse());
+    });
   }, [currentChat, counter]);
+
+  useEffect(() => {
+    if (currentChat?.id) {
+      const pusher = new Pusher(config.PUSHER.key, {
+        cluster: config.PUSHER.cluster,
+      });
+
+      const channel = pusher.subscribe(`chat.${currentChat.id}`);
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      channel.bind('new-message', (data: { message: any }) => {
+        setNewMessage(data.message);
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentChat]);
+
+  useEffect(() => {
+    if (state.userState?.user.id) {
+      const pusher = new Pusher(config.PUSHER.key, {
+        cluster: config.PUSHER.cluster,
+      });
+
+      const channel = pusher.subscribe(
+        `chats.user.${state.userState?.user.id}`
+      );
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      channel.bind('new-message', (data: any) => {
+        console.log(data);
+        if (data?.chat?.id == '') {
+          setNewMessageChat(data?.chat);
+        }
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.userState?.user]);
+
+  useEffect(() => {
+    if (newMessageChat.id && Array.isArray(chatList)) {
+      const chatListaArray = chatList;
+
+      chatList.forEach((chat) => {
+        if (chat.id == newMessageChat.id) {
+          chat.unread = (chat.unread ?? 0) + 1;
+        }
+      });
+      setChatList(chatListaArray);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newMessageChat]);
+
+  useEffect(() => {
+    if (newMessage.id && Array.isArray(messages)) {
+      if (newMessage.id != messages[messages.length - 1].id) {
+        const new_messages = [...messages];
+        new_messages.push(newMessage);
+        setMessages(new_messages);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newMessage]);
 
   useEffect(() => {
     if (chats?.data.length) {
@@ -86,14 +130,21 @@ const Messages: React.FC<Props> = () => {
             avatar: chat.listing.thumbnail
               ? chat.listing.thumbnail
               : '/svg/icons/usr_frm.svg',
-            alt: chat.seller.name,
-            title: chat.seller.name,
+            alt:
+              chat.buyer_id == state.userState?.user.id
+                ? chat.seller.name
+                : chat.buyer.name,
+            title:
+              chat.buyer_id == state.userState?.user.id
+                ? chat.seller.name
+                : chat.buyer.name,
             subtitle: chat.last_message.message,
             date: chat.last_message.created_at,
           };
         })
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chats]);
 
   const sendMessage = async () => {
@@ -150,7 +201,11 @@ const Messages: React.FC<Props> = () => {
         </div>
         <div className="chat-conversation-container">
           <div className="d-flex align-items-center justify-content-between">
-            <div className="chat-list-title">{currentChat?.seller?.name}</div>
+            <div className="chat-list-title">
+              {currentChat?.buyer_id == state.userState?.user.id
+                ? currentChat?.seller.name
+                : currentChat?.buyer.name}
+            </div>
             {/* <GeneralButton
               onClick={() => navigateTo('/user')}
               title="Ver Perfil"
@@ -175,9 +230,12 @@ const Messages: React.FC<Props> = () => {
                       title={
                         msg.user_id == state.userState?.user.id
                           ? state.userState.user.name
-                          : currentChat
-                          ? currentChat.seller.name
-                          : 'Vendedor'
+                          : `${
+                              currentChat &&
+                              currentChat.seller.id == msg.user_id
+                                ? currentChat.seller.name
+                                : currentChat?.buyer.name
+                            }`
                       }
                       text={msg.message}
                       date={msg.created_at}

@@ -42,4 +42,10 @@ export const config = {
       'pk_test_51O3l3TKsMUZdYHBYf1tQxzYgxuI3AnwaHApYA8GFH9QR0mFkq222o9ISceK4Ucg1nQqZt9nkr4wr5Ryn1LBXwKRs00m40i9780',
   },
   JWT_SECRET: import.meta.env.VITE_JWT_SECRET,
+  PUSHER: {
+    appId: '1761949',
+    key: '3a2e0e341fb8de7f79c5',
+    secret: 'af3457dda806b8934e29',
+    cluster: 'us3',
+  },
 } as const;

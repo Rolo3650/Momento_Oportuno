@@ -52,6 +52,7 @@ const AppRouter = () => {
         <Route path="/panel/Messages" element={<Messages />} />
         <Route path="/panel/my-orders" element={<MyOrders />} />
         <Route path="/directories/" element={<LocalDirectories />} />
+        <Route path="/directories/:id" element={<LocalDirectories />} />
         <Route path="/panel/directories" element={<Directories />} />
         <Route path="/panel/directories/create" element={<AddNewDirectory />} />
         <Route path="/micrositios/create" element={<CreateMicrositio />} />

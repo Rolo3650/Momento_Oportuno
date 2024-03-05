@@ -1,8 +1,9 @@
 import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { EmptyBoxOne } from '../../components/module/box/EmptyBoxOne';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DirectoriesServices, Directorio } from '../../api';
 import { DirectorioCardOne } from '../../components/directories/DirectorioCardOne';
+import { useParams } from 'react-router';
 // import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
 // import ArrowForward from '@mui/icons-material/ArrowForward';
 // import { useNavigate } from 'react-router-dom';
@@ -11,10 +12,25 @@ interface Props {}
 
 const LocalDirectories: React.FC<Props> = () => {
   const [directories, setDirectories] = useState<Directorio[]>([]);
+  const { id } = useParams();
   // const navigateTo = useNavigate();
-  DirectoriesServices.getAllDirectorios().then((res) => {
-    setDirectories(res.data);
-  });
+
+  useEffect(() => {
+    let state = '0';
+    if (id == 'directorios-campeche') {
+      state = '1';
+    } else if (id == 'directorios-chiapas') {
+      state = '4';
+    } else if (id == 'directorios-quintana-roo') {
+      state = '3';
+    } else if (id == 'directorios-yucatán') {
+      state = '2';
+    }
+    DirectoriesServices.getAllDirectorios(state ?? undefined).then((res) => {
+      setDirectories(res.data);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
   return (
     <LayoutOne>
       <div

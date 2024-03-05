@@ -79,7 +79,29 @@ const NavBarDesktopOne = () => {
               </MenuItem>
             </MenuOne>
           </MenuItem>
-          <MenuItem onClick={() => navigateTo('/directories/')}>Directorios Locales</MenuItem>
+          <MenuItem>
+            <MenuOne
+              title="Directorios Locales"
+              color="#000"
+              position={{
+                vertical: 50,
+                horizontal: 'center',
+              }}
+              anchor={{
+                vertical: 'top',
+                horizontal: 225,
+              }}
+              icon={{
+                link: '/svg/icons/menu_row_right.svg',
+                name: 'menu-row-right',
+              }}
+            >
+              <MenuItem onClick={() => navigateTo('/directories/directorios-campeche')}>Campeche</MenuItem>
+              <MenuItem onClick={() => navigateTo('/directories/directorios-quintanaroo')}>Quintana Roo</MenuItem>
+              <MenuItem onClick={() => navigateTo('/directories/directorios-yucatán')}>Yucatán</MenuItem>
+              <MenuItem onClick={() => navigateTo('/directories/directorios-campeche')}>Campeche</MenuItem>
+            </MenuOne>
+          </MenuItem>
         </MenuOne>
       </div>
       <div className="desktop">

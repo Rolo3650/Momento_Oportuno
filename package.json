@@ -28,6 +28,7 @@
     "jwt-encode": "^1.0.1",
     "moment": "^2.29.4",
     "mui": "^0.0.1",
+    "pusher-js": "^8.4.0-rc2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-chat-elements": "^12.0.10",
