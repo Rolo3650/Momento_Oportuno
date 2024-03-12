@@ -1,7 +1,7 @@
 import {
+  Checkbox,
   FormControl,
   FormControlLabel,
-  Radio,
   RadioGroup,
 } from '@mui/material';
 import React, { useState } from 'react';
@@ -43,19 +43,21 @@ const RadioGroupOne: React.FC<Props> = ({
         }}
         value={value ?? innnerValue}
       >
-        {options?.map((option) => (
-          <FormControlLabel
-            key={option.value}
-            value={option.value}
-            control={<Radio color="secondary" />}
-            label={option.label}
-            sx={{
-              '& .MuiTypography-root': {
-                fontFamily: '"Lexend Deca", sans-serif !important',
-              },
-            }}
-          />
-        ))}
+        {options?.map((option) => {
+          return (
+            <FormControlLabel
+              key={option.value}
+              value={option.value}
+              control={<Checkbox color="secondary" />}
+              label={option.label}
+              sx={{
+                '& .MuiTypography-root': {
+                  fontFamily: '"Lexend Deca", sans-serif !important',
+                },
+              }}
+            />
+          );
+        })}
       </RadioGroup>
     </FormControl>
   );

@@ -11,10 +11,11 @@ import { ActionsTwo } from '../../components/actions/ActionsTwo';
 import { ProductOne } from '../../components/product/ProductOne';
 import Carousel from 'react-bootstrap/Carousel';
 import { useMyFavorites } from '../../hooks';
+import { Backdrop, CircularProgress } from '@mui/material';
 
 const AdSingle = () => {
   const { param_ad } = useParams();
-  const { data, error } = useAdById(param_ad ?? 0);
+  const { data, error, isLoading } = useAdById(param_ad ?? 0);
   const { setSingleAd, adSingleState } = useAds();
   const { data: ads } = useInfiniteAds();
   const { data: favorites } = useMyFavorites();
@@ -36,56 +37,68 @@ const AdSingle = () => {
 
   return (
     <LayoutOne>
-      <div className="ad-page ad-page-one">
-        <div>
-          {adSingleState.ad?.media && (
-            <CarouselTwo
-              imgs={(() => {
-                const obj = { ...adSingleState.ad };
-                if (!obj.media || obj.media.length === 0) {
-                  obj.imgs = ['/img/noimagen.png'];
-                } else {
-                  if (obj.media)
-                    obj.imgs = obj.media.map((img) => img.original_url);
-                }
-                return obj.imgs ?? [];
-              })()}
-            />
-          )}
-        </div>
-        <BodyOne>
-          <ProductDescriptionOne />
-          <div style={{maxWidth: "330px"}}>
-            <UserMinOne />
-            <div className="my-4 d-flex justify-content-center product-decription product-decription-one card-custom p-3">
-              <ActionsTwo
-                product={adSingleState?.ad}
-                fav={favorites?.data.some(
-                  (fav) => fav.id === adSingleState?.ad?.id
-                )}
+      {isLoading && (
+        <>
+          <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={isLoading}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        </>
+      )}
+      {!isLoading && (
+        <div className="ad-page ad-page-one">
+          <div>
+            {adSingleState.ad?.media && (
+              <CarouselTwo
+                imgs={(() => {
+                  const obj = { ...adSingleState.ad };
+                  if (!obj.media || obj.media.length === 0) {
+                    obj.imgs = ['/img/noimagen.png'];
+                  } else {
+                    if (obj.media)
+                      obj.imgs = obj.media.map((img) => img.original_url);
+                  }
+                  return obj.imgs ?? [];
+                })()}
               />
-            </div>
-            <Carousel>
-              {ads?.pages[0]?.data?.slice(0, 4)?.map((product) => {
-                const obj = { ...product };
-                if (!obj.media || obj.media.length === 0) {
-                  obj.imgs = ['/img/noimagen.png'];
-                } else {
-                  obj.imgs = obj.media.map((img) => img.original_url);
-                }
-                // console.log(obj);
-                return (
-                  <Carousel.Item>
-                    <div className="p-3">
-                      <ProductOne product={obj} />
-                    </div>
-                  </Carousel.Item>
-                );
-              })}
-            </Carousel>
+            )}
           </div>
-        </BodyOne>
-      </div>
+          <BodyOne>
+            <ProductDescriptionOne />
+            <div style={{ maxWidth: '330px' }}>
+              <UserMinOne />
+              <div className="my-4 d-flex justify-content-center product-decription product-decription-one card-custom p-3">
+                <ActionsTwo
+                  product={adSingleState?.ad}
+                  fav={favorites?.data.some(
+                    (fav) => fav.id === adSingleState?.ad?.id
+                  )}
+                />
+              </div>
+              <Carousel>
+                {ads?.pages[0]?.data?.slice(0, 4)?.map((product) => {
+                  const obj = { ...product };
+                  if (!obj.media || obj.media.length === 0) {
+                    obj.imgs = ['/img/noimagen.png'];
+                  } else {
+                    obj.imgs = obj.media.map((img) => img.original_url);
+                  }
+                  // console.log(obj);
+                  return (
+                    <Carousel.Item>
+                      <div className="p-3">
+                        <ProductOne product={obj} />
+                      </div>
+                    </Carousel.Item>
+                  );
+                })}
+              </Carousel>
+            </div>
+          </BodyOne>
+        </div>
+      )}
     </LayoutOne>
   );
 };

@@ -14,7 +14,7 @@ import { useForm } from '../../../../../hooks';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AddVideo from './AddVideo';
-import { DropdownTwo } from '../../../../inputs/dropdown/DropdownTwo';
+import { DropdownFour } from '../../../../inputs/dropdown/DropdownFour';
 
 interface Props {}
 
@@ -32,13 +32,48 @@ const Addons: React.FC<Props> = () => {
         </div>
       </div>
       <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-        Selecciona los complementos para tu publicación
+        Aumenta el rendimiento de tu anuncio con los complementos opcionales
         <span className="text text-color-secondary">*</span>
       </div>
       <div className="mt-3">
+        <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+          <Checkbox
+            color="secondary"
+            onChange={(e) => {
+              setNewAdForm({ feature: e.target.checked });
+            }}
+            checked={newAdForm.feature}
+          />
+          <Checkbox
+            color="secondary"
+            icon={<StarBorderIcon color="secondary" />}
+            checkedIcon={<StarIcon color="primary" />}
+            onChange={(e) => {
+              setNewAdForm({ feature: e.target.checked });
+            }}
+            checked={newAdForm.feature}
+          />
+          Destacado <span className="text text-color-secondary">+$100</span>{' '}
+          <span className="text text-color-10">
+            Destaca tu anuncio entre nuestras publicaciones más recientes.
+          </span>
+        </div>
+        <AddVideo />
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
             <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+              <Checkbox
+                color="secondary"
+                onChange={(e) => {
+                  setNewAdForm({
+                    print: {
+                      ...newAdForm.print,
+                      set: e.target.checked,
+                    },
+                  });
+                }}
+                checked={newAdForm.print.set}
+              />
               <Checkbox
                 color="secondary"
                 icon={<PrintOutlinedIcon color="secondary" />}
@@ -51,7 +86,7 @@ const Addons: React.FC<Props> = () => {
                     },
                   });
                 }}
-                value={newAdForm.print.set}
+                checked={newAdForm.print.set}
               />
               Impreso
               {newAdForm?.print.set && (
@@ -106,7 +141,7 @@ const Addons: React.FC<Props> = () => {
                     },
                   ]}
                 /> */}
-                    <DropdownTwo
+                    <DropdownFour
                       option={{
                         label:
                           newAdForm?.print.value_label ??
@@ -235,7 +270,7 @@ const Addons: React.FC<Props> = () => {
                     },
                   ]}
                 /> */}
-                    <DropdownTwo
+                    <DropdownFour
                       option={{
                         label:
                           newAdForm?.print.size_label ??
@@ -315,6 +350,9 @@ const Addons: React.FC<Props> = () => {
                       }}
                     />
                   </div>
+                  Publica tu anuncio en el medio impreso de tu elección por 7
+                  días ( Las publicaciones impresas únicamente se realizan de
+                  lunes a viernes)
                 </>
               )}
             </div>
@@ -418,16 +456,11 @@ const Addons: React.FC<Props> = () => {
         <div className="fw-bold text text-color-5 text-font-l-d subtitle">
           <Checkbox
             color="secondary"
-            icon={<StarBorderIcon color="secondary" />}
-            checkedIcon={<StarIcon color="primary" />}
             onChange={(e) => {
-              setNewAdForm({ feature: e.target.checked });
+              setNewAdForm({ socialMedia: e.target.checked });
             }}
-            value={newAdForm.feature}
+            checked={newAdForm.socialMedia}
           />
-          Destacado +$100
-        </div>
-        <div className="fw-bold text text-color-5 text-font-l-d subtitle">
           <Checkbox
             color="secondary"
             icon={<ScreenShareOutlined color="secondary" />}
@@ -435,9 +468,13 @@ const Addons: React.FC<Props> = () => {
             onChange={(e) => {
               setNewAdForm({ socialMedia: e.target.checked });
             }}
-            value={newAdForm.socialMedia}
+            checked={newAdForm.socialMedia}
           />
-          Redes Sociales +$100
+          Redes Sociales{' '}
+          <span className="text text-color-secondary">+$100</span>{' '}
+          <span className="text text-color-10">
+            Anúnciate en nuestras redes sociales Facebook, Instagram
+          </span>
         </div>
         {/* <div className="fw-bold text text-color-5 text-font-l-d subtitle">
           <Checkbox
@@ -497,8 +534,19 @@ const Addons: React.FC<Props> = () => {
             </div>
           )}
         </div> */}
-        <AddVideo />
         <div className="fw-bold text text-color-5 text-font-l-d subtitle">
+          <Checkbox
+            color="secondary"
+            onChange={(e) => {
+              setNewAdForm({
+                extraStates: {
+                  ...newAdForm.extraStates,
+                  set: e.target.checked,
+                },
+              });
+            }}
+            checked={newAdForm.extraStates.set}
+          />
           <Checkbox
             color="secondary"
             icon={<LocationOnOutlinedIcon color="secondary" />}
@@ -511,9 +559,10 @@ const Addons: React.FC<Props> = () => {
                 },
               });
             }}
-            value={newAdForm?.extraStates.set}
+            checked={newAdForm.extraStates.set}
           />
-          Multi Estado
+          Aumenta la visibilidad con opción de publicar tu anuncio en otros
+          estados
           {newAdForm?.extraStates.set && (
             <div className="ms-5">
               <RadioGroupOne

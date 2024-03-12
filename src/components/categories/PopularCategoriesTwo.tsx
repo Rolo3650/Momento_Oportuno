@@ -17,7 +17,7 @@ const PopularCategoriesTwo = () => {
         className='mb-3'
       >
         <p className="text-center text text-color-7 text-font-georgia fs-2 fw-bold mb-0 ">
-          Sugerencias para ti...
+          Categorías
         </p>
       </Box>
       <Box

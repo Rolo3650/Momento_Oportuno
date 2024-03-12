@@ -145,6 +145,14 @@ const StepThree: React.FC<Props> = () => {
           />
         </div>
       </div>
+      <div className='mt-4'>
+        <p className='text text-font-l-d'>
+          Formatos aceptados: .jpg, .jpeg, .png, .webp
+        </p>
+        <p className='text text-font-l-d'>
+          Tamaño aceptado: Máximo 5 MB
+        </p>
+      </div>
       <div className="imgs">
         {selectedImages?.length > 0 &&
           selectedImages.map((image, index) => (

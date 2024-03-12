@@ -1,6 +1,6 @@
 import React from 'react';
 import { CarouselOne } from '../carousel/CarouselOne';
-import { ActionsOne } from '../actions/ActionsOne';
+// import { ActionsOne } from '../actions/ActionsOne';
 import { Ad, AdFavorite } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
@@ -12,7 +12,7 @@ interface Props {
   fav?: boolean | undefined;
 }
 
-const ProductOne: React.FC<Props> = ({ product, fav }) => {
+const ProductOne: React.FC<Props> = ({ product }) => {
   const navigateTo = useNavigate();
   const theme = useTheme();
   const { setNewAdForm } = useForm();
@@ -159,10 +159,10 @@ const ProductOne: React.FC<Props> = ({ product, fav }) => {
         </div>
       </div>
 
-      <div className="d-flex justify-content-between align-items-center actions">
+      {/* <div className="d-flex justify-content-between align-items-center actions">
         <ActionsOne product={product} fav={fav} />
         <div className="text text-font-l-d views">{product?.views} Vistas</div>
-      </div>
+      </div> */}
     </div>
   );
 };

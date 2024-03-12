@@ -96,10 +96,10 @@ const StepFour = () => {
               <div className="name text text-font-l-d fw-bold fs-5 pb-3 text-color-5">
                 {data.name}
               </div>
-              <div className="desc text text-rubik fw-bold pb-2">
+              <div className="desc text text-rubik pb-2 text-color-4">
                 {data.description}
               </div>
-              <div className="desc text text-rubik fw-bold pb-2">
+              <div className="desc text text-rubik fw-bold pb-2 text-color-secondary">
                 $
                 {data.price.toLocaleString('es-MX', {
                   minimumFractionDigits: 2,
@@ -217,7 +217,7 @@ const StepFour = () => {
           ))}
       </div>
       <div className="mt-5 fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-        Selecciona la fecha de publicación
+        Selecciona la fecha de salida
         <span className="text text-color-secondary">*</span>
       </div>
       <div className="">

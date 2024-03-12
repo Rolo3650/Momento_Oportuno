@@ -13,6 +13,7 @@ import { WellcomeThree } from '../../containers/modules/wellcome/WellcomeThree';
 import { PopularCategoriesTwo } from '../../components/categories/PopularCategoriesTwo';
 import { SearchOne } from '../../components/search/SearchOne';
 import { SearchTwo } from '../../components/search/SearchTwo';
+import { HowItWorksTwo } from '../../containers/modules/howItWorks/HowItWorksTwo';
 // import { useEffect } from 'react';
 // import { useAppContext } from '../../context';
 
@@ -54,7 +55,8 @@ const Home = () => {
           <CardThree />
         </WellcomeThree>
         <PopularCategoriesTwo />
-        <HowItWorksOne />
+        <br />
+        <br />
         {qroo?.pages?.length &&
           qroo?.pages?.length > 0 &&
           qroo?.pages[0]?.data?.length > 0 && (
@@ -118,6 +120,8 @@ const Home = () => {
               })}
             />
           )}
+        <HowItWorksOne />
+        <HowItWorksTwo />
         <AboutUsOne />
       </LayoutOne>
     </>

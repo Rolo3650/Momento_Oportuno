@@ -21,6 +21,18 @@ const AddVideo: React.FC<Props> = () => {
     <div className="fw-bold text text-color-5 text-font-l-d subtitle">
       <Checkbox
         color="secondary"
+        onChange={(e) => {
+          setNewAdForm({
+            extraVideo: {
+              ...newAdForm.extraVideo,
+              set: e.target.checked,
+            },
+          });
+        }}
+        checked={newAdForm.extraVideo.set}
+      />
+      <Checkbox
+        color="secondary"
         icon={<VideocamOutlinedIcon color="secondary" />}
         checkedIcon={<VideocamIcon color="primary" />}
         onChange={(e) => {
@@ -31,9 +43,9 @@ const AddVideo: React.FC<Props> = () => {
             },
           });
         }}
-        value={newAdForm.extraVideo}
+        checked={newAdForm.extraVideo.set}
       />
-      Agregar Video +$100
+      Agregar Video <span className="text text-color-secondary">+$100</span>{' '}
       {newAdForm.extraVideo.set && (
         <>
           {/* <div className="align-items-center d-flex fw-bold text text-color-5 text-font-rubik subtitle">
@@ -63,7 +75,7 @@ const AddVideo: React.FC<Props> = () => {
                     value: 'file',
                   },
                   {
-                    label: 'Subir una liga',
+                    label: 'Subir tu liga de YouTube o Vimeo',
                     value: 'link',
                   },
                 ]}

@@ -4,7 +4,8 @@
         overflow: hidden;
 
         display: grid;
-        grid-template-rows: auto 80px;
+        grid-template-rows: auto;
+        // grid-template-rows: auto 80px;
         grid-template-columns: 100%;
 
         &.feauture {
