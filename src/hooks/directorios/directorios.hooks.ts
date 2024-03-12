@@ -1,37 +1,37 @@
-import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 
-import { DirectoriosQuerys } from './directorios.keys'
+import { DirectoriosQuerys } from './directorios.keys';
 
-import { DirectoriesServices } from '../../api'
+import { DirectoriesServices } from '../../api';
 
 const useCreateDirectorio = () => {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: [DirectoriosQuerys.createDirectorio],
     mutationFn: DirectoriesServices.createDirectorio,
     onSuccess: () => {
-      queryClient.invalidateQueries(DirectoriosQuerys.getAllDirectorios)
+      queryClient.invalidateQueries(DirectoriosQuerys.getAllDirectorios);
     },
-  })
-}
+  });
+};
 const useDirectorioById = (id: number) => {
-  const qc = useQueryClient()
+  const qc = useQueryClient();
   const query = useQuery({
     queryKey: DirectoriosQuerys.getDirectorioById(id),
     queryFn: () => DirectoriesServices.getDirectorioById(id),
     onSuccess: () => {
-      qc.invalidateQueries(DirectoriosQuerys.getAllDirectorios)
+      qc.invalidateQueries(DirectoriosQuerys.getAllDirectorios);
     },
     enabled: !!id,
-  })
-  return query
-}
+  });
+  return query;
+};
 const useDirectorios = () => {
   return useQuery({
     queryKey: DirectoriosQuerys.getAllDirectorios,
-    queryFn: DirectoriesServices.getAllDirectorios,
-  })
-}
+    queryFn: (state) => DirectoriesServices.getAllDirectorios(`${state}`),
+  });
+};
 
-export { useCreateDirectorio, useDirectorioById, useDirectorios }
+export { useCreateDirectorio, useDirectorioById, useDirectorios };
