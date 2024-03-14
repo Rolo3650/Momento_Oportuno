@@ -87,7 +87,7 @@ const PhoneNumberTwo = (props: PhoneNumber) => {
           className="rounded-circle"
         />
         <span className="ms-3">
-          {isVisible ? phoneNumber : `${phoneNumber.substring(0, 6)}...`}
+          {isVisible ? phoneNumber : `${phoneNumber.substring(0, 2)}.......`}
         </span>
       </span>
     </Button>

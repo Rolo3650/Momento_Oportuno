@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Box, IconButton, useTheme } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import { TextFieldThree } from '../inputs/text/TextFieldThree';
@@ -75,11 +76,11 @@ const SearchOne = () => {
             field: theme.palette.secondary.main,
             backgroundColor: '#fff',
           }}
-          text="Estoy Buscando..."
+          text="Buscar productos, marcas y más"
           value={lookingFor}
           onChange={onChangeLookingFor}
         />
-        <DropdownThree
+        {/* <DropdownThree
           icon={{
             endurl: '/svg/icons/menu_row_down.svg',
           }}
@@ -96,7 +97,7 @@ const SearchOne = () => {
             quantity: category.listings_count ?? 0,
           }))}
           onChange={onChangeCategory}
-        />
+        /> */}
         <DropdownThree
           color={{
             variant: 'secondary',

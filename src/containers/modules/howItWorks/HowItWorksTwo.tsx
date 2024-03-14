@@ -11,7 +11,7 @@ const HowItWorksTwo = () => {
   // const theme = useTheme();
 
   return (
-    <div className="d-flex flex-column how-it-works how-it-works-one justify-content-center align-items-center">
+    <div className="d-flex flex-column how-it-works how-it-works-one justify-content-center align-items-center mt-5">
       <span className="badge bg-secondary text text-font-l-d fw-normal fs-6 py-2 mx-auto background background-color-8 px-3">
         ¿Cómo funciona?
       </span>

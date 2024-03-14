@@ -8,6 +8,7 @@ import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
 import ArrowForward from '@mui/icons-material/ArrowForward';
+import Swal from 'sweetalert2';
 //import { Link } from 'react-router-dom';
 
 const Contactanos = () => {
@@ -16,6 +17,15 @@ const Contactanos = () => {
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
+
+  const enviarMensaje = () => {
+    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (regexEmail.test(email)) {
+      Swal.fire('Mensaje enviado', 'Mensaje enviado', 'success');
+    } else {
+      Swal.fire('Error', 'Ingresa un correo válido', 'error');
+    }
+  };
 
   return (
     <LayoutOne>
@@ -133,7 +143,11 @@ const Contactanos = () => {
                 ></IconButton>
               </div>
             </div>
-            <img className='w-100 mt-3' src="./img/aboutUs/5167881-05.png" alt="" />
+            <img
+              className="w-100 mt-3"
+              src="./img/aboutUs/5167881-05.png"
+              alt=""
+            />
           </div>
           <div className="sect1_elmnt2">
             <div className="subtitle">Envíanos un mensaje</div>
@@ -163,7 +177,13 @@ const Contactanos = () => {
                   text="Email"
                   icon={{ url: '/svg/icons/arr_frm.svg' }}
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    // const regexEmail =
+                    //   /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    // if (regexEmail.test(e.target.value)) {
+                    setEmail(e.target.value);
+                    // }
+                  }}
                 />
               </div>
 
@@ -178,7 +198,13 @@ const Contactanos = () => {
                   text="Teléfono"
                   icon={{ url: '/svg/icons/phone_frm.svg' }}
                   value={telefono}
-                  onChange={(e) => setTelefono(e.target.value)}
+                  onChange={(e) => {
+                    const regexNum = /^[0-9]{0,10}$/;
+
+                    if (regexNum.test(e.target.value)) {
+                      setTelefono(e.target.value);
+                    }
+                  }}
                 />
               </div>
             </div>
@@ -193,6 +219,7 @@ const Contactanos = () => {
                 title="Enviar un mensaje"
                 endIcon={<ArrowForward />}
                 colorPrimary="primary"
+                onClick={enviarMensaje}
               />
             </div>
           </div>

@@ -33,7 +33,7 @@ const TextFieldThree: React.FC<Props> = ({ color, text, value, onChange }) => {
             fontSize: '16px',
           },
           '& input::placeholder': {
-            color: color.text,
+            color: "#888",
             opacity: 1,
             fontSize: '16px',
           },

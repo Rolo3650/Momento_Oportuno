@@ -5,6 +5,14 @@
     }
 }
 
+@media screen and (min-width: 1200px) {
+    .frame-1 {
+        margin-top: 40px;
+        width: 1080px;
+        height: 600px;
+    }
+}
+
 .player.player-lg .Text_module_bpxs_fontlg_c5f0df31,
 .player.player-md .Text_module_bpxs_fontlgc5f0df31,
 .player.player-sm .Text_module_bpxs_fontlgc5f0df31,

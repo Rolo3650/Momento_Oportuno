@@ -77,7 +77,7 @@ const DropdownThree: React.FC<Props> = ({
           fontWeight: '400',
           fontSize: '16px',
           '& input::placeholder': {
-            color: color?.text,
+            color: "#888",
             opacity: 1,
           },
           '& .start-image': {

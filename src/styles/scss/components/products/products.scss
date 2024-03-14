@@ -94,9 +94,8 @@
                         align-items: center;
 
                         & img {
-                            // max-height: 200px;
-                            height: auto;
-                            width: auto;
+                            // height: 100%;
+                            // width: 100%;
                             min-width: 100%;
                             min-height: 200px;
                         }
@@ -155,7 +154,7 @@
 
             & .name {
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 1;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
             }
@@ -261,12 +260,11 @@
 
                     overflow: hidden;
 
-                    // & img {
+                    & img {
 
-                    //     height: auto !important;
-                    //     width: 100% !important;
+                        height: 250px !important;
 
-                    // }
+                    }
                 }
 
             }

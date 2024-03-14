@@ -1,13 +1,13 @@
 import { useTheme } from '@mui/material/styles';
 import { NavBarDesktopOne } from '../navbar/desktop/NavBarDesktopOne';
 import { Link } from '@mui/material';
-import { AdAddButtonOne } from '../../inputs/buttons/AdAddButtonOne';
 import { MenuButton } from '../../inputs/iconbuttons/MenuButton';
 import { useNavigate } from 'react-router-dom';
 import { ProfileButton } from '../../inputs/buttons/ProfileButton';
 import { useAppContext } from '../../../context';
+import { GeneralButton } from '../../inputs/buttons/GeneralButton';
 // import React from 'react';
-
+import ArrowForward from '@mui/icons-material/ArrowForward';
 const HeaderOne = () => {
   const theme = useTheme();
   const navigateTo = useNavigate();
@@ -44,7 +44,7 @@ const HeaderOne = () => {
         <div className={!state?.userState?.token ? 'desktop' : 'd-none'}>
           <div className="separator"></div>
         </div>
-        <div className={!state?.userState?.token ? 'desktop' : 'd-none'}>
+        {/* <div className={!state?.userState?.token ? 'desktop' : 'd-none'}>
           <Link
             component="button"
             onClick={() => navigateTo('/login-register?tab=register')}
@@ -53,9 +53,17 @@ const HeaderOne = () => {
           >
             Regístrate
           </Link>
-        </div>
+        </div> */}
         <div className="desktop">
-          <AdAddButtonOne />
+          {!state?.userState?.token && (
+            <GeneralButton
+              onClick={() => navigateTo('/login-register?tab=register')}
+              title="Regístrate"
+              colorPrimary="secondary"
+              endIcon={<ArrowForward />}
+            />
+          )}
+          {/* <AdAddButtonOne /> */}
         </div>
       </div>
     </div>
