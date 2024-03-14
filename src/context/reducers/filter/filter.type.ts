@@ -9,6 +9,7 @@ export type FilterState = {
   priceMax?: number;
   sortBy?: string;
   order?: string;
+  per_page?: number;
 };
 
 export type FilterParams = Partial<FilterState>;

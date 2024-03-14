@@ -5,6 +5,7 @@ import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutl
 import { Ad } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import { useMyFavorites } from '../../hooks';
+import Slider from 'react-slick';
 
 interface Props {
   products: Ad[] | undefined;
@@ -15,6 +16,34 @@ interface Props {
 const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
   const navigateTo = useNavigate();
   const { data: favorites } = useMyFavorites();
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    appendDots: (dots: any) => (
+      <div>
+        <ul style={{ margin: '0px' }} className="slider-dots">
+          {' '}
+          {dots}{' '}
+        </ul>
+      </div>
+    ),
+    customPaging: () => (
+      <div
+        style={{
+          width: '15px',
+          height: '15px',
+          borderRadius: '50%',
+          backgroundColor: '#FD542A',
+          marginTop: '10px',
+        }}
+      ></div>
+    ),
+  };
 
   return (
     <div className="last-ads last-ads-one mx-auto">
@@ -36,14 +65,18 @@ const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
           />
         </div>
       </div>
-      <div className="products">
-        {products?.map((product, index) => (
-          <ProductOne
-            key={`${product?.id}-${index}`}
-            product={product}
-            fav={favorites?.data.some((fav) => fav.id === product.id)}
-          />
-        ))}
+      <div className="products slider">
+        <Slider {...settings}>
+          {products?.map((product, index) => (
+            <div className="slider-container">
+              <ProductOne
+                key={`${product?.id}-${index}`}
+                product={product}
+                fav={favorites?.data.some((fav) => fav.id === product.id)}
+              />
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   );

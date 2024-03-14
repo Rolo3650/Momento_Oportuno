@@ -82,6 +82,14 @@ const AddVideo: React.FC<Props> = () => {
               />
             </div>
           )}
+          <div className="mt-4">
+            <p className="fw-normal text text-font-l-d">
+              Formatos aceptados: .mp4
+            </p>
+            <p className="fw-normal text text-font-l-d">
+              Tamaño aceptado: Máximo 20 MB
+            </p>
+          </div>
           {newAdForm.extraVideo.type == 'link' && (
             <div className="mt-3 mb-3">
               <TextFieldOne

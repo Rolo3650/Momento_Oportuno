@@ -23,23 +23,38 @@ const Home = () => {
     sortBy: 'created_at',
     order: 'desc',
     state: 1,
+    per_page: 15,
   });
   const { data: yucatan } = useInfiniteAds({
     sortBy: 'created_at',
     order: 'desc',
     state: 2,
+    per_page: 15,
   });
   const { data: qroo } = useInfiniteAds({
     sortBy: 'created_at',
     order: 'desc',
     state: 3,
+    per_page: 15,
   });
   const { data: chiapas } = useInfiniteAds({
     sortBy: 'created_at',
     order: 'desc',
     state: 4,
+    per_page: 15,
   });
-
+  const { data: cdmx } = useInfiniteAds({
+    sortBy: 'created_at',
+    order: 'desc',
+    state: 6,
+    per_page: 15,
+  });
+  const { data: veracruz } = useInfiniteAds({
+    sortBy: 'created_at',
+    order: 'desc',
+    state: 8,
+    per_page: 15,
+  });
   // console.log(campeche?.pages[0]?.);
   // useEffect(() => {
   //   console.log(state?.newAdForm)
@@ -56,6 +71,7 @@ const Home = () => {
         </WellcomeThree>
         <PopularCategoriesTwo />
         <br />
+        <HowItWorksOne />
         <br />
         {qroo?.pages?.length &&
           qroo?.pages?.length > 0 &&
@@ -63,7 +79,7 @@ const Home = () => {
             <LastAdsOne
               title="Anuncios en"
               span="Quintana Roo"
-              products={qroo?.pages[0]?.data.slice(0, 4)?.map((data) => {
+              products={qroo?.pages[0]?.data.slice(0, 15)?.map((data) => {
                 const obj = { ...data };
                 if (!obj.imgs || obj.imgs.length === 0) {
                   obj.imgs = ['./img/noimagen.png'];
@@ -79,7 +95,7 @@ const Home = () => {
             <LastAdsOne
               title="Anuncios en"
               span="Yucatán"
-              products={yucatan?.pages[0]?.data.slice(0, 4)?.map((data) => {
+              products={yucatan?.pages[0]?.data.slice(0, 15)?.map((data) => {
                 const obj = { ...data };
                 if (!obj.imgs || obj.imgs.length === 0) {
                   obj.imgs = ['./img/noimagen.png'];
@@ -95,7 +111,7 @@ const Home = () => {
             <LastAdsOne
               title="Anuncios en"
               span="Tabasco"
-              products={chiapas?.pages[0]?.data.slice(0, 4)?.map((data) => {
+              products={chiapas?.pages[0]?.data.slice(0, 15)?.map((data) => {
                 const obj = { ...data };
                 if (!obj.imgs || obj.imgs.length === 0) {
                   obj.imgs = ['./img/noimagen.png'];
@@ -111,7 +127,7 @@ const Home = () => {
             <LastAdsOne
               title="Anuncios en"
               span="Campeche"
-              products={campeche?.pages[0]?.data.slice(0, 4)?.map((data) => {
+              products={campeche?.pages[0]?.data.slice(0, 15)?.map((data) => {
                 const obj = { ...data };
                 if (!obj.imgs || obj.imgs.length === 0) {
                   obj.imgs = ['./img/noimagen.png'];
@@ -120,7 +136,38 @@ const Home = () => {
               })}
             />
           )}
-        <HowItWorksOne />
+
+        {cdmx?.pages?.length &&
+          cdmx?.pages?.length > 0 &&
+          cdmx?.pages[0]?.data?.length > 0 && (
+            <LastAdsOne
+              title="Anuncios en"
+              span="Ciudad de México"
+              products={cdmx?.pages[0]?.data.slice(0, 15)?.map((data) => {
+                const obj = { ...data };
+                if (!obj.imgs || obj.imgs.length === 0) {
+                  obj.imgs = ['./img/noimagen.png'];
+                }
+                return obj;
+              })}
+            />
+          )}
+
+        {veracruz?.pages?.length &&
+          veracruz?.pages?.length > 0 &&
+          veracruz?.pages[0]?.data?.length > 0 && (
+            <LastAdsOne
+              title="Anuncios en"
+              span="Veracruz"
+              products={veracruz?.pages[0]?.data.slice(0, 15)?.map((data) => {
+                const obj = { ...data };
+                if (!obj.imgs || obj.imgs.length === 0) {
+                  obj.imgs = ['./img/noimagen.png'];
+                }
+                return obj;
+              })}
+            />
+          )}
         <HowItWorksTwo />
         <AboutUsOne />
       </LayoutOne>

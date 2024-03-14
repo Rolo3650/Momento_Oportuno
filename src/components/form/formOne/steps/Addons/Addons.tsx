@@ -1,6 +1,6 @@
 import React from 'react';
 import SouthIcon from '@mui/icons-material/South';
-import { Box, Checkbox, Grid, useTheme } from '@mui/material';
+import { Box, Checkbox, Grid, Link, useTheme } from '@mui/material';
 import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
 import PrintIcon from '@mui/icons-material/Print';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -15,6 +15,8 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AddVideo from './AddVideo';
 import { DropdownFour } from '../../../../inputs/dropdown/DropdownFour';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 interface Props {}
 
@@ -473,7 +475,35 @@ const Addons: React.FC<Props> = () => {
           Redes Sociales{' '}
           <span className="text text-color-secondary">+$100</span>{' '}
           <span className="text text-color-10">
-            Anúnciate en nuestras redes sociales Facebook, Instagram
+            Anúnciate en nuestras redes sociales{' '}
+            <Link
+              underline="none"
+              href=""
+              className="text text-color-secondary text-font-l-d"
+            >
+              Facebook <FacebookIcon />
+            </Link>
+            ,{' '}
+            <Link
+              underline="none"
+              href=""
+              className="text text-color-secondary text-font-l-d"
+            >
+              Instagram <InstagramIcon />
+            </Link>{' '}
+            y{' '}
+            <Link
+              underline="none"
+              href=""
+              className="text text-color-secondary text-font-l-d"
+            >
+              Tiktok{' '}
+              <img
+                style={{ height: '20px' }}
+                src="/svg/icons/tiktok.svg"
+                alt="tiktok"
+              />
+            </Link>
           </span>
         </div>
         {/* <div className="fw-bold text text-color-5 text-font-l-d subtitle">
