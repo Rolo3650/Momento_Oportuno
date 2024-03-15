@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Box, IconButton, useTheme } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import { TextFieldThree } from '../inputs/text/TextFieldThree';
 import { DropdownThree } from '../inputs/dropdown/DropdownThree';
-import { useAllCategories } from '../../hooks';
+// import { useAllCategories } from '../../hooks';
 import { useGetStates } from '../../hooks/querys/useStates';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router';
@@ -18,21 +17,23 @@ const SearchOne = () => {
   const theme = useTheme();
   const navigateTo = useNavigate();
   const [lookingFor, setLookingFor] = useState('');
-  const allCategories = useAllCategories();
+  // const allCategories = useAllCategories();
   const { data } = useGetStates();
   const [city, setCity] = useState<Option>({ label: 'Estado', value: 0 });
-  const [category, setCategory] = useState<Option>({
-    label: 'Categoría',
-    value: 0,
-  });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // const [category, setCategory] = useState<Option>({
+  //   label: 'Categoría',
+  //   value: 0,
+  // });
 
   const onChangeLookingFor = (e: ChangeEvent<HTMLInputElement>) => {
     setLookingFor(e.target.value);
   };
 
-  const onChangeCategory = (option: Option) => {
-    setCategory(option);
-  };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // const onChangeCategory = (option: Option) => {
+  //   setCategory(option);
+  // };
 
   const onChangeCity = (option: Option) => {
     setCity(option);
@@ -41,9 +42,9 @@ const SearchOne = () => {
   const onClickSearch = () => {
     setTimeout(() => {
       let route = '/ads?';
-      if (category.value != 0) {
-        route = `/ads/${category.value}?`;
-      }
+      // if (category.value != 0) {
+      //   route = `/ads/${category.value}?`;
+      // }
       if (city.value != 0) {
         route = `${route}city=${city.value}&`;
       }
