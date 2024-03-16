@@ -81,28 +81,32 @@ const CatalogueOne: React.FC<Props> = () => {
 
   return (
     <div className={`mt-3 contain-${orderByTwo}`}>
-      <div className={`mt-3 view-card`}>
-        {ads?.pages[0]?.data?.map((data) => {
-          const obj = { ...data };
-          if (!obj.media || obj.media.length === 0) {
-            obj.imgs = [ '/img/noimagen.png'];
-          } else {
-            obj.imgs = obj.media.map((img) => img.original_url);
-          }
-          return <ProductOne product={obj} />;
-        })}
-      </div>
-      <div className={`mt-3 view-row`}>
-        {ads?.pages[0]?.data?.map((data) => {
-          const obj = { ...data };
-          if (!obj.media || obj.media.length === 0) {
-            obj.imgs = [ '/img/noimagen.png'];
-          } else {
-            obj.imgs = obj.media.map((img) => img.original_url);
-          }
-          return <ProductTwo product={obj} />;
-        })}
-      </div>
+      {orderByTwo != 'row' && (
+        <div className={`mt-3 view-card`}>
+          {ads?.pages[0]?.data?.map((data) => {
+            const obj = { ...data };
+            if (!obj.media || obj.media.length === 0) {
+              obj.imgs = ['/img/noimagen.png'];
+            } else {
+              obj.imgs = obj.media.map((img) => img.original_url);
+            }
+            return <ProductOne product={obj} />;
+          })}
+        </div>
+      )}
+      {orderByTwo == 'row' && (
+        <div className={`mt-3 view-row`}>
+          {ads?.pages[0]?.data?.map((data) => {
+            const obj = { ...data };
+            if (!obj.media || obj.media.length === 0) {
+              obj.imgs = ['/img/noimagen.png'];
+            } else {
+              obj.imgs = obj.media.map((img) => img.original_url);
+            }
+            return <ProductTwo product={obj} />;
+          })}
+        </div>
+      )}
       <div className="pagination pagination-one d-flex justify-content-end my-3">
         <Stack color={'secondary'}>
           <Pagination
