@@ -19,7 +19,7 @@ const SearchOne = () => {
   const [lookingFor, setLookingFor] = useState('');
   // const allCategories = useAllCategories();
   const { data } = useGetStates();
-  const [city, setCity] = useState<Option>({ label: 'Estado', value: 0 });
+  const [city, setCity] = useState<Option>({ label: 'Ubicación', value: 0 });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [category, setCategory] = useState<Option>({
   //   label: 'Categoría',
@@ -53,6 +53,18 @@ const SearchOne = () => {
       }
       navigateTo(route);
     }, 1000);
+  };
+
+  const getData: () => Option[] = () => {
+    if (data && Array.isArray(data.data)) {
+      return data?.data?.map((city) => ({
+        label: city?.name,
+        value: city?.id,
+        quantity: city.listings_count ?? 0,
+      }));
+    } else {
+      return [];
+    }
   };
 
   return (
@@ -106,27 +118,27 @@ const SearchOne = () => {
             field: theme.palette.secondary.main,
             backgroundColor: '#fff',
           }}
-          text="Estado"
+          text="Ubicación"
           icon={{
             endurl: '/svg/icons/menu_row_down.svg',
           }}
-          options={data?.data?.map((city) => ({
-            label: city?.name,
-            value: city?.id,
-            quantity: city.listings_count ?? 0,
-          }))}
+          options={[{ label: 'Todos los Estados', value: 0 }, ...getData()]}
           onChange={onChangeCity}
         />
-        <IconButton onClick={onClickSearch} className='ms-2' sx={{
-            backgroundColor: "#D02F3C",
+        <IconButton
+          onClick={onClickSearch}
+          className="ms-2"
+          sx={{
+            backgroundColor: '#D02F3C',
             borderTopLeftRadius: '0px',
             borderBottomLeftRadius: '0px',
             borderTopRightRadius: '25px',
             borderBottomRightRadius: '25px',
             height: '42px',
             width: '52px',
-            color: "#FFFFFF",
-        }}>
+            color: '#FFFFFF',
+          }}
+        >
           <SearchIcon />
         </IconButton>
       </Box>

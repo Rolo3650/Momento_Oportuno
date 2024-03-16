@@ -25,14 +25,14 @@ const PhoneNumberOne = (props: PhoneNumber) => {
             <SmartphoneOutlined sx={{ color: '#464748' }} />
           </div>
           <div className="phoneNumber">
-            {isVisible ? phoneNumber : `${phoneNumber.substring(0, 6)}...`}
+            {isVisible ? phoneNumber : `${phoneNumber.substring(0, 2)}......`}
           </div>
         </a>
         <div className="phoneNumber-visible" onClick={showPhoneNumber}>
           {!isVisible ? (
-            <Visibility sx={{ color: '#464748' }} />
-          ) : (
             <VisibilityOff sx={{ color: '#464748' }} />
+          ) : (
+            <Visibility sx={{ color: '#464748' }} />
           )}
         </div>
       </div>

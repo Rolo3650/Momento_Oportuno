@@ -1,7 +1,6 @@
 import { LayoutOne } from '../../containers/layout/LayoutOne';
 import { IconButton } from '@mui/material';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { TextFieldOne } from '../../components/inputs/text/TextFieldOne';
 import { useTheme } from '@mui/material/styles';
@@ -9,6 +8,7 @@ import { useState } from 'react';
 import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import Swal from 'sweetalert2';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 //import { Link } from 'react-router-dom';
 
 const Contactanos = () => {
@@ -74,6 +74,7 @@ const Contactanos = () => {
                       border: `2px solid #E4032E`,
                     },
                   }}
+                  onClick={() => window.open("https://www.facebook.com/people/El-Momento-Oportuno/61555843497605/?mibextid=LQQJ4d")}
                 >
                   <FacebookOutlinedIcon
                     sx={{
@@ -96,8 +97,9 @@ const Contactanos = () => {
                       border: `2px solid #E4032E`,
                     },
                   }}
+                  onClick={() => window.open("https://www.youtube.com/channel/UC9-zyRwKcTZSGUUI-0deD1w")}
                 >
-                  <WhatsAppIcon
+                  <YouTubeIcon
                     sx={{
                       transition: '.5s ease-in-out',
                       ':hover': {
@@ -118,6 +120,7 @@ const Contactanos = () => {
                       border: `2px solid #E4032E`,
                     },
                   }}
+                  onClick={() => window.open("https://www.instagram.com/elmomentooportuno1?igsh=MTM5N2cxNnluODUweQ==")}
                 >
                   <InstagramIcon
                     sx={{
@@ -140,7 +143,14 @@ const Contactanos = () => {
                       border: `2px solid #E4032E`,
                     },
                   }}
-                ></IconButton>
+                  onClick={() => window.open("https://www.tiktok.com/@elmomentooportuno")}
+                >
+                  <img
+                    style={{ width: '30px', height: '30px' }}
+                    src="/svg/icons/tiktok_two.png"
+                    alt=""
+                  />
+                </IconButton>
               </div>
             </div>
             <img

@@ -50,15 +50,19 @@
         max-width: 100%;
 
         @media screen and (min-width: 768px) {
-            max-width: 500px;
+            max-width: 700px;
         }
 
         @media screen and (max-width: 768px) {
             text-align: center;
         }
 
+        @media screen and (min-width: 768px) {
+            // padding-right: 30px;
+        }
+
         & .card-custom-heading {
-            font-size: 68px;
+            font-size: 40px;
             font-family: $font_3;
             letter-spacing: -2px;
             line-height: 68px;

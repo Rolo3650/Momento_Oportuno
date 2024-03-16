@@ -66,17 +66,29 @@ const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
         </div>
       </div>
       <div className="products slider">
-        <Slider {...settings}>
-          {products?.map((product, index) => (
-            <div className="slider-container">
-              <ProductOne
-                key={`${product?.id}-${index}`}
-                product={product}
-                fav={favorites?.data.some((fav) => fav.id === product.id)}
-              />
-            </div>
-          ))}
-        </Slider>
+        {Array.isArray(products) && products?.length > 1 && (
+          <Slider {...settings}>
+            {products?.map((product, index) => (
+              <div className="slider-container">
+                <ProductOne
+                  key={`${product?.id}-${index}`}
+                  product={product}
+                  fav={favorites?.data.some((fav) => fav.id === product.id)}
+                />
+              </div>
+            ))}
+          </Slider>
+        )}
+
+        {Array.isArray(products) && products?.length == 1 && (
+          <div className="slider-container" style={{ maxWidth: '300px' }}>
+            <ProductOne
+              key={`${products[0]?.id}-${0}`}
+              product={products[0]}
+              fav={favorites?.data.some((fav) => fav.id === products[0].id)}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

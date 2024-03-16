@@ -41,8 +41,8 @@ const ProductOne: React.FC<Props> = ({ product }) => {
     >
       <div
         onClick={() => {
-          window.scrollTo(0, 0);
-          if (product.is_active) {
+          if (product.is_active && product.status == 'published') {
+            window.scrollTo(0, 0);
             window.location.assign(`/ad/${product.id}`);
             // navigateTo(`/ad/${product.id}`);
           }
@@ -127,17 +127,38 @@ const ProductOne: React.FC<Props> = ({ product }) => {
               <>
                 <br />
                 <br />
-                <Badge sx={{
-                  backgroundColor: "#FF4444",
-                  borderRadius: 2,
-                  color: 'white',
-                  fontWeight: 'normal',
-                }} className='px-3 fs-6 text text-font-l-d'>Anuncio expirado</Badge>
+                <Badge
+                  sx={{
+                    backgroundColor: '#FF4444',
+                    borderRadius: 2,
+                    color: 'white',
+                    fontWeight: 'normal',
+                  }}
+                  className="px-3 fs-6 text text-font-l-d"
+                >
+                  Anuncio expirado
+                </Badge>
               </>
             )}
-
-          {product.status != 'expired' &&
-            product.status != 'published' &&
+          {product.status == 'pending_review' &&
+            location.pathname.includes('/panel/list') && (
+              <>
+                <br />
+                <br />
+                <Badge
+                  sx={{
+                    backgroundColor: '#FF4444',
+                    borderRadius: 2,
+                    color: 'white',
+                    fontWeight: 'normal',
+                  }}
+                  className="px-3 fs-6 text text-font-l-d"
+                >
+                  Anuncio en revisión
+                </Badge>
+              </>
+            )}
+          {product.status == 'draft' &&
             location.pathname.includes('/panel/list') && (
               <div className="pt-4">
                 <FormControl fullWidth>

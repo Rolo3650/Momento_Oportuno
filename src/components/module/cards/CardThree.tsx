@@ -4,7 +4,7 @@ import { AdAddButtonOne } from '../../inputs/buttons/AdAddButtonOne';
 
 const CardThree = () => {
   return (
-    <div className="card-custom card-custom-three ps-5">
+    <div className="card-custom card-custom-three ">
       <div className="card-custom-heading fw-bold text text-color-5 py-4">
         Anuncia, compra y vende
       </div>

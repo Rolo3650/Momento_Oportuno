@@ -139,7 +139,7 @@ const SearchTwo = () => {
               field: theme.palette.secondary.main,
               backgroundColor: '#fff',
             }}
-            text="Estado"
+            text="Ubicación"
             icon={{
               endurl: '/svg/icons/menu_row_down.svg',
             }}
