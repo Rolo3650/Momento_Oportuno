@@ -56,6 +56,30 @@ const StepFour = () => {
     return total;
   };
 
+  const getName = (name: string): string => {
+    if (name == 'Basico Publica tu anuncio por 7 d\u00edas') {
+      return 'Básico';
+    } else if (name == 'Publica tu anuncio por 14 d\u00edas') {
+      return 'Standard';
+    } else if (name == 'Publica tu anuncio por 21 d\u00edas') {
+      return 'Premium';
+    } else{
+      return name;
+    }
+  };
+
+  const getDescription = (desc: string): string => {
+    if (desc == 'Publica tu anuncio por 7 d\u00edas') {
+      return 'Publica tu anuncio por 7 d\u00edas';
+    } else if (desc == 'Tu anuncio en nuestros listados por 14 d\u00edas') {
+      return 'Publica tu anuncio por 14 d\u00edas';
+    } else if (desc == 'Tu anuncio en nuestros listados por 21 d\u00edas') {
+      return 'Publica tu anuncio por 21 d\u00edas';
+    } else{
+      return desc;
+    }
+  };
+
   useEffect(() => {
     if (data?.data.length) {
       if (data.data[0] != newAdForm.package) {
@@ -94,10 +118,10 @@ const StepFour = () => {
               }}
             >
               <div className="name text text-font-l-d fw-bold fs-5 pb-3 text-color-5">
-                {data.name}
+                {getName(data.name)}
               </div>
               <div className="desc text text-rubik pb-2 text-color-4">
-                {data.description}
+                {getDescription(data.description ?? '')}
               </div>
               <div className="desc text text-rubik fw-bold pb-2 text-color-secondary">
                 $

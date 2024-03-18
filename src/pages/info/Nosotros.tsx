@@ -4,9 +4,26 @@ import { LayoutOne } from '../../containers/layout/LayoutOne';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { TextFieldOne } from '../../components/inputs/text/TextFieldOne';
 import { useTheme } from '@mui/material';
+import { useState } from 'react';
+import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
+import ArrowForward from '@mui/icons-material/ArrowForward';
+import Swal from 'sweetalert2';
+
 const Nosotros = () => {
   const navigateTo = useNavigate();
   const theme = useTheme();
+
+  const [email, setEmail] = useState<string>('');
+
+  const sendEmail = () => {
+    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (regexEmail.test(email)) {
+      Swal.fire('Correo enviado', 'El correo ha sido enviado', 'success');
+    } else {
+      Swal.fire('Correo no válido', 'Ingresa un correo válido', 'error');
+    }
+  };
 
   return (
     <LayoutOne>
@@ -32,7 +49,7 @@ const Nosotros = () => {
           <div className="w-100 background background-color-7">
             <div className="body-one mx-auto">
               <div className="info p-4">
-                <div className='text-center'>
+                <div className="text-center">
                   <span className="text text-center text-font-l-d background background-color-12 px-3 py-2 rounded">
                     ¿Quiénes somos?
                   </span>
@@ -55,7 +72,7 @@ const Nosotros = () => {
                   <div className="pt-2 text-center">
                     Nuestra misión es democratizar el comercio, por lo que
                     cualquier persona puede vender o comprar en El Momento
-                    Oportuno, ¡sólo necesitas conexión internet! Lo hacemos
+                    Oportuno, ¡sólo necesitas conexión a internet! Lo hacemos
                     fácil, "Contigo, en cualquier lugar"
                   </div>
                   <div className="mt-4 text-center">
@@ -188,9 +205,19 @@ const Nosotros = () => {
                     }}
                     text="Email*"
                     icon={{ url: '/svg/icons/arr_frm.svg' }}
-                    value={''}
-                    onChange={() => {}}
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
                   ></TextFieldOne>
+                </div>
+              </div>
+              <div className="d-flex justify-content-center pb-5">
+                <div>
+                  <GeneralButton
+                    title="Suscribirse"
+                    endIcon={<ArrowForward />}
+                    colorPrimary="primary"
+                    onClick={sendEmail}
+                  />
                 </div>
               </div>
             </div>

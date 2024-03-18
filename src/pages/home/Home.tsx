@@ -86,6 +86,7 @@ const Home = () => {
                 }
                 return obj;
               })}
+              state={3}
             />
           )}
 
@@ -102,9 +103,21 @@ const Home = () => {
                 }
                 return obj;
               })}
+              state={2}
             />
           )}
-
+        <div className="w-100 mx-auto d-flex justify-content-center">
+          <img
+            style={{
+              maxWidth: '1200px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+            className="w-100"
+            src="/img/banners/web oportuno clasificados.png"
+            alt=""
+          />
+        </div>
         {chiapas?.pages?.length &&
           chiapas?.pages?.length > 0 &&
           chiapas?.pages[0]?.data?.length > 0 && (
@@ -118,6 +131,7 @@ const Home = () => {
                 }
                 return obj;
               })}
+              state={4}
             />
           )}
 
@@ -134,6 +148,7 @@ const Home = () => {
                 }
                 return obj;
               })}
+              state={1}
             />
           )}
 
@@ -150,6 +165,7 @@ const Home = () => {
                 }
                 return obj;
               })}
+              state={6}
             />
           )}
 
@@ -166,6 +182,7 @@ const Home = () => {
                 }
                 return obj;
               })}
+              state={15}
             />
           )}
         <HowItWorksTwo />

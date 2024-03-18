@@ -22,7 +22,7 @@ const FooterOne = () => {
             <div className="contact-info sect">
               <div className="contact-text">
                 <div className="text-row text">
-                  <a className="listivo-phone-v3 text" href="tel:5555885588">
+                  <a className="listivo-phone-v3 text" href="tel:525580797360">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       style={{ margin: 5 }}
@@ -36,7 +36,7 @@ const FooterOne = () => {
                         fill="#FDFDFE"
                       />
                     </svg>
-                    55 5588 5588
+                    +52 55 8079 73 60
                   </a>
                 </div>
                 <div className="text-row text">
@@ -59,7 +59,7 @@ const FooterOne = () => {
                 </div>
                 <div className="text-row text">
                   <a
-                    href="mailto:ayuda@elmomentooportuno.com"
+                    href="mailto:elmomentooportuno1@gmail.com"
                     className="listivo-email text"
                   >
                     <svg
@@ -77,7 +77,7 @@ const FooterOne = () => {
                         fill="#FDFDFE"
                       />
                     </svg>
-                    ayuda@elmomentooportuno.com
+                    elmomentooportuno1@gmail.com
                   </a>
                 </div>
               </div>
@@ -86,72 +86,86 @@ const FooterOne = () => {
                   Siguenos en nuestras redes
                 </div>
                 <div className="socialmedia-buttons">
-                <a href="https://www.facebook.com/profile.php?id=61555843497605&locale=es_LA" target="_blank">
-                  <IconButton
-                    className="icon-button"
-                    sx={{
-                      border: `3px solid #FFFFFF`,
-                      margin: '4px',
-                      width: 40,
-                      height: 40,
-                      transition: '.5s ease-in-out',
-                      ':hover': {
-                        border: `2px solid #FD542A`,
-                      },
-                    }}
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61555843497605&locale=es_LA"
+                    target="_blank"
                   >
-                    <FacebookOutlinedIcon
+                    <IconButton
+                      className="icon-button"
                       sx={{
-                        color: '#FFFFFF',
+                        border: `3px solid #FFFFFF`,
+                        margin: '4px',
+                        width: 40,
+                        height: 40,
                         transition: '.5s ease-in-out',
                         ':hover': {
-                          color: `#FD542A`,
+                          border: `2px solid #FD542A`,
                         },
                       }}
-                    />
-                  </IconButton>
+                    >
+                      <FacebookOutlinedIcon
+                        sx={{
+                          color: '#FFFFFF',
+                          transition: '.5s ease-in-out',
+                          ':hover': {
+                            color: `#FD542A`,
+                          },
+                        }}
+                      />
+                    </IconButton>
                   </a>
-                  <a href="https://www.tiktok.com/@elmomentooportuno?_t=8jxpNzRdmXm&_r=1" target="_blank">
-                  <IconButton
-                    className="icon-button"
-                    sx={{
-                      border: `3px solid #FFFFFF`,
-                      margin: '4px',
-                      width: 40,
-                      height: 40,
-                      transition: '.5s ease-in-out',
-                      ':hover': {
-                        border: `2px solid #FD542A`,
-                      },
-                    }}
+                  <a
+                    href="https://www.tiktok.com/@elmomentooportuno?_t=8jxpNzRdmXm&_r=1"
+                    target="_blank"
                   >
-                  <i className="material-icons" style={{ color: '#FFFFFF'  }}>tiktok</i>
-                  </IconButton>
-                  </a>
-                  <a href="https://www.youtube.com/@ElMomentoOportuno" target="_blank">
-                  <IconButton
-                    className="icon-button"
-                    sx={{
-                      border: `3px solid #FFFFFF`,
-                      margin: '4px',
-                      width: 40,
-                      height: 40,
-                      transition: '.5s ease-in-out',
-                      ':hover': {
-                        border: `2px solid #FD542A`,
-                      },
-                    }}
-                  >
-                    <YouTubeIcon
+                    <IconButton
+                      className="icon-button"
                       sx={{
-                        color: '#FFFFFF',
+                        border: `3px solid #FFFFFF`,
+                        margin: '4px',
+                        width: 40,
+                        height: 40,
                         transition: '.5s ease-in-out',
                         ':hover': {
-                          color: `#FD542A`,
+                          border: `2px solid #FD542A`,
                         },
                       }}
-                    />
-                  </IconButton>
+                    >
+                      <i
+                        className="material-icons"
+                        style={{ color: '#FFFFFF' }}
+                      >
+                        tiktok
+                      </i>
+                    </IconButton>
+                  </a>
+                  <a
+                    href="https://www.youtube.com/@ElMomentoOportuno"
+                    target="_blank"
+                  >
+                    <IconButton
+                      className="icon-button"
+                      sx={{
+                        border: `3px solid #FFFFFF`,
+                        margin: '4px',
+                        width: 40,
+                        height: 40,
+                        transition: '.5s ease-in-out',
+                        ':hover': {
+                          border: `2px solid #FD542A`,
+                        },
+                      }}
+                    >
+                      <YouTubeIcon
+                        sx={{
+                          color: '#FFFFFF',
+                          transition: '.5s ease-in-out',
+                          ':hover': {
+                            color: `#FD542A`,
+                          },
+                        }}
+                      />
+                    </IconButton>
                   </a>
                   {/* <IconButton
                     className="icon-button"
@@ -167,6 +181,13 @@ const FooterOne = () => {
                     }}
                   ></IconButton> */}
                 </div>
+                <div className="mt-3">
+                  <img
+                    src="/img/logos/elmomentoportunoblanco.png"
+                    alt=""
+                    className="w-75"
+                  />
+                </div>
               </div>
             </div>
             <div className="info sect">
@@ -181,7 +202,9 @@ const FooterOne = () => {
                 <div className="list-element text animated">Regístrate</div>
               </Link>
               <Link to="/legal-terms" className="list-link">
-                <div className="list-element text animated">Términos Legales</div>
+                <div className="list-element text animated">
+                  Términos Legales
+                </div>
               </Link>
             </div>
             <div className="categories sect">

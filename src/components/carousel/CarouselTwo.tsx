@@ -47,7 +47,7 @@ const CarouselTwo: React.FC<Props> = ({ imgs }) => {
           </div>
         ) : (
           <div className="d-flex justify-content-center">
-            <img style={{ maxWidth: 700, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, maxHeight: 500, height: "100%"}} src={imgs[0]} />
+            <img style={{ maxWidth: 700, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, maxHeight: 500, height: "100%", width: "100%"}} src={imgs[0]} />
           </div>
         )}
       </div>

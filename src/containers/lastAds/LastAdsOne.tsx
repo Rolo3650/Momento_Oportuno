@@ -11,9 +11,10 @@ interface Props {
   products: Ad[] | undefined;
   title: string;
   span: string;
+  state?: number;
 }
 
-const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
+const LastAdsOne: React.FC<Props> = ({ products, title, span, state }) => {
   const navigateTo = useNavigate();
   const { data: favorites } = useMyFavorites();
 
@@ -43,6 +44,32 @@ const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
         }}
       ></div>
     ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -60,7 +87,8 @@ const LastAdsOne: React.FC<Props> = ({ products, title, span }) => {
             icon={{ muiIcon: <ArrowForwardIosOutlinedIcon /> }}
             text="Ver más"
             onClick={() => {
-              navigateTo('/ads');
+              window.scroll(0, 0);
+              navigateTo(`/ads?${state ? `city=${state}` : ''}`);
             }}
           />
         </div>

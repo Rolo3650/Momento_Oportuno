@@ -17,6 +17,7 @@ import AddVideo from './AddVideo';
 import { DropdownFour } from '../../../../inputs/dropdown/DropdownFour';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 interface Props {}
 
@@ -478,7 +479,8 @@ const Addons: React.FC<Props> = () => {
             Anúnciate en nuestras redes sociales{' '}
             <Link
               underline="none"
-              href=""
+              href="https://www.facebook.com/people/El-Momento-Oportuno/61555843497605/?mibextid=LQQJ4d"
+              target="_blank"
               className="text text-color-secondary text-font-l-d"
             >
               Facebook <FacebookIcon />
@@ -486,7 +488,17 @@ const Addons: React.FC<Props> = () => {
             ,{' '}
             <Link
               underline="none"
-              href=""
+              href="https://www.youtube.com/@ElMomentoOportuno"
+              target="_blank"
+              className="text text-color-secondary text-font-l-d"
+            >
+              Youtube <YouTubeIcon />
+            </Link>
+            ,{' '}
+            <Link
+              underline="none"
+              href="https://www.instagram.com/elmomentooportuno1?igsh=MTM5N2cxNnluODUweQ=="
+              target="_blank"
               className="text text-color-secondary text-font-l-d"
             >
               Instagram <InstagramIcon />
@@ -494,7 +506,8 @@ const Addons: React.FC<Props> = () => {
             y{' '}
             <Link
               underline="none"
-              href=""
+              href="https://www.tiktok.com/@elmomentooportuno"
+              target="_blank"
               className="text text-color-secondary text-font-l-d"
             >
               Tiktok{' '}
