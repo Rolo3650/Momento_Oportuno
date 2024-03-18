@@ -82,7 +82,7 @@ const SelectOne: React.FC<Props> = ({ option, options, onChange }) => {
             startIcon={<NavigateBeforeIcon />}
             onClick={onClickBefore}
           >
-            Todos
+            Regresar
           </Button>
         </FormControl>
       )}

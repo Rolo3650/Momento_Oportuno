@@ -84,6 +84,7 @@ const CategoriesFilter = () => {
         <CircleIcon color="secondary" className="fs-6" />
       </div>
       <div className="mt-3">
+      {searchCategoryChildren() == undefined && searchCategory()?.name}
         <SelectOne
           options={allCategories.data?.data.map((category) => ({
             label: category.name,
@@ -93,16 +94,15 @@ const CategoriesFilter = () => {
           option={categorySelected}
           onChange={navigateCategory}
         />
-        {searchCategoryChildren() == undefined && searchCategory()?.name}
       </div>
       {categoryChildren.length > 0 && (
         <div className="mt-3">
+          {searchCategoryChildren()?.name}
           <SelectOne
             options={categoryChildren}
             onChange={navigateCategoryChildren}
             option={categoryChildSelected}
           />
-          {searchCategoryChildren()?.name}
         </div>
       )}
     </div>

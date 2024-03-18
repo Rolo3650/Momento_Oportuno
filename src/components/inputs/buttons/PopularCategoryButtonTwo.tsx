@@ -12,7 +12,6 @@ const PopularCategoriesButtonTwo: React.FC<Props> = ({
   img,
   onClick,
 }) => {
-
   return (
     <Box
       width={'240px'}
@@ -25,7 +24,19 @@ const PopularCategoriesButtonTwo: React.FC<Props> = ({
       flexDirection={'column'}
       className="background background-color-7"
     >
-      <img src={img} alt="" style={{ width: '160px', height: '160px' }} />
+      <Box
+        width={'160px'}
+        height={'160px'}
+        display={'flex'}
+        alignItems={'center'}
+        justifyContent={'center'}
+      >
+        <img
+          src={img}
+          alt=""
+          style={{ maxWidth: '160px', maxHeight: '160px' }}
+        />
+      </Box>
       <p
         className="text text-font-helvetica text-color-18 my-2"
         style={{ fontWeight: '500', fontSize: '24px' }}

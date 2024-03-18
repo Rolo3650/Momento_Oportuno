@@ -82,6 +82,10 @@ const FormTwo: React.FC<Props> = () => {
         listingAttributes: [],
       };
 
+      if (newAdForm.subCategory?.id) {
+        obj.category_id = newAdForm.subCategory?.id
+      }
+
       const atributes: ListingAttribute[] = [];
 
       newAdForm.attributes.forEach((attribute) => {

@@ -97,6 +97,10 @@ const FormOne: React.FC<Props> = () => {
         printing_state_id: newAdForm.state ? newAdForm.state.id : 0,
         listingAttributes: [],
       };
+      
+      if (newAdForm.subCategory?.id) {
+        obj.category_id = newAdForm.subCategory?.id
+      }
 
       const atributes: ListingAttribute[] = [];
 

@@ -28,7 +28,7 @@ const PopularCategoriesTwo = () => {
       >
         <Box height={'320px'} width={'100%'} maxWidth={'1328px'} overflow={'auto'}>
           <div className="categories-container background">
-            <PopularCategoriesButtonTwo img='/svg/photos/car_one.svg' text='Vehículos' onClick={() => navigateTo('/ads/vehiculos')}/>
+            <PopularCategoriesButtonTwo img='/img/examples/vehiculos(1).png' text='Vehículos' onClick={() => navigateTo('/ads/vehiculos')}/>
             <PopularCategoriesButtonTwo img='/svg/photos/cat_one.svg' text='Mascotas'  onClick={() => navigateTo('/ads/mascotas')}/>
             <PopularCategoriesButtonTwo img='/svg/photos/house_one.svg' text='Inmuebles'  onClick={() => navigateTo('/ads/inmuebles')}/>
             <PopularCategoriesButtonTwo img='/svg/photos/person_one.svg' text='Empleos'  onClick={() => navigateTo('/ads/jobs')}/>

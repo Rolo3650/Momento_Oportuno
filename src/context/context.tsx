@@ -71,7 +71,9 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
   // load and set state from cookies
   useEffect(() => {
     try {
-      const localState = new Cookies().get(KEY_FOR_APP_STATE);
+      const cookies = new Cookies(null, { path: '/' });
+      const localState = cookies.get(KEY_FOR_APP_STATE);
+      console.log('parsed_state:', localState);
       const parsedState: AppState | null = localState ? localState : null;
       if (parsedState) {
         dispatch({
@@ -98,7 +100,10 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   // save state to cookies
   useEffect(() => {
-    new Cookies().set(KEY_FOR_APP_STATE, state);
+    if (state.init) {
+      const cookies = new Cookies(null, { path: '/' });
+      cookies.set(KEY_FOR_APP_STATE, state, { path: '/' });
+    }
   }, [state]);
 
   return (
