@@ -245,7 +245,7 @@ const Contactanos = () => {
             <div className="subtitle">Llámanos</div>
             <a href="tel:5555885588" className="c-text">
               {' '}
-              55 5588 5588
+              +52 55 8079 7360
             </a>
           </div>
           <div className="sect2_elmnt">

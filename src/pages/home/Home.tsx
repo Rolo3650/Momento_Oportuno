@@ -114,7 +114,7 @@ const Home = () => {
               marginRight: 'auto',
             }}
             className="w-100"
-            src="/img/banners/web oportuno clasificados.png"
+            src="/img/examples/web oportuno clasificados (1).png"
             alt=""
           />
         </div>

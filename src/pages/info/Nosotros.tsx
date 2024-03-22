@@ -34,7 +34,7 @@ const Nosotros = () => {
               <h1 className="text text-color-5 fw-bold text-font-rubik mb-4">
                 Nosotros
               </h1>
-              <div className="d-flex breadcrumb-container">
+              {/* <div className="d-flex breadcrumb-container">
                 <div className="background background-color-12 py-3 px-4 breadcrumb-custom">
                   <span>Inicio</span>
                   <span className="text text-color-5 mx-2">
@@ -42,7 +42,7 @@ const Nosotros = () => {
                   </span>
                   <span>Nosotros</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -50,10 +50,10 @@ const Nosotros = () => {
             <div className="body-one mx-auto">
               <div className="info p-4">
                 <div className="text-center">
-                  <span className="text text-center text-font-l-d background background-color-12 px-3 py-2 rounded">
+                  <span className="text text-center text-font-l-d background background-color-12 px-3 py-2 rounded fs-4">
                     ¿Quiénes somos?
                   </span>
-                  <div className="title text text-center text-font-georgia fs-1 fw-bold mt-3 mb-4">
+                  <div className="title text text-center text-font-georgia fs-2 fw-bold mt-3 mb-4">
                     Con más de 20 años de experiencia
                   </div>
                   <div className="pt-2 text-center">
@@ -66,7 +66,7 @@ const Nosotros = () => {
                     nuestras habilidades para prosperar en un mundo en constante
                     cambio.
                   </div>
-                  <div className="title text text-center text-font-georgia fs-1 fw-bold mt-3 mb-4">
+                  <div className="title text text-center text-font-georgia fs-2 fw-bold mt-3 mb-4">
                     Nuestra misión
                   </div>
                   <div className="pt-2 text-center">
@@ -87,11 +87,11 @@ const Nosotros = () => {
                   </div>
                 </div>
               </div>
-              {/* <img
+              <img
                 className="w-100 rounded"
                 src="/img/aboutUs/5167881-10.png"
                 alt=""
-              /> */}
+              />
             </div>
           </div>
 

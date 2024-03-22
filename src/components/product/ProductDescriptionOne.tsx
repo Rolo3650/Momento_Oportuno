@@ -67,7 +67,7 @@ const ProductDescriptionOne: React.FC<Props> = () => {
           variant="outlined"
           className="text text-font-helvetica me-2 mt-2"
         />
-        {adSingleState?.ad?.category?.children.map((child) => (
+        {/* {adSingleState?.ad?.category?.children.map((child) => (
           <Chip
             sx={{
               borderRadius: '5px',
@@ -79,7 +79,7 @@ const ProductDescriptionOne: React.FC<Props> = () => {
             variant="outlined"
             className="text text-font-helvetica me-2 mt-2"
           />
-        ))}
+        ))} */}
       </div>
       <div className="my-4 d-flex px-4 justify-content-between align-items-center">
         <div className="fs-3 text text-font-r-h-d text-color-5 fw-bold">

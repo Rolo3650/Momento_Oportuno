@@ -62,7 +62,7 @@ const SideBarOne = () => {
                 underline="none"
                 className="fw-bold text text-color-5 text-font-l-d"
               >
-                55 5588 5588
+                +52 55 8079 7360
               </Link>
             </div>
             <div className="px-3 text text-color-secondary text-font-helvetica">
