@@ -43,4 +43,13 @@ export class OrdersServices {
 
     return parsed;
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  static async createBilling({ id }: { id: string }): Promise<any> {
+    const response = await api.post(`/${id}/facturar`);
+    // const parsed = GetOrderByIdResponseSchema.parse(data);
+    // return parsed;
+
+    return response;
+  }
 }

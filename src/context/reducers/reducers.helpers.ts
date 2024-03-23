@@ -2,6 +2,7 @@ import { AppState } from '..';
 import type { FilterActions, UserActions } from './';
 import { AcountSettingsActions } from './acountSettings';
 import { AdSingleActions } from './adSingle';
+import { BillingSettingsActions } from './billingSettings';
 import { CounterActions } from './counter/counter.type';
 import { NewAdFormActions } from './newAdForm';
 import { NewDirectoryFormActions } from './newDirectoryForm';
@@ -45,6 +46,7 @@ export const AppTypes = {
   // Settings
   SetAcountSettings: 'SET_ACOUNT_SETTINGS_FORM',
   SetSocialMediaSettings: 'SET_SOCIAL_MEDIA_SETTINGS_FORM',
+  SetBillingSettings: 'SET_BILLING_SETTINGS_FORM',
 
   // counterTypes
   Increment: 'INCREMENT',
@@ -71,4 +73,5 @@ export type AppActions =
   | NewDirectoryFormActions
   | NewMicrositeFormActions
   | AcountSettingsActions
-  | SocialMediaSettingsActions;
+  | SocialMediaSettingsActions
+  | BillingSettingsActions;

@@ -5,6 +5,7 @@ import type {
   logInRes,
   registerRes,
   GetMeResponse,
+  updateBillingParams,
 } from './Users.type';
 import { GeneralLogInSchema } from './Users.type';
 import { Services } from '..';
@@ -52,6 +53,17 @@ export class UsersServices {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static async update(params: any): Promise<any> {
     const response = await req.post('/users/me', params);
+    // const parsed = GeneralLogInSchema.parse(data);
+    // return parsed;
+    return response;
+  }
+
+  /**
+   * @throws {AxiosError,ZodError}
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  static async updateBillingSettings(params: updateBillingParams): Promise<any> {
+    const response = await req.post('/users/taxinfo/update', params);
     // const parsed = GeneralLogInSchema.parse(data);
     // return parsed;
     return response;

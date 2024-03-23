@@ -1,6 +1,7 @@
 import type { FilterState, UserState } from './reducers';
 import { AcountSettingsState } from './reducers/acountSettings';
 import { AdSingleState } from './reducers/adSingle';
+import { BillingSettingsState } from './reducers/billingSettings';
 import { CounterState } from './reducers/counter/counter.type';
 import { NewAdFormState } from './reducers/newAdForm';
 import { newDirectoryFormState } from './reducers/newDirectoryForm';
@@ -18,6 +19,7 @@ export interface AppState {
   newMicrositeForm: newMicrositeFormState;
   acountSettings: AcountSettingsState;
   socialMediaSettings: SocialMediaSettingsState;
+  billingSettings: BillingSettingsState;
 
   [Symbol.iterator]: () => {
     next: () => {

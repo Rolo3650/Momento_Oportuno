@@ -17,6 +17,7 @@ import { newDirectoryFormReducer } from './reducers/newDirectoryForm';
 import { newMicrositeFormReducer } from './reducers/newMicrositeForm';
 import { AcountSettingsReducer } from './reducers/acountSettings';
 import { SocialMediaSettingsReducer } from './reducers/socialMediaSettings copy';
+import { BillingSettingsReducer } from './reducers/billingSettings';
 
 const KEY_FOR_APP_STATE = 'state_x_key_for_app' as const;
 
@@ -39,6 +40,7 @@ const mainReducer = (
     newMicrositeForm,
     acountSettings,
     socialMediaSettings,
+    billingSettings,
     ..._
   }: AppState,
   action: AppActions
@@ -60,7 +62,10 @@ const mainReducer = (
       socialMediaSettings,
       action
     ),
-
+    billingSettings: BillingSettingsReducer(
+      billingSettings,
+      action
+    ),
     ..._,
   };
 };

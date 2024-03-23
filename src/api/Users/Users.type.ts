@@ -1,4 +1,5 @@
 import * as z from 'zod';
+import { BillingSettingsState } from '../../context/reducers/billingSettings';
 
 export const UserSchema = z.object({
   id: z.number(),
@@ -32,6 +33,8 @@ export type registerParams = {
   password: string;
   password_confirmation: string;
 };
+
+export type updateBillingParams = Omit<BillingSettingsState, 'open'>;
 
 // export type updateParams = {
 //   name: string;

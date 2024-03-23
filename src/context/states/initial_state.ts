@@ -40,7 +40,7 @@ const app_state: AppState = {
       value: '1',
       size: '',
       size_label: '',
-      value_label: ''
+      value_label: '',
     },
     feature: false,
     socialMedia: false,
@@ -70,6 +70,22 @@ const app_state: AppState = {
     youtube_url: '',
     linkedIn_url: '',
     tikTok_url: '',
+  },
+  billingSettings: {
+    open: false,
+    rfc: '',
+    razon_social: '',
+    uso_cfdi: '',
+    regimen_fiscal: '',
+    email: '',
+    calle: '',
+    numero_exterior: '',
+    numero_interior: '',
+    colonia: '',
+    estado: '',
+    ciudad: '',
+    pais: '',
+    codigo_postal: '',
   },
 
   [Symbol.iterator]: function () {

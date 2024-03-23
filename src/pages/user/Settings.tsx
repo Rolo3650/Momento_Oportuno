@@ -4,11 +4,12 @@ import { OffCanvasOne } from '../../components/offCanvas/OffCanvasOne';
 import { useSettings } from '../../hooks';
 import { FormThree } from '../../components/form/formThree/FormThree';
 import { FormFour } from '../../components/form/formFour/FormFour';
+import { FormFive } from '../../components/form/formFive/FormFive';
 
 interface Props {}
 
 const Setting: React.FC<Props> = () => {
-  const { acountSettings, setAcountSettings, socialMediaSettings, setSocialMediaSettings } = useSettings();
+  const { acountSettings, setAcountSettings, socialMediaSettings, setSocialMediaSettings, billingSettings, setBillingSettings } = useSettings();
 
   return (
     <LayoutThree>
@@ -36,6 +37,17 @@ const Setting: React.FC<Props> = () => {
           }}
         >
           <FormFour />
+        </OffCanvasOne>
+        </div>
+        <div className='mt-5'>
+        <OffCanvasOne
+          title="Facturación"
+          open={billingSettings.open}
+          onClick={() => {
+            setBillingSettings({ open: !billingSettings.open });
+          }}
+        >
+          <FormFive />
         </OffCanvasOne>
         </div>
       </div>

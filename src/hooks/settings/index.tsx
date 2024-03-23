@@ -1,6 +1,7 @@
 // import React from 'react';
 
 import { AppTypes, useAppContext } from '../../context';
+import { BillingSettingsState } from '../../context/reducers/billingSettings';
 
 const useSettings = () => {
   const { state, dispatch } = useAppContext();
@@ -19,11 +20,20 @@ const useSettings = () => {
     });
   };
 
+  const setBillingSettings = (payload: Partial<BillingSettingsState>) => {
+    dispatch({
+      type: AppTypes.SetBillingSettings,
+      payload: { ...state.billingSettings, ...payload },
+    });
+  };
+
   return {
     acountSettings: state.acountSettings,
     socialMediaSettings: state.socialMediaSettings,
+    billingSettings: state.billingSettings,
     setAcountSettings,
     setSocialMediaSettings,
+    setBillingSettings,
   };
 };
 
