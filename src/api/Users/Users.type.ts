@@ -34,7 +34,7 @@ export type registerParams = {
   password_confirmation: string;
 };
 
-export type updateBillingParams = Omit<BillingSettingsState, 'open'>;
+export type updateBillingParams = Omit<BillingSettingsState, 'open' | 'id'>;
 
 // export type updateParams = {
 //   name: string;

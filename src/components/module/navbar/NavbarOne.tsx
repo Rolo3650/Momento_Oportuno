@@ -16,7 +16,7 @@ const NavbarOne = () => {
     console.log('navigate_1: ', !state?.userState?.token);
     console.log('navigate_2: ', state.init);
     if (!state?.userState?.token && state.init) {
-      // window.location.assign('/');
+      window.location.assign('/');
     }
   }, [state.userState, state.init]);
 

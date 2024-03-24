@@ -75,8 +75,8 @@ const app_state: AppState = {
     open: false,
     rfc: '',
     razon_social: '',
-    uso_cfdi: '',
-    regimen_fiscal: '',
+    uso_cfdi: 'G01',
+    regimen_fiscal: '601',
     email: '',
     calle: '',
     numero_exterior: '',
@@ -86,6 +86,7 @@ const app_state: AppState = {
     ciudad: '',
     pais: '',
     codigo_postal: '',
+    id: null,
   },
 
   [Symbol.iterator]: function () {

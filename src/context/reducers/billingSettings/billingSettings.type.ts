@@ -15,6 +15,7 @@ export type BillingSettingsState = {
   ciudad: string;
   pais: string;
   codigo_postal: string;
+  id: number | null | undefined;
 };
 
 export type BillingSettingsPayload = {

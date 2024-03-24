@@ -4,77 +4,209 @@ import { useTheme, Button, Grid } from '@mui/material';
 import { useSettings } from '../../../hooks';
 import Swal from 'sweetalert2';
 import { UsersServices } from '../../../api';
+import { SelectTwo } from '../../inputs/select/SelectTwo';
+import { OrdersServices } from '../../../api/Orders';
+import { useNavigate } from 'react-router';
 // import { useAppContext, AppTypes } from '../../../context';
+
+interface Option {
+  label: string;
+  value: number | string;
+  quantity?: number;
+}
 
 const FormFive = () => {
   const theme = useTheme();
   const { billingSettings, setBillingSettings } = useSettings();
+
+  const optionsCFDI: Option[] = [
+    {
+      label: 'Adquisición de mercancías',
+      value: 'G01',
+    },
+    {
+      label: 'Devoluciones, descuentos o bonificaciones',
+      value: 'G02',
+    },
+    {
+      label: 'Gastos en general',
+      value: 'G03',
+    },
+    {
+      label: 'Construcciones',
+      value: 'I01',
+    },
+    {
+      label: 'Mobiliario y equipo de oficina por inversiones',
+      value: 'I02',
+    },
+    {
+      label: 'Equipo de transporte',
+      value: 'I03',
+    },
+    {
+      label: 'Equipo de computo y accesorios',
+      value: 'I04',
+    },
+    {
+      label: 'Dados, troqueles, moldes, matrices y herramental',
+      value: 'I05',
+    },
+    {
+      label: 'Comunicaciones telefónicas',
+      value: 'I06',
+    },
+    {
+      label: 'Comunicaciones satelitales',
+      value: 'I07',
+    },
+    {
+      label: 'Otra maquinaria y equipo',
+      value: 'I08',
+    },
+    {
+      label: 'Honorarios médicos, dentales y gastos hospitalarios',
+      value: 'D01',
+    },
+    {
+      label: 'Gastos médicos por incapacidad o discapacidad',
+      value: 'D02',
+    },
+    {
+      label: 'Gastos funerales',
+      value: 'D03',
+    },
+    {
+      label: 'Donativos',
+      value: 'D04',
+    },
+    {
+      label:
+        'Intereses reales efectivamente pagados por créditos hipotecarios (casa habitación)',
+      value: 'D05',
+    },
+    {
+      label: 'Aportaciones voluntarias al SAR',
+      value: 'D06',
+    },
+    {
+      label: 'Primas por seguros de gastos médicos',
+      value: 'D07',
+    },
+    {
+      label: 'Gastos de transportación escolar obligatoria',
+      value: 'D08',
+    },
+    {
+      label:
+        'Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones',
+      value: 'D09',
+    },
+    {
+      label: 'Pagos por servicios educativos (colegiaturas)',
+      value: 'D10',
+    },
+    {
+      label: 'Sin efectos fiscales',
+      value: 'S01',
+    },
+    {
+      label: 'Pagos',
+      value: 'CP01',
+    },
+    {
+      label: 'Nómina',
+      value: 'CN01',
+    },
+  ];
+
+  const optionsRegimen: Option[] = [
+    {
+      label: 'General de Ley Personas Morales',
+      value: '601',
+    },
+    {
+      label: 'Personas Morales con Fines no Lucrativos',
+      value: '603',
+    },
+    {
+      label: 'Sueldos y Salarios e Ingresos Asimilados a Salarios',
+      value: '605',
+    },
+    {
+      label: 'Arrendamiento',
+      value: '606',
+    },
+    {
+      label: 'Régimen de Enajenación o Adquisición de Bienes',
+      value: '607',
+    },
+    {
+      label: 'Demás ingresos',
+      value: '608',
+    },
+    {
+      label:
+        'Residentes en el Extranjero sin Establecimiento Permanente en México',
+      value: '610',
+    },
+    {
+      label: 'Ingresos por Dividendos (socios y accionistas)',
+      value: '611',
+    },
+    {
+      label: 'Personas Físicas con Actividades Empresariales y Profesionales',
+      value: '612',
+    },
+    {
+      label: 'Ingresos por intereses',
+      value: '614',
+    },
+    {
+      label: 'Régimen de los ingresos por obtención de premios',
+      value: '615	',
+    },
+    {
+      label: 'Sin obligaciones fiscales',
+      value: '616',
+    },
+    {
+      label:
+        'Sociedades Cooperativas de Producción que optan por diferir sus ingresos',
+      value: '620',
+    },
+    {
+      label: 'Incorporación Fiscal',
+      value: '621',
+    },
+    {
+      label: 'Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras',
+      value: '622',
+    },
+    {
+      label: 'Opcional para Grupos de Sociedades',
+      value: '623',
+    },
+    {
+      label: 'Coordinados',
+      value: '624',
+    },
+    {
+      label:
+        'Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas',
+      value: '625',
+    },
+    {
+      label: 'Régimen Simplificado de Confianza',
+      value: '626',
+    },
+  ];
+
+  const navigateTo = useNavigate();
   // const { state, dispatch } = useAppContext();
 
   const onSubmit = async () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // const obj: any = {
-    //   name: state.userState?.user.name,
-    //   phone: state.userState?.user.phone,
-    // };
-    // if (billingSettings.facebook_url) {
-    //   obj.facebook_url = billingSettings.facebook_url;
-    // }
-    // if (billingSettings.instagram_url) {
-    //   obj.instagram_url = billingSettings.instagram_url;
-    // }
-    // if (billingSettings.twitter_url) {
-    //   obj.twitter_url = billingSettings.twitter_url;
-    // }
-    // if (billingSettings.linkedIn_url) {
-    //   obj.linkedIn_url = billingSettings.linkedIn_url;
-    // }
-    // if (billingSettings.tikTok_url) {
-    //   obj.tikTok_url = billingSettings.tikTok_url;
-    // }
-    // if (billingSettings.youtube_url) {
-    //   obj.youtube_url = billingSettings.youtube_url;
-    // }
-    // console.log('OBJREDES', obj);
-    // try {
-    //   const response = await UsersServices.update(obj);
-    //   console.log('REDES', response);
-    //   if (response?.status == 200) {
-    //     Swal.fire('Listo', 'Información guardada exitosamente', 'success').then(
-    //       () => {
-    //         window.scrollTo(0, 0);
-    //         const user = state.userState;
-    //         if (user) {
-    //           setBillingSettings({
-    //             open: false,
-    //             // completeName: state.userState?.user.name,
-    //             // cellphone: state.userState?.user.phone,
-    //             // userName: '',
-    //             // completeName: '',
-    //             // cellphone: '',
-    //             // description: '',
-    //           });
-    //           dispatch({
-    //             type: AppTypes.Login,
-    //             payload: user,
-    //           });
-    //         }
-    //       }
-    //     );
-    //   } else {
-    //     Swal.fire(
-    //       'Error',
-    //       'Ocurrió un error al conectar con el servidor, por favor inténtalo en otro momento',
-    //       'error'
-    //     );
-    //   }
-    // } catch (e) {
-    //   Swal.fire(
-    //     'Error',
-    //     'Ingresa URL válidas',
-    //     'error'
-    //   );
-    // }
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (
       billingSettings.rfc &&
@@ -88,19 +220,60 @@ const FormFive = () => {
       billingSettings.estado &&
       billingSettings.ciudad &&
       billingSettings.pais &&
-      billingSettings.codigo_postal
+      billingSettings.codigo_postal &&
+      emailRegex.test(billingSettings.email)
     ) {
       const response = await UsersServices.updateBillingSettings(
         billingSettings
       );
 
       if (response?.status === 200) {
+        if (billingSettings.id) {
+          try {
+            const response2 = await OrdersServices.createBilling({
+              id: `${billingSettings.id}`,
+            });
+
+            if (response2?.status === 200) {
+              Swal.fire(
+                'Listo',
+                'Factura enviada a tu correo con éxito',
+                'success'
+              );
+            } else {
+              Swal.fire(
+                'Error',
+                'Error al generar la factura, por favor verifica los datos de facturación',
+                'error'
+              );
+            }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          } catch (e: any) {
+            if (
+              e?.response?.data?.error ===
+              'This order has already been invoiced'
+            ) {
+              Swal.fire('Error', 'La órden ya ha sido facturada', 'error');
+            } else {
+              Swal.fire(
+                'Error',
+                'Error al generar la factura, por favor verifica los datos de facturación',
+                'error'
+              );
+            }
+          }
+        } else {
+          Swal.fire('Listo', 'Informacióneditada con éxito', 'success');
+        }
+      } else {
         Swal.fire(
-          'Listo',
-          'Informacióneditada con éxito',
-          'success'
+          'Error',
+          'Error al guardar la información, por favor intentalo más tarde',
+          'error'
         );
       }
+    } else if (!emailRegex.test(billingSettings.email)) {
+      Swal.fire('Error', 'Ingresa un correo válido', 'error');
     } else {
       Swal.fire('Error', 'Completa todos los campos obligatorios (*)', 'error');
     }
@@ -124,7 +297,9 @@ const FormFive = () => {
               text="RFC"
               icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
               onChange={(e) => {
-                setBillingSettings({ rfc: e.target.value });
+                setBillingSettings({
+                  rfc: e.target.value?.toLocaleUpperCase(),
+                });
               }}
               value={billingSettings.rfc}
             />
@@ -144,7 +319,9 @@ const FormFive = () => {
               text="Razón Social"
               icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
               onChange={(e) => {
-                setBillingSettings({ razon_social: e.target.value });
+                setBillingSettings({
+                  razon_social: e.target.value?.toLocaleUpperCase(),
+                });
               }}
               value={billingSettings.razon_social}
             />
@@ -152,16 +329,16 @@ const FormFive = () => {
 
           <Grid item xs={12} md={6}>
             <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-              CDFI <span className="text text-color-secondary">*</span>
+              Uso de CFDI <span className="text text-color-secondary">*</span>
             </div>
-            <TextFieldOne
+            {/* <TextFieldOne
               color={{
                 variant: 'secondary',
                 text: '#464748',
                 field: theme.palette.secondary.main,
                 backgroundColor: '#fff',
               }}
-              text="CDFI"
+              text="Uso de CFDI"
               icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
               onChange={(e) => {
                 // const regex = /^[0-9]{0,10}$/;
@@ -170,15 +347,27 @@ const FormFive = () => {
                 // }
               }}
               value={billingSettings.uso_cfdi}
+            /> */}
+            <SelectTwo
+              label="Uso de CFDI"
+              options={optionsCFDI}
+              option={optionsCFDI.find(
+                (option) => option.value == billingSettings.uso_cfdi
+              )}
+              onChange={(option) => {
+                setBillingSettings({ uso_cfdi: `${option.value}` });
+              }}
+              height="70px"
+              color={theme.palette.secondary.main}
             />
           </Grid>
 
           <Grid item xs={12} md={6}>
             <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-              Regimen Fiscal{' '}
+              Régimen Fiscal{' '}
               <span className="text text-color-secondary">*</span>
             </div>
-            <TextFieldOne
+            {/* <TextFieldOne
               color={{
                 variant: 'secondary',
                 text: '#464748',
@@ -191,6 +380,18 @@ const FormFive = () => {
                 setBillingSettings({ regimen_fiscal: e.target.value });
               }}
               value={billingSettings.regimen_fiscal}
+            /> */}
+            <SelectTwo
+              label="Régimen Fiscal"
+              options={optionsRegimen}
+              option={optionsRegimen.find(
+                (option) => option.value == billingSettings.regimen_fiscal
+              )}
+              onChange={(option) => {
+                setBillingSettings({ regimen_fiscal: `${option.value}` });
+              }}
+              height="70px"
+              color={theme.palette.secondary.main}
             />
           </Grid>
 
@@ -208,7 +409,9 @@ const FormFive = () => {
               text="Email"
               icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
               onChange={(e) => {
-                setBillingSettings({ email: e.target.value });
+                setBillingSettings({
+                  email: e.target.value?.toLocaleLowerCase(),
+                });
               }}
               value={billingSettings.email}
             />
@@ -228,7 +431,7 @@ const FormFive = () => {
               text="Calle"
               icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
               onChange={(e) => {
-                setBillingSettings({ calle: e.target.value });
+                setBillingSettings({ calle: e.target.value?.toUpperCase() });
               }}
               value={billingSettings.calle}
             />
@@ -277,7 +480,7 @@ const FormFive = () => {
 
           <Grid item xs={12} md={6}>
             <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-              Colonia
+              Colonia <span className="text text-color-secondary">*</span>
             </div>
             <TextFieldOne
               color={{
@@ -289,7 +492,9 @@ const FormFive = () => {
               text="Colonia"
               icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
               onChange={(e) => {
-                setBillingSettings({ colonia: e.target.value });
+                setBillingSettings({
+                  colonia: e.target.value?.toLocaleUpperCase(),
+                });
               }}
               value={billingSettings.colonia}
             />
@@ -297,7 +502,7 @@ const FormFive = () => {
 
           <Grid item xs={12} md={6}>
             <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-              Estado
+              Estado <span className="text text-color-secondary">*</span>
             </div>
             <TextFieldOne
               color={{
@@ -306,10 +511,12 @@ const FormFive = () => {
                 field: theme.palette.secondary.main,
                 backgroundColor: '#fff',
               }}
-              text="Colonia"
+              text="Estado"
               icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
               onChange={(e) => {
-                setBillingSettings({ estado: e.target.value });
+                setBillingSettings({
+                  estado: e.target.value?.toLocaleUpperCase(),
+                });
               }}
               value={billingSettings.estado}
             />
@@ -317,7 +524,7 @@ const FormFive = () => {
 
           <Grid item xs={12} md={6}>
             <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-              Ciudad
+              Ciudad <span className="text text-color-secondary">*</span>
             </div>
             <TextFieldOne
               color={{
@@ -329,7 +536,9 @@ const FormFive = () => {
               text="Ciudad"
               icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
               onChange={(e) => {
-                setBillingSettings({ ciudad: e.target.value });
+                setBillingSettings({
+                  ciudad: e.target.value?.toLocaleUpperCase(),
+                });
               }}
               value={billingSettings.ciudad}
             />
@@ -337,7 +546,7 @@ const FormFive = () => {
 
           <Grid item xs={12} md={6}>
             <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-              País
+              País <span className="text text-color-secondary">*</span>
             </div>
             <TextFieldOne
               color={{
@@ -349,7 +558,9 @@ const FormFive = () => {
               text="País"
               icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
               onChange={(e) => {
-                setBillingSettings({ pais: e.target.value });
+                setBillingSettings({
+                  pais: e.target.value?.toLocaleUpperCase(),
+                });
               }}
               value={billingSettings.pais}
             />
@@ -357,7 +568,7 @@ const FormFive = () => {
 
           <Grid item xs={12} md={6}>
             <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-              Código Postal
+              Código Postal <span className="text text-color-secondary">*</span>
             </div>
             <TextFieldOne
               color={{
@@ -369,7 +580,11 @@ const FormFive = () => {
               text="Código Postal"
               icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
               onChange={(e) => {
-                setBillingSettings({ codigo_postal: e.target.value });
+                const regexCode = /^[0-9]{0,5}$/;
+
+                if (regexCode.test(e.target.value)) {
+                  setBillingSettings({ codigo_postal: e.target.value });
+                }
               }}
               value={billingSettings.codigo_postal}
             />
@@ -377,9 +592,25 @@ const FormFive = () => {
         </Grid>
       </div>
       <div className="my-4 d-flex justify-content-end">
-        <Button color="secondary" variant="contained" onClick={onSubmit}>
-          Guardar
+        <Button
+          className="me-5"
+          color="secondary"
+          variant="contained"
+          onClick={onSubmit}
+        >
+          {billingSettings.id ? 'Guardar y facturar' : 'Guardar'}
         </Button>
+        {billingSettings.id != null && billingSettings.id != undefined && (
+          <Button
+            color="secondary"
+            variant="contained"
+            onClick={() => {
+              navigateTo(`/comprobante/${billingSettings.id}`);
+            }}
+          >
+            Regresar
+          </Button>
+        )}
       </div>
     </div>
   );

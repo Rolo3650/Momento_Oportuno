@@ -18,9 +18,18 @@ interface Props {
   option?: Option;
   options: Option[] | undefined;
   onChange?: (option: Option) => void;
+  height?: string;
+  color?: string;
 }
 
-const SelectTwo: React.FC<Props> = ({ option, options, onChange, label }) => {
+const SelectTwo: React.FC<Props> = ({
+  option,
+  options,
+  onChange,
+  label,
+  height,
+  color
+}) => {
   const [value, setValue] = useState<Option>({
     label: 'Cualquier',
     value: 'Cualquier',
@@ -55,7 +64,9 @@ const SelectTwo: React.FC<Props> = ({ option, options, onChange, label }) => {
         onChange={onChangeValue}
         sx={{
           '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#FD8A24',
+            borderColor: color ? `${color}` : '#FD8A24',
+            height: height ? `${height}` : undefined,
+            alignItems: 'center',
           },
         }}
         variant="outlined"

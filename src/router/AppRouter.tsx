@@ -26,6 +26,7 @@ import { Contactanos } from '../pages/info/Contactanos';
 import { Page404 } from '../pages/404/Index';
 import { EditAd } from '../pages/user/EditAd';
 import { Terminos } from '../pages/info/Terminos';
+import { Billing } from '../pages/user/Billing';
 
 const AppRouter = () => {
   return (
@@ -48,6 +49,7 @@ const AppRouter = () => {
         <Route path="/panel/create" element={<AddNewAd />} />
         <Route path="/panel/edit" element={<EditAd />} />
         <Route path="/panel/list" element={<MyAds />} />
+        <Route path="/panel/billing" element={<Billing />} />
         <Route path="/panel/favorites" element={<Favorites />} />
         <Route path="/panel/Messages" element={<Messages />} />
         <Route path="/panel/my-orders" element={<MyOrders />} />

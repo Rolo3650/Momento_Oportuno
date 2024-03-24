@@ -1,15 +1,15 @@
 // import React from 'react';
 import { LayoutThree } from '../../containers/layout/LayoutThree';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
-import { useOrderById } from '../../hooks';
+import { useOrderById, useSettings } from '../../hooks';
 import AssignmentIcon from '@mui/icons-material/AssignmentOutlined';
 import { GeneralButton } from '../../components/inputs/buttons/GeneralButton';
-import { OrdersServices } from '../../api/Orders';
-import Swal from 'sweetalert2';
 
 const Confirmacion = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { setBillingSettings } = useSettings();
+  const navigateTo = useNavigate();
   const params = useParams();
   const { data: { data: order } = {}, isLoading } = useOrderById(
     params.orderid
@@ -97,16 +97,9 @@ const Confirmacion = () => {
               hoverColor="secondary"
               onClick={async () => {
                 if (params.orderid) {
-                  const response = await OrdersServices.createBilling({
-                    id: `${params?.orderid}`,
-                  });
-
-                  if (response.status == 200 ){
-                    Swal.fire("Listo", "Factura creada exitosamente", "success")
-                  } else {
-                    Swal.fire("Eorr", "Error al generar lafactura, por favor verifica tus datos de facturación", "error")
-                  }
-                } 
+                  setBillingSettings({ id: parseInt(params.orderid) });
+                  navigateTo('/panel/billing');
+                }
               }}
               endIcon={<AssignmentIcon />}
             />
