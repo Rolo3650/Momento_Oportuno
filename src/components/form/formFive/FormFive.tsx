@@ -21,183 +21,183 @@ const FormFive = () => {
 
   const optionsCFDI: Option[] = [
     {
-      label: 'Adquisición de mercancías',
+      label: 'Adquisición de mercancías (G01)',
       value: 'G01',
     },
     {
-      label: 'Devoluciones, descuentos o bonificaciones',
+      label: 'Devoluciones, descuentos o bonificaciones (G02)',
       value: 'G02',
     },
     {
-      label: 'Gastos en general',
+      label: 'Gastos en general (G03)',
       value: 'G03',
     },
     {
-      label: 'Construcciones',
+      label: 'Construcciones (I01)',
       value: 'I01',
     },
     {
-      label: 'Mobiliario y equipo de oficina por inversiones',
+      label: 'Mobiliario y equipo de oficina por inversiones (I02)',
       value: 'I02',
     },
     {
-      label: 'Equipo de transporte',
+      label: 'Equipo de transporte (I03)',
       value: 'I03',
     },
     {
-      label: 'Equipo de computo y accesorios',
+      label: 'Equipo de computo y accesorios (I04)',
       value: 'I04',
     },
     {
-      label: 'Dados, troqueles, moldes, matrices y herramental',
+      label: 'Dados, troqueles, moldes, matrices y herramental (I05)',
       value: 'I05',
     },
     {
-      label: 'Comunicaciones telefónicas',
+      label: 'Comunicaciones telefónicas (I06)',
       value: 'I06',
     },
     {
-      label: 'Comunicaciones satelitales',
+      label: 'Comunicaciones satelitales (I07)',
       value: 'I07',
     },
     {
-      label: 'Otra maquinaria y equipo',
+      label: 'Otra maquinaria y equipo (I08)',
       value: 'I08',
     },
     {
-      label: 'Honorarios médicos, dentales y gastos hospitalarios',
+      label: 'Honorarios médicos, dentales y gastos hospitalarios (D01)',
       value: 'D01',
     },
     {
-      label: 'Gastos médicos por incapacidad o discapacidad',
+      label: 'Gastos médicos por incapacidad o discapacidad (D02)',
       value: 'D02',
     },
     {
-      label: 'Gastos funerales',
+      label: 'Gastos funerales (D03)',
       value: 'D03',
     },
     {
-      label: 'Donativos',
+      label: 'Donativos (D04)',
       value: 'D04',
     },
     {
       label:
-        'Intereses reales efectivamente pagados por créditos hipotecarios (casa habitación)',
+        'Intereses reales efectivamente pagados por créditos hipotecarios (casa habitación) (D05)',
       value: 'D05',
     },
     {
-      label: 'Aportaciones voluntarias al SAR',
+      label: 'Aportaciones voluntarias al SAR (D06)',
       value: 'D06',
     },
     {
-      label: 'Primas por seguros de gastos médicos',
+      label: 'Primas por seguros de gastos médicos (D07)',
       value: 'D07',
     },
     {
-      label: 'Gastos de transportación escolar obligatoria',
+      label: 'Gastos de transportación escolar obligatoria (D08)',
       value: 'D08',
     },
     {
       label:
-        'Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones',
+        'Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones (D09)',
       value: 'D09',
     },
     {
-      label: 'Pagos por servicios educativos (colegiaturas)',
+      label: 'Pagos por servicios educativos (colegiaturas) (D10)',
       value: 'D10',
     },
     {
-      label: 'Sin efectos fiscales',
+      label: 'Sin efectos fiscales (S01)',
       value: 'S01',
     },
     {
-      label: 'Pagos',
+      label: 'Pagos (CP01)',
       value: 'CP01',
     },
     {
-      label: 'Nómina',
+      label: 'Nómina (CN01)',
       value: 'CN01',
     },
   ];
 
   const optionsRegimen: Option[] = [
     {
-      label: 'General de Ley Personas Morales',
+      label: 'General de Ley Personas Morales (601)',
       value: '601',
     },
     {
-      label: 'Personas Morales con Fines no Lucrativos',
+      label: 'Personas Morales con Fines no Lucrativos (603)',
       value: '603',
     },
     {
-      label: 'Sueldos y Salarios e Ingresos Asimilados a Salarios',
+      label: 'Sueldos y Salarios e Ingresos Asimilados a Salarios (605)',
       value: '605',
     },
     {
-      label: 'Arrendamiento',
+      label: 'Arrendamiento (606)',
       value: '606',
     },
     {
-      label: 'Régimen de Enajenación o Adquisición de Bienes',
+      label: 'Régimen de Enajenación o Adquisición de Bienes (607)',
       value: '607',
     },
     {
-      label: 'Demás ingresos',
+      label: 'Demás ingresos (608)',
       value: '608',
     },
     {
       label:
-        'Residentes en el Extranjero sin Establecimiento Permanente en México',
+        'Residentes en el Extranjero sin Establecimiento Permanente en México (610)',
       value: '610',
     },
     {
-      label: 'Ingresos por Dividendos (socios y accionistas)',
+      label: 'Ingresos por Dividendos (socios y accionistas) (611)',
       value: '611',
     },
     {
-      label: 'Personas Físicas con Actividades Empresariales y Profesionales',
+      label: 'Personas Físicas con Actividades Empresariales y Profesionales (612)',
       value: '612',
     },
     {
-      label: 'Ingresos por intereses',
+      label: 'Ingresos por intereses (614)',
       value: '614',
     },
     {
-      label: 'Régimen de los ingresos por obtención de premios',
+      label: 'Régimen de los ingresos por obtención de premios (615)',
       value: '615	',
     },
     {
-      label: 'Sin obligaciones fiscales',
+      label: 'Sin obligaciones fiscales (616)',
       value: '616',
     },
     {
       label:
-        'Sociedades Cooperativas de Producción que optan por diferir sus ingresos',
+        'Sociedades Cooperativas de Producción que optan por diferir sus ingresos (620)',
       value: '620',
     },
     {
-      label: 'Incorporación Fiscal',
+      label: 'Incorporación Fiscal (621)',
       value: '621',
     },
     {
-      label: 'Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras',
+      label: 'Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras (622)',
       value: '622',
     },
     {
-      label: 'Opcional para Grupos de Sociedades',
+      label: 'Opcional para Grupos de Sociedades (623)',
       value: '623',
     },
     {
-      label: 'Coordinados',
+      label: 'Coordinados (624)',
       value: '624',
     },
     {
       label:
-        'Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas',
+        'Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas (625)',
       value: '625',
     },
     {
-      label: 'Régimen Simplificado de Confianza',
+      label: 'Régimen Simplificado de Confianza (626)',
       value: '626',
     },
   ];
@@ -502,7 +502,7 @@ const FormFive = () => {
 
           <Grid item xs={12} md={6}>
             <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-              Estado <span className="text text-color-secondary">*</span>
+              Ubicación <span className="text text-color-secondary">*</span>
             </div>
             <TextFieldOne
               color={{
@@ -511,7 +511,7 @@ const FormFive = () => {
                 field: theme.palette.secondary.main,
                 backgroundColor: '#fff',
               }}
-              text="Estado"
+              text="Ubicación"
               icon={{ mui: <DriveFileRenameOutlineIcon color="secondary" /> }}
               onChange={(e) => {
                 setBillingSettings({

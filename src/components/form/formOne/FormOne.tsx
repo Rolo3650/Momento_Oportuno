@@ -191,8 +191,8 @@ const FormOne: React.FC<Props> = () => {
       <StepOne />
       <StepTwo />
       <StepThree />
-      <Addons />
       <StepFour />
+      <Addons />
       <div className="my-3 d-flex justify-content-end">
         <Button
           sx={{

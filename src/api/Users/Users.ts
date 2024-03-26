@@ -98,7 +98,7 @@ export class UsersServices {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): Promise<any> {
     const response = await req.post(
-      'users/change-password',
+      '/password/reset',
       {
         password: password,
         password_confirmation: password_confirmation,

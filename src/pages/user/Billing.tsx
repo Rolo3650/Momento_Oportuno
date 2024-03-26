@@ -22,6 +22,11 @@ const Billing = () => {
               Facturación
             </h1>
           </div>
+          <div className="d-flex justify-content-between mb-4">
+            <h1 className="title text text-font-georgia fw-bold fs-5 text-color-5">
+              Por favor ingresartus datos fiscales
+            </h1>
+          </div>
           <Card>
             <CardContent>
               <FormFive />

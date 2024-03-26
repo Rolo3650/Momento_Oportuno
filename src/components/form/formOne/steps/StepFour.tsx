@@ -63,7 +63,7 @@ const StepFour = () => {
       return 'Standard';
     } else if (name == 'Publica tu anuncio por 21 d\u00edas') {
       return 'Premium';
-    } else{
+    } else {
       return name;
     }
   };
@@ -75,7 +75,7 @@ const StepFour = () => {
       return 'Publica tu anuncio por 14 d\u00edas';
     } else if (desc == 'Tu anuncio en nuestros listados por 21 d\u00edas') {
       return 'Publica tu anuncio por 21 d\u00edas';
-    } else{
+    } else {
       return desc;
     }
   };
@@ -94,14 +94,14 @@ const StepFour = () => {
   return (
     <>
       <div className="mt-3 align-items-center d-flex fw-bold text text-color-5 text-font-rubik title">
-        <div className="text-nowrap">Periodo de Publicación</div>
+        <div className="text-nowrap">Paquetes</div>
         <div className="border-pointed w-100 mx-3"></div>
         <div>
           <SouthIcon color="secondary" />
         </div>
       </div>
       <div className="mt-2 fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-        Selecciona la cantidad de días
+        Selecciona el paquete que más te guste
         <span className="text text-color-secondary">*</span>
       </div>
       <div className="packages mt-4">

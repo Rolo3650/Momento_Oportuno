@@ -384,11 +384,11 @@ const StepOne: React.FC<Props> = () => {
         </div> */}
         <div className="mb-3">
           <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-            Estado <span className="text text-color-secondary">*</span>
+            Ubicación del producto <span className="text text-color-secondary">*</span>
           </div>
           <DropdownTwo
             option={{
-              label: newAdForm.state?.name ?? 'Estado',
+              label: newAdForm.state?.name ?? 'Ubicación del producto',
               value: newAdForm.state?.id ?? 0,
             }}
             color={{
@@ -397,7 +397,7 @@ const StepOne: React.FC<Props> = () => {
               field: theme.palette.secondary.main,
               backgroundColor: '#fff',
             }}
-            text="Estado"
+            text="Ubicación"
             icon={{
               muiIcon: (
                 <PlaceIcon

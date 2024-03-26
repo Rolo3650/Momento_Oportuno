@@ -30,6 +30,8 @@ const PopularCategoriesButtonTwo: React.FC<Props> = ({
         display={'flex'}
         alignItems={'center'}
         justifyContent={'center'}
+        borderRadius={'10px'}
+        overflow={'hidden'}
       >
         <img
           src={img}

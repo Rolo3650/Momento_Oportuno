@@ -40,7 +40,7 @@ export type GetMicrositesResponse = z.infer<typeof GetMicrositesResponseSchema>
 
 export const CreateMicrositeParamsSchema = z.object({
   title: z.string().min(3, 'Mínimo 3 caracteres'),
-  state_id: z.number().min(1, 'Selecciona un estado'),
+  state_id: z.number().min(1, 'Selecciona una ubicación'),
   address: z.string().min(3, 'Mínimo 3 caracteres'),
   phone: z
     .string()

@@ -32,7 +32,7 @@ const ChangePassword = () => {
         alignItems={'center'}
         padding={8}
       >
-        <div>
+        <div style={{ width: '300px' }}>
           <div className="mb-4">
             <h1 className="title text-center text text-font-georgia fw-bold fs-2 text-color-5">
               Facturación
@@ -92,8 +92,8 @@ const ChangePassword = () => {
                           'Contraseña actualizada cón éxito',
                           'error'
                         ).then(() => {
-                            window.location.assign('/login-register?tab=login')
-                        })
+                          window.location.assign('/login-register?tab=login');
+                        });
                       }
                     } catch (err) {
                       Swal.fire('Error', 'El código ha expirado', 'error');

@@ -20,7 +20,7 @@ const SearchTwo = () => {
   const [lookingFor, setLookingFor] = useState('');
   const allCategories = useAllCategories();
   const { data } = useGetStates();
-  const [city, setCity] = useState<Option>({ label: 'Estado', value: 0 });
+  const [city, setCity] = useState<Option>({ label: 'Ubicación', value: 0 });
   const [category, setCategory] = useState<Option>({
     label: 'Categoría',
     value: 0,
