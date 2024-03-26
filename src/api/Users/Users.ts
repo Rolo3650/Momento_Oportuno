@@ -64,7 +64,7 @@ export class UsersServices {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static async updateBillingSettings(
     params: updateBillingParams
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): Promise<any> {
     const response = await req.post('/users/taxinfo/update', params);
     // const parsed = GeneralLogInSchema.parse(data);
@@ -80,6 +80,30 @@ export class UsersServices {
     const response = await req.post(
       '/password/forgot',
       { email: email },
+      {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      }
+    );
+
+    return response;
+  }
+
+  /**
+   * @throws {AxiosError,ZodError}
+   */
+  static async changePassword(
+    password: string,
+    password_confirmation: string,
+    code: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ): Promise<any> {
+    const response = await req.post(
+      'users/change-password',
+      {
+        password: password,
+        password_confirmation: password_confirmation,
+        code: code,
+      },
       {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       }

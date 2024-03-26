@@ -27,6 +27,7 @@ import { Page404 } from '../pages/404/Index';
 import { EditAd } from '../pages/user/EditAd';
 import { Terminos } from '../pages/info/Terminos';
 import { Billing } from '../pages/user/Billing';
+import { ChangePassword } from '../pages/user/ChangePassword';
 
 const AppRouter = () => {
   return (
@@ -81,6 +82,7 @@ const AppRouter = () => {
         />
         <Route path="/panel/microsites/pago" element={<MicrositesPayment />} />
         <Route path="/comprobante/:orderid" element={<Confirmacion />} />
+        <Route path="/password/update" element={<ChangePassword />} />
 
         <Route path="/404" element={<Page404 />} />
 
