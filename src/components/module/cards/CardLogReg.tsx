@@ -23,6 +23,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { UsersServices } from '../../../api';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -188,15 +189,30 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
       title: 'Restaurar Contraseña',
       text: 'Introduzca la dirección de correo electrónico asociada a la cuenta.',
       icon: 'question',
-      input: 'text',
+      input: 'email',
       showCancelButton: true,
       cancelButtonText: 'Cancelar',
       cancelButtonColor: '#FD8A2A',
       confirmButtonColor: '#E4032E',
       confirmButtonText: 'Enviar',
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire('Enviar', '', 'info');
+        if (result.value) {
+          try {
+            const response = await UsersServices.forgotPassword(result.value);
+
+            if (response?.status == 200) {
+              Swal.fire(
+                'Correo envíado',
+                'Ingresa a tu correo electrónico y da click en el boton',
+                'success'
+              );
+            }
+          } catch (err) {
+            Swal.fire('Error', 'Correo no enviado', 'error');
+          }
+        }
+        // Swal.fire('Enviado', '', 'info');
       }
     });
   };
@@ -423,7 +439,6 @@ const CardLogRes = ({ handleClose }: CardLogResProps) => {
                       Contraseña
                     </InputLabel>
                     <OutlinedInput
-                      
                       style={{ width: '147%' }}
                       color="secondary"
                       label="Password"

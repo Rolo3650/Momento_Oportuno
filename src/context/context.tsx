@@ -80,7 +80,7 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
       const localState = cookies.get(KEY_FOR_APP_STATE);
       console.log('parsed_state:', localState);
       const parsedState: AppState | null = localState ? localState : null;
-      if (parsedState) {
+      if (parsedState && parsedState.userState?.token) {
         dispatch({
           type: AppTypes.SetGlobalState,
           payload: {
@@ -88,10 +88,10 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
           },
         });
       } else {
-        dispatch({
-          type: AppTypes.SetGlobalState,
-          payload: { state: { ...state, init: true } },
-        });
+        // dispatch({
+        //   type: AppTypes.SetGlobalState,
+        //   payload: { state: { ...state, init: true } },
+        // });
       }
     } catch (error) {
       dispatch({
