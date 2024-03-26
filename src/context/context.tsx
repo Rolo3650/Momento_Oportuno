@@ -88,10 +88,10 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
           },
         });
       } else {
-        // dispatch({
-        //   type: AppTypes.SetGlobalState,
-        //   payload: { state: { ...state, init: true } },
-        // });
+        dispatch({
+          type: AppTypes.SetGlobalState,
+          payload: { state: { ...state, init: true } },
+        });
       }
     } catch (error) {
       dispatch({
@@ -109,7 +109,8 @@ const AppProvider: React.FC<PropsWithChildren> = ({ children }) => {
       const cookies = new Cookies(null, { path: '/' });
       cookies.set(KEY_FOR_APP_STATE, state, { path: '/' });
     }
-  }, [state]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.userState]);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

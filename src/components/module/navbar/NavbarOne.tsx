@@ -15,9 +15,13 @@ const NavbarOne = () => {
   useEffect(() => {
     console.log('navigate_1: ', !state?.userState?.token);
     console.log('navigate_2: ', state.init);
-    if (!state?.userState?.token && state.init) {
-      window.location.assign('/');
-    }
+    // if (!pathname.includes('comprobante')) {
+      if (!state?.userState?.token && state.init) {
+        window.location.assign('/');
+        // console.log('hola')
+      }
+    // }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.userState, state.init]);
 
   return (
