@@ -90,7 +90,7 @@ const ChangePassword = () => {
                         Swal.fire(
                           'Contraseña Actualizada',
                           'Contraseña actualizada con éxito',
-                          'succes'
+                          'success'
                         ).then(() => {
                           window.location.assign('/login-register?tab=login');
                         });
