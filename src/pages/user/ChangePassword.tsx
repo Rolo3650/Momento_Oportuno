@@ -35,7 +35,7 @@ const ChangePassword = () => {
         <div style={{ width: '300px' }}>
           <div className="mb-4">
             <h1 className="title text-center text text-font-georgia fw-bold fs-2 text-color-5">
-              Facturación
+              Actualiza tu contraseña
             </h1>
           </div>
           <div className="mb-3">
