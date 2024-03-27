@@ -89,8 +89,8 @@ const ChangePassword = () => {
                       if (response?.status == 200) {
                         Swal.fire(
                           'Contraseña Actualizada',
-                          'Contraseña actualizada cón éxito',
-                          'error'
+                          'Contraseña actualizada con éxito',
+                          'succes'
                         ).then(() => {
                           window.location.assign('/login-register?tab=login');
                         });
