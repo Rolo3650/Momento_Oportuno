@@ -25,6 +25,22 @@ const Addons: React.FC<Props> = () => {
   const { setNewAdForm, newAdForm } = useForm();
   const theme = useTheme();
 
+  const precioDestacado = () => {
+    if (newAdForm.package?.id == 6 || newAdForm.package?.id == 8) {
+      return 0;
+    } else {
+      return 50;
+    }
+  };
+
+  const precioRedesSociales = () => {
+    if (newAdForm.package?.id == 8) {
+      return 0;
+    } else {
+      return 250;
+    }
+  };
+
   return (
     <>
       <div className="mt-3 mt-3 align-items-center d-flex fw-bold text text-color-5 text-font-rubik title">
@@ -56,7 +72,12 @@ const Addons: React.FC<Props> = () => {
             }}
             checked={newAdForm.feature}
           />
-          Destacado <span className="text text-color-secondary">+$100</span>{' '}
+          Destacado{' '}
+          {precioDestacado() > 0 && (
+            <span className="text text-color-secondary">
+              +${precioDestacado()}
+            </span>
+          )}{' '}
           <span className="text text-color-10">
             Destaca tu anuncio entre nuestras publicaciones más recientes.
           </span>
@@ -91,7 +112,8 @@ const Addons: React.FC<Props> = () => {
                 }}
                 checked={newAdForm.print.set}
               />
-              Impreso
+              El Momento Impreso{' '}
+              <span className="text text-color-10">Selecciona tu estado.</span>
               {newAdForm?.print.set && (
                 <>
                   <div className="fw-bold text text-color-5 text-font-l-d subtitle ms-5 mb-3">
@@ -474,7 +496,11 @@ const Addons: React.FC<Props> = () => {
             checked={newAdForm.socialMedia}
           />
           Redes Sociales{' '}
-          <span className="text text-color-secondary">+$100</span>{' '}
+          {precioRedesSociales() > 0 && (
+            <span className="text text-color-secondary">
+              +${precioRedesSociales()}
+            </span>
+          )}{' '}
           <span className="text text-color-10">
             Anúnciate en nuestras redes sociales{' '}
             <Link

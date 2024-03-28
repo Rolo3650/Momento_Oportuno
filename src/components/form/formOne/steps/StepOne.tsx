@@ -49,6 +49,8 @@ const StepOne: React.FC<Props> = () => {
   );
   const allCategories = useAllCategories();
   const attributes = useCategoryAttributes(cateogoryId);
+  const [settlement, setSettlement] = useState('');
+  const [city, setCity] = useState('');
 
   const onChangeCategory = (option: Option) => {
     if (option.value != 0) {
@@ -277,7 +279,10 @@ const StepOne: React.FC<Props> = () => {
                       const attributes = [...newAdForm.attributes];
                       attributes.forEach((atr) => {
                         if (atr.set.id === data.set.id) {
-                          atr.value = e.target.value?.toString() == 'NaN' ? 0 : e.target.value;
+                          atr.value =
+                            e.target.value?.toString() == 'NaN'
+                              ? 0
+                              : e.target.value;
                         }
                       });
                       setNewAdForm({ attributes: attributes });
@@ -384,7 +389,8 @@ const StepOne: React.FC<Props> = () => {
         </div> */}
         <div className="mb-3">
           <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
-            Ubicación del producto <span className="text text-color-secondary">*</span>
+            Ubicación del producto{' '}
+            <span className="text text-color-secondary">*</span>
           </div>
           <DropdownTwo
             option={{
@@ -419,6 +425,42 @@ const StepOne: React.FC<Props> = () => {
               // quantity: city.listings_count,
             }))}
             onChange={onChangeCity}
+          />
+        </div>
+        <div className="mb-3">
+          <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
+            Municipio <span className="text text-color-secondary">*</span>
+          </div>
+          <TextFieldTwo
+            color={{
+              variant: 'secondary',
+              text: '#464748',
+              field: theme.palette.secondary.main,
+              backgroundColor: '#fff',
+            }}
+            text={'Municipio'}
+            onChange={(e) => {
+              setSettlement(e.target.value);
+            }}
+            value={settlement}
+          />
+        </div>
+        <div className="mb-3">
+          <div className="fw-bold text text-color-5 text-font-l-d subtitle mb-3">
+            Ciudad <span className="text text-color-secondary">*</span>
+          </div>
+          <TextFieldTwo
+            color={{
+              variant: 'secondary',
+              text: '#464748',
+              field: theme.palette.secondary.main,
+              backgroundColor: '#fff',
+            }}
+            text={'Ciudad'}
+            onChange={(e) => {
+              setCity(e.target.value);
+            }}
+            value={city}
           />
         </div>
       </div>

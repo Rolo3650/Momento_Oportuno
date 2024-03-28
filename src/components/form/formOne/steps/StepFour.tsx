@@ -15,46 +15,46 @@ const StepFour = () => {
   const theme = useTheme();
   const { setNewAdForm, newAdForm } = useForm();
 
-  const getTotal = (price: number) => {
-    let total = price;
+  // const getTotal = (price: number) => {
+  //   let total = price;
 
-    if (newAdForm.print.set) {
-      if (newAdForm.print.value == 'medio-nac') total += 200;
-      if (newAdForm.print.value == 'medio-qro') total += 100;
-      if (newAdForm.print.value == 'medio-cam') total += 100;
-      if (newAdForm.print.value == 'medio-yuc') total += 100;
-      if (newAdForm.print.value == 'medio-tab') total += 100;
-      if (newAdForm.print.value == 'medio-chi') total += 100;
-      if (newAdForm.print.value == 'medio-ver') total += 100;
-      if (newAdForm.print.value == 'medio-baj') total += 100;
+  //   if (newAdForm.print.set) {
+  //     if (newAdForm.print.value == 'medio-nac') total += 200;
+  //     if (newAdForm.print.value == 'medio-qro') total += 100;
+  //     if (newAdForm.print.value == 'medio-cam') total += 100;
+  //     if (newAdForm.print.value == 'medio-yuc') total += 100;
+  //     if (newAdForm.print.value == 'medio-tab') total += 100;
+  //     if (newAdForm.print.value == 'medio-chi') total += 100;
+  //     if (newAdForm.print.value == 'medio-ver') total += 100;
+  //     if (newAdForm.print.value == 'medio-baj') total += 100;
 
-      if (newAdForm.print.size == 'impreso-4x4') total += 100;
-      if (newAdForm.print.size == 'impreso-4x8') total += 110;
-      if (newAdForm.print.size == 'impreso-4x13') total += 120;
-      if (newAdForm.print.size == 'impreso-8x4') total += 130;
-      if (newAdForm.print.size == 'impreso-8x8') total += 140;
-      if (newAdForm.print.size == 'impreso-12x3') total += 150;
-      if (newAdForm.print.size == 'impreso-12x8') total += 160;
-      if (newAdForm.print.size == 'impreso-12x13') total += 170;
-      if (newAdForm.print.size == 'impreso-8x13') total += 180;
-      if (newAdForm.print.size == 'impreso-21x8') total += 190;
-      if (newAdForm.print.size == 'impreso-21x13') total += 200;
-      if (newAdForm.print.size == 'impreso-24x15') total += 210;
-    }
-    if (newAdForm.feature) total += 100;
-    if (newAdForm.socialMedia) total += 100;
-    if (newAdForm.extraVideo.set) total += 100;
-    if (newAdForm.extraStates.set) {
-      if (newAdForm.extraStates.value == '1') total += 100;
-      if (newAdForm.extraStates.value == '2') total += 100;
-      if (newAdForm.extraStates.value == '3') total += 150;
-    }
+  //     if (newAdForm.print.size == 'impreso-4x4') total += 100;
+  //     if (newAdForm.print.size == 'impreso-4x8') total += 110;
+  //     if (newAdForm.print.size == 'impreso-4x13') total += 120;
+  //     if (newAdForm.print.size == 'impreso-8x4') total += 130;
+  //     if (newAdForm.print.size == 'impreso-8x8') total += 140;
+  //     if (newAdForm.print.size == 'impreso-12x3') total += 150;
+  //     if (newAdForm.print.size == 'impreso-12x8') total += 160;
+  //     if (newAdForm.print.size == 'impreso-12x13') total += 170;
+  //     if (newAdForm.print.size == 'impreso-8x13') total += 180;
+  //     if (newAdForm.print.size == 'impreso-21x8') total += 190;
+  //     if (newAdForm.print.size == 'impreso-21x13') total += 200;
+  //     if (newAdForm.print.size == 'impreso-24x15') total += 210;
+  //   }
+  //   if (newAdForm.feature) total += 100;
+  //   if (newAdForm.socialMedia) total += 100;
+  //   if (newAdForm.extraVideo.set) total += 100;
+  //   if (newAdForm.extraStates.set) {
+  //     if (newAdForm.extraStates.value == '1') total += 100;
+  //     if (newAdForm.extraStates.value == '2') total += 100;
+  //     if (newAdForm.extraStates.value == '3') total += 150;
+  //   }
 
-    if (newAdForm.extraImgs.quantity == 5) total += 100;
-    if (newAdForm.extraImgs.quantity == 10) total += 200;
+  //   if (newAdForm.extraImgs.quantity == 5) total += 100;
+  //   if (newAdForm.extraImgs.quantity == 10) total += 200;
 
-    return total;
-  };
+  //   return total;
+  // };
 
   const getName = (name: string): string => {
     if (name == 'Basico Publica tu anuncio por 7 d\u00edas') {
@@ -117,27 +117,30 @@ const StepFour = () => {
                 });
               }}
             >
-              <div className="name text text-font-l-d fw-bold fs-5 pb-3 text-color-5">
+              <div className="name text-center text text-font-l-d fw-bold fs-5 pb-3 text-color-5">
                 {getName(data.name)}
               </div>
-              <div className="desc text text-rubik pb-2 text-color-4">
-                {getDescription(data.description ?? '')}
+              <div className="text text-font-l-d pb-3 text-color-5 text-center mb-4">
+                {data.label}
               </div>
-              <div className="desc text text-rubik fw-bold pb-2 text-color-secondary">
+              <div className="desc text text-center text-rubik fw-bold pb-2 fs-3 text-color-secondary">
                 $
                 {data.price.toLocaleString('es-MX', {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
                 })}
               </div>
-
-              <div className="mt-4 fw-bold text text-color-5 text-font-l-d subtitle">
-                Complementos
+              <div className="text-center desc text text-rubik text-color-4">
+                {getDescription(data.description ?? '')}
               </div>
-              <div className="fw-bold fs-6 text text-color-8 text-font-l-d subtitle mb-3">
-                {/* <ul> */}
-                {/* {newAdForm.extraStates.set && <li>{newAdForm.extraStates.value}</li>} */}
-                {newAdForm.extraImgs.quantity > 3 && (
+
+              {/* <div className="mt-4 fw-bold text text-color-5 text-font-l-d subtitle">
+                Complementos
+              </div> */}
+              {/* <div className="fw-bold fs-6 text text-color-8 text-font-l-d subtitle mb-3"> */}
+              {/* <ul> */}
+              {/* {newAdForm.extraStates.set && <li>{newAdForm.extraStates.value}</li>} */}
+              {/* {newAdForm.extraImgs.quantity > 3 && (
                   <li>
                     {newAdForm.extraImgs.quantity == 5
                       ? '5 Imágenes +$100'
@@ -154,8 +157,8 @@ const StepFour = () => {
                             : 'Todos los estados +$200'
                         }`}
                   </li>
-                )}
-                {newAdForm.print.set && (
+                )} */}
+              {/* {newAdForm.print.set && (
                   <>
                     <li>
                       {newAdForm.print.value == 'medio-nac' && (
@@ -225,18 +228,18 @@ const StepFour = () => {
                 )}
                 {newAdForm.feature && <li>Destacado +$100</li>}
                 {newAdForm.socialMedia && <li>Redes Social +$100</li>}
-                {newAdForm.extraVideo.set && <li>Agregar Video +$100</li>}
-                {/* </ul> */}
-              </div>
+                {newAdForm.extraVideo.set && <li>Agregar Video +$100</li>} */}
+              {/* </ul> */}
+              {/* </div> */}
 
-              <div className="price text text-color-primary fw-bold fs-5">
+              {/* <div className="price text text-color-primary fw-bold fs-5">
                 Total: ${' '}
                 {getTotal(data.price)?.toLocaleString('es-MX', {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
                 })}{' '}
                 MXN
-              </div>
+              </div> */}
             </div>
           ))}
       </div>
@@ -244,7 +247,7 @@ const StepFour = () => {
         Selecciona la fecha de salida
         <span className="text text-color-secondary">*</span>
       </div>
-      <div className="">
+      <div className="mb-4 d-flex ">
         <LocalizationProvider dateAdapter={AdapterMoment}>
           <DemoContainer components={['DatePicker']}>
             <DatePicker
@@ -253,6 +256,17 @@ const StepFour = () => {
               label="Selecciona una fecha"
               sx={{
                 borderColor: theme.palette.primary.main,
+                '& .MuiFormLabel-root': {
+                  fontSize: '20px',
+                },
+                '& .MuiSvgIcon-root': {
+                  fontSize: '20px !important',
+                },
+                '& .MuiInputBase-root': {
+                  width: '400px',
+                  height: '70px',
+                  fontSize: '20px',
+                },
               }}
             />
           </DemoContainer>

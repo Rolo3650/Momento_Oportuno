@@ -188,10 +188,10 @@ const FormOne: React.FC<Props> = () => {
 
   return (
     <div className="form-custom form-custom-one background background-color-7 rounded-4">
+      <StepFour />
       <StepOne />
       <StepTwo />
       <StepThree />
-      <StepFour />
       <Addons />
       <div className="my-3 d-flex justify-content-end">
         <Button
